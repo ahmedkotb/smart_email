@@ -1,5 +1,7 @@
 package general;
 
+import java.util.Arrays;
+
 public class Email {
 	private String from;
 	private String[] to;
@@ -10,8 +12,9 @@ public class Email {
 	private int size;
 
 	
-	
-	public Email(String from, String[] to, String[] cc, String[] bcc, String subject, String content, int size) {
+	public Email(String from, String[] to, String[] cc, String[] bcc,
+			String subject, String content, int size) {
+		
 		this.from = from;
 		this.to = to;
 		this.cc = cc;
@@ -19,6 +22,12 @@ public class Email {
 		this.subject = subject;
 		this.content = content;
 		this.size = size;
+	}
+	
+	public Email(String from, String to, String subject, String content, int size){
+		
+		this(from, new String[]{to}, new String[]{}, new String[]{}, subject,
+				content, size );
 	}
 	
 	public String getFrom() {
@@ -63,4 +72,19 @@ public class Email {
 	public void setSize(int size) {
 		this.size = size;
 	}
+
+	@Override
+	public String toString() {
+		String ret = "Email:\n======\n";
+		ret += "from : " + from + '\n';
+		ret += "to : " + Arrays.toString(to) + '\n';
+		ret += "cc : " + Arrays.toString(cc) + '\n';
+		ret += "bcc : " + Arrays.toString(bcc) + '\n';
+		ret += "subject : " + subject + '\n';
+		ret += "content :\n" + content + '\n';
+		ret += "size : " + size + '\n';
+		return ret;
+	}
+	
+	
 }
