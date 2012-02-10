@@ -1,9 +1,25 @@
 package filters;
 
+import java.util.ArrayList;
+import weka.core.Attribute;
+import weka.core.Instance;
 import general.Email;
-import general.FeatureAttribute;
 
-public interface Filter {
+public abstract class Filter {
 	
-	public FeatureAttribute makeFeaturesInstance(Email email);
+	private String[] options;
+	private ArrayList<Attribute> atts;
+	
+	public Filter(ArrayList<Attribute> atts, String[] options){
+		this.atts = atts;
+		this.options = options;
+		//TODO
+	}
+		
+	public ArrayList<Attribute> getAttributes(){
+		return this.atts;
+	}
+	
+	public abstract Instance makeInstance(Email email);
+
 }

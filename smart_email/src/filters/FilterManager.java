@@ -1,16 +1,25 @@
 package filters;
 
-import general.Dataset;
+import weka.core.Instance;
+import weka.core.Instances;
 import general.Email;
 import java.util.ArrayList;
 
 public class FilterManager {
-
-	public FilterManager(String[] filterNames){
+	
+	private Filter[] filters;
+	
+	public FilterManager(Filter[] filters){
+		this.filters = filters;
 		//TODO
 	}
 	
-	public Dataset getDataset(ArrayList<Email> emails){
+	public Instances getDataset(ArrayList<Email> emails){
+		//TODO
+		return null;
+	}
+	
+	public Instance gitInstance(Email email){
 		//TODO
 		return null;
 	}
