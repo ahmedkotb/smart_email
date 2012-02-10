@@ -1,8 +1,8 @@
 package classification;
 
-import general.Dataset;
-import general.FeatureVectorInstance;
 import java.io.Serializable;
+import weka.core.Instance;
+import weka.core.Instances;
 
 public abstract class Classifier implements Serializable{
 
@@ -11,9 +11,9 @@ public abstract class Classifier implements Serializable{
 		return null;
 	}
 	
-	public abstract double classifyFeatureVector(FeatureVectorInstance instance);
+	public abstract double classifyInstance(Instance instance);
 	
-	public abstract void buildClassifier(Dataset trainingSet);
+	public abstract void buildClassifier(Instances trainingSet);
 	
-	public abstract double[] distributionForFeaturesVector(FeatureVectorInstance instance);
+	public abstract double[] distributionForFeaturesVector(Instance instance);
 }
