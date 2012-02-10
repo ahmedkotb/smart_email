@@ -8,10 +8,12 @@ public class Email {
 	private String subject;
 	private String content;
 	private int size;
+	private String id;
 
 	
 	
-	public Email(String from, String[] to, String[] cc, String[] bcc, String subject, String content, int size) {
+	public Email(String id,String from, String[] to, String[] cc, String[] bcc, String subject, String content, int size) {
+		this.id = id;
 		this.from = from;
 		this.to = to;
 		this.cc = cc;
@@ -20,7 +22,19 @@ public class Email {
 		this.content = content;
 		this.size = size;
 	}
-	
+		
+	public Email() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public String getFrom() {
 		return from;
 	}
