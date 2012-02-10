@@ -2,6 +2,7 @@ package datasource;
 
 import java.io.BufferedReader;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -17,6 +18,7 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
 import javax.mail.Session;
+import javax.mail.UIDFolder;
 import javax.mail.internet.ContentType;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage.RecipientType;
@@ -26,9 +28,12 @@ import javax.mail.search.AndTerm;
 import javax.mail.search.BodyTerm;
 import javax.mail.search.FromStringTerm;
 import javax.mail.search.FromTerm;
+import javax.mail.search.HeaderTerm;
 import javax.mail.search.SearchTerm;
 import javax.mail.search.StringTerm;
 import javax.mail.search.SubjectTerm;
+
+import com.sun.xml.internal.messaging.saaj.packaging.mime.Header;
 
 public class ImapDAO extends DAO{
 	
@@ -143,7 +148,9 @@ public class ImapDAO extends DAO{
               System.out.println("Printing Subject");
               System.out.println(email.getSubject());
               
-              email.setId(messages[j].getMatchingHeaders(new String[]{"Message-D"}).toString());
+              long id = ((UIDFolder) folder).getUID(messages[j]);              
+              email.setId(id+"");
+              
               System.out.println("Printing Id");
               System.out.println(email.getId());
               
@@ -198,7 +205,17 @@ public class ImapDAO extends DAO{
 
 	@Override
 	public void applyLabel(String emailId, String labelName) {
-		// TODO Auto-generated method stub
+        try {
+			Folder inbox = this.store.getFolder("Inbox");
+			inbox.open(Folder.READ_WRITE);
+	        SearchTerm st = new HeaderTerm(inbox.HEADER_MESSAGE_ID,"1");
+
+			Message[] messages = inbox.search(st);
+			System.out.println(messages.length);
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -223,7 +240,6 @@ public class ImapDAO extends DAO{
     public String showMultiPart(Message m) {
         try {
             MimeMultipart content = (MimeMultipart) m.getContent();
-            System.out.println("length: "+content.getBodyPart(1).getContent().toString());
                 BodyPart part = content.getBodyPart(0);
                 ContentType ct = new ContentType(part.getContentType());
                     return part.getContent().toString();  
