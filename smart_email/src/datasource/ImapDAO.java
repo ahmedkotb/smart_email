@@ -209,7 +209,7 @@ public class ImapDAO extends DAO{
         try {
 			Folder inbox = this.store.getFolder("Inbox");
 			inbox.open(Folder.READ_WRITE);
-	        SearchTerm st = new MessageIDTerm("1");
+	        StringTerm st = new MessageIDTerm("2");
 
 			Message[] messages = inbox.search(st);
 			System.out.println(messages.length);

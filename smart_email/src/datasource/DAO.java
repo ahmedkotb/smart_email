@@ -29,7 +29,7 @@ public abstract class DAO {
 	public static void main(String args[]) throws IOException {
        ImapDAO imapdao=   (ImapDAO) DAO.getInstance("IMAP:gp.term.project@gmail.com:sherine2t");
        //imapdao.getClasses();
-       //imapdao.getUnclassified(10);
+       imapdao.getUnclassified(10);
        imapdao.applyLabel("s", "s");
 	  // FileSystemDAO filesystemdao=   (FileSystemDAO) DAO.getInstance("FileSystems:/media/e/");
 	   //filesystemdao.getClasses();
