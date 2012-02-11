@@ -1,6 +1,7 @@
 package general;
 
 import java.util.Arrays;
+import java.util.Date;
 
 public class Email {
 	private String from;
@@ -10,10 +11,11 @@ public class Email {
 	private String subject;
 	private String content;
 	private int size;
-
+	private Date date;
+	private String label;
 	
 	public Email(String from, String[] to, String[] cc, String[] bcc,
-			String subject, String content, int size) {
+			String subject, String content, int size, Date date) {
 		
 		this.from = from;
 		this.to = to;
@@ -22,12 +24,13 @@ public class Email {
 		this.subject = subject;
 		this.content = content;
 		this.size = size;
+		this.date = date;
 	}
 	
-	public Email(String from, String to, String subject, String content, int size){
+	public Email(String from, String to, String subject, String content, int size, Date date){
 		
 		this(from, new String[]{to}, new String[]{}, new String[]{}, subject,
-				content, size );
+				content, size, date);
 	}
 	
 	public String getFrom() {
@@ -72,7 +75,19 @@ public class Email {
 	public void setSize(int size) {
 		this.size = size;
 	}
-
+	public Date getDate(){
+		return this.date;
+	}
+	public void setDate(Date date){
+		this.date = date;
+	}
+	public String getLabel(){
+		return this.label;
+	}
+	public void setLabel(String label){
+		this.label = label;
+	}
+	
 	@Override
 	public String toString() {
 		String ret = "Email:\n======\n";
@@ -83,6 +98,7 @@ public class Email {
 		ret += "subject : " + subject + '\n';
 		ret += "content :\n" + content + '\n';
 		ret += "size : " + size + '\n';
+		ret += "date : " + date + '\n';
 		return ret;
 	}
 	
