@@ -2,6 +2,7 @@ package datasource;
 
 import java.io.BufferedReader;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Enumeration;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -13,6 +14,7 @@ import javax.mail.Store;
 import general.Email;
 import javax.mail.Address;
 import javax.mail.BodyPart;
+import javax.mail.Flags.Flag;
 import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -26,14 +28,17 @@ import javax.mail.internet.MimeMultipart;
 import javax.mail.internet.ParseException;
 import javax.mail.search.AndTerm;
 import javax.mail.search.BodyTerm;
+import javax.mail.search.DateTerm;
 import javax.mail.search.FromStringTerm;
 import javax.mail.search.FromTerm;
 import javax.mail.search.HeaderTerm;
 import javax.mail.search.MessageIDTerm;
+import javax.mail.search.ReceivedDateTerm;
 import javax.mail.search.SearchTerm;
 import javax.mail.search.StringTerm;
 import javax.mail.search.SubjectTerm;
 
+import com.sun.mail.imap.IMAPFolder;
 import com.sun.xml.internal.messaging.saaj.packaging.mime.Header;
 
 public class ImapDAO extends DAO{
@@ -71,7 +76,7 @@ public class ImapDAO extends DAO{
 
 		ArrayList<String> classes= new ArrayList<String>(50);
 		try {
-			Folder[] labels = store.getDefaultFolder().list();
+			Folder[] labels = store.getDefaultFolder().list("*");
 			int i =0;
 		    for(Folder label:labels){
 		    	classes.add(label.getName());
@@ -150,10 +155,14 @@ public class ImapDAO extends DAO{
               System.out.println(email.getSubject());
               
               long id = ((UIDFolder) folder).getUID(messages[j]);              
-              email.setId(id+"");
-              
+              email.setId(id);
+                     
               System.out.println("Printing Id");
               System.out.println(email.getId());
+              
+             email.setDate(messages[j].getReceivedDate());
+             System.out.println("Printing Date");
+             System.out.println(email.getDate());
               
               System.out.println("*************");
               
@@ -205,15 +214,16 @@ public class ImapDAO extends DAO{
 	}
 
 	@Override
-	public void applyLabel(String emailId, String labelName) {
+	public void applyLabel(long emailId, String labelName) {
         try {
-			Folder inbox = this.store.getFolder("Inbox");
+			IMAPFolder inbox = (IMAPFolder) this.store.getFolder("Inbox");
 			inbox.open(Folder.READ_WRITE);
-	        StringTerm st = new MessageIDTerm("2");
+			Message message = inbox.getMessageByUID(emailId);
 
-			Message[] messages = inbox.search(st);
-			System.out.println(messages.length);
-		} catch (MessagingException e) {
+			inbox.copyMessages(new Message[]{message}, this.store.getFolder(labelName));
+			message.setFlag(Flag.DELETED, true);
+			
+        } catch (MessagingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

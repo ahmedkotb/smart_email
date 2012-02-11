@@ -1,5 +1,8 @@
 package general;
 
+import java.util.Arrays;
+import java.util.Date;
+
 public class Email {
 	private String from;
 	private String[] to;
@@ -8,12 +11,14 @@ public class Email {
 	private String subject;
 	private String content;
 	private int size;
-	private String id;
+	private long id;
+	private Date date;
 
 	
-	
-	public Email(String id,String from, String[] to, String[] cc, String[] bcc, String subject, String content, int size) {
-		this.id = id;
+	public Email(String from, String[] to, String[] cc, String[] bcc,
+			String subject, String content, int size,Date date) {
+		
+
 		this.from = from;
 		this.to = to;
 		this.cc = cc;
@@ -21,18 +26,28 @@ public class Email {
 		this.subject = subject;
 		this.content = content;
 		this.size = size;
+		this.date = date;
 	}
 		
 	public Email() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
+	}
+
+	
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public String getFrom() {
@@ -77,4 +92,19 @@ public class Email {
 	public void setSize(int size) {
 		this.size = size;
 	}
+
+	@Override
+	public String toString() {
+		String ret = "Email:\n======\n";
+		ret += "from : " + from + '\n';
+		ret += "to : " + Arrays.toString(to) + '\n';
+		ret += "cc : " + Arrays.toString(cc) + '\n';
+		ret += "bcc : " + Arrays.toString(bcc) + '\n';
+		ret += "subject : " + subject + '\n';
+		ret += "content :\n" + content + '\n';
+		ret += "size : " + size + '\n';
+		return ret;
+	}
+	
+	
 }
