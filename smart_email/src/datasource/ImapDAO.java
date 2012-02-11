@@ -29,6 +29,7 @@ import javax.mail.search.BodyTerm;
 import javax.mail.search.FromStringTerm;
 import javax.mail.search.FromTerm;
 import javax.mail.search.HeaderTerm;
+import javax.mail.search.MessageIDTerm;
 import javax.mail.search.SearchTerm;
 import javax.mail.search.StringTerm;
 import javax.mail.search.SubjectTerm;
@@ -208,7 +209,7 @@ public class ImapDAO extends DAO{
         try {
 			Folder inbox = this.store.getFolder("Inbox");
 			inbox.open(Folder.READ_WRITE);
-	        SearchTerm st = new HeaderTerm(inbox.HEADER_MESSAGE_ID,"1");
+	        SearchTerm st = new MessageIDTerm("1");
 
 			Message[] messages = inbox.search(st);
 			System.out.println(messages.length);
