@@ -2,19 +2,17 @@ package filters;
 
 import java.util.ArrayList;
 import weka.core.Attribute;
-import weka.core.Instance;
 import general.Email;
 
 public class SenderFilter extends Filter{
-
+	private static final long serialVersionUID = 212064865800000L;
+	
 	public SenderFilter(ArrayList<Attribute> atts, String[] options) {
 		super(atts, options);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public Instance makeInstance(Email email){
-		// TODO Auto-generated method stub
-		return null;
+	public double[] getAttValue(Email email){
+		return new double[]{attributes.get(0).indexOfValue(email.getFrom())};
 	}
 }

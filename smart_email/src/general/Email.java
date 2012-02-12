@@ -13,12 +13,10 @@ public class Email {
 	private int size;
 	private long id;
 	private Date date;
-
+	private String label;
 	
 	public Email(String from, String[] to, String[] cc, String[] bcc,
 			String subject, String content, int size,Date date) {
-		
-
 		this.from = from;
 		this.to = to;
 		this.cc = cc;
@@ -28,7 +26,13 @@ public class Email {
 		this.size = size;
 		this.date = date;
 	}
+	
+	public Email(String from, String to, String subject, String content, int size, Date date){
 		
+		this(from, new String[]{to}, new String[]{}, new String[]{}, subject,
+				content, size, date);
+	}
+	
 	public Email() {
 		// TODO Auto-generated constructor stub
 	}
@@ -92,7 +96,13 @@ public class Email {
 	public void setSize(int size) {
 		this.size = size;
 	}
-
+	public String getLabel(){
+		return this.label;
+	}
+	public void setLabel(String label){
+		this.label = label;
+	}
+	
 	@Override
 	public String toString() {
 		String ret = "Email:\n======\n";
@@ -103,6 +113,7 @@ public class Email {
 		ret += "subject : " + subject + '\n';
 		ret += "content :\n" + content + '\n';
 		ret += "size : " + size + '\n';
+		ret += "date : " + date + '\n';
 		return ret;
 	}
 	
