@@ -27,12 +27,13 @@ public abstract class DAO {
 	public abstract void applyLabel(long emailId, String labelName);
 	
 	public static void main(String args[]) throws IOException {
-       ImapDAO imapdao=   (ImapDAO) DAO.getInstance("IMAP:gp.term.project@gmail.com:");
-       imapdao.getClasses();
-       imapdao.getUnclassified(10);
-       imapdao.applyLabel(2, "Sharkasy");
-	  // FileSystemDAO filesystemdao=   (FileSystemDAO) DAO.getInstance("FileSystems:/media/e/");
+      // ImapDAO imapdao=   (ImapDAO) DAO.getInstance("IMAP:gp.term.project@gmail.com:");
+       //imapdao.getClasses();
+       //imapdao.getUnclassified(10);
+       //imapdao.applyLabel(2, "Sharkasy");
+	  FileSystemDAO filesystemdao=   (FileSystemDAO) DAO.getInstance("FileSystems:/media/e/enron_processed/beck-s/");
 	   //filesystemdao.getClasses();
+	  filesystemdao.getClassifiedEmails("", 4);
 
 	}
 }
