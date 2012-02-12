@@ -1,25 +1,26 @@
 package filters;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import weka.core.Attribute;
-import weka.core.Instance;
 import general.Email;
 
-public abstract class Filter {
+public abstract class Filter implements Serializable{
 	
-	private String[] options;
-	private ArrayList<Attribute> atts;
+	private static final long serialVersionUID = 382547736495835L;
+
+	protected String[] options;
+	protected ArrayList<Attribute> attributes;
 	
 	public Filter(ArrayList<Attribute> atts, String[] options){
-		this.atts = atts;
+		this.attributes = atts;
 		this.options = options;
-		//TODO
 	}
 		
 	public ArrayList<Attribute> getAttributes(){
-		return this.atts;
+		return this.attributes;
 	}
 	
-	public abstract Instance makeInstance(Email email);
+	public abstract double[] getAttValue(Email email);
 
 }

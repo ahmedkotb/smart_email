@@ -11,12 +11,12 @@ public class Email {
 	private String subject;
 	private String content;
 	private int size;
+	private long id;
 	private Date date;
 	private String label;
 	
 	public Email(String from, String[] to, String[] cc, String[] bcc,
-			String subject, String content, int size, Date date) {
-		
+			String subject, String content, int size,Date date) {
 		this.from = from;
 		this.to = to;
 		this.cc = cc;
@@ -33,6 +33,27 @@ public class Email {
 				content, size, date);
 	}
 	
+	public Email() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	public String getFrom() {
 		return from;
 	}
@@ -74,12 +95,6 @@ public class Email {
 	}
 	public void setSize(int size) {
 		this.size = size;
-	}
-	public Date getDate(){
-		return this.date;
-	}
-	public void setDate(Date date){
-		this.date = date;
 	}
 	public String getLabel(){
 		return this.label;
