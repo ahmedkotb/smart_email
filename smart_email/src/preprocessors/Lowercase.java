@@ -3,7 +3,7 @@ package preprocessors;
 import general.Email;
 
 /**
- * the lowercase preprocessor is used to convert each word in the email
+ * The Lowercase preprocessor is used to convert each word in the email
  * body and subject to lower case
  * @author ahmedkotb
  *
