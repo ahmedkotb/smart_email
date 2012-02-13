@@ -4,11 +4,14 @@ import general.Email;
 
 public class NumberNormalization implements Preprocessor{
 
-	private final String NUMBER_TAG = " NUMBER ";
+	private static final String NUMBER_TAG = " NUMBER ";
+	
+	private static final String NUMBER_REGEX = "[-+]?[0-9]*\\.?[0-9]+";
 	
 	@Override
 	public void apply(Email email) {
-		email.setContent(email.getContent().replaceAll("[-+]?[0-9]*\\.?[0-9]+", NUMBER_TAG));
+		email.setSubject(email.getSubject().replaceAll(NUMBER_REGEX, NUMBER_TAG));
+		email.setContent(email.getContent().replaceAll(NUMBER_REGEX, NUMBER_TAG));
 	}
 
 }
