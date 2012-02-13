@@ -13,7 +13,16 @@ public class WordsCleaner implements Preprocessor{
 	@Override
 	public void apply(Email email) {
 		//splits the email on any non alpha numeric characters
-		String[] words = email.getContent().split("\\W+");
+		
+		//process the subject
+		String[] words = email.getSubject().split("\\W+");
+		String subject = "";
+		for (String word : words)
+			subject += word + " ";
+		email.setSubject(subject);
+		
+		//process the content
+		words = email.getContent().split("\\W+");
 		StringBuilder sb = new StringBuilder(email.getContent().length());
 		
 		for (String word : words)
