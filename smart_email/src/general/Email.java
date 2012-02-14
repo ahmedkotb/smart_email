@@ -114,6 +114,7 @@ public class Email {
 		ret += "content :\n" + content + '\n';
 		ret += "size : " + size + '\n';
 		ret += "date : " + date + '\n';
+		ret += "label : " + label;
 		return ret;
 	}
 	

@@ -44,13 +44,13 @@ public class WordFrequencyFilter extends Filter{
 		//TODO : change the splitRegex according the words we will agree to consider
 		String splitRegex = "[^a-zA-Z]+"; //split on non-characters (one or more)
 		//calc wf from subject
-		toks = email.getFrom().split(splitRegex);
+		toks = email.getFrom().trim().split(splitRegex);
 		for(int i=0; i<toks.length; i++)
 			if(indexMap.containsKey(toks[i])) 
 				vals[indexMap.get(toks[i])]++;
 		
 		//calc wf from content
-		toks = email.getContent().split(splitRegex);
+		toks = email.getContent().trim().split(splitRegex);
 		for(int i=0; i<toks.length; i++)
 			if(indexMap.containsKey(toks[i]))
 				vals[indexMap.get(toks[i])]++;

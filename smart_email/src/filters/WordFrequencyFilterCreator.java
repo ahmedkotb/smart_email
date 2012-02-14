@@ -12,11 +12,13 @@ import java.util.Map;
 import weka.core.Attribute;
 
 public class WordFrequencyFilterCreator implements FilterCreator{
+
 	private HashMap<String, LabelTermFrequencyManager> labelFreqMgrMap;
 	private HashMap<String, HashSet<String>> wordToLabelsMap;
 	private final String ATT_NAME_PREFIX = "WFF_";
-//	private final int IMP_WORDS_PER_LABEL = 80;
-	private final int IMP_WORDS_PER_LABEL = 5; //just for testing
+	private final int IMP_WORDS_PER_LABEL = 80;
+	//TODO: un-comments the prev. line
+//	private final int IMP_WORDS_PER_LABEL = 5; //just for testing
 	
 	public WordFrequencyFilterCreator() {
 		labelFreqMgrMap = new HashMap<String, WordFrequencyFilterCreator.LabelTermFrequencyManager>();
@@ -28,8 +30,11 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 		HashSet<String> unique = new HashSet<String>();
 		
 		//XXX split the email on non-chars, OK?
-		String[] toks = (email.getSubject() + " " + email.getContent()).split("[^a-zA-Z]+");
+		String[] toks = (email.getSubject() + " " + email.getContent().trim()).split("[^a-zA-Z]+");
 		for(int i=0; i<toks.length; i++){
+			//XXX revise this
+			if (toks[i].length() == 0) 
+				continue;
 			Double freq = normFreq.get(toks[i]);
 			if(freq == null){
 				freq = 0.0;
@@ -38,7 +43,7 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 			normFreq.put(toks[i], ++freq);
 		}
 
-		//normalize frequencis
+		//normalize frequencies
 		int size = email.getSize();
 		Iterator<String> itr = unique.iterator();
 		while(itr.hasNext()){
@@ -53,10 +58,16 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 		ArrayList<Attribute> atts = new ArrayList<Attribute>();
 		
 		Iterator<Map.Entry<String, LabelTermFrequencyManager>> itr = labelFreqMgrMap.entrySet().iterator();
+		HashSet<String> uniqueWords = new HashSet<String>();
 		while(itr.hasNext()){
 			Map.Entry<String, LabelTermFrequencyManager> pair = itr.next();
 			String[] words = pair.getValue().extractImportantWords(IMP_WORDS_PER_LABEL);
-			for(int i=0; i<words.length; i++) atts.add(new Attribute(ATT_NAME_PREFIX + words[i]));
+			for(int i=0; i<words.length; i++){
+				if(!uniqueWords.contains(words[i])){
+					uniqueWords.add(words[i]);
+					atts.add(new Attribute(ATT_NAME_PREFIX + words[i]));
+				}
+			}
 		}
 		
 		return atts;

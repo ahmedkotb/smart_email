@@ -7,7 +7,7 @@ import weka.core.Instances;
 public class NaiveBayesClassifier extends Classifier {
 
 	private static final long serialVersionUID = -7728431597158327870L;
-	
+
 	NaiveBayes classifier;
 
 	public NaiveBayesClassifier() {

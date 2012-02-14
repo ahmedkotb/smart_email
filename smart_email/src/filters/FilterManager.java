@@ -33,8 +33,10 @@ public class FilterManager {
 		for(Email email : emails){
 			Instance ins = makeInstance(email);
 			ins.setDataset(dataset);
+			dataset.add(ins);
 		}
-		
+		//XXX how to know the class index???
+		dataset.setClassIndex(attsNum-1);
 		return dataset;
 	}
 	
@@ -51,7 +53,7 @@ public class FilterManager {
 		
 		Instance instance = new Instance(1, vals);
 		
-//		instance.setDataset(dataset);
+		instance.setDataset(dataset);
 		
 		return instance;
 	}
