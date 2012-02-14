@@ -1,26 +1,48 @@
 package classification;
 
+import weka.classifiers.bayes.NaiveBayes;
 import weka.core.Instance;
 import weka.core.Instances;
 
-public class NaiveBayesClassifier extends Classifier{
+public class NaiveBayesClassifier extends Classifier {
+
+	NaiveBayes classifier;
+
+	public NaiveBayesClassifier() {
+		classifier = new NaiveBayes();
+	}
 
 	@Override
 	public double classifyInstance(Instance instance) {
-		// TODO Auto-generated method stub
-		return 0;
+		try {
+			return classifier.classifyInstance(instance);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return -1.0;
+		}
 	}
 
 	@Override
 	public void buildClassifier(Instances trainingSet) {
-		// TODO Auto-generated method stub
-		
+		try {
+			classifier.buildClassifier(trainingSet);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public double[] distributionForFeaturesVector(Instance instance) {
 		// TODO Auto-generated method stub
-		return null;
+		try {
+			return classifier.distributionForInstance(instance);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }
