@@ -22,7 +22,7 @@ public class ClassificationManager {
 		
 		DAO dao = DAO.getInstance(daoSource);
 		String[] filterCreatorsNames = new String[]{
-			"DateFilterCreator", "LabelFilterCreator", "SenderFilterCreator", "WordFrequencyFilterCreator"	
+			"filters.DateFilterCreator", "filters.LabelFilterCreator", "filters.SenderFilterCreator", "filters.WordFrequencyFilterCreator"	
 		};
 		
 		ArrayList<String> labels = dao.getClasses();
