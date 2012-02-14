@@ -36,7 +36,7 @@ import javax.mail.search.StringTerm;
 import javax.mail.search.SubjectTerm;
 
 import com.sun.mail.imap.IMAPFolder;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.Header;
+//import com.sun.xml.internal.messaging.saaj.packaging.mime.Header;
 
 public class ImapDAO extends DAO{
 	
