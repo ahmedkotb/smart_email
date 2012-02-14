@@ -5,6 +5,8 @@ import weka.core.Instances;
 
 public class SVMClassifier extends Classifier{
 
+	private static final long serialVersionUID = -9105170187757147863L;
+
 	@Override
 	public double classifyInstance(Instance instance) {
 		// TODO Auto-generated method stub

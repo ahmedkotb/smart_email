@@ -28,10 +28,10 @@ public class FilterManager {
 		dataset = new Instances("dataset", atts, 0);
 	}
 	
-	public Instances getDataset(ArrayList<Email> emails){
+	public Instances getDataset(Email[] emails){
 		dataset.delete();
-		for(int i=0; i<emails.size(); i++){
-			Instance ins = makeInstance(emails.get(i));
+		for(Email email : emails){
+			Instance ins = makeInstance(email);
 			ins.setDataset(dataset);
 		}
 		

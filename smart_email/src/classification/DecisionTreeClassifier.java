@@ -5,6 +5,8 @@ import weka.core.Instances;
 
 public class DecisionTreeClassifier extends Classifier{
 
+	private static final long serialVersionUID = 555668137075221536L;
+
 	@Override
 	public double classifyInstance(Instance instance) {
 		// TODO Auto-generated method stub
