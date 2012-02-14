@@ -56,6 +56,7 @@ public class FileSystemDAO extends DAO {
 			
 			try{
 				parseFile(file, email);
+				email.setLabel(labelName);
 				emails.add(email);
 			} catch(Exception e){
 				System.err.println("Format Error in file: " + file);
