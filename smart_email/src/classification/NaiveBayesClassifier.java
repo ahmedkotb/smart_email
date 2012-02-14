@@ -8,7 +8,7 @@ public class NaiveBayesClassifier extends Classifier {
 
 	private static final long serialVersionUID = -7728431597158327870L;
 
-	NaiveBayes classifier;
+	private NaiveBayes classifier;
 
 	public NaiveBayesClassifier() {
 		classifier = new NaiveBayes();
