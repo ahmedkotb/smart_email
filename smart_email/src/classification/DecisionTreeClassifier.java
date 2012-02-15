@@ -10,7 +10,7 @@ public class DecisionTreeClassifier extends Classifier{
 	private ADTree classifier;
 	
 	public DecisionTreeClassifier(){
-		//TODO: @amr: which decision tree classifier will we use?
+		classifier = new ADTree();
 	}
 	
 	@Override

@@ -9,6 +9,10 @@ public class SVMClassifier extends Classifier{
 	private static final long serialVersionUID = -9105170187757147863L;
 	private SMO classifier;
 	
+	public SVMClassifier(){
+		classifier = new SMO();
+	}
+	
 	@Override
 	public double classifyInstance(Instance instance) {
 		try {

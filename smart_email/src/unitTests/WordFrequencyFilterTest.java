@@ -214,7 +214,7 @@ public class WordFrequencyFilterTest {
 		Assert.assertEquals(trainingSet.length, correct);
 	}
 	
-//	@Test(timeout = 30000)
+	@Test(timeout = 30000)
 	public void decisionTreeTest() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		ClassificationManager mgr = new ClassificationManager();
 		String path = "enron_processed/lokay_m";
@@ -229,7 +229,7 @@ public class WordFrequencyFilterTest {
 		Assert.assertEquals(trainingSet.length, correct);
 	}
 	
-//	@Test(timeout = 30000)
+	@Test(timeout = 300000)
 	public void svmTest() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		ClassificationManager mgr = new ClassificationManager();
 		String path = "enron_processed/lokay_m";
