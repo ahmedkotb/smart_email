@@ -12,6 +12,7 @@ public class WordFrequencyFilter extends Filter{
 	private static final long serialVersionUID = 1148119665295273L;
 
 	private String attPrefix;
+	private HashMap<String, Integer> indexMap;
 	
 	/**
 	 * Constructor
@@ -21,6 +22,11 @@ public class WordFrequencyFilter extends Filter{
 	public WordFrequencyFilter(ArrayList<Attribute> atts, String[] options) {
 		super(atts, options);
 		attPrefix = options[0];
+		Iterator<Attribute> itr = attributes.iterator();
+		indexMap = new HashMap<String, Integer>();
+		int index=0;
+
+		while(itr.hasNext()) indexMap.put(getWord(itr.next().name()), index++);
 	}
 
 	/**
@@ -59,13 +65,7 @@ public class WordFrequencyFilter extends Filter{
 	@Override
 	public double[] getAttValue(Email email){
 		double[] vals = new double[attributes.size()];
-		Iterator<Attribute> itr = attributes.iterator();
-		HashMap<String, Integer> indexMap = new HashMap<String, Integer>();
-		int index=0;
-		
-		while(itr.hasNext()) indexMap.put(getWord(itr.next().name()), index++);
 		calcFrequencies(vals, indexMap, email);
-		
 		return vals;
 	}
 }

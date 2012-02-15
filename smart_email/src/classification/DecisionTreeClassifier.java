@@ -9,6 +9,10 @@ public class DecisionTreeClassifier extends Classifier{
 	private static final long serialVersionUID = 555668137075221536L;
 	private ADTree classifier;
 	
+	public DecisionTreeClassifier(){
+		//TODO: @amr: which decision tree classifier will we use?
+	}
+	
 	@Override
 	public double classifyInstance(Instance instance) {
 		try {

@@ -52,7 +52,7 @@ public class FileSystemDAO extends DAO {
 		File[] files = dir.listFiles();
 		for (File file : files) {
 			Email email = new Email();
-			System.out.println(file);
+//			System.out.println(file);
 			
 			try{
 				parseFile(file, email);
@@ -99,11 +99,11 @@ public class FileSystemDAO extends DAO {
 				}
 			}
 			else
-				System.err.print("systemDao#ParseFile No To: field");
+				System.err.println("systemDao#ParseFile No To: field");
 			
 
 			String subject = line.split("Subject:")[1].trim();
-			System.out.println(subject);
+//			System.out.println(subject);
 
 			while (!((line = br.readLine()).contains("X-cc")));
 				//System.out.println(line);

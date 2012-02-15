@@ -18,16 +18,29 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import classification.ClassificationManager;
+import classification.Classifier;
+import classification.NaiveBayesClassifier;
+import datasource.DAO;
+
 import weka.core.Attribute;
+import weka.core.Instance;
+import weka.core.Instances;
 
 import filters.Filter;
+import filters.FilterCreatorManager;
+import filters.FilterManager;
 import filters.WordFrequencyFilterCreator;
 import general.Email;
 
 public class WordFrequencyFilterTest {
+
 	private WordFrequencyFilterCreator wf;
 	private static Email[] emails;
-	
+	private static Email[] trainingSet;
+	private static Instances dataset;
+	private static FilterManager filterMgr;
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		/*
@@ -41,26 +54,51 @@ public class WordFrequencyFilterTest {
 		String content = " , the the the    players  match the the players match match football match players the the match the ! the the?";
 		emails[0] = new Email("x", "y", "football", content, content.length(), new Date());
 		emails[0].setLabel("sports");
-		
+
 		content = "the lecture, setion, the quiz, students students section, the subject, the students ";
 		emails[1] = new Email("x", "y", "college", content, content.length(), new Date());
 		emails[1].setLabel("Education");
-		
+
 		content = content + " lecture test, the test";
 		emails[2] = new Email("x", "y", "section", content, content.length(), new Date());
 		emails[2].setLabel("Education");
-		
+
 		content = "the test, the lecture, section, lecture";
 		emails[3] = new Email("x", "y", "test", content, content.length(), new Date());
 		emails[3].setLabel("Education");
-		
+
 		content = "Egypt, the revolution, the people, Cairo, the test SCAF Tahrir Tahrir SCAF the";
 		emails[4] = new Email("x", "y", "Alex people demonstration", content, content.length(), new Date());
 		emails[4].setLabel("News");
-		
+
 //		content = content;
 		emails[5] = new Email("x", "y", "the - SCAF - Tahrir", content, content.length(), new Date());
 		emails[5].setLabel("News");
+
+		//*****************************************************************************
+
+		String path = "enron_processed/lokay_m";		
+		DAO dao = DAO.getInstance("FileSystems:" + path);
+
+		ArrayList<String> labels = dao.getClasses();
+		ArrayList<Email> training = new ArrayList<Email>();
+		for(int i=0; i<labels.size(); i++){
+			//XXX what about the limit, and will i need to loop and get the unclassified email into chunks, or just set the limit to High value, this will require a func. in the DAO that takes a starting index
+			Email[] emails = dao.getClassifiedEmails(labels.get(i), 1000);
+			for(int j=0; j<emails.length; j++)
+				training.add(emails[j]);
+		}
+		trainingSet = new Email[training.size()];
+		training.toArray(trainingSet);
+
+		String[] filterCreatorsNames = new String[]{
+			"filters.DateFilterCreator", "filters.SenderFilterCreator", "filters.WordFrequencyFilterCreator", "filters.LabelFilterCreator"	
+		};
+
+		FilterCreatorManager filterCreatorMgr = new FilterCreatorManager(filterCreatorsNames, trainingSet);
+		Filter[] filters = filterCreatorMgr.getFilters();
+		filterMgr = new FilterManager(filters);
+		dataset = filterMgr.getDataset(trainingSet);
 	}
 
 	@AfterClass
@@ -69,7 +107,7 @@ public class WordFrequencyFilterTest {
 	}
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		wf = new WordFrequencyFilterCreator();
 	}
 
@@ -88,25 +126,94 @@ public class WordFrequencyFilterTest {
 		for(int i=0; i<atts.size(); i++) System.out.println(atts.get(i).name());
 		System.out.println("=================\n");
 	}
-	
+
 	@Test(timeout = 10000)
 	public void funcTest1() throws FileNotFoundException, IOException, ClassNotFoundException{
 		Filter f = wf.createFilter(emails);
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("wff.ser"));
 		oos.writeObject(f);
-		
+
 		ObjectInputStream ois = new ObjectInputStream(new FileInputStream("wff.ser"));
 		Filter f_read = null;
 		f_read = (Filter) ois.readObject();
-		
+
 		Assert.assertNotNull(f_read);
 		Assert.assertEquals(f.getAttributes().size(), f_read.getAttributes().size());
-		
+
 		System.out.println("Test1:\n------");
 		for(int i = 0; i<f.getAttributes().size(); i++){
 			Assert.assertEquals(f.getAttributes().get(i), f_read.getAttributes().get(i));
 			System.out.println(f_read.getAttributes().get(i).name());
 		}
 		System.out.println("=================\n");
+	}
+
+	@Test(timeout = 10000)
+	public void funcTest2() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		String[] filterCreatorsNames = new String[]{"filters.DateFilterCreator", "filters.SenderFilterCreator", "filters.WordFrequencyFilterCreator", "filters.LabelFilterCreator"};
+
+		FilterCreatorManager mgr = new FilterCreatorManager(filterCreatorsNames, emails);
+		Filter[] filters = mgr.getFilters();
+		FilterManager filterMgr = new FilterManager(filters);
+
+		Email test = emails[0];
+		System.err.println(test);
+
+		Instances dataset = filterMgr.getDataset(emails);
+
+		Classifier bayes = new NaiveBayesClassifier();
+		bayes.buildClassifier(dataset);
+
+		Instance testInstance = filterMgr.makeInstance(test);
+		System.err.println(testInstance);
+		int result = (int) bayes.classifyInstance(testInstance);
+		System.err.println("Result is: " + dataset.classAttribute().value(result));
+
+		Assert.assertEquals(test.getLabel(), dataset.classAttribute().value(result));
+	}
+
+	@Test(timeout = 30000)
+	public void naiveBayesTest() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		ClassificationManager mgr = new ClassificationManager();
+		String path = "enron_processed/lokay_m";
+		Classifier cls = mgr.go("FileSystem", path, null, 0);
+
+		int correct = 0;
+		for(Email email : trainingSet){
+			int result = (int) cls.classifyInstance(filterMgr.makeInstance(email));
+			if(email.getLabel().equals(dataset.classAttribute().value(result))) correct++;
+		}
+
+		Assert.assertEquals(trainingSet.length, correct);
+	}
+	
+	@Test(timeout = 30000)
+	public void decisionTreeTest() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		ClassificationManager mgr = new ClassificationManager();
+		String path = "enron_processed/lokay_m";
+		Classifier cls = mgr.go("FileSystem", path, null, 1);
+
+		int correct = 0;
+		for(Email email : trainingSet){
+			int result = (int) cls.classifyInstance(filterMgr.makeInstance(email));
+			if(email.getLabel().equals(dataset.classAttribute().value(result))) correct++;
+		}
+
+		Assert.assertEquals(trainingSet.length, correct);
+	}
+	
+	@Test(timeout = 30000)
+	public void svmTest() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		ClassificationManager mgr = new ClassificationManager();
+		String path = "enron_processed/lokay_m";
+		Classifier cls = mgr.go("FileSystem", path, null, 2);
+
+		int correct = 0;
+		for(Email email : trainingSet){
+			int result = (int) cls.classifyInstance(filterMgr.makeInstance(email));
+			if(email.getLabel().equals(dataset.classAttribute().value(result))) correct++;
+		}
+
+		Assert.assertEquals(trainingSet.length, correct);
 	}
 }

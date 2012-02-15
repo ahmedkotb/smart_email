@@ -16,8 +16,8 @@ public class ClassificationManager {
 
 	private final int LIMIT = 1000; //upper limit to number of training data set per label
 
-	//Dummy function for now
-	public Classifier go(String datasource, String username, String password) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+	//Dummy function for now type: 0->naive bayes, 1->decision tree , 2->svm
+	public Classifier go(String datasource, String username, String password, int type) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		String daoSource;
 		if(datasource.toLowerCase().equals("imap")) daoSource = datasource + ":" + username + ":" + password;
 		else daoSource = datasource + ":" + username;
@@ -54,9 +54,20 @@ public class ClassificationManager {
 		
 		//TODO: why getClassifierByName? i thing using a constructor will be better
 //		Classifier bayes = Classifier.getClassifierByName("NaiveBayes", null);
-		Classifier bayes = new NaiveBayesClassifier();
-		bayes.buildClassifier(dataset);
+		Classifier classifier = null;
+		switch (type){
+			case 0: 
+				classifier = new NaiveBayesClassifier();
+				break;
+			case 1:
+				classifier = new DecisionTreeClassifier();
+				break;
+			case 2:
+				classifier = new SVMClassifier();
+				break;
+		}
+		classifier.buildClassifier(dataset);
 		
-		return bayes;
+		return classifier;
 	}
 }
