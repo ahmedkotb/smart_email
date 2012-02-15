@@ -27,9 +27,8 @@ public class NaiveBayesMoaClassifier extends Classifier {
 		InstancesHeader header = new InstancesHeader(trainingSet);
 		learner.setModelContext(header);
 		
-		Iterator<Instance> iterator = trainingSet.iterator();
-		while (iterator.hasNext()) {
-			Instance trainInst = iterator.next();
+		for (int i=0;i<trainingSet.numInstances();++i){
+			Instance trainInst = trainingSet.instance(i);
 			learner.trainOnInstance(trainInst);
 		}
 	}
