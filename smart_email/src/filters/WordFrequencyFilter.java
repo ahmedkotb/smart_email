@@ -48,7 +48,8 @@ public class WordFrequencyFilter extends Filter{
 	private void calcFrequencies(double[] vals, HashMap<String, Integer> indexMap, Email email){
 		String[] toks;
 		//TODO : change the splitRegex according the words we will agree to consider
-		String splitRegex = "[^a-zA-Z]+"; //split on non-characters (one or more)
+//		String splitRegex = "[^a-zA-Z]+"; //split on non-characters (one or more)
+		String splitRegex = " ";
 		//calc wf from subject
 		toks = email.getFrom().trim().split(splitRegex);
 		for(int i=0; i<toks.length; i++)

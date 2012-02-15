@@ -37,7 +37,7 @@ public class ClassificationManager {
 		training.toArray(trainingSet);
 
 		String[] preprocessors = new String[]{
-			"preprocessors.Lowercase","preprocessors.WordsCleaner","preprocessors.NumberNormalization"
+				"preprocessors.Lowercase", "preprocessors.NumberNormalization", "preprocessors.UrlNormalization", "preprocessors.WordsCleaner", "preprocessors.StopWordsRemoval", "preprocessors.EnglishStemmer"
 		};
 		PreprocessorManager pm = new PreprocessorManager(preprocessors);
 		for (Email e: trainingSet)

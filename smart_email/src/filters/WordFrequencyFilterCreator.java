@@ -30,7 +30,8 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 		HashSet<String> unique = new HashSet<String>();
 		
 		//XXX split the email on non-chars, OK?
-		String[] toks = (email.getSubject() + " " + email.getContent().trim()).split("[^a-zA-Z]+");
+		String splitRegex = "[^a-zA-Z]+";
+		String[] toks = (email.getSubject() + " " + email.getContent().trim()).split(splitRegex);
 		for(int i=0; i<toks.length; i++){
 			//XXX revise this
 			if (toks[i].length() == 0) 

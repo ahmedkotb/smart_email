@@ -21,6 +21,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import preprocessors.PreprocessorManager;
+
 import classification.ClassificationManager;
 import classification.Classifier;
 import classification.NaiveBayesClassifier;
@@ -93,6 +95,13 @@ public class WordFrequencyFilterTest {
 		}
 		trainingSet = new Email[training.size()];
 		training.toArray(trainingSet);
+
+		String[] preprocessors = new String[]{
+			"preprocessors.Lowercase", "preprocessors.NumberNormalization", "preprocessors.UrlNormalization", "preprocessors.WordsCleaner", "preprocessors.StopWordsRemoval", "preprocessors.EnglishStemmer"
+		};
+		PreprocessorManager pm = new PreprocessorManager(preprocessors);
+		for (Email e: trainingSet)
+			pm.apply(e);
 
 		String[] filterCreatorsNames = new String[]{
 			"filters.DateFilterCreator", "filters.SenderFilterCreator", "filters.WordFrequencyFilterCreator", "filters.LabelFilterCreator"	
