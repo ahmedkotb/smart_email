@@ -23,15 +23,6 @@ public class ClassificationManager {
 		else daoSource = datasource + ":" + username;
 		
 		DAO dao = DAO.getInstance(daoSource);
-		String[] filterCreatorsNames = new String[]{
-			"filters.DateFilterCreator", "filters.SenderFilterCreator", "filters.WordFrequencyFilterCreator", "filters.LabelFilterCreator"	
-		};
-		
-		//XXX:FIX REPETATION IN FILTERS
-		String[] preprocessors = new String[]{
-			"preprocessors.Lowercase","preprocessors.WordsCleaner","preprocessors.NumberNormalization"	
-		};
-		PreprocessorManager pm = new PreprocessorManager(preprocessors);
 		
 		ArrayList<String> labels = dao.getClasses();
 		ArrayList<Email> training = new ArrayList<Email>();
@@ -45,32 +36,27 @@ public class ClassificationManager {
 		Email[] trainingSet = new Email[training.size()];
 		training.toArray(trainingSet);
 
+		String[] preprocessors = new String[]{
+			"preprocessors.Lowercase","preprocessors.WordsCleaner","preprocessors.NumberNormalization"
+		};
+		PreprocessorManager pm = new PreprocessorManager(preprocessors);
 		for (Email e: trainingSet)
 			pm.apply(e);
-	
 
+		String[] filterCreatorsNames = new String[]{
+			"filters.DateFilterCreator", "filters.SenderFilterCreator", "filters.WordFrequencyFilterCreator", "filters.LabelFilterCreator"
+		};
 		FilterCreatorManager mgr = new FilterCreatorManager(filterCreatorsNames, trainingSet);
 		Filter[] filters = mgr.getFilters();
-		
 		FilterManager filterMgr = new FilterManager(filters);
 		
-		Email test = trainingSet[0];
-		System.err.println(test);
-		
-		
-		
 		Instances dataset = filterMgr.getDataset(trainingSet);
-		
-		System.err.println("Instance Test: " + dataset.lastInstance());
 		
 		//TODO: why getClassifierByName? i thing using a constructor will be better
 //		Classifier bayes = Classifier.getClassifierByName("NaiveBayes", null);
 		Classifier bayes = new NaiveBayesClassifier();
 		bayes.buildClassifier(dataset);
 		
-		
-		int result = (int) bayes.classifyInstance(filterMgr.makeInstance(test));
-		System.err.println("Result is: " + dataset.classAttribute().value(result));
 		return bayes;
 	}
 }
