@@ -45,7 +45,11 @@ public class WordFrequencyFilterTest {
 	private static Email[] trainingSet;
 	private static Instances dataset;
 	private static FilterManager filterMgr;
-
+	
+	//Dataset constants
+	private static final String DATASET_PATH = "../../../enron_processed/";
+	private static final String USER_NAME = "lokay_m";
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		/*
@@ -82,7 +86,7 @@ public class WordFrequencyFilterTest {
 
 		//*****************************************************************************
 
-		String path = "enron_processed/lokay_m";		
+		String path = DATASET_PATH + USER_NAME;		
 		DAO dao = DAO.getInstance("FileSystems:" + path);
 
 		ArrayList<String> labels = dao.getClasses();
@@ -191,7 +195,8 @@ public class WordFrequencyFilterTest {
 	@Test
 	public void naiveBayesTest() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		ClassificationManager mgr = new ClassificationManager();
-		String path = "enron_processed/lokay_m";
+		
+		String path = DATASET_PATH + USER_NAME;
 		Classifier cls = mgr.go("FileSystem", path, null, 0);
 
 		int correct = 0;
@@ -238,7 +243,8 @@ public class WordFrequencyFilterTest {
 	@Test
 	public void svmTest() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		ClassificationManager mgr = new ClassificationManager();
-		String path = "enron_processed/lokay_m";
+		
+		String path = DATASET_PATH + USER_NAME;
 		Classifier cls = mgr.go("FileSystem", path, null, 2);
 
 		int correct = 0;
