@@ -46,6 +46,10 @@ public class ClassificationManager {
 		String[] filterCreatorsNames = new String[]{
 			"filters.DateFilterCreator", "filters.SenderFilterCreator", "filters.WordFrequencyFilterCreator", "filters.LabelFilterCreator"
 		};
+//		String[] filterCreatorsNames = new String[]{
+//				"filters.SenderFilterCreator", "filters.DateFilterCreator", "filters.LabelFilterCreator"	
+//		};
+
 		FilterCreatorManager mgr = new FilterCreatorManager(filterCreatorsNames, trainingSet);
 		Filter[] filters = mgr.getFilters();
 		FilterManager filterMgr = new FilterManager(filters);

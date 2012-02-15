@@ -9,6 +9,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
 import junit.framework.Assert;
 
@@ -95,6 +98,10 @@ public class WordFrequencyFilterTest {
 			"filters.DateFilterCreator", "filters.SenderFilterCreator", "filters.WordFrequencyFilterCreator", "filters.LabelFilterCreator"	
 		};
 
+//		String[] filterCreatorsNames = new String[]{
+//				"filters.SenderFilterCreator", "filters.DateFilterCreator", "filters.LabelFilterCreator"	
+//		};
+
 		FilterCreatorManager filterCreatorMgr = new FilterCreatorManager(filterCreatorsNames, trainingSet);
 		Filter[] filters = filterCreatorMgr.getFilters();
 		filterMgr = new FilterManager(filters);
@@ -115,7 +122,7 @@ public class WordFrequencyFilterTest {
 	public void tearDown() throws Exception {
 	}
 
-	@Test(timeout = 10000)
+//	@Test(timeout = 10000)
 	public void funcTest0(){
 		Filter f = wf.createFilter(emails);
 		ArrayList<Attribute> atts = f.getAttributes();
@@ -179,15 +186,26 @@ public class WordFrequencyFilterTest {
 		Classifier cls = mgr.go("FileSystem", path, null, 0);
 
 		int correct = 0;
+		HashMap<String, Integer> res = new HashMap<String, Integer>();
 		for(Email email : trainingSet){
 			int result = (int) cls.classifyInstance(filterMgr.makeInstance(email));
-			if(email.getLabel().equals(dataset.classAttribute().value(result))) correct++;
+			String lbl = dataset.classAttribute().value(result);
+			if(email.getLabel().equals(lbl)) correct++;
+			
+			if(!res.containsKey(lbl)) res.put(lbl, 1);
+			else res.put(lbl, res.get(lbl)+1);
 		}
 
+		System.err.println(res.size());
+		Iterator<Entry<String, Integer>> itr = res.entrySet().iterator();
+		while(itr.hasNext()){
+			Entry<String, Integer> e = itr.next();
+			System.err.println(e.getKey() + " --> " + e.getValue());
+		}
 		Assert.assertEquals(trainingSet.length, correct);
 	}
 	
-	@Test(timeout = 30000)
+//	@Test(timeout = 30000)
 	public void decisionTreeTest() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		ClassificationManager mgr = new ClassificationManager();
 		String path = "enron_processed/lokay_m";
@@ -202,7 +220,7 @@ public class WordFrequencyFilterTest {
 		Assert.assertEquals(trainingSet.length, correct);
 	}
 	
-	@Test(timeout = 30000)
+//	@Test(timeout = 30000)
 	public void svmTest() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		ClassificationManager mgr = new ClassificationManager();
 		String path = "enron_processed/lokay_m";
