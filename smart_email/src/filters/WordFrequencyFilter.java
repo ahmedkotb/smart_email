@@ -66,7 +66,9 @@ public class WordFrequencyFilter extends Filter{
 	public double[] getAttValue(Email email){
 		double[] vals = new double[attributes.size()];
 		calcFrequencies(vals, indexMap, email);
-		for(int i=0; i<vals.length; i++) vals[i]/= ((double) email.getSize());
+		int sz = email.getSize();
+		if(sz>0)
+			for(int i=0; i<vals.length; i++) vals[i]/= sz;
 		return vals;
 	}
 }
