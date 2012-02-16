@@ -28,7 +28,11 @@ import classification.Classifier;
 import classification.NaiveBayesClassifier;
 import datasource.DAO;
 
+import weka.classifiers.Evaluation;
+import weka.classifiers.bayes.NaiveBayes;
+import weka.classifiers.functions.SMO;
 import weka.core.Attribute;
+import weka.core.FastVector;
 import weka.core.Instance;
 import weka.core.Instances;
 
@@ -42,10 +46,16 @@ public class WordFrequencyFilterTest {
 
 	private WordFrequencyFilterCreator wf;
 	private static Email[] emails;
+	private static Email[] testingSet;
 	private static Email[] trainingSet;
-	private static Instances dataset;
-	private static FilterManager filterMgr;
-	
+	private static int trainingSetPercentage = 60;
+	private static String[] preprocessors = new String[]{
+		"preprocessors.Lowercase", "preprocessors.NumberNormalization", "preprocessors.UrlNormalization", "preprocessors.WordsCleaner", "preprocessors.StopWordsRemoval", "preprocessors.EnglishStemmer"
+	};
+	private static String[] filterCreatorsNames = new String[]{
+			"filters.DateFilterCreator", "filters.SenderFilterCreator", "filters.WordFrequencyFilterCreator", "filters.LabelFilterCreator"	
+	};
+
 	//Dataset constants
 	private static final String DATASET_PATH = "../../../enron_processed/";
 	private static final String USER_NAME = "lokay_m";
@@ -90,35 +100,33 @@ public class WordFrequencyFilterTest {
 		DAO dao = DAO.getInstance("FileSystems:" + path);
 
 		ArrayList<String> labels = dao.getClasses();
+		ArrayList<Email> testing = new ArrayList<Email>();
 		ArrayList<Email> training = new ArrayList<Email>();
 		for(int i=0; i<labels.size(); i++){
 			//XXX what about the limit, and will i need to loop and get the unclassified email into chunks, or just set the limit to High value, this will require a func. in the DAO that takes a starting index
-			Email[] emails = dao.getClassifiedEmails(labels.get(i), 1000);
-			for(int j=0; j<emails.length; j++)
+			Email[] emails = dao.getClassifiedEmails(labels.get(i), 2000);
+			///XXX training:test = 60:40
+			double trainingSetRatio = WordFrequencyFilterTest.trainingSetPercentage/100.0;
+			int testSetStartIndex = (int) Math.ceil(trainingSetRatio*emails.length);
+//			testSetStartIndex = 0;
+			for(int j=0; j<testSetStartIndex; j++)
 				training.add(emails[j]);
+			for(int j=testSetStartIndex; j<emails.length; j++)
+				testing.add(emails[j]);
 		}
+		
+		testingSet = new Email[testing.size()];
+		testing.toArray(testingSet);
+
 		trainingSet = new Email[training.size()];
 		training.toArray(trainingSet);
-
-		String[] preprocessors = new String[]{
-			"preprocessors.Lowercase", "preprocessors.NumberNormalization", "preprocessors.UrlNormalization", "preprocessors.WordsCleaner", "preprocessors.StopWordsRemoval", "preprocessors.EnglishStemmer"
-		};
+		
 		PreprocessorManager pm = new PreprocessorManager(preprocessors);
-		for (Email e: trainingSet)
+		for (Email e: testingSet)
+			pm.apply(e);
+		for(Email e : trainingSet)
 			pm.apply(e);
 
-		String[] filterCreatorsNames = new String[]{
-			"filters.DateFilterCreator", "filters.SenderFilterCreator", "filters.WordFrequencyFilterCreator", "filters.LabelFilterCreator"	
-		};
-
-//		String[] filterCreatorsNames = new String[]{
-//				"filters.SenderFilterCreator", "filters.DateFilterCreator", "filters.LabelFilterCreator"	
-//		};
-
-		FilterCreatorManager filterCreatorMgr = new FilterCreatorManager(filterCreatorsNames, trainingSet);
-		Filter[] filters = filterCreatorMgr.getFilters();
-		filterMgr = new FilterManager(filters);
-		dataset = filterMgr.getDataset(trainingSet);
 	}
 
 	@AfterClass
@@ -193,17 +201,57 @@ public class WordFrequencyFilterTest {
 	}
 
 	@Test
-	public void naiveBayesTest() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
-		ClassificationManager mgr = new ClassificationManager();
-		
-		String path = DATASET_PATH + USER_NAME;
-		Classifier cls = mgr.go("FileSystem", path, null, 0);
+	public void naiveBayesTest() throws Exception{
+		String username = "lokay_m";
+		ClassificationManager mgr = new ClassificationManager(filterCreatorsNames, preprocessors);
+		Classifier classifier = mgr.trainUserFromFileSystem(username, "NaiveBayes", trainingSetPercentage);
+		FilterManager filterManager = mgr.getFilterManager(username);
+		FastVector attributes = filterManager.getAttributes();
+		Attribute classAttribute = (Attribute) attributes.elementAt(attributes.size()-1);
+	
+		int correct = 0, cnt=0;;
+		HashMap<String, Integer> res = new HashMap<String, Integer>();
+		System.err.println("testingSet length = " + testingSet.length);
+		for(Email email : testingSet){
+			try{
+				int result = (int) classifier.classifyInstance(filterManager.makeInstance(email));
+				String lbl = classAttribute.value(result);
+				if(email.getLabel().equals(lbl)) correct++;
+				
+				if(!res.containsKey(lbl)) res.put(lbl, 1);
+				else res.put(lbl, res.get(lbl)+1);
+			} catch (Exception e){
+				cnt++;
+			}
+		}
+
+		System.err.println("cnt = " + cnt);
+		System.err.println(res.size());
+		Iterator<Entry<String, Integer>> itr = res.entrySet().iterator();
+		while(itr.hasNext()){
+			Entry<String, Integer> e = itr.next();
+			System.err.println(e.getKey() + " --> " + e.getValue());
+		}
+//		Assert.assertEquals(trainingSet.length, correct);
+		double accuracy = correct*100.0 / testingSet.length;
+		System.err.println("NaiveBayes accuracy = " + accuracy);
+		Assert.assertTrue(accuracy >= 75);
+	}
+	
+//	@Test
+	public void decisionTreeTest() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+		String username = "lokay_m";
+		ClassificationManager mgr = new ClassificationManager(filterCreatorsNames, preprocessors);
+		Classifier classifier = mgr.trainUserFromFileSystem(username, "DecisionTree", trainingSetPercentage);
+		FilterManager filterManager = mgr.getFilterManager(username);
+		FastVector attributes = filterManager.getAttributes();
+		Attribute classAttribute = (Attribute) attributes.elementAt(attributes.size()-1);
 
 		int correct = 0;
 		HashMap<String, Integer> res = new HashMap<String, Integer>();
-		for(Email email : trainingSet){
-			int result = (int) cls.classifyInstance(filterMgr.makeInstance(email));
-			String lbl = dataset.classAttribute().value(result);
+		for(Email email : testingSet){
+			int result = (int) classifier.classifyInstance(filterManager.makeInstance(email));
+			String lbl = classAttribute.value(result);
 			if(email.getLabel().equals(lbl)) correct++;
 			
 			if(!res.containsKey(lbl)) res.put(lbl, 1);
@@ -217,45 +265,71 @@ public class WordFrequencyFilterTest {
 			System.err.println(e.getKey() + " --> " + e.getValue());
 		}
 //		Assert.assertEquals(trainingSet.length, correct);
-		double accuracy = correct*100.0 / trainingSet.length;
-		System.err.println("NaiveBayes accuracy = " + accuracy);
-		Assert.assertTrue(accuracy >= 75);
-	}
-	
-//	@Test
-	public void decisionTreeTest() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
-		ClassificationManager mgr = new ClassificationManager();
-		String path = "enron_processed/lokay_m";
-		Classifier cls = mgr.go("FileSystem", path, null, 1);
-
-		int correct = 0;
-		for(Email email : trainingSet){
-			int result = (int) cls.classifyInstance(filterMgr.makeInstance(email));
-			if(email.getLabel().equals(dataset.classAttribute().value(result))) correct++;
-		}
-
-//		Assert.assertEquals(trainingSet.length, correct);
-		double accuracy = correct*100.0 / trainingSet.length;
+		double accuracy = correct*100.0 / testingSet.length;
 		System.err.println("DecisionTree accuracy = " + accuracy);
 		Assert.assertTrue(accuracy >= 75);
 	}
 	
 	@Test
 	public void svmTest() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
-		ClassificationManager mgr = new ClassificationManager();
-		
-		String path = DATASET_PATH + USER_NAME;
-		Classifier cls = mgr.go("FileSystem", path, null, 2);
+		String username = "lokay_m";
+		ClassificationManager mgr = new ClassificationManager(filterCreatorsNames, preprocessors);
+		Classifier classifier = mgr.trainUserFromFileSystem(username, "SVM", trainingSetPercentage);
+		FilterManager filterManager = mgr.getFilterManager(username);
+		FastVector attributes = filterManager.getAttributes();
+		Attribute classAttribute = (Attribute) attributes.elementAt(attributes.size()-1);
 
 		int correct = 0;
-		for(Email email : trainingSet){
-			int result = (int) cls.classifyInstance(filterMgr.makeInstance(email));
-			if(email.getLabel().equals(dataset.classAttribute().value(result))) correct++;
+		HashMap<String, Integer> res = new HashMap<String, Integer>();
+		for(Email email : testingSet){
+			int result = (int) classifier.classifyInstance(filterManager.makeInstance(email));
+			String lbl = classAttribute.value(result);
+			if(email.getLabel().equals(lbl)) correct++;
+			
+			if(!res.containsKey(lbl)) res.put(lbl, 1);
+			else res.put(lbl, res.get(lbl)+1);
 		}
 
+		System.err.println(res.size());
+		Iterator<Entry<String, Integer>> itr = res.entrySet().iterator();
+		while(itr.hasNext()){
+			Entry<String, Integer> e = itr.next();
+			System.err.println(e.getKey() + " --> " + e.getValue());
+		}
 //		Assert.assertEquals(trainingSet.length, correct);
-		double accuracy = correct*100.0 / trainingSet.length;
+		double accuracy = correct*100.0 / testingSet.length;
 		System.err.println("SVM accuracy = " + accuracy);
 		Assert.assertTrue(accuracy >= 75);
 	}
+	
+	@Test
+	public void naiveBayesEvaluation() throws Exception{
+		String username = "lokay_m";
+		ClassificationManager mgr = new ClassificationManager(filterCreatorsNames, preprocessors);
+		Classifier classifier = mgr.trainUserFromFileSystem(username, "NaiveBayes", trainingSetPercentage);
+		FilterManager filterManager = mgr.getFilterManager(username);
+		FastVector attributes = filterManager.getAttributes();
+		Attribute classAttribute = (Attribute) attributes.elementAt(attributes.size()-1);
+	
+		Instances trainingDataset = filterManager.getDataset(trainingSet);
+		Evaluation eval = new Evaluation(trainingDataset);
+		
+		Instances testingDataset = new Instances("testing", attributes, testingSet.length);
+		for(Email e : testingSet) {
+			Instance ins = filterManager.makeInstance(e);
+			ins.setDataset(testingDataset);
+			testingDataset.add(ins);
+		}
+		
+		trainingDataset.setClassIndex(attributes.size()-1);
+		testingDataset.setClassIndex(attributes.size()-1);
+		
+		NaiveBayes nv = new NaiveBayes();
+//		SMO nv = new SMO();
+		
+		nv.buildClassifier(trainingDataset);
+		eval.evaluateModel(nv, testingDataset, new Object[0]);
+		System.out.println(eval.toSummaryString());
+	}
+
 }

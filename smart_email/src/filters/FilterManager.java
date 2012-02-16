@@ -12,20 +12,26 @@ public class FilterManager {
 	private Filter[] filters;
 	private Instances dataset;
 	private int attsNum;
+	private FastVector attributes;
 	
 	public FilterManager(Filter[] filters){
 		this.filters = filters;
-		FastVector atts = new FastVector();
+		attributes = new FastVector();
 		
 		for(int i=0; i<filters.length; i++){
 			ArrayList<Attribute> tmp = filters[i].getAttributes();
 			attsNum += tmp.size();
 			for(int j=0; j<tmp.size(); j++)
-				atts.addElement(tmp.get(j));
+				attributes.addElement(tmp.get(j));
 		}
 		
 		//XXX do we need to make the dataset name user-dependent?
-		dataset = new Instances("dataset", atts, 0);
+		dataset = new Instances("dataset", attributes, 0);
+		dataset.setClassIndex(attsNum-1);
+	}
+	
+	public FastVector getAttributes(){
+		return attributes;
 	}
 	
 	public Instances getDataset(Email[] emails){

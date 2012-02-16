@@ -98,8 +98,8 @@ public class FileSystemDAO extends DAO {
 					tos = line.split(",");
 				}
 			}
-			else
-				System.err.println("systemDao#ParseFile No To: field");
+//			else
+//				System.err.println("systemDao#ParseFile No To: field");
 			
 
 			String subject = line.split("Subject:")[1].trim();
