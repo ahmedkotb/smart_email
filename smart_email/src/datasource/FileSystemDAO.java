@@ -11,7 +11,9 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import general.Email;
 
@@ -25,19 +27,19 @@ public class FileSystemDAO extends DAO {
 
 	@Override
 	public ArrayList<String> getClasses() {
-		ArrayList<String> classes = new ArrayList<String>(50);
+		ArrayList<String> classes = new ArrayList<String>();
 		File dir = new File(this.datasetPath);
 
+		//return available categories (directories only)
 		File[] subDirs = dir.listFiles(new FileFilter() {
 			public boolean accept(File pathname) {
 				return pathname.isDirectory();
 			}
 		});
 
-		for (File subDir : subDirs) {
-			//System.out.println(subDir.getName());
+		for (File subDir : subDirs)
 			classes.add(subDir.getName());
-		}
+		
 		return classes;
 	}
 
@@ -46,28 +48,37 @@ public class FileSystemDAO extends DAO {
 		File dir = new File(this.datasetPath
 				+ System.getProperty("file.separator") + labelName);
 
-		//Email[] emails = new Email[limit];
 		ArrayList<Email> emails = new ArrayList<Email>();
-		int i = 0;
+		
 		File[] files = dir.listFiles();
-		for (File file : files) {
-			Email email = new Email();
-//			System.out.println(file);
+		int[] fileNames = new int[files.length];
+		
+		for (int i=0;i<files.length;i++){
+			String name = files[i].getName();
+			fileNames[i] = Integer.parseInt(name.substring(0, name.length()-1));
+		}
+		
+		Arrays.sort(fileNames);
+		
+		for (int number : fileNames) {
+			//check the limit
+			if (emails.size() == limit)
+				break;
 			
+			File file = new File(dir.getPath() + System.getProperty("file.separator") + number + ".");
 			try{
+				Email email = new Email();
 				parseFile(file, email);
 				email.setLabel(labelName);
 				emails.add(email);
 			} catch(Exception e){
-				System.err.println("Format Error in file: " + file);
+				System.err.println("### Format Error in file: " + file);
 			}
-			
-			//emails[i] = email;
-			//i++;
 		}
-		Email[] ar = new Email[emails.size()];
-		emails.toArray(ar);
-		return ar;
+		
+		Email[] array = new Email[emails.size()];
+		emails.toArray(array);
+		return array;
 	}
 
 	private void parseFile(File file, Email email) {
@@ -98,8 +109,9 @@ public class FileSystemDAO extends DAO {
 					tos = line.split(",");
 				}
 			}
-//			else
-//				System.err.println("systemDao#ParseFile No To: field");
+			else{
+				//System.err.println("systemDao#ParseFile No To: field");
+			}
 			
 
 			String subject = line.split("Subject:")[1].trim();

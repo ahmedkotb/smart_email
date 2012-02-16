@@ -234,6 +234,7 @@ public class WordFrequencyFilterTest {
 		}
 //		Assert.assertEquals(trainingSet.length, correct);
 		double accuracy = correct*100.0 / testingSet.length;
+		System.err.println("correct / test = " + correct + "/" + testingSet.length);
 		System.err.println("NaiveBayes accuracy = " + accuracy);
 		Assert.assertTrue(accuracy >= 75);
 	}
@@ -298,6 +299,7 @@ public class WordFrequencyFilterTest {
 		}
 //		Assert.assertEquals(trainingSet.length, correct);
 		double accuracy = correct*100.0 / testingSet.length;
+		System.err.println("correct / test = " + correct + "/" + testingSet.length);
 		System.err.println("SVM accuracy = " + accuracy);
 		Assert.assertTrue(accuracy >= 75);
 	}
