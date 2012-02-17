@@ -1,9 +1,9 @@
 package quality;
 
+import classification.Classifier;
 import weka.classifiers.Evaluation;
 import weka.core.Instance;
 import weka.core.Instances;
-import weka.classifiers.Classifier;
 
 
 public class WekaQualityReporter implements QualityReporter {
@@ -45,9 +45,9 @@ public class WekaQualityReporter implements QualityReporter {
 	}
 
 	@Override
-	public void evaluateModel(Classifier model, Instances trainingData) {
+	public void evaluateModel(Classifier model, Instances testingData) {
 		try {
-			evaluation.evaluateModel(model, trainingData);
+			evaluation.evaluateModel(model, testingData);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

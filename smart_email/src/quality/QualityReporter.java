@@ -1,6 +1,6 @@
 package quality;
 
-import weka.classifiers.Classifier;
+import classification.Classifier;
 import weka.core.Instance;
 import weka.core.Instances;
 
@@ -51,10 +51,10 @@ public interface QualityReporter {
 	 * 
 	 * @param model
 	 *            Classification model
-	 * @param trainingData
+	 * @param testingData
 	 *            Training data.
 	 */
-	public void evaluateModel(Classifier model, Instances trainingData);
+	public void evaluateModel(Classifier model, Instances testingData);
 
 	/**
 	 * Calculate the false negative rate with respect to a particular class.
