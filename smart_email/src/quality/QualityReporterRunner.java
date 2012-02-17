@@ -16,7 +16,30 @@ import filters.FilterCreatorManager;
 import filters.FilterManager;
 import general.Email;
 
+/**
+ * A class used for running the quality reporter and printing
+ * the summary report.
+ * 
+ * @author Amr Sharaf
+ *
+ */
 public class QualityReporterRunner {
+	
+	// List of used preprocessors.
+	private String[] preprocessorsList;
+	// List of used filters.
+	private String[] filtersList;
+	
+
+	/**
+	 * QualityReporterRunner constructor.
+	 * @param preprocessorsList list of used preprocessors.
+	 * @param filtersList list of used filters
+	 */
+	public QualityReporterRunner(String[] preprocessorsList, String[] filtersList) {
+		this.preprocessorsList = preprocessorsList;
+		this.filtersList = filtersList;
+	}
 
 	/**
 	 * Runs a QualityReporter instance and generate the summary report.
@@ -26,7 +49,8 @@ public class QualityReporterRunner {
 	private void printSummaryReport() throws Exception {
 		String[] preprocessors = new String[] { "preprocessors.Lowercase",
 				"preprocessors.NumberNormalization",
-				"preprocessors.UrlNormalization", "preprocessors.WordsCleaner",
+				"preprocessors.UrlNormalization", 
+				"preprocessors.WordsCleaner",
 				"preprocessors.StopWordsRemoval",
 				"preprocessors.EnglishStemmer" };
 		String[] filterCreatorsNames = new String[] {
@@ -58,40 +82,44 @@ public class QualityReporterRunner {
 		trainingSet = new Email[training.size()];
 		training.toArray(trainingSet);
 		String username = "lokay_m";
-		
+
 		int trainingSetPercentage = 60;
-		
-		Classifier classifier = mgr.trainUserFromFileSystem(username,
-				"svm", trainingSetPercentage);
+
+		Classifier classifier = mgr.trainUserFromFileSystem(username, "svm",
+				trainingSetPercentage);
 
 		Filter[] filters;
 		FilterCreatorManager filterCreatorMgr = new FilterCreatorManager(
 				filterCreatorsNames, trainingSet);
 		filters = filterCreatorMgr.getFilters();
-		//FilterManager filterMgr = new FilterManager(filters);
+		// FilterManager filterMgr = new FilterManager(filters);
 		FilterManager filterMgr = mgr.getFilterManager(username);
 		Instances dataset = filterMgr.getDataset(trainingSet);
 		QualityReporter reporter = new WekaQualityReporter(dataset);
 		reporter.evaluateModel(classifier, filterMgr.getDataset(testingSet));
 		System.out.println(reporter.toSummaryString());
 		System.out.println(reporter.toClassDetailsString(""));
-		
-		
+
 		FastVector attributes = filterMgr.getAttributes();
-		Attribute classAttribute = (Attribute) attributes.elementAt(attributes.size()-1);
-	
-		int correct = 0, cnt=0;
+		Attribute classAttribute = (Attribute) attributes.elementAt(attributes
+				.size() - 1);
+
+		int correct = 0, cnt = 0;
 		HashMap<String, Integer> res = new HashMap<String, Integer>();
 		System.err.println("testingSet length = " + testingSet.length);
-		for(Email email : testingSet){
-			try{
-				int result = (int) classifier.classifyInstance(filterMgr.makeInstance(email));
+		for (Email email : testingSet) {
+			try {
+				int result = (int) classifier.classifyInstance(filterMgr
+						.makeInstance(email));
 				String lbl = classAttribute.value(result);
-				if(email.getLabel().equals(lbl)) correct++;
-				
-				if(!res.containsKey(lbl)) res.put(lbl, 1);
-				else res.put(lbl, res.get(lbl)+1);
-			} catch (Exception e){
+				if (email.getLabel().equals(lbl))
+					correct++;
+
+				if (!res.containsKey(lbl))
+					res.put(lbl, 1);
+				else
+					res.put(lbl, res.get(lbl) + 1);
+			} catch (Exception e) {
 				cnt++;
 			}
 		}
@@ -99,17 +127,17 @@ public class QualityReporterRunner {
 		System.err.println("cnt = " + cnt);
 		System.err.println(res.size());
 		Iterator<Entry<String, Integer>> itr = res.entrySet().iterator();
-		while(itr.hasNext()){
+		while (itr.hasNext()) {
 			Entry<String, Integer> e = itr.next();
 			System.err.println(e.getKey() + " --> " + e.getValue());
 		}
-		double accuracy = correct*100.0 / testingSet.length;
-		System.err.println("correct / test = " + correct + "/" + testingSet.length);
+		double accuracy = correct * 100.0 / testingSet.length;
+		System.err.println("correct / test = " + correct + "/"
+				+ testingSet.length);
 		System.err.println("NaiveBayes accuracy = " + accuracy);
-
 	}
 
 	public static void main(String[] args) throws Exception {
-		new QualityReporterRunner().printSummaryReport();
+		//new QualityReporterRunner().printSummaryReport();
 	}
 }
