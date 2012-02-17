@@ -40,6 +40,7 @@ public class FileSystemDAO extends DAO {
 		for (File subDir : subDirs)
 			classes.add(subDir.getName());
 		
+		
 		return classes;
 	}
 
@@ -69,6 +70,7 @@ public class FileSystemDAO extends DAO {
 			try{
 				Email email = new Email();
 				parseFile(file, email);
+				
 				email.setLabel(labelName);
 				emails.add(email);
 			} catch(Exception e){
@@ -136,6 +138,8 @@ public class FileSystemDAO extends DAO {
 			email.setDate(emailDate);
 			email.setSubject(subject);
 			email.setTo(copyArrayList(to_addresses));
+			
+			br.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
