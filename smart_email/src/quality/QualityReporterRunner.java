@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
-import junit.framework.Assert;
 import weka.core.Attribute;
 import weka.core.FastVector;
 import weka.core.Instances;
@@ -63,13 +62,14 @@ public class QualityReporterRunner {
 		int trainingSetPercentage = 60;
 		
 		Classifier classifier = mgr.trainUserFromFileSystem(username,
-				"naivebayes", trainingSetPercentage);
+				"svm", trainingSetPercentage);
 
 		Filter[] filters;
 		FilterCreatorManager filterCreatorMgr = new FilterCreatorManager(
 				filterCreatorsNames, trainingSet);
 		filters = filterCreatorMgr.getFilters();
-		FilterManager filterMgr = new FilterManager(filters);
+		//FilterManager filterMgr = new FilterManager(filters);
+		FilterManager filterMgr = mgr.getFilterManager(username);
 		Instances dataset = filterMgr.getDataset(trainingSet);
 		QualityReporter reporter = new WekaQualityReporter(dataset);
 		reporter.evaluateModel(classifier, filterMgr.getDataset(testingSet));
@@ -80,7 +80,7 @@ public class QualityReporterRunner {
 		FastVector attributes = filterMgr.getAttributes();
 		Attribute classAttribute = (Attribute) attributes.elementAt(attributes.size()-1);
 	
-		int correct = 0, cnt=0;;
+		int correct = 0, cnt=0;
 		HashMap<String, Integer> res = new HashMap<String, Integer>();
 		System.err.println("testingSet length = " + testingSet.length);
 		for(Email email : testingSet){
@@ -103,11 +103,9 @@ public class QualityReporterRunner {
 			Entry<String, Integer> e = itr.next();
 			System.err.println(e.getKey() + " --> " + e.getValue());
 		}
-//		Assert.assertEquals(trainingSet.length, correct);
 		double accuracy = correct*100.0 / testingSet.length;
 		System.err.println("correct / test = " + correct + "/" + testingSet.length);
 		System.err.println("NaiveBayes accuracy = " + accuracy);
-//		Assert.assertTrue(accuracy >= 75);
 
 	}
 
