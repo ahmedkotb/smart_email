@@ -18,9 +18,19 @@ public class QualityReporterRunner {
 	 * @throws Exception
 	 */
 	private void printSummaryReport() throws Exception {
-		String DATASET_PATH = "../../../enron_processed/";
-		String USER_NAME = "lokay_m";
-		String path = DATASET_PATH + USER_NAME;
+		String[] preprocessors = new String[] { "preprocessors.Lowercase",
+				"preprocessors.NumberNormalization",
+				"preprocessors.UrlNormalization", "preprocessors.WordsCleaner",
+				"preprocessors.StopWordsRemoval",
+				"preprocessors.EnglishStemmer" };
+		String[] filterCreatorsNames = new String[] {
+				"filters.DateFilterCreator", "filters.SenderFilterCreator",
+				"filters.WordFrequencyFilterCreator",
+				"filters.LabelFilterCreator" };
+		ClassificationManager mgr = new ClassificationManager(
+				filterCreatorsNames, preprocessors);
+
+		String path = mgr.getGoldenDataPath("lokay_m");
 		DAO dao = DAO.getInstance("FileSystems:" + path);
 		ArrayList<String> labels = dao.getClasses();
 		ArrayList<Email> testing = new ArrayList<Email>();
@@ -42,22 +52,12 @@ public class QualityReporterRunner {
 		trainingSet = new Email[training.size()];
 		training.toArray(trainingSet);
 		String username = "lokay_m";
-		String[] preprocessors = new String[] { "preprocessors.Lowercase",
-				"preprocessors.NumberNormalization",
-				"preprocessors.UrlNormalization", "preprocessors.WordsCleaner",
-				"preprocessors.StopWordsRemoval",
-				"preprocessors.EnglishStemmer" };
-		String[] filterCreatorsNames = new String[] {
-				"filters.DateFilterCreator", "filters.SenderFilterCreator",
-				"filters.WordFrequencyFilterCreator",
-				"filters.LabelFilterCreator" };
+		
 		int trainingSetPercentage = 60;
-		ClassificationManager mgr = new ClassificationManager(
-				filterCreatorsNames, preprocessors);
+		
 		Classifier classifier = mgr.trainUserFromFileSystem(username,
-				"NaiveBayes", trainingSetPercentage);
+				"svm", trainingSetPercentage);
 
-		mgr.preprocessEmails(trainingSet);
 		Filter[] filters;
 		FilterCreatorManager filterCreatorMgr = new FilterCreatorManager(
 				filterCreatorsNames, trainingSet);
