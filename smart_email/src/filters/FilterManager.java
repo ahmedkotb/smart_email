@@ -57,10 +57,9 @@ public class FilterManager {
 		double[] vals = new double[valList.size()];
 		for(int i=valList.size()-1; i>=0; i--) vals[i] = valList.get(i);
 		
-		Instance instance = new Instance(1, vals);
-		
+		Instance instance = new Instance(1, vals);	
 		instance.setDataset(dataset);
-		
+
 		return instance;
 	}
 }

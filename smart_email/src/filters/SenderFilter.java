@@ -13,6 +13,8 @@ public class SenderFilter extends Filter{
 
 	@Override
 	public double[] getAttValue(Email email){
-		return new double[]{attributes.get(0).indexOfValue(email.getFrom())};
+		double[] ret = new double[]{attributes.get(0).indexOfValue(email.getFrom())};
+		if(ret[0]<0) ret[0]=attributes.get(0).indexOfValue("SenderAtt_Other"); //XXX new sender that is not in the sender nominals-list 
+		return ret;
 	}
 }

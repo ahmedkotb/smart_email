@@ -30,7 +30,6 @@ import datasource.DAO;
 
 import weka.classifiers.Evaluation;
 import weka.classifiers.bayes.NaiveBayes;
-import weka.classifiers.functions.SMO;
 import weka.core.Attribute;
 import weka.core.FastVector;
 import weka.core.Instance;
@@ -308,10 +307,9 @@ public class WordFrequencyFilterTest {
 	public void naiveBayesEvaluation() throws Exception{
 		String username = "lokay_m";
 		ClassificationManager mgr = new ClassificationManager(filterCreatorsNames, preprocessors);
-		Classifier classifier = mgr.trainUserFromFileSystem(username, "NaiveBayes", trainingSetPercentage);
+		mgr.trainUserFromFileSystem(username, "NaiveBayes", trainingSetPercentage);
 		FilterManager filterManager = mgr.getFilterManager(username);
 		FastVector attributes = filterManager.getAttributes();
-		Attribute classAttribute = (Attribute) attributes.elementAt(attributes.size()-1);
 	
 		Instances trainingDataset = filterManager.getDataset(trainingSet);
 		Evaluation eval = new Evaluation(trainingDataset);
@@ -326,8 +324,8 @@ public class WordFrequencyFilterTest {
 		trainingDataset.setClassIndex(attributes.size()-1);
 		testingDataset.setClassIndex(attributes.size()-1);
 		
-		NaiveBayes nv = new NaiveBayes();
-//		SMO nv = new SMO();
+//		NaiveBayes nv = new NaiveBayes();
+		weka.classifiers.functions.SMO nv = new weka.classifiers.functions.SMO();
 		
 		nv.buildClassifier(trainingDataset);
 		eval.evaluateModel(nv, testingDataset, new Object[0]);
