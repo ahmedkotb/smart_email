@@ -1,6 +1,13 @@
 package quality;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+
+import junit.framework.Assert;
+import weka.core.Attribute;
+import weka.core.FastVector;
 import weka.core.Instances;
 import classification.ClassificationManager;
 import classification.Classifier;
@@ -24,7 +31,7 @@ public class QualityReporterRunner {
 				"preprocessors.StopWordsRemoval",
 				"preprocessors.EnglishStemmer" };
 		String[] filterCreatorsNames = new String[] {
-				"filters.DateFilterCreator", "filters.SenderFilterCreator",
+				"filters.DateFilterCreator",
 				"filters.WordFrequencyFilterCreator",
 				"filters.LabelFilterCreator" };
 		ClassificationManager mgr = new ClassificationManager(
@@ -56,7 +63,7 @@ public class QualityReporterRunner {
 		int trainingSetPercentage = 60;
 		
 		Classifier classifier = mgr.trainUserFromFileSystem(username,
-				"svm", trainingSetPercentage);
+				"naivebayes", trainingSetPercentage);
 
 		Filter[] filters;
 		FilterCreatorManager filterCreatorMgr = new FilterCreatorManager(
@@ -68,6 +75,40 @@ public class QualityReporterRunner {
 		reporter.evaluateModel(classifier, filterMgr.getDataset(testingSet));
 		System.out.println(reporter.toSummaryString());
 		System.out.println(reporter.toClassDetailsString(""));
+		
+		
+		FastVector attributes = filterMgr.getAttributes();
+		Attribute classAttribute = (Attribute) attributes.elementAt(attributes.size()-1);
+	
+		int correct = 0, cnt=0;;
+		HashMap<String, Integer> res = new HashMap<String, Integer>();
+		System.err.println("testingSet length = " + testingSet.length);
+		for(Email email : testingSet){
+			try{
+				int result = (int) classifier.classifyInstance(filterMgr.makeInstance(email));
+				String lbl = classAttribute.value(result);
+				if(email.getLabel().equals(lbl)) correct++;
+				
+				if(!res.containsKey(lbl)) res.put(lbl, 1);
+				else res.put(lbl, res.get(lbl)+1);
+			} catch (Exception e){
+				cnt++;
+			}
+		}
+
+		System.err.println("cnt = " + cnt);
+		System.err.println(res.size());
+		Iterator<Entry<String, Integer>> itr = res.entrySet().iterator();
+		while(itr.hasNext()){
+			Entry<String, Integer> e = itr.next();
+			System.err.println(e.getKey() + " --> " + e.getValue());
+		}
+//		Assert.assertEquals(trainingSet.length, correct);
+		double accuracy = correct*100.0 / testingSet.length;
+		System.err.println("correct / test = " + correct + "/" + testingSet.length);
+		System.err.println("NaiveBayes accuracy = " + accuracy);
+//		Assert.assertTrue(accuracy >= 75);
+
 	}
 
 	public static void main(String[] args) throws Exception {
