@@ -61,11 +61,11 @@ public class FileSystemDAO extends DAO {
 		
 		Arrays.sort(fileNames);
 		
-		for (int number : fileNames) {
+		for (int i =fileNames.length-1; i > -1 ;--i){
 			//check the limit
 			if (emails.size() == limit)
 				break;
-			
+			int number = fileNames[i];
 			File file = new File(dir.getPath() + System.getProperty("file.separator") + number + ".");
 			try{
 				Email email = new Email();
