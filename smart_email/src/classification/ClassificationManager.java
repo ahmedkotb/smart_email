@@ -22,8 +22,8 @@ public class ClassificationManager {
 	private String[] filterCreatorsNames;
 	private String[] preprocessors;
 	
-	public String getGoldenDataPath(String username) {
-		return DATASET_PATH + username;
+	public String getGoldenDataPath(String userName) {
+		return DATASET_PATH + userName;
 	}
 	
 	public ClassificationManager(String[] filterCreatorsNames, String[] preprocessors){
