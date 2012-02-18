@@ -17,8 +17,9 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 	private HashMap<String, HashSet<String>> wordToLabelsMap;
 	private final String ATT_NAME_PREFIX = "WFF_";
 	private final int IMP_WORDS_PER_LABEL = 80;
+	
 	//TODO: un-comments the prev. line
-//	private final int IMP_WORDS_PER_LABEL = 5; //just for testing
+    //private final int IMP_WORDS_PER_LABEL = 5; //just for testing
 	
 	public WordFrequencyFilterCreator() {
 		labelFreqMgrMap = new HashMap<String, WordFrequencyFilterCreator.LabelTermFrequencyManager>();
@@ -29,8 +30,7 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 		HashMap<String, Double> normFreq = new HashMap<String, Double>();
 		HashSet<String> unique = new HashSet<String>();
 		
-		//XXX split the email on non-chars, OK?
-		String splitRegex = "[^a-zA-Z]+";
+		String splitRegex = " ";
 		String[] toks = (email.getSubject() + " " + email.getContent().trim()).split(splitRegex);
 		for(int i=0; i<toks.length; i++){
 			//XXX revise this
@@ -45,7 +45,10 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 		}
 
 		//normalize frequencies
-		int size = email.getSize();
+		//XXX Frequencies should be normalized by number
+		//of words in the email not email size !!
+		//int size = email.getSize();
+		int size = toks.length;
 		Iterator<String> itr = unique.iterator();
 		while(itr.hasNext()){
 			String s = itr.next();

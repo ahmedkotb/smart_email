@@ -1,5 +1,7 @@
 package quality;
 
+import java.util.Random;
+
 import classification.Classifier;
 import weka.classifiers.Evaluation;
 import weka.core.Instance;
@@ -32,9 +34,8 @@ public class WekaQualityReporter implements QualityReporter {
 	public void crossValidateModel(Classifier model, Instances trainingData,
 			int fold) {
 			try {
-				evaluation.crossValidateModel(model, trainingData, fold, null, null);
+				evaluation.crossValidateModel(model, trainingData, fold, new Random(System.currentTimeMillis()));
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	}

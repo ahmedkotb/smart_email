@@ -14,6 +14,8 @@ public class SenderFilterCreator implements FilterCreator{
 	public Filter createFilter(Email[] emails) {
 		HashSet<String> senders = new HashSet<String>();
 		FastVector fvSenders = new FastVector();
+		//XXX in the calssification phase, if we found new sender, we will assign it to SenderAtt_Other
+		fvSenders.addElement("SenderAtt_Other");
 		for(Email email : emails){
 			String sender = email.getFrom();
 			if(! senders.contains(sender)){
