@@ -33,9 +33,13 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 		String splitRegex = " ";
 		String[] toks = (email.getSubject() + " " + email.getContent().trim()).split(splitRegex);
 		for(int i=0; i<toks.length; i++){
-			//XXX revise this
-			if (toks[i].length() == 0) 
-				continue;
+			
+			//XXX revise this (DONE : not going to happen)
+			if (toks[i].length() == 0){
+				System.err.println("ERROR : 0 Length TOKEN");
+				System.exit(1);
+			}
+			
 			Double freq = normFreq.get(toks[i]);
 			if(freq == null){
 				freq = 0.0;
@@ -79,6 +83,11 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 	
 	@Override
 	public Filter createFilter(Email[] emails) {
+		//Steps
+		// 1- loop on emails and for each email
+		//   a- calculate normalized frequencies
+		//   b- update frequencies for each label (labelFreqMgr)
+		//   c- update wordTolapel (how many times each term appears /label)
 		
 		for(Email email : emails){
 			String lbl = email.getLabel();
@@ -91,8 +100,9 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 			HashMap<String, Double> emailNormFreq = calcNormalizedFrequency(email);
 			mgr.updateFrequencies(emailNormFreq);
 			
-			// update wordToLabelMap 
-			//XXX can avoid the overhead of this loop by having this work done as a side-effect in the calcNormalizedFreq() function
+			// update wordToLabelMap
+			//XXX can avoid the overhead of this loop by having this work 
+			//done as a side-effect in the calcNormalizedFreq() function
 			Iterator<Map.Entry<String, Double>> it = emailNormFreq.entrySet().iterator();
 			while(it.hasNext()){
 				String word = it.next().getKey();
@@ -144,7 +154,9 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 				Arrays.sort(tfidf);
 			
 			String[] importantWords = new String[Math.min(maxSize, tfidf.length)];
-			for(int i=0; i<importantWords.length; i++) importantWords[i] = tfidf[i].word;
+			
+			for(int i=0; i<importantWords.length; i++) 
+				importantWords[i] = tfidf[i].word;
 			
 			return importantWords;
 		}
