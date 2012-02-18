@@ -34,11 +34,10 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 		String[] toks = (email.getSubject() + " " + email.getContent().trim()).split(splitRegex);
 		for(int i=0; i<toks.length; i++){
 			
-			//XXX revise this (DONE : not going to happen)
-			if (toks[i].length() == 0){
-				System.err.println("ERROR : 0 Length TOKEN");
-				System.exit(1);
-			}
+			//XXX revise this 
+			//(DONE : might happen on few cases) like empty subject or subject with extra spaces at end
+			if (toks[i].length() == 0)
+				continue;
 			
 			Double freq = normFreq.get(toks[i]);
 			if(freq == null){
