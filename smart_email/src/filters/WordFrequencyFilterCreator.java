@@ -4,9 +4,11 @@ import general.Email;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import weka.core.Attribute;
@@ -18,47 +20,40 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 	private final String ATT_NAME_PREFIX = "WFF_";
 	private final int IMP_WORDS_PER_LABEL = 80;
 	
-	//TODO: un-comments the prev. line
-    //private final int IMP_WORDS_PER_LABEL = 5; //just for testing
+	//grams
+	private final int NGRAMS_MAX = 1;
+	private final int[] IGNORED_GRAMS = new int[] {};
+	
 	
 	public WordFrequencyFilterCreator() {
 		labelFreqMgrMap = new HashMap<String, WordFrequencyFilterCreator.LabelTermFrequencyManager>();
 		wordToLabelsMap = new HashMap<String, HashSet<String>>();
+		
+		//sort ignored grams array
+		Arrays.sort(IGNORED_GRAMS);
 	}
 	
-	private HashMap<String, Double> calcNormalizedFrequency(Email email){
-		HashMap<String, Double> normFreq = new HashMap<String, Double>();
-		HashSet<String> unique = new HashSet<String>();
-		
-		String splitRegex = " ";
-		String[] toks = (email.getSubject() + " " + email.getContent().trim()).split(splitRegex);
-		for(int i=0; i<toks.length; i++){
-			
-			//XXX revise this 
-			//(DONE : might happen on few cases) like empty subject or subject with extra spaces at end
-			if (toks[i].length() == 0)
-				continue;
-			
-			Double freq = normFreq.get(toks[i]);
-			if(freq == null){
-				freq = 0.0;
-				unique.add(toks[i]);
+	private List<HashMap<String, Double>> buildGrams(String[] wordsList){
+		ArrayList<HashMap<String,Double>> gramsList = new ArrayList<HashMap<String,Double>>();
+		for (int i = 1; i <= NGRAMS_MAX; ++i) {
+			HashMap<String,Double> grams = new HashMap<String, Double>();
+			//if this Ngrams are not ignored
+			if (Arrays.binarySearch(IGNORED_GRAMS, i) < 0 ){
+				for (int j = 0; j < wordsList.length - i + 1; j++) {
+					String gram = "";
+					for (int j2 = j; j2 < j+i; j2++)
+						gram += wordsList[j2] + " ";
+					
+					gram = gram.trim();
+					if (grams.containsKey(gram))
+						grams.put(gram, grams.get(gram) + 1);
+					else
+						grams.put(gram, 1.0);
+				}
 			}
-			normFreq.put(toks[i], ++freq);
+			gramsList.add(grams);
 		}
-
-		//normalize frequencies
-		//XXX Frequencies should be normalized by number
-		//of words in the email not email size !!
-		//int size = email.getSize();
-		int size = toks.length;
-		Iterator<String> itr = unique.iterator();
-		while(itr.hasNext()){
-			String s = itr.next();
-			normFreq.put(s, normFreq.get(s)/size);
-		}
-		
-		return normFreq;
+		return gramsList;
 	}
 	
 	private ArrayList<Attribute> extractAttributes(){
@@ -96,67 +91,98 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 				labelFreqMgrMap.put(lbl, mgr);
 			}
 			
-			HashMap<String, Double> emailNormFreq = calcNormalizedFrequency(email);
-			mgr.updateFrequencies(emailNormFreq);
+			String[] wordsList = (email.getSubject() + " " + email.getContent()).split("\\s+");
+			List<HashMap<String, Double>> grams = buildGrams(wordsList);
+			mgr.updateFrequencies(grams);
 			
 			// update wordToLabelMap
 			//XXX can avoid the overhead of this loop by having this work 
 			//done as a side-effect in the calcNormalizedFreq() function
-			Iterator<Map.Entry<String, Double>> it = emailNormFreq.entrySet().iterator();
-			while(it.hasNext()){
-				String word = it.next().getKey();
-				if(! wordToLabelsMap.containsKey(word))
-					wordToLabelsMap.put(word, new HashSet<String>());
-				
-				wordToLabelsMap.get(word).add(lbl);
+			
+			for (int i = 0; i < NGRAMS_MAX; ++i) {
+				Iterator<Map.Entry<String, Double>> it = grams.get(i).entrySet().iterator();
+				while(it.hasNext()){
+					String word = it.next().getKey();
+					if(! wordToLabelsMap.containsKey(word))
+						wordToLabelsMap.put(word, new HashSet<String>());
+					
+					wordToLabelsMap.get(word).add(lbl);
+				}
 			}
 		}
 		
 		ArrayList<Attribute> atts = extractAttributes();
-		String[] options = new String[]{ATT_NAME_PREFIX};
+		String[] options = new String[3];
+		options[0] = ATT_NAME_PREFIX;
+		options[1] = NGRAMS_MAX + "";
+		options[2] = "";
+		for (int i = 0; i < IGNORED_GRAMS.length; i++) {
+			if (i == IGNORED_GRAMS.length - 1)
+				options[2] += IGNORED_GRAMS[i];
+			else
+				options[2] += IGNORED_GRAMS[i] + ",";
+		}
 		Filter wordFrequencyFilter = new WordFrequencyFilter(atts, options);
 
 		return wordFrequencyFilter;
 	}
 
 	private class LabelTermFrequencyManager{
-		public HashMap<String, Double> normFreq;
+		
+		public List<HashMap<String, Double>> gramsFreq;
 		
 		public LabelTermFrequencyManager(){
-			normFreq = new HashMap<String, Double>();
+			//init grams frequencies list
+			gramsFreq  = new ArrayList<HashMap<String,Double>>();
+			for (int i = 0; i < NGRAMS_MAX; i++)
+				gramsFreq.add(new HashMap<String, Double>());
+
 		}
 
-		public void updateFrequencies(HashMap<String, Double> emailNormFreq){
-			Iterator<Map.Entry<String, Double>> itr = emailNormFreq.entrySet().iterator();			
-			while(itr.hasNext()){
-				Map.Entry<String, Double> pair = itr.next();
-				Double normalized = normFreq.get(pair.getKey());
-				if(normalized == null) normalized = 0.0;
-				normalized += pair.getValue();
-				normFreq.put(pair.getKey(), normalized);
+		public void updateFrequencies(List<HashMap<String, Double>> grams){
+			//merge the two hash maps for each ngram
+			for (int i = 0; i < NGRAMS_MAX; i++) {
+				HashMap<String, Double> labelGrams = gramsFreq.get(i);
+				Iterator<Map.Entry<String, Double>> itr = grams.get(i).entrySet().iterator();			
+				while(itr.hasNext()){
+					Map.Entry<String, Double> pair = itr.next();
+					
+					if (labelGrams.containsKey(pair.getKey())){
+						labelGrams.put(pair.getKey(),
+								labelGrams.get(pair.getKey()) + pair.getValue());
+					}else
+						labelGrams.put(pair.getKey(), pair.getValue());
+				}
 			}
+			
 		}
 		
 		public String[] extractImportantWords(int maxSize){
-			TfIdfScore[] tfidf = new TfIdfScore[normFreq.size()];
-
-			Iterator<Map.Entry<String, Double>> itr = normFreq.entrySet().iterator();
-			int index = 0;
-			while(itr.hasNext()){
-				Map.Entry<String, Double> pair = itr.next();
-				double tf = pair.getValue();
-				double idf = Math.log10(((double) labelFreqMgrMap.size()) / wordToLabelsMap.get(pair.getKey()).size());
-				tfidf[index++] = new TfIdfScore(pair.getKey(), tf*idf);
+			ArrayList<TfIdfScore> tfidf = new ArrayList<TfIdfScore>();
+			
+			for (int i = 0; i < gramsFreq.size(); i++) { // for each gram size
+				Iterator<Map.Entry<String, Double>> itr = gramsFreq.get(i).entrySet().iterator();
+				while(itr.hasNext()){
+					Map.Entry<String, Double> pair = itr.next();
+					double tf = pair.getValue();
+					double idf = Math.log10(((double) labelFreqMgrMap.size()) / wordToLabelsMap.get(pair.getKey()).size());
+					tfidf.add(new TfIdfScore(pair.getKey(), tf*idf));
+				}
 			}
 			
-			if(tfidf.length > maxSize)
-				Arrays.sort(tfidf);
+			if(tfidf.size() > maxSize)
+				Collections.sort(tfidf);
 			
-			String[] importantWords = new String[Math.min(maxSize, tfidf.length)];
+			String[] importantWords = new String[Math.min(maxSize, tfidf.size())];
 			
 			for(int i=0; i<importantWords.length; i++) 
-				importantWords[i] = tfidf[i].word;
+				importantWords[i] = tfidf.get(i).word;
 			
+			System.out.println("----------------------");
+			for (int i = 0; i < Math.min(10,importantWords.length); i++) {
+				System.out.println(importantWords[i]);
+			}
+			System.out.println("----------------------");
 			return importantWords;
 		}
 	}

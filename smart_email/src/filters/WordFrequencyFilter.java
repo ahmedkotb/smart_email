@@ -1,8 +1,11 @@
 package filters;
 
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 import weka.core.Attribute;
 import general.Email;
@@ -14,6 +17,9 @@ public class WordFrequencyFilter extends Filter{
 	private String attPrefix;
 	private HashMap<String, Integer> indexMap;
 	
+	private int NGRAMS_MAX = 0;
+	private int[] IGNORED_GRAMS;
+	
 	/**
 	 * Constructor
 	 * @param atts List of attributes, one for each important word
@@ -22,6 +28,23 @@ public class WordFrequencyFilter extends Filter{
 	public WordFrequencyFilter(ArrayList<Attribute> atts, String[] options) {
 		super(atts, options);
 		attPrefix = options[0];
+		try {
+			NGRAMS_MAX = Integer.parseInt(options[1]);
+			String[] ignored = options[2].split(",");
+			IGNORED_GRAMS = new int[ignored.length];
+			for (int i = 0; i < ignored.length; i++){
+				if (ignored[i] != "")
+					IGNORED_GRAMS[i] = Integer.parseInt(ignored[i]);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println("INVALID NGrams parameters value");
+			System.exit(1);
+		}
+		
+		System.out.println("GRAMS = " + NGRAMS_MAX);
+		System.out.println("IGNORED_GRAMS = " + Arrays.toString(IGNORED_GRAMS));
 		Iterator<Attribute> itr = attributes.iterator();
 		indexMap = new HashMap<String, Integer>();
 		int index=0;
@@ -39,41 +62,52 @@ public class WordFrequencyFilter extends Filter{
 		return attName.substring(attPrefix.length());
 	}
 	
-	/***
-	 * counts the frequency of important words and stores the count in the vals array
-	 * @param vals Frequency array to update
-	 * @param indexMap Map between the word and its index in the vals array 
-	 * @param email Email to count frequency
-	 */
+	private List<HashMap<String, Double>> buildGrams(String[] wordsList){
+		ArrayList<HashMap<String,Double>> gramsList = new ArrayList<HashMap<String,Double>>();
+		for (int i = 1; i <= NGRAMS_MAX; ++i) {
+			HashMap<String,Double> grams = new HashMap<String, Double>();
+			//if this Ngrams are not ignored
+			if (Arrays.binarySearch(IGNORED_GRAMS, i) < 0 ){
+				for (int j = 0; j < wordsList.length - i + 1; j++) {
+					String gram = "";
+					for (int j2 = j; j2 < j+i; j2++)
+						gram += wordsList[j2] + " ";
+					
+					gram = gram.trim();
+					if (grams.containsKey(gram))
+						grams.put(gram, grams.get(gram) + 1);
+					else
+						grams.put(gram, 1.0);
+				}
+			}
+			gramsList.add(grams);
+		}
+		return gramsList;
+	}
+	
 	private void calcFrequencies(double[] vals, HashMap<String, Integer> indexMap, Email email){
-		String[] toks;
-		//TODO : change the splitRegex according the words we will agree to consider
-//		String splitRegex = "[^a-zA-Z]+"; //split on non-characters (one or more)
-		String splitRegex = " ";
-		//calc wf from subject
-		toks = email.getFrom().trim().split(splitRegex);
-		for(int i=0; i<toks.length; i++)
-			if(indexMap.containsKey(toks[i])) 
-				vals[indexMap.get(toks[i])]++;
+		String splitRegex = "\\s+";
+		String[] wordsList = (email.getSubject() + " " + email.getContent()).split(splitRegex);
+		List<HashMap<String, Double>> grams = buildGrams(wordsList);
 		
-		//calc wf from content
-		toks = email.getContent().trim().split(splitRegex);
-		for(int i=0; i<toks.length; i++)
-			if(indexMap.containsKey(toks[i]))
-				vals[indexMap.get(toks[i])]++;
-		
-		if(toks.length > 0)
-			for(int i=0; i<vals.length; i++)
-				vals[i]/=toks.length;
+		//iterate on each attribute and get its count
+		Iterator<String> it = indexMap.keySet().iterator();
+		while (it.hasNext()){
+			String key = it.next();
+			for (int i = 0; i < NGRAMS_MAX; i++) {
+				if (grams.get(i).containsKey(key)){
+					vals[indexMap.get(key)]++;
+					//each key will be found on one gram map only
+					break;
+				}
+			}
+		}
 	}
 	
 	@Override
 	public double[] getAttValue(Email email){
 		double[] vals = new double[attributes.size()];
 		calcFrequencies(vals, indexMap, email);
-//		long sz = email.getSize();
-//		if(sz>0)
-//			for(int i=0; i<vals.length; i++) vals[i]/= sz;
 		return vals;
 	}
 }
