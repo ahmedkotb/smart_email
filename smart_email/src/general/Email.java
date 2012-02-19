@@ -10,7 +10,7 @@ public class Email {
 	private String[] bcc;
 	private String subject;
 	private String content;
-	private int size;
+	private long size;
 	private long id;
 	private Date date;
 	private String label;
@@ -90,10 +90,10 @@ public class Email {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public int getSize() {
+	public long getSize() {
 		return size;
 	}
-	public void setSize(int size) {
+	public void setSize(long size) {
 		this.size = size;
 	}
 	public String getLabel(){

@@ -1,8 +1,8 @@
 package datasource;
 
 import java.io.BufferedReader;
-import java.io.FileFilter;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import general.Email;
 
@@ -24,7 +25,7 @@ public class FileSystemDAO extends DAO {
 	public FileSystemDAO(String datasetPath) {
 		this.datasetPath = datasetPath;
 	}
-
+	
 	@Override
 	public ArrayList<String> getClasses() {
 		ArrayList<String> classes = new ArrayList<String>();
@@ -72,6 +73,7 @@ public class FileSystemDAO extends DAO {
 				parseFile(file, email);
 				
 				email.setLabel(labelName);
+				email.setSize(file.length());
 				emails.add(email);
 			} catch(Exception e){
 				System.err.println("### Format Error in file: " + file);
