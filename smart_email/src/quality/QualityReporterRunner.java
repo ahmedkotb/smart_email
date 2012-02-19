@@ -2,6 +2,8 @@ package quality;
 
 import java.util.ArrayList;
 
+import preprocessors.PreprocessorManager;
+
 import weka.core.Instances;
 import classification.ClassificationManager;
 import classification.Classifier;
@@ -107,6 +109,12 @@ public class QualityReporterRunner {
 		testing.toArray(testingSet);
 		trainingSet = new Email[training.size()];
 		training.toArray(trainingSet);
+		
+		PreprocessorManager pm = new PreprocessorManager(preprocessorsList);
+		for (Email e: testingSet)
+			pm.apply(e);
+		for(Email e : trainingSet)
+			pm.apply(e);
 	}
 
 	/**
@@ -157,12 +165,12 @@ public class QualityReporterRunner {
 	public static void main(String[] args) throws Exception {
 		args = new String[5];
 		// List of preprocessors.
-		args[0] = "preprocessors.NumberNormalization,preprocessors.UrlNormalization" +
+		args[0] = "preprocessors.Lowercase,preprocessors.NumberNormalization,preprocessors.UrlNormalization" +
 				",preprocessors.WordsCleaner,preprocessors.StopWordsRemoval,preprocessors.EnglishStemmer";
 		// List of filters.
-		args[1] = "filters.SenderFilterCreator,filters.LabelFilterCreator";
+		args[1] = "filters.DateFilterCreator,filters.SenderFilterCreator,filters.WordFrequencyFilterCreator,filters.LabelFilterCreator";
 		// Classifier name.
-		args[2] = "svm";
+		args[2] = "naiveBayes";
 		// Username.
 		args[3] = "lokay_m";
 		// Training Percentage.
