@@ -61,15 +61,19 @@ public class WordFrequencyFilter extends Filter{
 		for(int i=0; i<toks.length; i++)
 			if(indexMap.containsKey(toks[i]))
 				vals[indexMap.get(toks[i])]++;
+		
+		if(toks.length > 0)
+			for(int i=0; i<vals.length; i++)
+				vals[i]/=toks.length;
 	}
 	
 	@Override
 	public double[] getAttValue(Email email){
 		double[] vals = new double[attributes.size()];
 		calcFrequencies(vals, indexMap, email);
-		int sz = email.getSize();
-		if(sz>0)
-			for(int i=0; i<vals.length; i++) vals[i]/= sz;
+//		long sz = email.getSize();
+//		if(sz>0)
+//			for(int i=0; i<vals.length; i++) vals[i]/= sz;
 		return vals;
 	}
 }
