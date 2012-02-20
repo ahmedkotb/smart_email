@@ -23,6 +23,8 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 	//grams
 	private final int NGRAMS_MAX = 1;
 	private final int[] IGNORED_GRAMS = new int[] {};
+	//normalized frequencies
+	private boolean FREQ_NORMALIZATION = true;
 	
 	
 	public WordFrequencyFilterCreator() {
@@ -93,6 +95,21 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 			
 			String[] wordsList = (email.getSubject() + " " + email.getContent()).split("\\s+");
 			List<HashMap<String, Double>> grams = buildGrams(wordsList);
+			
+			if (FREQ_NORMALIZATION){
+				for (int i = 0; i < grams.size(); i++) {
+					Iterator<Map.Entry<String, Double>> it = grams.get(i).entrySet().iterator();
+					while (it.hasNext()){
+						Map.Entry<String, Double> entry = it.next();
+						//divides each frequency of unigrams by number of words
+						//and each bigrams by number of bigrams (number of words - 1)
+						// and so on
+						entry.setValue(entry.getValue()/(wordsList.length - i));
+					}
+						
+				}
+			}
+			
 			mgr.updateFrequencies(grams);
 			
 			// update wordToLabelMap
@@ -112,10 +129,11 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 		}
 		
 		ArrayList<Attribute> atts = extractAttributes();
-		String[] options = new String[3];
+		String[] options = new String[4];
 		options[0] = ATT_NAME_PREFIX;
 		options[1] = NGRAMS_MAX + "";
 		options[2] = "";
+		options[3] = FREQ_NORMALIZATION + "";
 		for (int i = 0; i < IGNORED_GRAMS.length; i++) {
 			if (i == IGNORED_GRAMS.length - 1)
 				options[2] += IGNORED_GRAMS[i];

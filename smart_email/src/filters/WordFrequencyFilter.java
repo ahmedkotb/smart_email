@@ -1,11 +1,11 @@
 package filters;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import weka.core.Attribute;
 import general.Email;
@@ -19,6 +19,7 @@ public class WordFrequencyFilter extends Filter{
 	
 	private int NGRAMS_MAX = 0;
 	private int[] IGNORED_GRAMS;
+	private boolean FREQ_NORMALIZATION = false;
 	
 	/**
 	 * Constructor
@@ -36,7 +37,7 @@ public class WordFrequencyFilter extends Filter{
 				if (ignored[i] != "")
 					IGNORED_GRAMS[i] = Integer.parseInt(ignored[i]);
 			}
-			
+			FREQ_NORMALIZATION = Boolean.valueOf(options[3]);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println("INVALID NGrams parameters value");
@@ -45,6 +46,7 @@ public class WordFrequencyFilter extends Filter{
 		
 		System.out.println("GRAMS = " + NGRAMS_MAX);
 		System.out.println("IGNORED_GRAMS = " + Arrays.toString(IGNORED_GRAMS));
+		System.out.println("FREQ_NORMALIZATION = " + FREQ_NORMALIZATION);
 		Iterator<Attribute> itr = attributes.iterator();
 		indexMap = new HashMap<String, Integer>();
 		int index=0;
@@ -90,6 +92,19 @@ public class WordFrequencyFilter extends Filter{
 		String[] wordsList = (email.getSubject() + " " + email.getContent()).split(splitRegex);
 		List<HashMap<String, Double>> grams = buildGrams(wordsList);
 		
+		if (FREQ_NORMALIZATION){
+			for (int i = 0; i < grams.size(); i++) {
+				Iterator<Map.Entry<String, Double>> it = grams.get(i).entrySet().iterator();
+				while (it.hasNext()){
+					Map.Entry<String, Double> entry = it.next();
+					//divides each frequency of unigrams by number of words
+					//and each bigrams by number of bigrams (number of words - 1)
+					// and so on
+					entry.setValue(entry.getValue()/(wordsList.length - i));
+				}
+					
+			}
+		}
 		//iterate on each attribute and get its count
 		Iterator<String> it = indexMap.keySet().iterator();
 		while (it.hasNext()){
