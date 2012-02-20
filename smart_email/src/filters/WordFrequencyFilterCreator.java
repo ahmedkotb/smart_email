@@ -175,14 +175,9 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 			
 			String[] importantWords = new String[Math.min(maxSize, tfidf.size())];
 			
-			for(int i=0; i<importantWords.length; i++) 
+			for(int i=0; i<importantWords.length; i++)
 				importantWords[i] = tfidf.get(i).word;
 			
-			System.out.println("----------------------");
-			for (int i = 0; i < Math.min(10,importantWords.length); i++) {
-				System.out.println(importantWords[i]);
-			}
-			System.out.println("----------------------");
 			return importantWords;
 		}
 	}

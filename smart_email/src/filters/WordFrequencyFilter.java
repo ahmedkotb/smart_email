@@ -96,7 +96,7 @@ public class WordFrequencyFilter extends Filter{
 			String key = it.next();
 			for (int i = 0; i < NGRAMS_MAX; i++) {
 				if (grams.get(i).containsKey(key)){
-					vals[indexMap.get(key)]++;
+					vals[indexMap.get(key)] += grams.get(i).get(key);
 					//each key will be found on one gram map only
 					break;
 				}
