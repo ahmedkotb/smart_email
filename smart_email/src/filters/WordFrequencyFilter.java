@@ -89,7 +89,8 @@ public class WordFrequencyFilter extends Filter{
 	
 	private void calcFrequencies(double[] vals, HashMap<String, Integer> indexMap, Email email){
 		String splitRegex = "\\s+";
-		String[] wordsList = (email.getSubject() + " " + email.getContent()).split(splitRegex);
+		//subject is trimmed to avoid empty strings at beginning
+		String[] wordsList = (email.getSubject().trim() + " " + email.getContent()).split(splitRegex);
 		List<HashMap<String, Double>> grams = buildGrams(wordsList);
 		
 		if (FREQ_NORMALIZATION){

@@ -93,7 +93,8 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 				labelFreqMgrMap.put(lbl, mgr);
 			}
 			
-			String[] wordsList = (email.getSubject() + " " + email.getContent()).split("\\s+");
+			//subject is trimmed to avoid empty strings at beginning
+			String[] wordsList = (email.getSubject().trim() + " " + email.getContent()).split("\\s+");
 			List<HashMap<String, Double>> grams = buildGrams(wordsList);
 			
 			if (FREQ_NORMALIZATION){
