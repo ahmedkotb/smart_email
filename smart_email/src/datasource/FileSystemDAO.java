@@ -23,7 +23,7 @@ public class FileSystemDAO extends DAO {
 	public ArrayList<String> getClasses() {
 		ArrayList<String> classes = new ArrayList<String>();
 		File directory = new File(this.datasetPath);
-		// return available categories (directories only)
+		// Return available categories (directories only).
 		File[] childDirectories = directory.listFiles(new FileFilter() {
 			public boolean accept(File pathname) {
 				return pathname.isDirectory();

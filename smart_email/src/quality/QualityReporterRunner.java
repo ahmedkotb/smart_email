@@ -170,7 +170,9 @@ public class QualityReporterRunner {
 		// List of filters.
 		args[1] = 
 				//"filters.DateFilterCreator," +
-				"filters.SenderFilterCreator,filters.WordFrequencyFilterCreator,filters.LabelFilterCreator";
+				"filters.SenderFilterCreator," +
+				//"filters.WordFrequencyFilterCreator," +
+				"filters.LabelFilterCreator";
 		// Classifier name.
 		args[2] = "svm";
 		// Username.

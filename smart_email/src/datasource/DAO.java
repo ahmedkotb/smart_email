@@ -3,6 +3,11 @@ package datasource;
 import java.util.ArrayList;
 import general.Email;
 
+/**
+ * A class used for representing a data access object.
+ * @author Ahmed El-Sharakasy, Amr Sharaf.
+ *
+ */
 public abstract class DAO {
 
 	/**
