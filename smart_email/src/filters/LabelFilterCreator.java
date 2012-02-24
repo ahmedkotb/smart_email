@@ -17,10 +17,10 @@ public class LabelFilterCreator implements FilterCreator{
 		HashSet<String> labels = new HashSet<String>();
 		FastVector fvLabels = new FastVector();
 		for(Email email : emails){
-			// TODO file name == label??
 			String lbl = null;
 			try {
-				lbl = email.getFileName();
+				// TODO: Moustafa: Can we handle more than one label?
+				lbl = email.getHeader("X-label")[0];
 			} catch (MessagingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -13,6 +13,7 @@ import general.Email;
 
 public class FileSystemDAO extends DAO {
 
+	private static final String FILE_SEPARATOR = "file.separator";
 	private String datasetPath;
 
 	public FileSystemDAO(String datasetPath) {
@@ -37,10 +38,10 @@ public class FileSystemDAO extends DAO {
 	@Override
 	public Email[] getClassifiedEmails(String labelName, int limit) {
 		try {
-			File dir = new File(datasetPath
-					+ System.getProperty("file.separator") + labelName);
+			File directory = new File(datasetPath
+					+ System.getProperty(FILE_SEPARATOR) + labelName);
 			ArrayList<Email> emails = new ArrayList<Email>();
-			File[] files = dir.listFiles();
+			File[] files = directory.listFiles();
 			int[] fileNames = new int[files.length];
 			for (int i = 0; i < files.length; i++) {
 				String name = files[i].getName();
@@ -53,12 +54,12 @@ public class FileSystemDAO extends DAO {
 				if (emails.size() == limit)
 					break;
 				int number = fileNames[i];
-				File file = new File(dir.getPath()
+				File file = new File(directory.getPath()
 						+ System.getProperty("file.separator") + number + ".");
 				Session session = Session.getDefaultInstance(new Properties());
 				InputStream inputStream = new FileInputStream(file);
 				Email email = new Email(session, inputStream);
-				email.setFileName(labelName);
+				email.setHeader("X-label", labelName);
 				emails.add(email);
 				inputStream.close();
 			}

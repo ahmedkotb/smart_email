@@ -16,9 +16,9 @@ public class LabelFilter extends Filter{
 
 	@Override
 	public double[] getAttValue(Email email){
-		// TODO label == file name ??
+		// TODO @Moustafa: can we handle more than one label?
 		try {
-			return new double[]{attributes.get(0).indexOfValue(email.getFileName())};
+			return new double[]{attributes.get(0).indexOfValue(email.getHeader("X-label")[0])};
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
