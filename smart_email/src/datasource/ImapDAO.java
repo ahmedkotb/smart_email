@@ -63,16 +63,16 @@ public class ImapDAO extends DAO {
 	}
 
 	@Override
-	public Email[] getClassifiedEmails(String label, int limit) {
+	public ArrayList<Email> getClassifiedEmails(String label, int limit) {
 		return getEmails(label, limit);
 	}
 
 	@Override
-	public Email[] getUnclassified(int limit) {
+	public ArrayList<Email> getUnclassified(int limit) {
 		return getEmails("Inbox", limit);
 	}
 
-	public Email[] getEmails(String label, int limit) {
+	public ArrayList<Email> getEmails(String label, int limit) {
 		Folder folder = null;
 		Message messages[] = null;
 		try {
@@ -86,9 +86,9 @@ public class ImapDAO extends DAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Email[] emails = new Email[limit];
+		ArrayList<Email> emails = new ArrayList<Email>(limit);
 		for (int j = 0; j < limit; j++) {
-			emails[j] = (Email) messages[j];
+			emails.add((Email) messages[j]);
 		}
 		return emails;
 	}

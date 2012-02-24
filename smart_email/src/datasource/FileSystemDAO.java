@@ -36,7 +36,7 @@ public class FileSystemDAO extends DAO {
 	}
 
 	@Override
-	public Email[] getClassifiedEmails(String labelName, int limit) {
+	public ArrayList<Email> getClassifiedEmails(String labelName, int limit) {
 		try {
 			File directory = new File(datasetPath
 					+ System.getProperty(FILE_SEPARATOR) + labelName);
@@ -49,10 +49,7 @@ public class FileSystemDAO extends DAO {
 						name.length() - 1));
 			}
 			Arrays.sort(fileNames);
-			for (int i = fileNames.length - 1; i > -1; --i) {
-				// check the limit
-				if (emails.size() == limit)
-					break;
+			for (int i = fileNames.length - 1; emails.size() < limit && i >= 0; --i) {
 				int number = fileNames[i];
 				File file = new File(directory.getPath()
 						+ System.getProperty("file.separator") + number + ".");
@@ -63,9 +60,7 @@ public class FileSystemDAO extends DAO {
 				emails.add(email);
 				inputStream.close();
 			}
-			Email[] array = new Email[emails.size()];
-			emails.toArray(array);
-			return array;
+			return emails;
 		} catch (Exception ex) {
 			// Error in reading and parsing emails.
 			ex.printStackTrace();
@@ -79,7 +74,7 @@ public class FileSystemDAO extends DAO {
 	}
 
 	@Override
-	public Email[] getUnclassified(int limit) {
+	public ArrayList<Email> getUnclassified(int limit) {
 		// TODO Implement this method.
 		return null;
 	}

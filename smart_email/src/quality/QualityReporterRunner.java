@@ -96,14 +96,14 @@ public class QualityReporterRunner {
 		ArrayList<Email> testing = new ArrayList<Email>();
 		ArrayList<Email> training = new ArrayList<Email>();
 		for (int i = 0; i < labels.size(); i++) {
-			Email[] emails = dao.getClassifiedEmails(labels.get(i), 2000);
+			ArrayList<Email> emails = dao.getClassifiedEmails(labels.get(i), 2000);
 			double trainingSetRatio = trainingSetPercentage / 100.0;
 			int testSetStartIndex = (int) Math.ceil(trainingSetRatio
-					* emails.length);
+					* emails.size());
 			for (int j = 0; j < testSetStartIndex; j++)
-				training.add(emails[j]);
-			for (int j = testSetStartIndex; j < emails.length; j++)
-				testing.add(emails[j]);
+				training.add(emails.get(j));
+			for (int j = testSetStartIndex; j < emails.size(); j++)
+				testing.add(emails.get(j));
 		}
 		testingSet = new Email[testing.size()];
 		testing.toArray(testingSet);

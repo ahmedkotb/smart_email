@@ -69,12 +69,12 @@ public class ClassificationManager {
 			// unclassified email into chunks, or just set the limit to High
 			// value, this will require a func. in the DAO that takes a starting
 			// index
-			Email[] emails = dao.getClassifiedEmails(labels.get(i), LIMIT);
+			ArrayList<Email> emails = dao.getClassifiedEmails(labels.get(i), LIMIT);
 
 			int trainingLimit = (int) Math.ceil((trainingSetPercentage / 100.0)
-					* emails.length);
+					* emails.size());
 			for (int j = 0; j < trainingLimit; j++)
-				training.add(emails[j]);
+				training.add(emails.get(j));
 		}
 		Email[] trainingSet = new Email[training.size()];
 		training.toArray(trainingSet);
