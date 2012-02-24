@@ -80,7 +80,6 @@ public class ImapDAO extends DAO{
 	@Override
 	public Email[] getUnclassified(int limit) {
 		return getEmails("Inbox", limit);
-		 
 	}
 
 	public Email[] getEmails(String label , int limit){
