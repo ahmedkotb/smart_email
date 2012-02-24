@@ -1,6 +1,9 @@
 package filters;
 
 import java.util.ArrayList;
+
+import javax.mail.MessagingException;
+
 import weka.core.Attribute;
 import general.Email;
 
@@ -13,7 +16,14 @@ public class DateFilter extends Filter{
 
 	@Override
 	public double[] getAttValue(Email email){
+		// TODO: Moustafa Please Review
 		//date feature will be represented as a numeric attribute (the number of milliseconds since January 1, 1970)
-		return new double[]{email.getDate().getTime()};
+		try {
+			return new double[]{email.getReceivedDate().getTime()};
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

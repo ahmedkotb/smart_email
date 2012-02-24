@@ -2,6 +2,7 @@ package filters;
 
 import general.Email;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -10,6 +11,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import javax.mail.MessagingException;
 
 import weka.core.Attribute;
 
@@ -86,15 +89,31 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 		//   c- update wordTolapel (how many times each term appears /label)
 		
 		for(Email email : emails){
-			String lbl = email.getLabel();
+			// TODO: filename == label??
+			String lbl = null;
+			try {
+				lbl = email.getFileName();
+			} catch (MessagingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			LabelTermFrequencyManager mgr = labelFreqMgrMap.get(lbl);
 			if(mgr == null){
 				mgr = new LabelTermFrequencyManager();
 				labelFreqMgrMap.put(lbl, mgr);
 			}
-			
+			// TODO: Moustafa please review
 			//subject is trimmed to avoid empty strings at beginning
-			String[] wordsList = (email.getSubject().trim() + " " + email.getContent()).split("\\s+");
+			String[] wordsList = null;
+			try {
+				wordsList = (email.getSubject().trim() + " " + email.getContent()).split("\\s+");
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			List<HashMap<String, Double>> grams = buildGrams(wordsList);
 			
 			if (FREQ_NORMALIZATION){

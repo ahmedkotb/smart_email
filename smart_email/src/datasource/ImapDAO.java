@@ -1,10 +1,6 @@
 package datasource;
 
 import java.util.ArrayList;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Properties;
 import javax.mail.Store;
 
@@ -20,20 +16,8 @@ import javax.mail.Session;
 import javax.mail.UIDFolder;
 import javax.mail.internet.ContentType;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage.RecipientType;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.internet.ParseException;
-import javax.mail.search.AndTerm;
-import javax.mail.search.BodyTerm;
-import javax.mail.search.DateTerm;
-import javax.mail.search.FromStringTerm;
-import javax.mail.search.FromTerm;
-import javax.mail.search.HeaderTerm;
-import javax.mail.search.MessageIDTerm;
-import javax.mail.search.ReceivedDateTerm;
-import javax.mail.search.SearchTerm;
-import javax.mail.search.StringTerm;
-import javax.mail.search.SubjectTerm;
 
 import com.sun.mail.imap.IMAPFolder;
 //import com.sun.xml.internal.messaging.saaj.packaging.mime.Header;
@@ -116,7 +100,7 @@ public class ImapDAO extends DAO{
           Email[] emails = new Email[limit];
           for (int j=0;j<limit;j++) {
               ContentType ct = null;
-              Email email = new Email();
+              Email email = (Email) messages[j];
 
 			try {
 				ct = new ContentType(messages[j].getContentType());
@@ -124,26 +108,26 @@ public class ImapDAO extends DAO{
                   String content = showMultiPart(messages[j]);
                   
               } else {
-            	   email.setContent(messages[j].getContent().toString());
+            	 //  email.setContent(messages[j].getContent().toString());
             	   
               }
 			
               String[] bcc = getEmailAttr(messages[j],Message.RecipientType.BCC);
               String[] cc = getEmailAttr(messages[j],Message.RecipientType.CC);
               String[] to = getEmailAttr(messages[j], Message.RecipientType.TO);
-              email.setBcc(bcc);
+           //   email.setBcc(bcc);
               System.out.println("Printing BCCs");
              if(bcc!=null) printStringArray(bcc);
               
-              email.setCc(cc);
+             // email.setCc(cc);
               System.out.println(("Printing CCs"));
               if(cc!=null) printStringArray(cc);
               
-              email.setFrom(((InternetAddress)(messages[j].getFrom()[0])).getAddress());
+              //email.setFrom(((InternetAddress)(messages[j].getFrom()[0])).getAddress());
               System.out.println("Printing from");
               System.out.println(email.getFrom());
               
-              email.setTo(to);
+              //email.setTo(to);
               System.out.println("Printing Tos");
               printStringArray(to);
               
@@ -152,14 +136,14 @@ public class ImapDAO extends DAO{
               System.out.println(email.getSubject());
               
               long id = ((UIDFolder) folder).getUID(messages[j]);              
-              email.setId(id);
+             // email.setId(id);
                      
               System.out.println("Printing Id");
-              System.out.println(email.getId());
+             // System.out.println(email.getId());
               
-             email.setDate(messages[j].getReceivedDate());
+             //email.setDate(messages[j].getReceivedDate());
              System.out.println("Printing Date");
-             System.out.println(email.getDate());
+             //System.out.println(email.getDate());
               
               System.out.println("*************");
               
@@ -169,10 +153,7 @@ public class ImapDAO extends DAO{
 			} catch (MessagingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			} 
              	   
           }
       return emails;

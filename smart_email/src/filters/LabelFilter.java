@@ -1,6 +1,9 @@
 package filters;
 
 import java.util.ArrayList;
+
+import javax.mail.MessagingException;
+
 import weka.core.Attribute;
 import general.Email;
 
@@ -13,6 +16,13 @@ public class LabelFilter extends Filter{
 
 	@Override
 	public double[] getAttValue(Email email){
-		return new double[]{attributes.get(0).indexOfValue(email.getLabel())};
+		// TODO label == file name ??
+		try {
+			return new double[]{attributes.get(0).indexOfValue(email.getFileName())};
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

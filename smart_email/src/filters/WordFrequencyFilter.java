@@ -88,6 +88,7 @@ public class WordFrequencyFilter extends Filter{
 	}
 	
 	private void calcFrequencies(double[] vals, HashMap<String, Integer> indexMap, Email email){
+		try{
 		String splitRegex = "\\s+";
 		//subject is trimmed to avoid empty strings at beginning
 		String[] wordsList = (email.getSubject().trim() + " " + email.getContent()).split(splitRegex);
@@ -117,6 +118,8 @@ public class WordFrequencyFilter extends Filter{
 					break;
 				}
 			}
+		}}catch(Exception ex){
+			//ignore
 		}
 	}
 	

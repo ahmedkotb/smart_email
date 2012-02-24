@@ -168,7 +168,9 @@ public class QualityReporterRunner {
 		args[0] = "preprocessors.Lowercase,preprocessors.NumberNormalization,preprocessors.UrlNormalization" +
 				",preprocessors.WordsCleaner,preprocessors.StopWordsRemoval,preprocessors.EnglishStemmer";
 		// List of filters.
-		args[1] = "filters.DateFilterCreator,filters.SenderFilterCreator,filters.WordFrequencyFilterCreator,filters.LabelFilterCreator";
+		args[1] = 
+				//"filters.DateFilterCreator," +
+				"filters.SenderFilterCreator,filters.WordFrequencyFilterCreator,filters.LabelFilterCreator";
 		// Classifier name.
 		args[2] = "svm";
 		// Username.

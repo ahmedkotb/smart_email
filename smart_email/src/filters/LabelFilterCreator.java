@@ -5,6 +5,8 @@ import general.Email;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import javax.mail.MessagingException;
+
 import weka.core.Attribute;
 import weka.core.FastVector;
 
@@ -15,7 +17,14 @@ public class LabelFilterCreator implements FilterCreator{
 		HashSet<String> labels = new HashSet<String>();
 		FastVector fvLabels = new FastVector();
 		for(Email email : emails){
-			String lbl = email.getLabel();
+			// TODO file name == label??
+			String lbl = null;
+			try {
+				lbl = email.getFileName();
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if(!labels.contains(lbl)){
 				labels.add(lbl);
 				fvLabels.addElement(lbl);
