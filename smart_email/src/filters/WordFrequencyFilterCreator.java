@@ -92,7 +92,7 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 			// TODO: filename == label??
 			String lbl = null;
 			try {
-				lbl = email.getFileName();
+				lbl = email.getHeader("X-label")[0];
 			} catch (MessagingException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -203,6 +203,9 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 				while(itr.hasNext()){
 					Map.Entry<String, Double> pair = itr.next();
 					double tf = pair.getValue();
+					
+//					if(wordToLabelsMap.get(pair.getKey()).size()>3) continue;
+					
 					double idf = Math.log10(((double) labelFreqMgrMap.size()) / wordToLabelsMap.get(pair.getKey()).size());
 					tfidf.add(new TfIdfScore(pair.getKey(), tf*idf));
 				}
@@ -211,11 +214,16 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 			if(tfidf.size() > maxSize)
 				Collections.sort(tfidf);
 			
+//			double threshold = 0.05 * tfidf.get(0).score;
+//			int sz = 0;
+//			for(; sz<tfidf.size(); sz++) if(tfidf.get(sz).score < threshold) break;
+//			String[] importantWords = new String[Math.min(maxSize, sz)];
+			
 			String[] importantWords = new String[Math.min(maxSize, tfidf.size())];
 			
 			for(int i=0; i<importantWords.length; i++)
 				importantWords[i] = tfidf.get(i).word;
-			
+			System.err.println(importantWords.length);
 			return importantWords;
 		}
 	}
