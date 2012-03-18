@@ -54,7 +54,7 @@ public class WordFrequencyFilterTest {
 		"preprocessors.Lowercase", "preprocessors.NumberNormalization", "preprocessors.UrlNormalization", "preprocessors.WordsCleaner", "preprocessors.StopWordsRemoval", "preprocessors.EnglishStemmer"
 	};
 	private static String[] filterCreatorsNames = new String[]{
-			"filters.SenderFilterCreator", "filters.WordFrequencyFilterCreator", "filters.LabelFilterCreator"	
+			"filters.SubjectFilterCreator", "filters.SenderFilterCreator", "filters.WordFrequencyFilterCreator", "filters.LabelFilterCreator"	
 	};
 
 	//Dataset constants

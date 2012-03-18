@@ -171,10 +171,10 @@ public class QualityReporterRunner {
 		args[1] = 
 				//"filters.DateFilterCreator," +
 				"filters.SenderFilterCreator," +
-				//"filters.WordFrequencyFilterCreator," +
+				"filters.WordFrequencyFilterCreator," +
 				"filters.LabelFilterCreator";
 		// Classifier name.
-		args[2] = "svm";
+		args[2] = "naiveBayes";
 		// Username.
 		args[3] = "lokay_m";
 		// Training Percentage.

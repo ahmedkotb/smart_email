@@ -2,7 +2,6 @@ package filters;
 
 import general.Email;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,13 +16,13 @@ import javax.mail.MessagingException;
 import weka.core.Attribute;
 import weka.core.FastVector;
 
-public class WordFrequencyFilterCreator implements FilterCreator{
+public class SubjectFilterCreator implements FilterCreator{
 
 	private HashMap<String, LabelTermFrequencyManager> labelFreqMgrMap;
 	private HashMap<String, HashSet<String>> wordToLabelsMap;
-	private final String ATT_NAME_PREFIX = "WFF_";
+	private final String ATT_NAME_PREFIX = "SubjectF_";
 	private final int IMP_WORDS_PER_LABEL = 80;
-	private final int THRESHOLD_PERCENTAGE = 20;
+	private final int THRESHOLD_PERCENTAGE = 10;
 	
 	//grams
 	private final int NGRAMS_MAX = 1;
@@ -32,8 +31,8 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 	private boolean FREQ_NORMALIZATION = true;
 	
 	
-	public WordFrequencyFilterCreator() {
-		labelFreqMgrMap = new HashMap<String, WordFrequencyFilterCreator.LabelTermFrequencyManager>();
+	public SubjectFilterCreator() {
+		labelFreqMgrMap = new HashMap<String, SubjectFilterCreator.LabelTermFrequencyManager>();
 		wordToLabelsMap = new HashMap<String, HashSet<String>>();
 		
 		//sort ignored grams array
@@ -106,14 +105,11 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 				mgr = new LabelTermFrequencyManager();
 				labelFreqMgrMap.put(lbl, mgr);
 			}
-			// TODO: Moustafa please review
-			//subject is trimmed to avoid empty strings at beginning
+
 			String[] wordsList = null;
 			try {
-				wordsList = ((String) email.getContent()).split("\\s+");
+				wordsList = email.getSubject().trim().split("\\s+");
 			} catch (MessagingException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
 				e.printStackTrace();
 			}
 

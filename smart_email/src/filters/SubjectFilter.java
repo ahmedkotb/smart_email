@@ -13,10 +13,9 @@ import javax.mail.MessagingException;
 import weka.core.Attribute;
 import general.Email;
 
-public class WordFrequencyFilter extends Filter{
-
-	private static final long serialVersionUID = 1148119665295273L;
-
+public class SubjectFilter extends Filter{
+	
+	private static final long serialVersionUID = 7202701812643864245L;
 	private String attPrefix;
 	private HashMap<String, Integer> indexMap;
 	
@@ -29,7 +28,7 @@ public class WordFrequencyFilter extends Filter{
 	 * @param atts List of attributes, one for each important word
 	 * @param options Only one option representing the attribute name prefix, which is appended before the word
 	 */
-	public WordFrequencyFilter(ArrayList<Attribute> atts, String[] options) {
+	public SubjectFilter(ArrayList<Attribute> atts, String[] options) {
 		super(atts, options);
 		attPrefix = options[0];
 		try {
@@ -89,56 +88,14 @@ public class WordFrequencyFilter extends Filter{
 		}
 		return gramsList;
 	}
-	
-	private void calcFrequencies(double[] vals, HashMap<String, Integer> indexMap, Email email){
-		try{
-			String splitRegex = "\\s+";
-			//subject is trimmed to avoid empty strings at beginning
-			String[] wordsList = ((String)email.getContent()).split(splitRegex);
-			List<HashMap<String, Double>> grams = buildGrams(wordsList);
-			
-			if (FREQ_NORMALIZATION){
-				for (int i = 0; i < grams.size(); i++) {
-					Iterator<Map.Entry<String, Double>> it = grams.get(i).entrySet().iterator();
-					while (it.hasNext()){
-						Map.Entry<String, Double> entry = it.next();
-						//divides each frequency of unigrams by number of words
-						//and each bigrams by number of bigrams (number of words - 1)
-						// and so on
-						entry.setValue(entry.getValue()/(wordsList.length - i));
-					}
-						
-				}
-			}
-			//iterate on each attribute and get its count
-			Iterator<String> it = indexMap.keySet().iterator();
-			while (it.hasNext()){
-				String key = it.next();
-				for (int i = 0; i < NGRAMS_MAX; i++) {
-					if (grams.get(i).containsKey(key)){
-						vals[indexMap.get(key)] += grams.get(i).get(key);
-						//each key will be found on one gram map only
-						break;
-					}
-				}
-			}
-		}catch(Exception ex){
-			//ignore
-		}
 		
-		//XXX ugly quick fix for making it boolean (nominal attribute)
-		for(int i=0; i<vals.length; i++) if(vals[i]>0.0000001) vals[i]=1;
-	}
-	
 	private void fillAttsValues(double[] vals, HashMap<String, Integer> indexMap, Email email){
 		String splitRegex = "\\s+";
 		//subject is trimmed to avoid empty strings at beginning
 		String[] wordsList=null;
 		try {
-			wordsList = ((String) email.getContent()).split(splitRegex);
+			wordsList = email.getSubject().trim().split(splitRegex);
 		} catch (MessagingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
