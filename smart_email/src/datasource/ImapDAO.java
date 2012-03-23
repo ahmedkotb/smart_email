@@ -85,7 +85,7 @@ public class ImapDAO extends DAO {
 		}
 		ArrayList<Email> emails = new ArrayList<Email>(limit);
 		for (int j = 0; j < limit; j++) {
-			emails.add((Email) messages[j]);
+			emails.add(new Email(messages[j]));
 		}
 		return emails;
 	}
