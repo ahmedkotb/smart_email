@@ -48,16 +48,13 @@ public class ImapDAO extends DAO {
 		ArrayList<String> classes = new ArrayList<String>(50);
 		try {
 			Folder[] labels = store.getDefaultFolder().list("*");
-			int i = 0;
 			for (Folder label : labels) {
 				classes.add(label.getName());
-				i++;
-				System.out.println("Label " + i + ": " + label.getName());
 			}
 
 		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		}
 		return classes;
 	}
@@ -83,8 +80,8 @@ public class ImapDAO extends DAO {
 			if (messages.length < limit)
 				limit = messages.length;
 		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		}
 		ArrayList<Email> emails = new ArrayList<Email>(limit);
 		for (int j = 0; j < limit; j++) {
@@ -108,10 +105,9 @@ public class ImapDAO extends DAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
-	public Store connect(String username, String password) {
+	private Store connect(String username, String password) {
 		Properties props = System.getProperties();
 		props.setProperty("mail.store.protocol", "imaps");
 		Store store = null;
@@ -119,7 +115,6 @@ public class ImapDAO extends DAO {
 			Session session = Session.getDefaultInstance(props, null);
 			store = session.getStore("imaps");
 			store.connect("imap.gmail.com", username, password);
-			System.out.println(store);
 		} catch (NoSuchProviderException e) {
 			e.printStackTrace();
 		} catch (MessagingException e) {
