@@ -235,7 +235,7 @@ public class Email extends Message {
 
 	@Override
 	public void setSubject(String arg0) throws MessagingException {
-		message.setSubject(arg0);		
+		message.setSubject(arg0);
 	}
 
 }
