@@ -219,18 +219,18 @@ public class Email extends Message {
 
 	@Override
 	public void setFrom(Address arg0) throws MessagingException {
-		message.setFrom(arg0);		
+		message.setFrom(arg0);
 	}
 
 	@Override
 	public void setRecipients(RecipientType arg0, Address[] arg1)
 			throws MessagingException {
-		message.setRecipients(arg0, arg1);		
+		message.setRecipients(arg0, arg1);
 	}
 
 	@Override
 	public void setSentDate(Date arg0) throws MessagingException {
-		message.setSentDate(arg0);		
+		message.setSentDate(arg0);
 	}
 
 	@Override
