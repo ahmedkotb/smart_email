@@ -17,6 +17,20 @@ public class FilterCreatorManager {
 		}
 	}
 	
+	/**
+	 * this constructor is only used for the testing phase (Experiments)
+	 * @param filterCreators: FilterCreator objects
+	 * @param trainingSet: Email Training Set
+	 */
+	public FilterCreatorManager(FilterCreator[] filterCreators, Email[] trainingSet){
+		this.filterCreators = filterCreators;
+		filters = new Filter[filterCreators.length];
+		
+		for(int i=0; i<filterCreators.length; i++){
+			filters[i] = filterCreators[i].createFilter(trainingSet);
+		}
+	}
+	
 	public Filter[] getFilters(){
 		return filters;
 	}
