@@ -48,16 +48,13 @@ public class ImapDAO extends DAO {
 		ArrayList<String> classes = new ArrayList<String>(50);
 		try {
 			Folder[] labels = store.getDefaultFolder().list("*");
-			int i = 0;
 			for (Folder label : labels) {
 				classes.add(label.getName());
-				i++;
-				System.out.println("Label " + i + ": " + label.getName());
 			}
 
 		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		}
 		return classes;
 	}
@@ -73,23 +70,31 @@ public class ImapDAO extends DAO {
 	}
 
 	public ArrayList<Email> getEmails(String label, int limit) {
+
 		Folder folder = null;
 		Message messages[] = null;
 		try {
 			folder = store.getFolder(label);
 			folder.open(Folder.READ_WRITE);
-			messages = folder.getMessages();
+			//get the number of messages in this folder
+			int count = folder.getMessageCount();
 
-			if (messages.length < limit)
-				limit = messages.length;
+			int start = Math.max(count - limit + 1,1);
+			int end = count;
+
+			//fetch the messages
+			messages = folder.getMessages(start,end);
+
 		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		}
-		ArrayList<Email> emails = new ArrayList<Email>(limit);
-		for (int j = 0; j < limit; j++) {
-			emails.add((Email) messages[j]);
-		}
+
+		//Emails are sorted from the newest to oldest 
+		ArrayList<Email> emails = new ArrayList<Email>(messages.length);
+		for (int i=messages.length-1;i>-1;i--)
+			emails.add(new Email(messages[i]));
+
 		return emails;
 	}
 
@@ -108,10 +113,9 @@ public class ImapDAO extends DAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
-	public Store connect(String username, String password) {
+	private Store connect(String username, String password) {
 		Properties props = System.getProperties();
 		props.setProperty("mail.store.protocol", "imaps");
 		Store store = null;
@@ -119,7 +123,6 @@ public class ImapDAO extends DAO {
 			Session session = Session.getDefaultInstance(props, null);
 			store = session.getStore("imaps");
 			store.connect("imap.gmail.com", username, password);
-			System.out.println(store);
 		} catch (NoSuchProviderException e) {
 			e.printStackTrace();
 		} catch (MessagingException e) {

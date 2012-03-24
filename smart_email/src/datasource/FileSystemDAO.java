@@ -7,7 +7,10 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Properties;
+
+import javax.mail.Message;
 import javax.mail.Session;
+import javax.mail.internet.MimeMessage;
 
 import general.Email;
 
@@ -55,7 +58,8 @@ public class FileSystemDAO extends DAO {
 						+ System.getProperty("file.separator") + number + ".");
 				Session session = Session.getDefaultInstance(new Properties());
 				InputStream inputStream = new FileInputStream(file);
-				Email email = new Email(session, inputStream);
+				Message message = new MimeMessage(session, inputStream);
+				Email email = new Email(message);
 				email.setHeader("X-label", labelName);
 				emails.add(email);
 				inputStream.close();
