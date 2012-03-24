@@ -70,23 +70,31 @@ public class ImapDAO extends DAO {
 	}
 
 	public ArrayList<Email> getEmails(String label, int limit) {
+		
 		Folder folder = null;
 		Message messages[] = null;
 		try {
 			folder = store.getFolder(label);
 			folder.open(Folder.READ_WRITE);
-			messages = folder.getMessages();
-
-			if (messages.length < limit)
-				limit = messages.length;
+			//get the number of messages in this folder
+			int count = folder.getMessageCount();
+			
+			int start = Math.max(count - limit + 1,1);
+			int end = count;
+			
+			//fetch the messages
+			messages = folder.getMessages(start,end);
+			
 		} catch (MessagingException e) {
 			e.printStackTrace();
 			return null;
 		}
-		ArrayList<Email> emails = new ArrayList<Email>(limit);
-		for (int j = 0; j < limit; j++) {
-			emails.add(new Email(messages[j]));
-		}
+		
+		//Emails are sorted from the newest to oldest 
+		ArrayList<Email> emails = new ArrayList<Email>(messages.length);
+		for (int i=messages.length-1;i>-1;i--)
+			emails.add(new Email(messages[i]));
+		
 		return emails;
 	}
 
