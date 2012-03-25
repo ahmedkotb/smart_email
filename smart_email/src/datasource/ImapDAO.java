@@ -92,8 +92,18 @@ public class ImapDAO extends DAO {
 
 		//Emails are sorted from the newest to oldest 
 		ArrayList<Email> emails = new ArrayList<Email>(messages.length);
-		for (int i=messages.length-1;i>-1;i--)
-			emails.add(new Email(messages[i]));
+		for (int i=messages.length-1;i>-1;i--){
+			Email email = new Email(messages[i]);
+			try{
+				email.setHeader("X-label", label);
+			}catch(MessagingException me){
+				//TODO: handle this exception .. 
+				//why the email set header function is raising this exception
+				//in the first place !!
+				me.printStackTrace();
+			}
+			emails.add(email);
+		}
 
 		return emails;
 	}
