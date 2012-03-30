@@ -54,7 +54,7 @@ public class ClassificationManager {
 		return new FilterManager(filters);
 	}
 
-	private void initializeUserFilters(String username, Email[] trainingSet)
+	private void initializeUserFilters(String username, ArrayList<Email> trainingSet)
 			throws InstantiationException, IllegalAccessException,
 			ClassNotFoundException {
 		FilterCreatorManager filterCreatorMgr = new FilterCreatorManager(
@@ -63,7 +63,7 @@ public class ClassificationManager {
 		userFilters.put(username, filters);
 	}
 
-	private Email[] getTrainingSet(DAO dao, int trainingSetPercentage) {
+	private ArrayList<Email> getTrainingSet(DAO dao, int trainingSetPercentage) {
 		ArrayList<String> labels = dao.getClasses();
 		ArrayList<Email> training = new ArrayList<Email>();
 
@@ -79,19 +79,16 @@ public class ClassificationManager {
 			for (int j = 0; j < trainingLimit; j++)
 				training.add(emails.get(j));
 		}
-		Email[] trainingSet = new Email[training.size()];
-		training.toArray(trainingSet);
-
-		return trainingSet;
+		return training;
 	}
 
-	private void preprocessEmails(Email[] emails) {
+	private void preprocessEmails(ArrayList<Email> emails) {
 		PreprocessorManager pm = new PreprocessorManager(preprocessors);
 		for (Email email : emails)
 			pm.apply(email);
 	}
 
-	private void preprocessEmails(Email[] emails, ArrayList<Preprocessor> preprocessorsList){
+	private void preprocessEmails(ArrayList<Email> emails, ArrayList<Preprocessor> preprocessorsList){
 		PreprocessorManager pm = new PreprocessorManager(preprocessorsList);
 		for(Email email : emails)
 			pm.apply(email);
@@ -103,7 +100,7 @@ public class ClassificationManager {
 			ClassNotFoundException {
 		String datasetPath = ClassificationManager.DATASET_PATH + username;
 		DAO dao = new FileSystemDAO(datasetPath);
-		Email[] trainingSet = getTrainingSet(dao, trainingSetPercentage);
+		ArrayList<Email> trainingSet = getTrainingSet(dao, trainingSetPercentage);
 		preprocessEmails(trainingSet);
 
 		Filter[] filters = userFilters.get(username);
@@ -133,7 +130,7 @@ public class ClassificationManager {
 	public Classifier trainUserFromFileSystem(String username, String classifierName, int trainingSetPercentage, ArrayList<Preprocessor> preprocessorsList, ArrayList<FilterCreator> filterCreatorsList){
 		String datasetPath = ClassificationManager.DATASET_PATH + username;
 		DAO dao = new FileSystemDAO(datasetPath);
-		Email[] trainingSet = getTrainingSet(dao, trainingSetPercentage);
+		ArrayList<Email> trainingSet = getTrainingSet(dao, trainingSetPercentage);
 		preprocessEmails(trainingSet, preprocessorsList);
 
 		FilterCreatorManager filterCreatorMgr = new FilterCreatorManager(filterCreatorsList, trainingSet);

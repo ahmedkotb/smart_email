@@ -55,7 +55,9 @@ public class Experiment1 implements ExperimentTunerIF{
 
 	public static void main(String[] args) throws Exception {
 		ExperimentTunerIF tuner = new Experiment1();
-		String[] usernames = new String[]{"sanders_r", "lokay_m", "beck-s"};
+//		String[] usernames = new String[]{"sanders_r", "lokay_m"};
+		String[] usernames = new String[]{"lokay_m"};
+//		String[] usernames = new String[]{"sanders_r", "lokay_m", "beck-s"};
 //		String[] usernames = new String[]{"sanders_r"};
 		ExperimentRunner exp = new ExperimentRunner(tuner, usernames, "Sender and WF filters Combinations");
 		exp.runExperiment();

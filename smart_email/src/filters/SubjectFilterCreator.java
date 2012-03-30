@@ -85,7 +85,7 @@ public class SubjectFilterCreator implements FilterCreator{
 	}
 	
 	@Override
-	public Filter createFilter(Email[] emails) {
+	public Filter createFilter(ArrayList<Email> emails) {
 		//Steps
 		// 1- loop on emails and for each email
 		//   a- calculate normalized frequencies

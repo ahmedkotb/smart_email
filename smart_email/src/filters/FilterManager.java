@@ -34,7 +34,7 @@ public class FilterManager {
 		return attributes;
 	}
 	
-	public Instances getDataset(Email[] emails){
+	public Instances getDataset(ArrayList<Email> emails){
 		dataset.delete();
 		for(Email email : emails){
 			Instance ins = makeInstance(email);

@@ -46,9 +46,9 @@ import general.Email;
 public class WordFrequencyFilterTest {
 
 	private WordFrequencyFilterCreator wf;
-	private static Email[] emails;
+	private static ArrayList<Email> emails;
 	private static Email[] testingSet;
-	private static Email[] trainingSet;
+	private static ArrayList<Email> trainingSet;
 	private static int trainingSetPercentage = 60;
 	private static String[] preprocessors = new String[]{
 		"preprocessors.Lowercase", "preprocessors.NumberNormalization", "preprocessors.UrlNormalization", "preprocessors.WordsCleaner", "preprocessors.StopWordsRemoval", "preprocessors.EnglishStemmer"
@@ -121,8 +121,8 @@ public class WordFrequencyFilterTest {
 		testingSet = new Email[testing.size()];
 		testing.toArray(testingSet);
 
-		trainingSet = new Email[training.size()];
-		training.toArray(trainingSet);
+		trainingSet = new ArrayList<Email>(training.size());
+		trainingSet = training;
 		
 		PreprocessorManager pm = new PreprocessorManager(preprocessors);
 		for (Email e: testingSet)
@@ -187,7 +187,7 @@ public class WordFrequencyFilterTest {
 		Filter[] filters = mgr.getFilters();
 		FilterManager filterMgr = new FilterManager(filters);
 
-		Email test = emails[0];
+		Email test = emails.get(0);
 		System.err.println(test);
 
 		Instances dataset = filterMgr.getDataset(emails);

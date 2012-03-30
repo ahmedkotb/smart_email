@@ -13,7 +13,7 @@ import weka.core.FastVector;
 public class LabelFilterCreator implements FilterCreator{
 
 	@Override
-	public Filter createFilter(Email[] emails) {
+	public Filter createFilter(ArrayList<Email> emails) {
 		HashSet<String> labels = new HashSet<String>();
 		FastVector fvLabels = new FastVector();
 		for(Email email : emails){

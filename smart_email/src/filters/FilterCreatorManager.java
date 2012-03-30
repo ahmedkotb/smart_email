@@ -9,7 +9,7 @@ public class FilterCreatorManager {
 	private Filter[] filters;
 
 	//TODO : catching thrown exceptions
-	public FilterCreatorManager(String[] filterCreatorsNames, Email[] trainingSet) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
+	public FilterCreatorManager(String[] filterCreatorsNames, ArrayList<Email> trainingSet) throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		filterCreators = new FilterCreator[filterCreatorsNames.length];
 		filters = new Filter[filterCreatorsNames.length];
 
@@ -24,7 +24,7 @@ public class FilterCreatorManager {
 	 * @param filterCreatorsList: FilterCreator objects
 	 * @param trainingSet: Email Training Set
 	 */
-	public FilterCreatorManager(ArrayList<FilterCreator> filterCreatorsList, Email[] trainingSet){
+	public FilterCreatorManager(ArrayList<FilterCreator> filterCreatorsList, ArrayList<Email> trainingSet){
 		this.filterCreators = new FilterCreator[filterCreatorsList.size()];
 		filterCreatorsList.toArray(this.filterCreators);
 		filters = new Filter[filterCreators.length];

@@ -11,7 +11,7 @@ import weka.core.FastVector;
 public class SenderFilterCreator implements FilterCreator{
 
 	@Override
-	public Filter createFilter(Email[] emails) {
+	public Filter createFilter(ArrayList<Email> emails) {
 		try{
 		HashSet<String> senders = new HashSet<String>();
 		FastVector fvSenders = new FastVector();

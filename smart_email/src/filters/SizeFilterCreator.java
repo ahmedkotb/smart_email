@@ -16,7 +16,7 @@ public class SizeFilterCreator implements FilterCreator {
 	private static final String SIZE_ATTRIBUTE = "SizeAttribute";
 	
 	@Override
-	public Filter createFilter(Email[] emails) {
+	public Filter createFilter(ArrayList<Email> emails) {
 		// Prepare for adding a new attribute for the email size.
 		ArrayList<Attribute> attributes = new ArrayList<Attribute>(1);
 		attributes.add(new Attribute(SIZE_ATTRIBUTE));

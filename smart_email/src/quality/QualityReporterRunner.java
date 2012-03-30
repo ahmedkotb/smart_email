@@ -33,10 +33,11 @@ public class QualityReporterRunner {
 	// Training set percentage
 	private int trainingSetPercentage;
 	// Training Set.
-	private Email[] trainingSet;
+	private ArrayList<Email> trainingSet;
 	// Testing Set.
-	private Email[] testingSet;
-	//if true, the preprocessors and filterCreators will be loaded through reflections, else i will use ready made instances of them
+	private ArrayList<Email> testingSet;
+	// if true, the preprocessors and filterCreators will be loaded through
+	// reflections, else i will use ready made instances of them
 	private boolean useReflection;
 	// Preprocessors Instances to be used
 	private ArrayList<Preprocessor> preprocessors;
@@ -56,22 +57,33 @@ public class QualityReporterRunner {
 	private static final String DELIMITER = ",";
 
 	/**
-	 * Empty Constructor. Parameters will be initialized using Init(args) function that uses command line args
+	 * Empty Constructor. Parameters will be initialized using Init(args)
+	 * function that uses command line args
 	 */
-	public QualityReporterRunner(){
+	public QualityReporterRunner() {
 		useReflection = true;
 	}
-	
+
 	/**
-	 * This constructor uses ready made FilterCreators and Preprocessors to pass them to the FilterCreatorManager and PreprocessorManager, instead of using reflection to load them. 
-	 * It is mainly used in to run Experiments in the testing phase
-	 * @param fitlerCreatorsList List of FilterCreators
-	 * @param preprcoessorsList List of Preprocessor
-	 * @param username Name of the user upon which we will run the classification
-	 * @param classifierType Classifier Type
-	 * @param trainingSetPrecentage Percentage of training set from the users dataset
+	 * This constructor uses ready made FilterCreators and Preprocessors to pass
+	 * them to the FilterCreatorManager and PreprocessorManager, instead of
+	 * using reflection to load them. It is mainly used in to run Experiments in
+	 * the testing phase
+	 * 
+	 * @param fitlerCreatorsList
+	 *            List of FilterCreators
+	 * @param preprcoessorsList
+	 *            List of Preprocessor
+	 * @param username
+	 *            Name of the user upon which we will run the classification
+	 * @param classifierType
+	 *            Classifier Type
+	 * @param trainingSetPrecentage
+	 *            Percentage of training set from the users dataset
 	 */
-	public QualityReporterRunner(ArrayList<FilterCreator> filterCreatorsList, ArrayList<Preprocessor> preprocessorsList, String username, String classifierType, int trainingSetPrecentage){
+	public QualityReporterRunner(ArrayList<FilterCreator> filterCreatorsList,
+			ArrayList<Preprocessor> preprocessorsList, String username,
+			String classifierType, int trainingSetPrecentage) {
 		useReflection = false;
 		this.preprocessorsList = null;
 		this.filtersList = null;
@@ -81,7 +93,7 @@ public class QualityReporterRunner {
 		this.classifierType = classifierType;
 		this.trainingSetPercentage = trainingSetPrecentage;
 	}
-	
+
 	/**
 	 * Initializes the quality reporter runner from given array of arguments.
 	 * 
@@ -101,7 +113,8 @@ public class QualityReporterRunner {
 	 * 
 	 * @throws Exception
 	 */
-	//TODO this function is deceiving as it does all the work of classification to print the summary, while it's name doesn't indicate that
+	// TODO this function is deceiving as it does all the work of classification
+	// to print the summary, while it's name doesn't indicate that
 	private void printSummaryReport() throws Exception {
 		QualityReporter reporter = EvaluateClassifer();
 		// Printing summary report.
@@ -110,18 +123,20 @@ public class QualityReporterRunner {
 		System.out.println(reporter.toClassDetailsString(""));
 	}
 
-	public QualityReporter EvaluateClassifer() throws Exception{
+	public QualityReporter EvaluateClassifer() throws Exception {
 		ClassificationManager classifierManager = ClassificationManager
 				.getInstance(filtersList, preprocessorsList);
 		// Prepare evaluation data.
 		prepareDataset();
-		
+
 		Classifier classifier = null;
-		if(useReflection){
-			classifier = classifierManager.trainUserFromFileSystem(
-					username, classifierType, trainingSetPercentage);
-		} else{
-			classifier = classifierManager.trainUserFromFileSystem(username, classifierType, trainingSetPercentage, preprocessors, filterCreators);
+		if (useReflection) {
+			classifier = classifierManager.trainUserFromFileSystem(username,
+					classifierType, trainingSetPercentage);
+		} else {
+			classifier = classifierManager.trainUserFromFileSystem(username,
+					classifierType, trainingSetPercentage, preprocessors,
+					filterCreators);
 		}
 		FilterManager filterMgr = classifierManager.getFilterManager(username);
 		Instances dataset = filterMgr.getDataset(trainingSet);
@@ -131,6 +146,7 @@ public class QualityReporterRunner {
 
 		return reporter;
 	}
+
 	/**
 	 * Prepares the training and testing set.
 	 */
@@ -143,7 +159,8 @@ public class QualityReporterRunner {
 		ArrayList<Email> testing = new ArrayList<Email>();
 		ArrayList<Email> training = new ArrayList<Email>();
 		for (int i = 0; i < labels.size(); i++) {
-			ArrayList<Email> emails = dao.getClassifiedEmails(labels.get(i), 2000);
+			ArrayList<Email> emails = dao.getClassifiedEmails(labels.get(i),
+					2000);
 			double trainingSetRatio = trainingSetPercentage / 100.0;
 			int testSetStartIndex = (int) Math.ceil(trainingSetRatio
 					* emails.size());
@@ -152,25 +169,26 @@ public class QualityReporterRunner {
 			for (int j = testSetStartIndex; j < emails.size(); j++)
 				testing.add(emails.get(j));
 		}
-		testingSet = new Email[testing.size()];
-		testing.toArray(testingSet);
-		trainingSet = new Email[training.size()];
-		training.toArray(trainingSet);
-		
+		testingSet = testing;
+		//testing.toArray(testingSet);
+		trainingSet = training;
+		//training.toArray(trainingSet);
+
 		PreprocessorManager pm = null;
-		if(useReflection){
+		if (useReflection) {
 			pm = new PreprocessorManager(preprocessorsList);
-		} else{
+		} else {
 			pm = new PreprocessorManager(preprocessors);
 		}
-		for (Email e: testingSet)
+		for (Email e : testingSet)
 			pm.apply(e);
-		for(Email e : trainingSet)
+		for (Email e : trainingSet)
 			pm.apply(e);
 	}
 
 	/**
 	 * Returns the array of preprocessors names from the arguments array.
+	 * 
 	 * @param args
 	 * @return
 	 */
@@ -181,6 +199,7 @@ public class QualityReporterRunner {
 
 	/**
 	 * Returns the array of filter names from the arguments array.
+	 * 
 	 * @param args
 	 * @return
 	 */
@@ -191,6 +210,7 @@ public class QualityReporterRunner {
 
 	/**
 	 * Returns the classifier type from the array of arguments.
+	 * 
 	 * @param args
 	 * @return
 	 */
@@ -200,6 +220,7 @@ public class QualityReporterRunner {
 
 	/**
 	 * Returns the username from the array of arguments.
+	 * 
 	 * @param args
 	 * @return
 	 */
@@ -217,14 +238,13 @@ public class QualityReporterRunner {
 	public static void main(String[] args) throws Exception {
 		args = new String[5];
 		// List of preprocessors.
-		args[0] = "preprocessors.Lowercase,preprocessors.NumberNormalization,preprocessors.UrlNormalization" +
-				",preprocessors.WordsCleaner,preprocessors.StopWordsRemoval,preprocessors.EnglishStemmer";
+		args[0] = "preprocessors.Lowercase,preprocessors.NumberNormalization,preprocessors.UrlNormalization"
+				+ ",preprocessors.WordsCleaner,preprocessors.StopWordsRemoval,preprocessors.EnglishStemmer";
 		// List of filters.
-		args[1] = 
-				//"filters.DateFilterCreator," +
-				"filters.SenderFilterCreator," +
-				"filters.WordFrequencyFilterCreator," +
-				"filters.LabelFilterCreator";
+		args[1] =
+		// "filters.DateFilterCreator," +
+		"filters.SenderFilterCreator," + "filters.WordFrequencyFilterCreator,"
+				+ "filters.LabelFilterCreator";
 		// Classifier name.
 		args[2] = "naiveBayes";
 		// Username.
