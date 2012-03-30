@@ -1,5 +1,7 @@
 package filters;
 
+import java.util.ArrayList;
+
 import general.Email;
 
 public class FilterCreatorManager {
@@ -19,11 +21,12 @@ public class FilterCreatorManager {
 	
 	/**
 	 * this constructor is only used for the testing phase (Experiments)
-	 * @param filterCreators: FilterCreator objects
+	 * @param filterCreatorsList: FilterCreator objects
 	 * @param trainingSet: Email Training Set
 	 */
-	public FilterCreatorManager(FilterCreator[] filterCreators, Email[] trainingSet){
-		this.filterCreators = filterCreators;
+	public FilterCreatorManager(ArrayList<FilterCreator> filterCreatorsList, Email[] trainingSet){
+		this.filterCreators = new FilterCreator[filterCreatorsList.size()];
+		filterCreatorsList.toArray(this.filterCreators);
 		filters = new Filter[filterCreators.length];
 		
 		for(int i=0; i<filterCreators.length; i++){

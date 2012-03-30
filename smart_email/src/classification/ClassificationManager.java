@@ -3,6 +3,7 @@ package classification;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import preprocessors.Preprocessor;
 import preprocessors.PreprocessorManager;
 
 import weka.core.Instances;
@@ -10,6 +11,7 @@ import weka.core.Instances;
 import datasource.DAO;
 import datasource.FileSystemDAO;
 import filters.Filter;
+import filters.FilterCreator;
 import filters.FilterCreatorManager;
 import filters.FilterManager;
 import general.Email;
@@ -36,6 +38,7 @@ public class ClassificationManager {
 
 	public static ClassificationManager getInstance(
 			String[] filterCreatorsNames, String[] preprocessors) {
+//		return new ClassificationManager(filterCreatorsNames, preprocessors);
 		if (managerInstance == null) {
 			return new ClassificationManager(filterCreatorsNames, preprocessors);
 		} else {
@@ -51,7 +54,7 @@ public class ClassificationManager {
 		return new FilterManager(filters);
 	}
 
-	public void initializeUserFilters(String username, Email[] trainingSet)
+	private void initializeUserFilters(String username, Email[] trainingSet)
 			throws InstantiationException, IllegalAccessException,
 			ClassNotFoundException {
 		FilterCreatorManager filterCreatorMgr = new FilterCreatorManager(
@@ -88,6 +91,12 @@ public class ClassificationManager {
 			pm.apply(email);
 	}
 
+	private void preprocessEmails(Email[] emails, ArrayList<Preprocessor> preprocessorsList){
+		PreprocessorManager pm = new PreprocessorManager(preprocessorsList);
+		for(Email email : emails)
+			pm.apply(email);
+	}
+	
 	public Classifier trainUserFromFileSystem(String username,
 			String classifierName, int trainingSetPercentage)
 			throws InstantiationException, IllegalAccessException,
@@ -103,6 +112,35 @@ public class ClassificationManager {
 			filters = userFilters.get(username);
 		}
 
+		FilterManager filterMgr = new FilterManager(filters);
+		Instances dataset = filterMgr.getDataset(trainingSet);
+		Classifier classifier = Classifier.getClassifierByName(classifierName,
+				null);
+		classifier.buildClassifier(dataset);
+		return classifier;
+	}
+	
+	/**
+	 * This function is used to re-train user using a specified filterCreatorList and preprocessorsList
+	 * It is used primarily in the testing phase (Experiments) to test different models to the same user
+	 * @param username
+	 * @param classifierName Classifier name to be used in classification
+	 * @param trainingSetPercentage Percentage of the training set from the user's dataset
+	 * @param preprocessorsList List of preprocessors
+	 * @param filterCreatorsList List of FilterCreators
+	 * @return returns a trained classifier to be used to classify new emails
+	 */
+	public Classifier trainUserFromFileSystem(String username, String classifierName, int trainingSetPercentage, ArrayList<Preprocessor> preprocessorsList, ArrayList<FilterCreator> filterCreatorsList){
+		String datasetPath = ClassificationManager.DATASET_PATH + username;
+		DAO dao = new FileSystemDAO(datasetPath);
+		Email[] trainingSet = getTrainingSet(dao, trainingSetPercentage);
+		preprocessEmails(trainingSet, preprocessorsList);
+
+		FilterCreatorManager filterCreatorMgr = new FilterCreatorManager(filterCreatorsList, trainingSet);
+		Filter[] filters = filterCreatorMgr.getFilters();
+		//overwriter any previously saved model for this user with the new filters of this re-training
+		userFilters.put(username, filters);
+		
 		FilterManager filterMgr = new FilterManager(filters);
 		Instances dataset = filterMgr.getDataset(trainingSet);
 		Classifier classifier = Classifier.getClassifierByName(classifierName,

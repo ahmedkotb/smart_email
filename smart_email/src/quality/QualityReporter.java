@@ -222,4 +222,10 @@ public interface QualityReporter {
 	 * @param instance
 	 */
 	public void updatePriors(Instance instance);
+	
+	/**
+	 * returns the accuracy of the classification
+	 * @return
+	 */
+	public double getAccuracy();
 }

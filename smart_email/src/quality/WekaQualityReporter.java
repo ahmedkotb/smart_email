@@ -163,4 +163,9 @@ public class WekaQualityReporter implements QualityReporter {
 		}
 	}
 
+	@Override
+	public double getAccuracy() {
+		return this.getCorrect()*100.0/this.numInstances();
+	}
+
 }

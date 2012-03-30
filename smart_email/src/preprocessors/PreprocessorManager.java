@@ -35,6 +35,13 @@ public class PreprocessorManager {
 		}
 	}
 	
+	/**
+	 * This constructor should be used only in the testing phase (Experiments)
+	 * @param preprocessorsList List of preprocessors to be used
+	 */
+	public PreprocessorManager(ArrayList<Preprocessor> preprocessorsList){
+		this.preprocessorsList = preprocessorsList;
+	}
 	
 	/**
 	 * applies the preprocessors on the given email
