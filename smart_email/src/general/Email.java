@@ -18,6 +18,7 @@ import javax.mail.internet.MimeMessage;
 public class Email extends Message {
 
 	private Message message;
+	private long uid;
 	
 	/**
 	 * Email constructor.
@@ -25,6 +26,14 @@ public class Email extends Message {
 	 */
 	public Email(Message message) {
 		this.message = message;
+	}
+	
+	public long getUid() {
+		return uid;
+	}
+
+	public void setUid(long uid) {
+		this.uid = uid;
 	}
 	
 	@Override
