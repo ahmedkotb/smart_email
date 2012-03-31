@@ -47,9 +47,9 @@ public class WordFrequencyFilter extends Filter{
 			System.exit(1);
 		}
 		
-		System.out.println("GRAMS = " + NGRAMS_MAX);
-		System.out.println("IGNORED_GRAMS = " + Arrays.toString(IGNORED_GRAMS));
-		System.out.println("FREQ_NORMALIZATION = " + FREQ_NORMALIZATION);
+		//System.out.println("GRAMS = " + NGRAMS_MAX);
+		//System.out.println("IGNORED_GRAMS = " + Arrays.toString(IGNORED_GRAMS));
+		//System.out.println("FREQ_NORMALIZATION = " + FREQ_NORMALIZATION);
 		Iterator<Attribute> itr = attributes.iterator();
 		indexMap = new HashMap<String, Integer>();
 		int index=0;

@@ -11,6 +11,7 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
 import javax.mail.Session;
+import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import com.sun.mail.imap.IMAPFolder;
 
@@ -73,6 +74,7 @@ public class ImapDAO extends DAO {
 
 		Folder folder = null;
 		Message messages[] = null;
+		ArrayList<Email> emails = null ;
 		try {
 			folder = store.getFolder(label);
 			folder.open(Folder.READ_WRITE);
@@ -85,15 +87,20 @@ public class ImapDAO extends DAO {
 			//fetch the messages
 			messages = folder.getMessages(start,end);
 
+			//Emails are sorted from the newest to oldest 
+			emails = new ArrayList<Email>(messages.length);
+			for (int i=messages.length-1;i>-1;i--){
+				MimeMessage m = new MimeMessage((MimeMessage)messages[i]);
+				Email e = new Email(m);
+				e.setUid(((IMAPFolder)folder).getUID(messages[i]));
+				e.setHeader("X-label", label);
+				emails.add(e);
+			}
+			
 		} catch (MessagingException e) {
 			e.printStackTrace();
 			return null;
 		}
-
-		//Emails are sorted from the newest to oldest 
-		ArrayList<Email> emails = new ArrayList<Email>(messages.length);
-		for (int i=messages.length-1;i>-1;i--)
-			emails.add(new Email(messages[i]));
 
 		return emails;
 	}
@@ -107,7 +114,9 @@ public class ImapDAO extends DAO {
 
 			inbox.copyMessages(new Message[] { message },
 					this.store.getFolder(labelName));
-			message.setFlag(Flag.DELETED, true);
+			
+			//TODO UNComment this to archieve email
+			//message.setFlag(Flag.DELETED, true);
 
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
