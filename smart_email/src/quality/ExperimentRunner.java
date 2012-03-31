@@ -111,6 +111,8 @@ public class ExperimentRunner {
 				
 				System.out.println(reporter.toSummaryString());
 			}
+			// re-fetch the ExperimentUnits, as the current one is used and can't be reused (e.g: WF filter is initialized in the above loop)
+			units = tuner.getExperimentUnits();
 		}
 
 		printResultMatrix();
