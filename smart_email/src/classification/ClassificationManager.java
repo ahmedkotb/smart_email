@@ -38,9 +38,9 @@ public class ClassificationManager {
 
 	public static ClassificationManager getInstance(
 			String[] filterCreatorsNames, String[] preprocessors) {
-//		return new ClassificationManager(filterCreatorsNames, preprocessors);
 		if (managerInstance == null) {
-			return new ClassificationManager(filterCreatorsNames, preprocessors);
+			managerInstance = new ClassificationManager(filterCreatorsNames, preprocessors); 
+			return managerInstance;
 		} else {
 			return managerInstance;
 		}
