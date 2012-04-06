@@ -19,18 +19,23 @@ import weka.core.FastVector;
 
 public class WordFrequencyFilterCreator implements FilterCreator{
 
+	//Map from the label (class) name to its LabelTermFrequencyManager 
 	private HashMap<String, LabelTermFrequencyManager> labelFreqMgrMap;
+	
+	//Map from each word to the set of labels it appeared in (for the Inverse Document Frequency [IDF] calculations)
 	private HashMap<String, HashSet<String>> wordToLabelsMap;
+	
+	//Appending a prefix to each word that will become a feature reduces the probability of having 2 features from different filters with the same name, which causes a run time error
 	private final String ATT_NAME_PREFIX = "WFF_";
-	private final int IMP_WORDS_PER_LABEL = 80;
-	private final int THRESHOLD_PERCENTAGE = 20;
+	
+	private final int DEFAULT_IMP_WORDS_PER_LABEL = 80;
+	private final int DEFAULT_THRESHOLD_PERCENTAGE = 20;
 	
 	//grams
 	private final int NGRAMS_MAX = 1;
 	private final int[] IGNORED_GRAMS = new int[] {};
 	//normalized frequencies
 	private boolean FREQ_NORMALIZATION = true;
-	
 	
 	public WordFrequencyFilterCreator() {
 		labelFreqMgrMap = new HashMap<String, WordFrequencyFilterCreator.LabelTermFrequencyManager>();
@@ -73,7 +78,7 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 		HashSet<String> uniqueWords = new HashSet<String>();
 		while(itr.hasNext()){
 			Map.Entry<String, LabelTermFrequencyManager> pair = itr.next();
-			String[] words = pair.getValue().extractImportantWords(IMP_WORDS_PER_LABEL);
+			String[] words = pair.getValue().extractImportantWords(DEFAULT_IMP_WORDS_PER_LABEL);
 			for(int i=0; i<words.length; i++){
 				if(!uniqueWords.contains(words[i])){
 					uniqueWords.add(words[i]);
@@ -217,7 +222,7 @@ public class WordFrequencyFilterCreator implements FilterCreator{
 				Collections.sort(tfidf);
 			
 			//XXX Heuristic: if a term has score < 10% of the highest score, then ignore it
-			double threshold = THRESHOLD_PERCENTAGE/100.0 * tfidf.get(0).score;
+			double threshold = DEFAULT_THRESHOLD_PERCENTAGE/100.0 * tfidf.get(0).score;
 			int sz = 0;
 			for(; sz<tfidf.size(); sz++) if(tfidf.get(sz).score < threshold) break;
 			String[] importantWords = new String[Math.min(maxSize, sz)];
