@@ -335,8 +335,7 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 				}
 			}
 
-			if (tfidf.size() > maxSize)
-				Collections.sort(tfidf);
+			Collections.sort(tfidf);
 
 			//Heuristic: if a term has score < 10% of the highest score, then ignore it
 			double threshold = thresholdPercentage/100.0 * tfidf.get(0).score;
