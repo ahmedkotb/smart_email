@@ -5,6 +5,7 @@ import general.Email;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -20,7 +21,7 @@ import weka.core.FastVector;
 public class WordFrequencyFilterCreator implements FilterCreator {
 
 	//Map from the label (class) name to its LabelTermFrequencyManager 
-	private HashMap<String, LabelTermFrequencyManager> labelFreqMgrMap;
+	private HashMap<String, TermManager> labelFreqMgrMap;
 	
 	//Map from each word to the set of labels it appeared in (for the Inverse Document Frequency [IDF] calculations)
 	private HashMap<String, HashSet<String>> wordToLabelsMap;
@@ -48,7 +49,7 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 	private final int[] IGNORED_GRAMS = new int[] {};
 
 	public WordFrequencyFilterCreator() {
-		labelFreqMgrMap = new HashMap<String, WordFrequencyFilterCreator.LabelTermFrequencyManager>();
+		labelFreqMgrMap = new HashMap<String, WordFrequencyFilterCreator.TermManager>();
 		wordToLabelsMap = new HashMap<String, HashSet<String>>();
 		
 		impWordsPerLabel = DEFAULT_IMP_WORDS_PER_LABEL;
@@ -188,12 +189,14 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 		fv.addElement("False");
 		fv.addElement("True");
 
-		Iterator<Map.Entry<String, LabelTermFrequencyManager>> itr = labelFreqMgrMap
+		Collection<TermManager> allManagers = labelFreqMgrMap.values();
+
+		Iterator<Map.Entry<String, TermManager>> itr = labelFreqMgrMap
 				.entrySet().iterator();
 		HashSet<String> uniqueWords = new HashSet<String>();
 		while (itr.hasNext()) {
-			Map.Entry<String, LabelTermFrequencyManager> pair = itr.next();
-			String[] words = pair.getValue().extractImportantWords(impWordsPerLabel);
+			Map.Entry<String, TermManager> pair = itr.next();
+			String[] words = pair.getValue().extractImportantWords(impWordsPerLabel,allManagers);
 			for(int i=0; i<words.length; i++){
 				if(!uniqueWords.contains(words[i])){
 					uniqueWords.add(words[i]);
@@ -225,9 +228,9 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 				e1.printStackTrace();
 			}
 
-			LabelTermFrequencyManager mgr = labelFreqMgrMap.get(lbl);
+			TermManager mgr = labelFreqMgrMap.get(lbl);
 			if (mgr == null) {
-				mgr = new LabelTermFrequencyManager();
+				mgr = new TfIdfManager(lbl);
 				labelFreqMgrMap.put(lbl, mgr);
 			}
 
@@ -293,20 +296,35 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 		return wordFrequencyFilter;
 	}
 
-	/**
-	 * used to hold term frequency information for each label
-	 * @author Moustafa Mahmoud , Ahmed Kotb*
-	 */
-	private class LabelTermFrequencyManager {
+	private abstract class TermManager{
+
+		protected String label = "";
+		
+		public abstract void updateFrequencies(List<HashMap<String, Double>> grams);
+
+		/**
+		 * extracts the important words from this TermManager
+		 * all managers are given to this method in case
+		 * shared data is required in calculations
+		 * @param maxSize maxsize of the returning important words list
+		 * @param allManagers collection of term managers of all classes
+		 * @return list of important words
+		 */
+		public abstract String[] extractImportantWords(int maxSize,
+				Collection<TermManager> allManagers);
+	}
+
+	private class TfIdfManager extends TermManager {
 
 		public List<HashMap<String, Double>> gramsFreq;
 
-		public LabelTermFrequencyManager() {
+		public TfIdfManager(String label) {
 			// init grams frequencies list
 			gramsFreq = new ArrayList<HashMap<String, Double>>();
 			for (int i = 0; i < NGRAMS_MAX; i++)
 				gramsFreq.add(new HashMap<String, Double>());
 
+			this.label = label;
 		}
 
 		/**
@@ -338,7 +356,7 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 		 * @param maxSize the size of the returning array
 		 * @return list of important words
 		 */
-		public String[] extractImportantWords(int maxSize) {
+		public String[] extractImportantWords(int maxSize,Collection<TermManager> allManagers) {
 			ArrayList<WordScore> tfidf = new ArrayList<WordScore>();
 
 			for (int i = 0; i < gramsFreq.size(); i++) { // for each gram size
