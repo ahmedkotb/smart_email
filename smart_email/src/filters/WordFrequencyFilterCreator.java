@@ -339,7 +339,7 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 		 * @return list of important words
 		 */
 		public String[] extractImportantWords(int maxSize) {
-			ArrayList<TfIdfScore> tfidf = new ArrayList<TfIdfScore>();
+			ArrayList<WordScore> tfidf = new ArrayList<WordScore>();
 
 			for (int i = 0; i < gramsFreq.size(); i++) { // for each gram size
 				Iterator<Map.Entry<String, Double>> itr = gramsFreq.get(i)
@@ -350,7 +350,7 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 
 					double idf = Math.log10(((double) labelFreqMgrMap.size())
 							/ wordToLabelsMap.get(pair.getKey()).size());
-					tfidf.add(new TfIdfScore(pair.getKey(), tf * idf));
+					tfidf.add(new WordScore(pair.getKey(), tf * idf));
 				}
 			}
 
@@ -372,18 +372,18 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 		}
 	}
 
-	private class TfIdfScore implements Comparable<TfIdfScore> {
+	private class WordScore implements Comparable<WordScore> {
 		public String word;
 		public double score;
 		private double eps = 1e-10;
 
-		public TfIdfScore(String word, double score) {
+		public WordScore(String word, double score) {
 			this.word = word;
 			this.score = score;
 		}
 
 		@Override
-		public int compareTo(TfIdfScore s) {
+		public int compareTo(WordScore s) {
 			if (score > s.score + eps)
 				return -1;
 			else if (score + eps < s.score)
