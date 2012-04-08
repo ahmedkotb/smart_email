@@ -34,12 +34,14 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 	//[own-heuristic] Words that have TF-IDF score less than (thresholdPercentage/100) * maximum TF-IDF score in the label, will be ignored
 	//To turn this feature off, set the threshold to zero
 	private int thresholdPercentage;
+	private double minScore;
 	// normalized frequencies
 	private boolean freqNormalization;
 	private boolean useBinaryAttributes;
 	
 	private final int DEFAULT_IMP_WORDS_PER_LABEL = 80;
 	private final int DEFAULT_THRESHOLD_PERCENTAGE = 20;
+	private final double DEFAULT_MIN_SCORE = Double.MAX_VALUE; //XXX this value needs to be selected based on tests (or even eliminated at all!)
 	
 	//grams
 	private final int NGRAMS_MAX = 1;
@@ -51,6 +53,7 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 		
 		impWordsPerLabel = DEFAULT_IMP_WORDS_PER_LABEL;
 		thresholdPercentage = DEFAULT_THRESHOLD_PERCENTAGE;
+		minScore = DEFAULT_MIN_SCORE;
 		freqNormalization = true;
 		useBinaryAttributes = true;
 		
@@ -124,6 +127,22 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 	 */
 	public void setUseBinaryAttributes(boolean useBinaryAttributes){
 		this.useBinaryAttributes = useBinaryAttributes;
+	}
+	
+	/**
+	 * Getter for minScore
+	 * @return The value of the minimum score that is used to select words features 
+	 */
+	public double getMinScore(){
+		return this.minScore;
+	}
+	
+	/**
+	 * Setter for minScore
+	 * @param minScore Set the value of the minScore
+	 */
+	public void setMinScore(double minScore){
+		this.minScore = minScore;
 	}
 	
 	/**
@@ -340,11 +359,12 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 			//Heuristic: if a term has score < 10% of the highest score, then ignore it
 			double threshold = thresholdPercentage/100.0 * tfidf.get(0).score;
 			int sz = 0;
-			for (; sz < tfidf.size(); sz++)
-				if (tfidf.get(sz).score < threshold)
+			int maxSz = Math.min(maxSize, tfidf.size());
+			for (; sz < maxSz; sz++)
+				if (tfidf.get(sz).score < threshold && tfidf.get(sz).score < minScore) //XXX 2 own-heuristics!
 					break;
-			String[] importantWords = new String[Math.min(maxSize, sz)];
-
+			
+			String[] importantWords = new String[sz];
 			for (int i = 0; i < importantWords.length; i++)
 				importantWords[i] = tfidf.get(i).word;
 			
