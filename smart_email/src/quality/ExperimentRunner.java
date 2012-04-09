@@ -18,7 +18,7 @@ public class ExperimentRunner {
 	private String[] usernames;
 	private Double[][] resultMatrix;
 
-	private static final String EXPERIMENTS_LOG_PATH = "../Experiments_Log";
+	private static final String EXPERIMENTS_LOG_PATH = "../../../Experiments_Log";
 	private static String graphColors[] = {"b", "r", "g", "m", "c", "y", "k"};
 	/*
 	 * b : blue
@@ -96,12 +96,14 @@ public class ExperimentRunner {
 	}
 	
 	public void runExperiment() throws Exception {
+		long start = System.currentTimeMillis();
 		ArrayList<ExperimentUnit> units = tuner.getExperimentUnits();
 		for(int i=0; i<resultMatrix.length; i++)
 			resultMatrix [i] = new Double[units.size()];
 		
 		for(int i=0; i<usernames.length; i++){
 			for (int j=0; j<units.size(); j++){
+				System.out.println("running user #" + (i+1) + " (" + usernames[i] + ") with experiment unit #"+(j+1));
 				ExperimentUnit unit = units.get(j);
 				
 				QualityReporterRunner qualityReporterRunner = new QualityReporterRunner(unit.getFilterCreators(), unit.getPreprocessors(), usernames[i], unit.getClassifierType(), unit.getTrainingSetPercentage());
@@ -115,8 +117,11 @@ public class ExperimentRunner {
 			units = tuner.getExperimentUnits();
 		}
 
-		printResultMatrix();
-		
 		ExportJSONObject(units);
+		
+		double time = (System.currentTimeMillis()-start)/1000.0;
+		System.out.println("Experiment took " + time + " seconds to run");
+		
+		printResultMatrix();
 	}
 }
