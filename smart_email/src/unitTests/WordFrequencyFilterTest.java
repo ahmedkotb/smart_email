@@ -210,7 +210,7 @@ public class WordFrequencyFilterTest {
 	@Test
 	public void naiveBayesTest() throws Exception{
 		String username = WordFrequencyFilterTest.USER_NAME;
-		ClassificationManager mgr =  ClassificationManager.getInstance(filterCreatorsNames, preprocessors);
+		ClassificationManager mgr =  ClassificationManager.getInstance();
 		Classifier classifier = mgr.trainUserFromFileSystem(username, "NaiveBayes", trainingSetPercentage);
 		FilterManager filterManager = mgr.getFilterManager(username);
 		FastVector attributes = filterManager.getAttributes();
@@ -249,7 +249,7 @@ public class WordFrequencyFilterTest {
 //	@Test
 	public void decisionTreeTest() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		String username = WordFrequencyFilterTest.USER_NAME;
-		ClassificationManager mgr = ClassificationManager.getInstance(filterCreatorsNames, preprocessors);
+		ClassificationManager mgr = ClassificationManager.getInstance();
 		Classifier classifier = mgr.trainUserFromFileSystem(username, "DecisionTree", trainingSetPercentage);
 		FilterManager filterManager = mgr.getFilterManager(username);
 		FastVector attributes = filterManager.getAttributes();
@@ -285,7 +285,7 @@ public class WordFrequencyFilterTest {
 	@Test
 	public void svmTest() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		String username = WordFrequencyFilterTest.USER_NAME;
-		ClassificationManager mgr = ClassificationManager.getInstance(filterCreatorsNames, preprocessors);
+		ClassificationManager mgr = ClassificationManager.getInstance();
 		Classifier classifier = mgr.trainUserFromFileSystem(username, "SVM", trainingSetPercentage);
 		FilterManager filterManager = mgr.getFilterManager(username);
 		FastVector attributes = filterManager.getAttributes();
@@ -322,7 +322,7 @@ public class WordFrequencyFilterTest {
 //	@Test
 	public void naiveBayesEvaluation() throws Exception{
 		String username = WordFrequencyFilterTest.USER_NAME;
-		ClassificationManager mgr = ClassificationManager.getInstance(filterCreatorsNames, preprocessors);
+		ClassificationManager mgr = ClassificationManager.getInstance();
 		mgr.trainUserFromFileSystem(username, "NaiveBayes", trainingSetPercentage);
 		FilterManager filterManager = mgr.getFilterManager(username);
 		FastVector attributes = filterManager.getAttributes();

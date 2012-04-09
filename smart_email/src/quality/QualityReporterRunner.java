@@ -1,15 +1,19 @@
 package quality;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-
+import java.util.Collections;
 import preprocessors.Preprocessor;
 import preprocessors.PreprocessorManager;
-
 import weka.core.Instances;
 import classification.ClassificationManager;
 import classification.Classifier;
 import datasource.DAO;
+import filters.Filter;
 import filters.FilterCreator;
+import filters.FilterCreatorManager;
 import filters.FilterManager;
 import general.Email;
 
@@ -124,21 +128,19 @@ public class QualityReporterRunner {
 	}
 
 	public QualityReporter EvaluateClassifer() throws Exception {
-		ClassificationManager classifierManager = ClassificationManager
-				.getInstance(filtersList, preprocessorsList);
 		// Prepare evaluation data.
 		prepareDataset();
 
 		Classifier classifier = null;
 		if (useReflection) {
-			classifier = classifierManager.trainUserFromFileSystem(username,
-					classifierType, trainingSetPercentage);
+			classifier = trainUserFromFileSystem(username, classifierType,
+					trainingSetPercentage);
 		} else {
-			classifier = classifierManager.trainUserFromFileSystem(username,
-					classifierType, trainingSetPercentage, preprocessors,
-					filterCreators);
+			classifier = trainUserFromFileSystem(username, classifierType,
+					trainingSetPercentage, preprocessors, filterCreators);
 		}
-		FilterManager filterMgr = classifierManager.getFilterManager(username);
+		// FilterManager filterMgr =
+		// classifierManager.getFilterManager(username);
 		Instances dataset = filterMgr.getDataset(trainingSet);
 		QualityReporter reporter = new WekaQualityReporter(dataset);
 		// Evaluate classifier.
@@ -147,12 +149,78 @@ public class QualityReporterRunner {
 		return reporter;
 	}
 
+	private Filter[] initializeUserFilters(String username)
+			throws InstantiationException, IllegalAccessException,
+			ClassNotFoundException {
+		FilterCreatorManager filterCreatorMgr = new FilterCreatorManager(
+				filtersList, trainingSet);
+		Filter[] filters = filterCreatorMgr.getFilters();
+		filterMgr = new FilterManager(filters);
+		return filters;
+		// userFilters.put(username, filters);
+	}
+
+	public Classifier trainUserFromFileSystem(String username,
+			String classifierName, int trainingSetPercentage)
+			throws InstantiationException, IllegalAccessException,
+			ClassNotFoundException, IOException {
+		Filter[] filters = initializeUserFilters(username);
+
+		FilterManager filterMgr = new FilterManager(filters);
+		Instances dataset = filterMgr.getDataset(trainingSet);
+		PrintWriter pw = new PrintWriter(new FileWriter("training.arff"));
+		pw.print(dataset.toString());
+		pw.close();
+		Classifier classifier = Classifier.getClassifierByName(classifierName,
+				null);
+		classifier.buildClassifier(dataset);
+		return classifier;
+	}
+
+	FilterManager filterMgr;
+
+	/**
+	 * This function is used to re-train user using a specified
+	 * filterCreatorList and preprocessorsList It is used primarily in the
+	 * testing phase (Experiments) to test different models to the same user
+	 * 
+	 * @param username
+	 * @param classifierName
+	 *            Classifier name to be used in classification
+	 * @param trainingSetPercentage
+	 *            Percentage of the training set from the user's dataset
+	 * @param preprocessorsList
+	 *            List of preprocessors
+	 * @param filterCreatorsList
+	 *            List of FilterCreators
+	 * @return returns a trained classifier to be used to classify new emails
+	 */
+	public Classifier trainUserFromFileSystem(String username,
+			String classifierName, int trainingSetPercentage,
+			ArrayList<Preprocessor> preprocessorsList,
+			ArrayList<FilterCreator> filterCreatorsList) {
+
+		FilterCreatorManager filterCreatorMgr = new FilterCreatorManager(
+				filterCreatorsList, trainingSet);
+		Filter[] filters = filterCreatorMgr.getFilters();
+		// overwriter any previously saved model for this user with the new
+		// filters of this re-training
+		// userFilters.put(username, filters);
+
+		filterMgr = new FilterManager(filters);
+		Instances dataset = filterMgr.getDataset(trainingSet);
+		Classifier classifier = Classifier.getClassifierByName(classifierName,
+				null);
+		classifier.buildClassifier(dataset);
+		return classifier;
+	}
+
 	/**
 	 * Prepares the training and testing set.
 	 */
 	private void prepareDataset() {
 		ClassificationManager classifierManager = ClassificationManager
-				.getInstance(filtersList, preprocessorsList);
+				.getInstance();
 		String path = classifierManager.getGoldenDataPath(username);
 		DAO dao = DAO.getInstance("FileSystems:" + path);
 		ArrayList<String> labels = dao.getClasses();
@@ -164,15 +232,16 @@ public class QualityReporterRunner {
 			double trainingSetRatio = trainingSetPercentage / 100.0;
 			int testSetStartIndex = (int) Math.ceil(trainingSetRatio
 					* emails.size());
+			Collections.shuffle(emails);
 			for (int j = 0; j < testSetStartIndex; j++)
 				training.add(emails.get(j));
 			for (int j = testSetStartIndex; j < emails.size(); j++)
 				testing.add(emails.get(j));
 		}
 		testingSet = testing;
-		//testing.toArray(testingSet);
+		// testing.toArray(testingSet);
 		trainingSet = training;
-		//training.toArray(trainingSet);
+		// training.toArray(trainingSet);
 
 		PreprocessorManager pm = null;
 		if (useReflection) {
@@ -180,10 +249,8 @@ public class QualityReporterRunner {
 		} else {
 			pm = new PreprocessorManager(preprocessors);
 		}
-		for (Email e : testingSet)
-			pm.apply(e);
-		for (Email e : trainingSet)
-			pm.apply(e);
+		pm.apply(testingSet);
+		pm.apply(trainingSet);
 	}
 
 	/**
