@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
+
   def index
     @users = User.all
 
@@ -80,4 +81,16 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+	include Oauth
+	def authenticate
+		@user = User.find(params[:id])
+		oauth_request_url, oauth_token, oauth_token_secret = generate_request_token()
+    @user.oauth_token_secret = oauth_token
+		@user.oauth_token_secret = oauth_token_secret
+		@user.save
+		puts oauthth_request_url
+		puts "hereee"
+		redirect_to oauth_request_url
+	end
 end
