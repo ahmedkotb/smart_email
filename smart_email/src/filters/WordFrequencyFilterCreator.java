@@ -18,6 +18,10 @@ import javax.mail.MessagingException;
 import weka.core.Attribute;
 import weka.core.FastVector;
 
+enum TokensChoiceAlgorithm{
+	TF_IDF,CHI_STATISTIC
+}
+
 public class WordFrequencyFilterCreator implements FilterCreator {
 
 	//Map from the label (class) name to its LabelTermFrequencyManager 
@@ -39,14 +43,23 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 	// normalized frequencies
 	private boolean freqNormalization;
 	private boolean useBinaryAttributes;
+	private TokensChoiceAlgorithm tokenChoiceAlgorithm;
 	
+	//#### TUNABLE CONSTANTS #####
+	//===================================
 	private final int DEFAULT_IMP_WORDS_PER_LABEL = 80;
 	private final int DEFAULT_THRESHOLD_PERCENTAGE = 20;
-	private final double DEFAULT_MIN_SCORE = Double.MAX_VALUE; //XXX this value needs to be selected based on tests (or even eliminated at all!)
-	
-	//grams
+	//XXX this value needs to be selected based on tests (or even eliminated at all!)
+	private final double DEFAULT_MIN_SCORE = Double.MAX_VALUE;
+	private final boolean DEFAULT_FREQ_NORMALIZATION = true;
+	private final boolean DEFAULT_BINARY_FEATURES = true;
+
+	private final TokensChoiceAlgorithm DEFAULT_TOKEN_ALGORITHM = TokensChoiceAlgorithm.TF_IDF;
+
+	//ngrams constants
 	private final int NGRAMS_MAX = 1;
 	private final int[] IGNORED_GRAMS = new int[] {};
+	//====================================
 
 	public WordFrequencyFilterCreator() {
 		labelFreqMgrMap = new HashMap<String, WordFrequencyFilterCreator.TermManager>();
@@ -55,11 +68,15 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 		impWordsPerLabel = DEFAULT_IMP_WORDS_PER_LABEL;
 		thresholdPercentage = DEFAULT_THRESHOLD_PERCENTAGE;
 		minScore = DEFAULT_MIN_SCORE;
-		freqNormalization = true;
-		useBinaryAttributes = true;
+		freqNormalization = DEFAULT_FREQ_NORMALIZATION;
+		useBinaryAttributes = DEFAULT_BINARY_FEATURES;
+		tokenChoiceAlgorithm = DEFAULT_TOKEN_ALGORITHM;
 		
 		// sort ignored grams array
 		Arrays.sort(IGNORED_GRAMS);
+
+		//print the name of the algorithm used for important words choosing
+		System.out.println("Term Choice Algorithm " + tokenChoiceAlgorithm);
 	}
 
 	/**
@@ -230,8 +247,14 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 
 			TermManager mgr = labelFreqMgrMap.get(lbl);
 			if (mgr == null) {
-				//mgr = new TfIdfManager(lbl);
-				mgr = new ChiTermManager(lbl);
+				switch (tokenChoiceAlgorithm){
+					case TF_IDF:
+						mgr = new TfIdfManager(lbl);
+						break;
+					case CHI_STATISTIC:
+						mgr = new ChiTermManager(lbl);
+						break;
+				}
 				labelFreqMgrMap.put(lbl, mgr);
 			}
 
@@ -478,11 +501,13 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 			for (int i = 0; i < size; i++)
 				importantWords[i] =  tokenScores.get(i).word;
 			
+			/*
 			System.out.println("label : " + this.label);
 			for (int i = 0; i < Math.min(10,tokenScores.size()); i++) {
 				System.out.println(tokenScores.get(i).word + "\t" + tokenScores.get(i).score);
 			}
 			System.out.println("--------");
+			*/
 			
 			return importantWords;
 		}
