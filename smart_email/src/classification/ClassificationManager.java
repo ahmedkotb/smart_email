@@ -13,6 +13,8 @@ public class ClassificationManager {
 	private HashMap<String, Filter[]> userFilters = new HashMap<String, Filter[]>();
 	// Path for the training and testing dataset.
 	private static final String DATASET_PATH = "../../../enron_processed/";
+	// Maximum limit for emails per label
+	private static final int LIMIT = 2000;
 
 	/**
 	 * The function returns the path for the golden data used for training and
@@ -54,5 +56,14 @@ public class ClassificationManager {
 			return null;
 		}
 		return new FilterManager(filters);
+	}
+
+	/**
+	 * Returns maximum number of emails per label used for training.
+	 * 
+	 * @return maximum number of emails per label used for training.
+	 */
+	public int getTrainingLimit() {
+		return LIMIT;
 	}
 }

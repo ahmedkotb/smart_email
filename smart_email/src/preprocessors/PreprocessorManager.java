@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class PreprocessorManager {
 
-	private List<Preprocessor> preprocessorsList;
+	private ArrayList<Preprocessor> preprocessorsList;
 
 	/**
 	 * creates the required preprocessors
@@ -73,6 +73,14 @@ public class PreprocessorManager {
 				processor.apply(email);
 			}
 		}
+	}
+	
+	/**
+	 * Returns a list of preprocessors.
+	 * @return list of preprocessors.
+	 */
+	public ArrayList<Preprocessor> getPreprocessors() {
+		return preprocessorsList;
 	}
 
 }

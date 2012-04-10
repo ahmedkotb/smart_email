@@ -21,7 +21,8 @@ public class Experiment1 implements ExperimentTunerIF{
 	public ArrayList<ExperimentUnit> getExperimentUnits() {
 		ArrayList<ExperimentUnit> units = new ArrayList<ExperimentUnit>();
 		
-		String classifierType = "naiveBayes";
+		//String classifierType = "naiveBayes";
+		String classifierType = "svm";
 		int trainingSetPercentage = 60;
 		
 		ArrayList<Preprocessor> preprocessors = new ArrayList<Preprocessor>();
@@ -55,8 +56,8 @@ public class Experiment1 implements ExperimentTunerIF{
 
 	public static void main(String[] args) throws Exception {
 		ExperimentTunerIF tuner = new Experiment1();
-//		String[] usernames = new String[]{"sanders_r", "lokay_m"};
-		String[] usernames = new String[]{"lokay_m"};
+		String[] usernames = new String[]{"sanders_r", "lokay_m"};
+//		String[] usernames = new String[]{"lokay_m"};
 //		String[] usernames = new String[]{"sanders_r", "lokay_m", "beck-s"};
 //		String[] usernames = new String[]{"sanders_r"};
 		ExperimentRunner exp = new ExperimentRunner(tuner, usernames, "Sender and WF filters Combinations");
