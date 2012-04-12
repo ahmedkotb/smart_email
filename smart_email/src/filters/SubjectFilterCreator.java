@@ -147,11 +147,12 @@ public class SubjectFilterCreator implements FilterCreator{
 		}
 		
 		ArrayList<Attribute> atts = extractAttributes();
-		String[] options = new String[4];
+		String[] options = new String[5];
 		options[0] = ATT_NAME_PREFIX;
 		options[1] = NGRAMS_MAX + "";
 		options[2] = "";
 		options[3] = FREQ_NORMALIZATION + "";
+		options[4] = "True"; //XXX static fix to ArrayOutOfBound Exception
 		for (int i = 0; i < IGNORED_GRAMS.length; i++) {
 			if (i == IGNORED_GRAMS.length - 1)
 				options[2] += IGNORED_GRAMS[i];
@@ -209,8 +210,7 @@ public class SubjectFilterCreator implements FilterCreator{
 				}
 			}
 			
-			if(tfidf.size() > maxSize)
-				Collections.sort(tfidf);
+			Collections.sort(tfidf);
 			
 			//XXX Heuristic: if a term has score < 10% of the highest score, then ignore it
 			double threshold = THRESHOLD_PERCENTAGE/100.0 * tfidf.get(0).score;
