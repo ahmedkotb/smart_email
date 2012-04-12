@@ -9,6 +9,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import training.Trainer;
+import weka.core.Instances;
+import classification.Classifier;
+
 public class ExperimentRunner {
 
 	private ExperimentTunerIF tuner;
@@ -106,8 +110,15 @@ public class ExperimentRunner {
 				System.out.println("running user #" + (i+1) + " (" + usernames[i] + ") with experiment unit #"+(j+1));
 				ExperimentUnit unit = units.get(j);
 				
-				QualityReporterRunner qualityReporterRunner = new QualityReporterRunner(unit.getFilterCreators(), unit.getPreprocessors(), usernames[i], unit.getClassifierType(), unit.getTrainingSetPercentage());
-				QualityReporter reporter = qualityReporterRunner.EvaluateClassifer();
+				
+				Trainer trainer = new Trainer(usernames[i], unit.getClassifierType(),
+						unit.getTrainingSetPercentage(), unit.getPreprocessors(), unit.getFilterCreators());
+				trainer.init();
+				Classifier classifier = trainer.trainModel();
+				Instances trainingInstances = trainer.getTrainedInstances();
+				Instances testingInstances = trainer.getTestInstances();
+				QualityReporter reporter = new WekaQualityReporter(trainingInstances);
+				reporter.evaluateModel(classifier, testingInstances);
 				resultMatrix[i][j] = reporter.getAccuracy();
 				//XXX add timeStamp + unit name + unit description + result summary to Log file
 				

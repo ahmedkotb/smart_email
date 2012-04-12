@@ -1,17 +1,12 @@
 package quality;
 
 import java.util.ArrayList;
-
 import preprocessors.Preprocessor;
 import preprocessors.PreprocessorManager;
-
+import training.Trainer;
 import weka.core.Instances;
-import classification.ClassificationManager;
 import classification.Classifier;
-import datasource.DAO;
 import filters.FilterCreator;
-import filters.FilterManager;
-import general.Email;
 
 /**
  * A class used for running the quality reporter and printing the summary
@@ -24,21 +19,14 @@ public class QualityReporterRunner {
 
 	// List of used preprocessors.
 	private String[] preprocessorsList;
-	// List of used filters.
-	private String[] filtersList;
+	// List of used filter creators.
+	private String[] filterCreatorssList;
 	// Classifier type.
 	private String classifierType;
 	// Username
 	private String username;
 	// Training set percentage
 	private int trainingSetPercentage;
-	// Training Set.
-	private ArrayList<Email> trainingSet;
-	// Testing Set.
-	private ArrayList<Email> testingSet;
-	// if true, the preprocessors and filterCreators will be loaded through
-	// reflections, else i will use ready made instances of them
-	private boolean useReflection;
 	// Preprocessors Instances to be used
 	private ArrayList<Preprocessor> preprocessors;
 	// fitlerCreators Instances to be used
@@ -57,52 +45,27 @@ public class QualityReporterRunner {
 	private static final String DELIMITER = ",";
 
 	/**
-	 * Empty Constructor. Parameters will be initialized using Init(args)
-	 * function that uses command line args
-	 */
-	public QualityReporterRunner() {
-		useReflection = true;
-	}
-
-	/**
-	 * This constructor uses ready made FilterCreators and Preprocessors to pass
-	 * them to the FilterCreatorManager and PreprocessorManager, instead of
-	 * using reflection to load them. It is mainly used in to run Experiments in
-	 * the testing phase
-	 * 
-	 * @param fitlerCreatorsList
-	 *            List of FilterCreators
-	 * @param preprcoessorsList
-	 *            List of Preprocessor
-	 * @param username
-	 *            Name of the user upon which we will run the classification
-	 * @param classifierType
-	 *            Classifier Type
-	 * @param trainingSetPrecentage
-	 *            Percentage of training set from the users dataset
-	 */
-	public QualityReporterRunner(ArrayList<FilterCreator> filterCreatorsList,
-			ArrayList<Preprocessor> preprocessorsList, String username,
-			String classifierType, int trainingSetPrecentage) {
-		useReflection = false;
-		this.preprocessorsList = null;
-		this.filtersList = null;
-		this.filterCreators = filterCreatorsList;
-		this.preprocessors = preprocessorsList;
-		this.username = username;
-		this.classifierType = classifierType;
-		this.trainingSetPercentage = trainingSetPrecentage;
-	}
-
-	/**
 	 * Initializes the quality reporter runner from given array of arguments.
 	 * 
 	 * @param args
 	 *            initialization arguments.
+	 * @throws ClassNotFoundException
+	 * @throws IllegalAccessException
+	 * @throws InstantiationException
 	 */
-	public void Init(String[] args) {
+	public void Init(String[] args) throws InstantiationException,
+			IllegalAccessException, ClassNotFoundException {
 		preprocessorsList = readPreprocessorsList(args);
-		filtersList = readFiltersList(args);
+		preprocessors = new PreprocessorManager(preprocessorsList)
+				.getPreprocessors();
+		filterCreatorssList = readFiltersList(args);
+		filterCreators = new ArrayList<FilterCreator>(
+				filterCreatorssList.length);
+		for (int i = 0; i < filterCreatorssList.length; i++) {
+			filterCreators.add((FilterCreator) Class.forName(
+					filterCreatorssList[i]).newInstance());
+		}
+
 		classifierType = readClassifierType(args);
 		username = readUsername(args);
 		trainingSetPercentage = readTrainingSet(args);
@@ -113,77 +76,20 @@ public class QualityReporterRunner {
 	 * 
 	 * @throws Exception
 	 */
-	// TODO this function is deceiving as it does all the work of classification
-	// to print the summary, while it's name doesn't indicate that
 	private void printSummaryReport() throws Exception {
-		QualityReporter reporter = EvaluateClassifer();
+		Trainer trainer = new Trainer(username, classifierType,
+				trainingSetPercentage, preprocessors, filterCreators);
+		trainer.init();
+		Classifier classifier = trainer.trainModel();
+		Instances trainingInstances = trainer.getTrainedInstances();
+		Instances testingInstances = trainer.getTestInstances();
+		QualityReporter reporter = new WekaQualityReporter(trainingInstances);
+		// Evaluate classifier.
+		reporter.evaluateModel(classifier, testingInstances);
 		// Printing summary report.
 		System.out.println(reporter.toSummaryString());
 		// Printing class details report.
 		System.out.println(reporter.toClassDetailsString(""));
-	}
-
-	public QualityReporter EvaluateClassifer() throws Exception {
-		ClassificationManager classifierManager = ClassificationManager
-				.getInstance(filtersList, preprocessorsList);
-		// Prepare evaluation data.
-		prepareDataset();
-
-		Classifier classifier = null;
-		if (useReflection) {
-			classifier = classifierManager.trainUserFromFileSystem(username,
-					classifierType, trainingSetPercentage);
-		} else {
-			classifier = classifierManager.trainUserFromFileSystem(username,
-					classifierType, trainingSetPercentage, preprocessors,
-					filterCreators);
-		}
-		FilterManager filterMgr = classifierManager.getFilterManager(username);
-		Instances dataset = filterMgr.getDataset(trainingSet);
-		QualityReporter reporter = new WekaQualityReporter(dataset);
-		// Evaluate classifier.
-		reporter.evaluateModel(classifier, filterMgr.getDataset(testingSet));
-
-		return reporter;
-	}
-
-	/**
-	 * Prepares the training and testing set.
-	 */
-	private void prepareDataset() {
-		ClassificationManager classifierManager = ClassificationManager
-				.getInstance(filtersList, preprocessorsList);
-		String path = classifierManager.getGoldenDataPath(username);
-		DAO dao = DAO.getInstance("FileSystems:" + path);
-		ArrayList<String> labels = dao.getClasses();
-		ArrayList<Email> testing = new ArrayList<Email>();
-		ArrayList<Email> training = new ArrayList<Email>();
-		for (int i = 0; i < labels.size(); i++) {
-			ArrayList<Email> emails = dao.getClassifiedEmails(labels.get(i),
-					2000);
-			double trainingSetRatio = trainingSetPercentage / 100.0;
-			int testSetStartIndex = (int) Math.ceil(trainingSetRatio
-					* emails.size());
-			for (int j = 0; j < testSetStartIndex; j++)
-				training.add(emails.get(j));
-			for (int j = testSetStartIndex; j < emails.size(); j++)
-				testing.add(emails.get(j));
-		}
-		testingSet = testing;
-		//testing.toArray(testingSet);
-		trainingSet = training;
-		//training.toArray(trainingSet);
-
-		PreprocessorManager pm = null;
-		if (useReflection) {
-			pm = new PreprocessorManager(preprocessorsList);
-		} else {
-			pm = new PreprocessorManager(preprocessors);
-		}
-		for (Email e : testingSet)
-			pm.apply(e);
-		for (Email e : trainingSet)
-			pm.apply(e);
 	}
 
 	/**
@@ -246,9 +152,9 @@ public class QualityReporterRunner {
 		"filters.SenderFilterCreator," + "filters.WordFrequencyFilterCreator,"
 				+ "filters.LabelFilterCreator";
 		// Classifier name.
-		args[2] = "naiveBayes";
+		args[2] = "svm";
 		// Username.
-		args[3] = "lokay_m";
+		args[3] = "sanders_r";
 		// Training Percentage.
 		args[4] = "60";
 		QualityReporterRunner repoter = new QualityReporterRunner();
