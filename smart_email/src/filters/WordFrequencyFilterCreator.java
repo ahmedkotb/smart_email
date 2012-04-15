@@ -6,12 +6,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import wordFrequencyTools.*;
 
 import javax.mail.MessagingException;
 
@@ -26,10 +27,10 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 
 	//Map from the label (class) name to its LabelTermFrequencyManager 
 	private HashMap<String, TermManager> labelFreqMgrMap;
-	
+
 	//Map from each word to the set of labels it appeared in (for the Inverse Document Frequency [IDF] calculations)
 	private HashMap<String, HashSet<String>> wordToLabelsMap;
-	
+
 	//Appending a prefix to each word that will become a feature reduces the probability of having 2 features from different filters with the same name, which causes a run time error
 	private final String ATT_NAME_PREFIX = "WFF_";
 	
@@ -62,7 +63,7 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 	//====================================
 
 	public WordFrequencyFilterCreator() {
-		labelFreqMgrMap = new HashMap<String, WordFrequencyFilterCreator.TermManager>();
+		labelFreqMgrMap = new HashMap<String, TermManager>();
 		wordToLabelsMap = new HashMap<String, HashSet<String>>();
 		
 		impWordsPerLabel = DEFAULT_IMP_WORDS_PER_LABEL;
@@ -237,6 +238,20 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 		// b- update frequencies for each label (labelFreqMgr)
 		// c- update wordTolabels (how many times each term appears /label)
 
+		//loop to count the number of labels (TF-IDF needs this number in the constructor
+		HashSet<String> labels = new HashSet<String>();
+		for(Email email : emails){
+			String lbl = null;
+			try {
+				lbl = email.getHeader("X-label")[0];
+			} catch (MessagingException e1) {
+				e1.printStackTrace();
+			}
+
+			if(!labels.contains(lbl))
+				labels.add(lbl);
+		}
+		
 		for (Email email : emails) {
 			String lbl = null;
 			try {
@@ -249,10 +264,11 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 			if (mgr == null) {
 				switch (tokenChoiceAlgorithm){
 					case TF_IDF:
-						mgr = new TfIdfManager(lbl);
+						int numLabels = labels.size();
+						mgr = new TfIdfManager(lbl, NGRAMS_MAX, this.wordToLabelsMap, numLabels, this.thresholdPercentage, this.minScore);
 						break;
 					case CHI_STATISTIC:
-						mgr = new ChiTermManager(lbl);
+						mgr = new ChiTermManager(lbl, NGRAMS_MAX);
 						break;
 				}
 				labelFreqMgrMap.put(lbl, mgr);
@@ -286,18 +302,6 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 			}
 
 			mgr.updateFrequencies(grams);
-
-			for (int i = 0; i < NGRAMS_MAX; ++i) {
-				Iterator<Map.Entry<String, Double>> it = grams.get(i)
-						.entrySet().iterator();
-				while (it.hasNext()) {
-					String word = it.next().getKey();
-					if (!wordToLabelsMap.containsKey(word))
-						wordToLabelsMap.put(word, new HashSet<String>());
-
-					wordToLabelsMap.get(word).add(lbl);
-				}
-			}
 		}
 
 		//passing arguments to the filter
@@ -318,218 +322,5 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 		Filter wordFrequencyFilter = new WordFrequencyFilter(atts, options);
 
 		return wordFrequencyFilter;
-	}
-
-	private abstract class TermManager{
-
-		protected String label = "";
-		
-		public TermManager(String label) {
-			this.label = label;
-		}
-		
-		public abstract void updateFrequencies(List<HashMap<String, Double>> grams);
-
-		/**
-		 * extracts the important words from this TermManager
-		 * all managers are given to this method in case
-		 * shared data is required in calculations
-		 * @param maxSize maxsize of the returning important words list
-		 * @param allManagers collection of term managers of all classes
-		 * @return list of important words
-		 */
-		public abstract String[] extractImportantWords(int maxSize,
-				Collection<TermManager> allManagers);
-	}
-
-	private class TfIdfManager extends TermManager {
-
-		public List<HashMap<String, Double>> gramsFreq;
-
-		public TfIdfManager(String label) {
-			super(label);
-			// init grams frequencies list
-			gramsFreq = new ArrayList<HashMap<String, Double>>();
-			for (int i = 0; i < NGRAMS_MAX; i++)
-				gramsFreq.add(new HashMap<String, Double>());
-		}
-
-		/**
-		 * updates the grams frequencies by the given hashmaps
-		 * @param grams the new grams frequencies to update the current one with
-		 */
-		public void updateFrequencies(List<HashMap<String, Double>> grams) {
-			// merge the two hash maps for each ngram
-			for (int i = 0; i < NGRAMS_MAX; i++) {
-				HashMap<String, Double> labelGrams = gramsFreq.get(i);
-				Iterator<Map.Entry<String, Double>> itr = grams.get(i)
-						.entrySet().iterator();
-				
-				while (itr.hasNext()) {
-					Map.Entry<String, Double> pair = itr.next();
-
-					double newValue = pair.getValue();
-					if (labelGrams.containsKey(pair.getKey()))
-						newValue += labelGrams.get(pair.getKey());
-
-					labelGrams.put(pair.getKey(), newValue);
-				}
-			}
-
-		}
-
-		/**
-		 * extracts the important words from the whole words stored in this object
-		 * @param maxSize the size of the returning array
-		 * @return list of important words
-		 */
-		public String[] extractImportantWords(int maxSize,Collection<TermManager> allManagers) {
-			ArrayList<WordScore> tfidf = new ArrayList<WordScore>();
-
-			for (int i = 0; i < gramsFreq.size(); i++) { // for each gram size
-				Iterator<Map.Entry<String, Double>> itr = gramsFreq.get(i)
-						.entrySet().iterator();
-				while (itr.hasNext()) {
-					Map.Entry<String, Double> pair = itr.next();
-					double tf = pair.getValue();
-
-					double idf = Math.log10(((double) labelFreqMgrMap.size())
-							/ wordToLabelsMap.get(pair.getKey()).size());
-					tfidf.add(new WordScore(pair.getKey(), tf * idf));
-				}
-			}
-
-			Collections.sort(tfidf);
-
-			//Heuristic: if a term has score < 10% of the highest score, then ignore it
-			double threshold = thresholdPercentage/100.0 * tfidf.get(0).score;
-			int sz = 0;
-			int maxSz = Math.min(maxSize, tfidf.size());
-			for (; sz < maxSz; sz++)
-				if (tfidf.get(sz).score < threshold && tfidf.get(sz).score < minScore) //XXX 2 own-heuristics!
-					break;
-			
-			String[] importantWords = new String[sz];
-			for (int i = 0; i < importantWords.length; i++)
-				importantWords[i] = tfidf.get(i).word;
-			
-			return importantWords;
-		}
-	}
-
-	private class ChiTermManager extends TermManager {
-
-		//maps Term ==> no of emails
-		HashMap<String, Integer> documentFrequencies;
-
-		//no of emails in this label
-		int emailsCount = 0;
-
-		public ChiTermManager(String label) {
-			super(label);
-			documentFrequencies = new HashMap<String, Integer>();
-		}
-		
-		@Override
-		public void updateFrequencies(List<HashMap<String, Double>> grams) {
-			// merge the two hash maps for each ngram
-			// XXX this method should be called for every email 
-			// and should be called only once
-			// XXX only for unigrams now
-			
-			emailsCount++;
-			
-			Iterator<Map.Entry<String, Double>> itr = grams.get(0)
-					.entrySet().iterator();
-			
-			while (itr.hasNext()) {
-				Map.Entry<String, Double> pair = itr.next();
-
-				int oldValue = 0;
-				if (documentFrequencies.containsKey(pair.getKey()))
-					oldValue = documentFrequencies.get(pair.getKey());
-					
-				//we only increase by one as we are counting no of document each term appears in
-				documentFrequencies.put(pair.getKey(), oldValue+1);
-			}
-		}
-
-		@Override
-		public String[] extractImportantWords(int maxSize,
-				Collection<TermManager> allManagers) {
-			
-			List<WordScore> tokenScores = new ArrayList<WordScore>();
-			
-			//calculate chi score for each token
-			
-			//System.out.println(this.emailsCount);
-			Iterator<String> itr = documentFrequencies.keySet().iterator();
-			
-			while (itr.hasNext()){
-				String token = itr.next();
-				int N11 = documentFrequencies.get(token);
-				int N01 = this.emailsCount - N11;
-				int N10 = 0;
-				int N00 = 0;
-				Iterator<TermManager> manItr = allManagers.iterator();
-				while (manItr.hasNext()){
-					ChiTermManager tm = (ChiTermManager) manItr.next();
-					if (tm.label.equals(this.label))
-						continue;
-					if (tm.documentFrequencies.containsKey(token)){
-						N10 += tm.documentFrequencies.get(token);
-						N00 += tm.emailsCount - tm.documentFrequencies.get(token);
-					}else{
-						N00 += tm.emailsCount;
-					}
-				}
-				
-				int N = N00 + N01 + N10 + N11;
-				//System.out.println("(T,L) (" + token + ","  + this.label + ")" +
-				//		"  (N11,N10,N01,N00) => N  " + N11 + "," + N10 + "," + N01 + "," + N00 + " => " + N);
-				double t1 =  (N * (N11*N00 - N10*N01) * (N11*N00 - N10*N01));
-				double t2 =  (N11 + N01) * (N11 + N10) * (N10 + N00) * (N01 + N00);
-				double chiScore =  t1/t2;
-				tokenScores.add(new WordScore(token, chiScore));
-			}
-			
-			Collections.sort(tokenScores);
-			
-			int size = Math.min(maxSize, tokenScores.size());
-			String[] importantWords = new String[size];
-			
-			for (int i = 0; i < size; i++)
-				importantWords[i] =  tokenScores.get(i).word;
-			
-			/*
-			System.out.println("label : " + this.label);
-			for (int i = 0; i < Math.min(10,tokenScores.size()); i++) {
-				System.out.println(tokenScores.get(i).word + "\t" + tokenScores.get(i).score);
-			}
-			System.out.println("--------");
-			*/
-			
-			return importantWords;
-		}
-		
-	}
-	private class WordScore implements Comparable<WordScore> {
-		public String word;
-		public double score;
-		private double eps = 1e-10;
-
-		public WordScore(String word, double score) {
-			this.word = word;
-			this.score = score;
-		}
-
-		@Override
-		public int compareTo(WordScore s) {
-			if (score > s.score + eps)
-				return -1;
-			else if (score + eps < s.score)
-				return 1;
-			return 0;
-		}
 	}
 }
