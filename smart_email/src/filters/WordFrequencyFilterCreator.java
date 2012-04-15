@@ -19,10 +19,6 @@ import javax.mail.MessagingException;
 import weka.core.Attribute;
 import weka.core.FastVector;
 
-enum TokensChoiceAlgorithm{
-	TF_IDF,CHI_STATISTIC
-}
-
 public class WordFrequencyFilterCreator implements FilterCreator {
 
 	//Map from the label (class) name to its LabelTermFrequencyManager 
