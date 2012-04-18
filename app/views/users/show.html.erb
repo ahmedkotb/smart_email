@@ -1,16 +1,31 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = @user.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human %></h1>
 
 <p>
-  <b>Username:</b>
+  <strong><%= model_class.human_attribute_name(:username) %>:</strong><br>
   <%= @user.username %>
 </p>
-
 <p>
-  <b>Password:</b>
+  <strong><%= model_class.human_attribute_name(:password) %>:</strong><br>
   <%= @user.password %>
 </p>
+<p>
+  <strong><%= model_class.human_attribute_name(:oauth_token) %>:</strong><br>
+  <%= @user.oauth_token %>
+</p>
+<p>
+  <strong><%= model_class.human_attribute_name(:oauth_token_secret) %>:</strong><br>
+  <%= @user.oauth_token_secret %>
+</p>
 
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-<%= link_to 'Authenticate', :controller => "users", :action => "authenticate",:id => @user.id %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              users_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_user_path(@user), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              user_path(@user),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>
