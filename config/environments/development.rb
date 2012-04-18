@@ -34,4 +34,6 @@ SmartEmail::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+ENV['IRON_MQ_TOKEN'] = 'w8iugNKVDu7h3qA2vp3Phmai_aI'
+ENV['IRON_MQ_PROJECT_ID'] = '4f8efca57909835ee9017e2d'
 end

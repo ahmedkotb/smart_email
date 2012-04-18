@@ -30,6 +30,7 @@ end
 gem 'jquery-rails'
 #gem 'amqp', :require => 'mq'
 gem "heroku"
+gem 'iron_mq'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
