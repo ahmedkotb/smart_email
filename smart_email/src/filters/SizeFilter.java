@@ -8,9 +8,13 @@ import weka.core.Attribute;
 import general.Email;
 
 public class SizeFilter extends Filter {
-
+	private int numClasses;
+	private int compressionFactor;
+	
 	public SizeFilter(ArrayList<Attribute> atts, String[] options) {
 		super(atts, options);
+		this.numClasses = Integer.parseInt(options[0]);
+		this.compressionFactor = Integer.parseInt(options[1]);
 	}
 
 	private static final long serialVersionUID = 2816588538309219702L;
@@ -18,8 +22,11 @@ public class SizeFilter extends Filter {
 	@Override
 	public double[] getAttValue(Email email) {
 		try {
-			double size = 0.0 + email.getSize();
-			return new double[] { size };
+//			double size = 0.0 + email.getSize();
+//			return new double[] { size };
+			int compressedSize = email.getSize() / compressionFactor;
+			int sizeClass = (compressedSize < numClasses? compressedSize : numClasses);
+			return new double[] {sizeClass};
 		} catch (MessagingException e) {
 			e.printStackTrace();
 			return new double[] { -1.0 };

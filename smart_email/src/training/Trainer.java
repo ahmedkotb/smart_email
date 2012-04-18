@@ -80,7 +80,8 @@ public class Trainer implements TrainerIF {
 					maximumLimit);
 			int testSetStartIndex = (int) Math.ceil(trainingSetRatio
 					* emails.size());
-			Collections.shuffle(emails, new Random(SEED));
+//			Collections.shuffle(emails, new Random(SEED));
+			Collections.reverse(emails);
 			for (int j = 0; j < testSetStartIndex; j++)
 				trainingSet.add(emails.get(j));
 			for (int j = testSetStartIndex; j < emails.size(); j++)

@@ -1,6 +1,5 @@
 package filters;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -8,20 +7,20 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.mail.MessagingException;
-
 import weka.core.Attribute;
 import general.Email;
 
 public class SubjectFilter extends Filter{
 	
 	private static final long serialVersionUID = 7202701812643864245L;
+
 	private String attPrefix;
 	private HashMap<String, Integer> indexMap;
 	
 	private int NGRAMS_MAX = 0;
 	private int[] IGNORED_GRAMS;
 	private boolean FREQ_NORMALIZATION = false;
+	private boolean useBinaryAttributes;
 	
 	/**
 	 * Constructor
@@ -40,6 +39,7 @@ public class SubjectFilter extends Filter{
 					IGNORED_GRAMS[i] = Integer.parseInt(ignored[i]);
 			}
 			FREQ_NORMALIZATION = Boolean.valueOf(options[3]);
+			useBinaryAttributes = Boolean.valueOf(options[4]);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println("INVALID NGrams parameters value");
@@ -49,6 +49,7 @@ public class SubjectFilter extends Filter{
 		System.out.println("GRAMS = " + NGRAMS_MAX);
 		System.out.println("IGNORED_GRAMS = " + Arrays.toString(IGNORED_GRAMS));
 		System.out.println("FREQ_NORMALIZATION = " + FREQ_NORMALIZATION);
+		System.out.println("useBinaryAttributes = " + useBinaryAttributes);
 		Iterator<Attribute> itr = attributes.iterator();
 		indexMap = new HashMap<String, Integer>();
 		int index=0;
@@ -88,37 +89,51 @@ public class SubjectFilter extends Filter{
 		}
 		return gramsList;
 	}
-		
-	private void fillAttsValues(double[] vals, HashMap<String, Integer> indexMap, Email email){
-		String splitRegex = "\\s+";
-		//subject is trimmed to avoid empty strings at beginning
-		String[] wordsList=null;
-		try {
-			wordsList = email.getSubject().trim().split(splitRegex);
-		} catch (MessagingException e) {
-			e.printStackTrace();
-		}
-
-		List<HashMap<String, Double>> grams = buildGrams(wordsList);
-
-		Iterator<String> it = indexMap.keySet().iterator();
-		while (it.hasNext()){
-			String key = it.next();
-			for (int i = 0; i < NGRAMS_MAX; i++) {
-				if (grams.get(i).containsKey(key)){
-					vals[indexMap.get(key)] = 1;
-					//each key will be found on one gram map only
-					break;
+	
+	private void fillAttributesValues(double[] vals, HashMap<String, Integer> indexMap, Email email){
+		try{
+			String splitRegex = "\\s+";
+			//subject is trimmed to avoid empty strings at beginning
+			String[] wordsList = ((String)email.getSubject()).trim().split(splitRegex);
+			List<HashMap<String, Double>> grams = buildGrams(wordsList);
+			
+			if (!useBinaryAttributes && FREQ_NORMALIZATION){
+				for (int i = 0; i < grams.size(); i++) {
+					Iterator<Map.Entry<String, Double>> it = grams.get(i).entrySet().iterator();
+					while (it.hasNext()){
+						Map.Entry<String, Double> entry = it.next();
+						//divides each frequency of unigrams by number of words
+						//and each bigrams by number of bigrams (number of words - 1)
+						// and so on
+						entry.setValue(entry.getValue()/(wordsList.length - i));
+					}						
 				}
 			}
-		}
-	}
+			//iterate on each attribute and get its count
+			Iterator<String> it = indexMap.keySet().iterator();
+			while (it.hasNext()){
+				String key = it.next();
+				for (int i = 0; i < NGRAMS_MAX; i++) {
+					if (grams.get(i).containsKey(key)){
+						if(useBinaryAttributes){
+							vals[indexMap.get(key)] = 1;
+						} else{
+							vals[indexMap.get(key)] += grams.get(i).get(key);
+						}
+						//each key will be found on one gram map only
+						break;
+					}
+				}
+			}
+		}catch(Exception ex){
+			//ignore
+		}		
+	}	
 	
 	@Override
 	public double[] getAttValue(Email email){
 		double[] vals = new double[attributes.size()];
-//		calcFrequencies(vals, indexMap, email);
-		fillAttsValues(vals, indexMap, email);
+		fillAttributesValues(vals, indexMap, email);
 		return vals;
 	}
 }
