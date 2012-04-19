@@ -3720,3 +3720,1739 @@ Served asset /users.js - 304 Not Modified (1ms)
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-19 18:48:30 +0200
 Served asset /application.js - 304 Not Modified (13ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-04-19 20:33:37 +0200
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 89ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-04-19 20:33:37 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/devise-2.0.4/app/views/devise/sessions/new.html.erb within layouts/application (147.4ms)
+Completed 500 Internal Server Error in 781ms
+
+ActionView::Template::Error (undefined method `email' for #<User:0x9413814>):
+    2: 
+    3: <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    4:   <div><%= f.label :email %><br />
+    5:   <%= f.email_field :email %></div>
+    6: 
+    7:   <div><%= f.label :password %><br />
+    8:   <%= f.password_field :password %></div>
+  activemodel (3.2.0) lib/active_model/attribute_methods.rb:407:in `method_missing'
+  activerecord (3.2.0) lib/active_record/attribute_methods.rb:129:in `method_missing'
+  actionpack (3.2.0) lib/action_view/helpers/form_helper.rb:1154:in `value_before_type_cast'
+  actionpack (3.2.0) lib/action_view/helpers/form_helper.rb:1142:in `value_before_type_cast'
+  actionpack (3.2.0) lib/action_view/helpers/form_helper.rb:1036:in `block in to_input_field_tag'
+  actionpack (3.2.0) lib/action_view/helpers/form_helper.rb:1036:in `fetch'
+  actionpack (3.2.0) lib/action_view/helpers/form_helper.rb:1036:in `to_input_field_tag'
+  actionpack (3.2.0) lib/action_view/helpers/form_helper.rb:930:in `email_field'
+  actionpack (3.2.0) lib/action_view/helpers/form_helper.rb:1277:in `email_field'
+  devise (2.0.4) app/views/devise/sessions/new.html.erb:5:in `block in __home_shakes__rvm_gems_ruby_______p____gems_devise_______app_views_devise_sessions_new_html_erb___346950552_75492650'
+  actionpack (3.2.0) lib/action_view/helpers/capture_helper.rb:40:in `block in capture'
+  actionpack (3.2.0) lib/action_view/helpers/capture_helper.rb:187:in `with_output_buffer'
+  actionpack (3.2.0) lib/action_view/helpers/capture_helper.rb:40:in `capture'
+  actionpack (3.2.0) lib/action_view/helpers/form_helper.rb:606:in `fields_for'
+  actionpack (3.2.0) lib/action_view/helpers/form_helper.rb:377:in `form_for'
+  devise (2.0.4) app/views/devise/sessions/new.html.erb:3:in `__home_shakes__rvm_gems_ruby_______p____gems_devise_______app_views_devise_sessions_new_html_erb___346950552_75492650'
+  actionpack (3.2.0) lib/action_view/template.rb:143:in `block in render'
+  activesupport (3.2.0) lib/active_support/notifications.rb:125:in `instrument'
+  actionpack (3.2.0) lib/action_view/template.rb:141:in `render'
+  actionpack (3.2.0) lib/action_view/renderer/template_renderer.rb:41:in `block (2 levels) in render_template'
+  actionpack (3.2.0) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (3.2.0) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.0) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.0) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionpack (3.2.0) lib/action_view/renderer/template_renderer.rb:40:in `block in render_template'
+  actionpack (3.2.0) lib/action_view/renderer/template_renderer.rb:48:in `render_with_layout'
+  actionpack (3.2.0) lib/action_view/renderer/template_renderer.rb:39:in `render_template'
+  actionpack (3.2.0) lib/action_view/renderer/template_renderer.rb:12:in `render'
+  actionpack (3.2.0) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.0) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.0) lib/abstract_controller/rendering.rb:109:in `_render_template'
+  actionpack (3.2.0) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.0) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.0) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.0) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.0) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.0) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.0) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /home/shakes/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/benchmark.rb:310:in `realtime'
+  activesupport (3.2.0) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  activerecord (3.2.0) lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.2.0) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.0) lib/action_controller/metal/mime_responds.rb:268:in `block in retrieve_response_from_mimes'
+  actionpack (3.2.0) lib/action_controller/metal/responder.rb:229:in `call'
+  actionpack (3.2.0) lib/action_controller/metal/responder.rb:229:in `default_render'
+  actionpack (3.2.0) lib/action_controller/metal/responder.rb:160:in `to_html'
+  actionpack (3.2.0) lib/action_controller/metal/responder.rb:153:in `respond'
+  actionpack (3.2.0) lib/action_controller/metal/responder.rb:146:in `call'
+  actionpack (3.2.0) lib/action_controller/metal/mime_responds.rb:238:in `respond_with'
+  devise (2.0.4) app/controllers/devise/sessions_controller.rb:9:in `new'
+  actionpack (3.2.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.2.0) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.0) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:436:in `_run__956775545__process_action__649584768__callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.0) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.0) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.0) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/params_wrapper.rb:205:in `process_action'
+  activerecord (3.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.0) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.0) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.0) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.0) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.0) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:66:in `call'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  actionpack (3.2.0) lib/action_dispatch/routing/mapper.rb:40:in `call'
+  journey (1.0.3) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.3) lib/journey/router.rb:56:in `each'
+  journey (1.0.3) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:570:in `call'
+  warden (1.1.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.1.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.1.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.0) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:405:in `_run__392149434__call__595456396__callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.0) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.0) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.0) lib/rails/engine.rb:479:in `call'
+  railties (3.2.0) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.3.1) lib/thin/connection.rb:80:in `block in pre_process'
+  thin (1.3.1) lib/thin/connection.rb:78:in `catch'
+  thin (1.3.1) lib/thin/connection.rb:78:in `pre_process'
+  thin (1.3.1) lib/thin/connection.rb:53:in `process'
+  thin (1.3.1) lib/thin/connection.rb:38:in `receive_data'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run_machine'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run'
+  thin (1.3.1) lib/thin/backends/base.rb:61:in `start'
+  thin (1.3.1) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.0) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.0) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.0) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (7.5ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.2ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-04-19 20:33:46 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/devise-2.0.4/app/views/devise/sessions/new.html.erb within layouts/application (10.2ms)
+Completed 500 Internal Server Error in 36ms
+
+ActionView::Template::Error (undefined method `email' for #<User:0x8e88408>):
+    2: 
+    3: <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    4:   <div><%= f.label :email %><br />
+    5:   <%= f.email_field :email %></div>
+    6: 
+    7:   <div><%= f.label :password %><br />
+    8:   <%= f.password_field :password %></div>
+  activemodel (3.2.0) lib/active_model/attribute_methods.rb:407:in `method_missing'
+  activerecord (3.2.0) lib/active_record/attribute_methods.rb:129:in `method_missing'
+  actionpack (3.2.0) lib/action_view/helpers/form_helper.rb:1154:in `value_before_type_cast'
+  actionpack (3.2.0) lib/action_view/helpers/form_helper.rb:1142:in `value_before_type_cast'
+  actionpack (3.2.0) lib/action_view/helpers/form_helper.rb:1036:in `block in to_input_field_tag'
+  actionpack (3.2.0) lib/action_view/helpers/form_helper.rb:1036:in `fetch'
+  actionpack (3.2.0) lib/action_view/helpers/form_helper.rb:1036:in `to_input_field_tag'
+  actionpack (3.2.0) lib/action_view/helpers/form_helper.rb:930:in `email_field'
+  actionpack (3.2.0) lib/action_view/helpers/form_helper.rb:1277:in `email_field'
+  devise (2.0.4) app/views/devise/sessions/new.html.erb:5:in `block in __home_shakes__rvm_gems_ruby_______p____gems_devise_______app_views_devise_sessions_new_html_erb___346950552_75492650'
+  actionpack (3.2.0) lib/action_view/helpers/capture_helper.rb:40:in `block in capture'
+  actionpack (3.2.0) lib/action_view/helpers/capture_helper.rb:187:in `with_output_buffer'
+  actionpack (3.2.0) lib/action_view/helpers/capture_helper.rb:40:in `capture'
+  actionpack (3.2.0) lib/action_view/helpers/form_helper.rb:606:in `fields_for'
+  actionpack (3.2.0) lib/action_view/helpers/form_helper.rb:377:in `form_for'
+  devise (2.0.4) app/views/devise/sessions/new.html.erb:3:in `__home_shakes__rvm_gems_ruby_______p____gems_devise_______app_views_devise_sessions_new_html_erb___346950552_75492650'
+  actionpack (3.2.0) lib/action_view/template.rb:143:in `block in render'
+  activesupport (3.2.0) lib/active_support/notifications.rb:125:in `instrument'
+  actionpack (3.2.0) lib/action_view/template.rb:141:in `render'
+  actionpack (3.2.0) lib/action_view/renderer/template_renderer.rb:41:in `block (2 levels) in render_template'
+  actionpack (3.2.0) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (3.2.0) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.0) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.0) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionpack (3.2.0) lib/action_view/renderer/template_renderer.rb:40:in `block in render_template'
+  actionpack (3.2.0) lib/action_view/renderer/template_renderer.rb:48:in `render_with_layout'
+  actionpack (3.2.0) lib/action_view/renderer/template_renderer.rb:39:in `render_template'
+  actionpack (3.2.0) lib/action_view/renderer/template_renderer.rb:12:in `render'
+  actionpack (3.2.0) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.0) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.0) lib/abstract_controller/rendering.rb:109:in `_render_template'
+  actionpack (3.2.0) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.0) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.0) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.0) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.0) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.0) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.0) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /home/shakes/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/benchmark.rb:310:in `realtime'
+  activesupport (3.2.0) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  activerecord (3.2.0) lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.2.0) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.0) lib/action_controller/metal/mime_responds.rb:268:in `block in retrieve_response_from_mimes'
+  actionpack (3.2.0) lib/action_controller/metal/responder.rb:229:in `call'
+  actionpack (3.2.0) lib/action_controller/metal/responder.rb:229:in `default_render'
+  actionpack (3.2.0) lib/action_controller/metal/responder.rb:160:in `to_html'
+  actionpack (3.2.0) lib/action_controller/metal/responder.rb:153:in `respond'
+  actionpack (3.2.0) lib/action_controller/metal/responder.rb:146:in `call'
+  actionpack (3.2.0) lib/action_controller/metal/mime_responds.rb:238:in `respond_with'
+  devise (2.0.4) app/controllers/devise/sessions_controller.rb:9:in `new'
+  actionpack (3.2.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.2.0) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.0) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:436:in `_run__956775545__process_action__649584768__callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.0) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.0) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.0) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/params_wrapper.rb:205:in `process_action'
+  activerecord (3.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.0) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.0) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.0) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.0) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.0) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:66:in `call'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  actionpack (3.2.0) lib/action_dispatch/routing/mapper.rb:40:in `call'
+  journey (1.0.3) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.3) lib/journey/router.rb:56:in `each'
+  journey (1.0.3) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:570:in `call'
+  warden (1.1.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.1.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.1.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.0) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:405:in `_run__392149434__call__595456396__callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.0) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.0) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.0) lib/rails/engine.rb:479:in `call'
+  railties (3.2.0) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.3.1) lib/thin/connection.rb:80:in `block in pre_process'
+  thin (1.3.1) lib/thin/connection.rb:78:in `catch'
+  thin (1.3.1) lib/thin/connection.rb:78:in `pre_process'
+  thin (1.3.1) lib/thin/connection.rb:53:in `process'
+  thin (1.3.1) lib/thin/connection.rb:38:in `receive_data'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run_machine'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run'
+  thin (1.3.1) lib/thin/backends/base.rb:61:in `start'
+  thin (1.3.1) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.0) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.0) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.0) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (7.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.4ms)
+  [1m[36m (1.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateAccounts (20120331193649)
+Migrating to CreateUsers (20120331193805)
+Migrating to AddDomainToAccounts (20120331194003)
+Migrating to AddOauthTokenToUser (20120409065355)
+Migrating to AddOauthTokenSecretToUser (20120409065418)
+Migrating to AddDeviseToUsers (20120419182819)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (2.1ms)[0m  ALTER TABLE "users" ADD "email" varchar(255) DEFAULT '' NOT NULL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "encrypted_password" varchar(255) DEFAULT '' NOT NULL[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "reset_password_token" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "remember_created_at" datetime
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "current_sign_in_at" datetime
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "current_sign_in_ip" varchar(255)
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_ip" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.6ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+SQLite3::ConstraintException: indexed columns are not unique: CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[35m (0.7ms)[0m  rollback transaction
+  [1m[36m (0.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateAccounts (20120331193649)
+Migrating to CreateUsers (20120331193805)
+Migrating to AddDomainToAccounts (20120331194003)
+Migrating to AddOauthTokenToUser (20120409065355)
+Migrating to AddOauthTokenSecretToUser (20120409065418)
+Migrating to AddDeviseToUsers (20120419182819)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  ALTER TABLE "users" ADD "email" varchar(255) DEFAULT '' NOT NULL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "encrypted_password" varchar(255) DEFAULT '' NOT NULL[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "reset_password_token" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "remember_created_at" datetime
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "users" ADD "current_sign_in_at" datetime
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_at" datetime[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "users" ADD "current_sign_in_ip" varchar(255)
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_ip" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+SQLite3::ConstraintException: indexed columns are not unique: CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateAccounts (20120331193649)
+Migrating to CreateUsers (20120331193805)
+Migrating to AddDomainToAccounts (20120331194003)
+Migrating to AddOauthTokenToUser (20120409065355)
+Migrating to AddOauthTokenSecretToUser (20120409065418)
+Migrating to AddDeviseToUsers (20120419182819)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (2.1ms)[0m  ALTER TABLE "users" ADD "email" varchar(255) DEFAULT '' NOT NULL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "encrypted_password" varchar(255) DEFAULT '' NOT NULL[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "reset_password_token" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "remember_created_at" datetime
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "current_sign_in_at" datetime
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "current_sign_in_ip" varchar(255)
+  [1m[36m (1.5ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_ip" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.6ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+SQLite3::ConstraintException: indexed columns are not unique: CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[35m (0.8ms)[0m  rollback transaction
+  [1m[36m (0.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateAccounts (20120331193649)
+Migrating to CreateUsers (20120331193805)
+Migrating to AddDomainToAccounts (20120331194003)
+Migrating to AddOauthTokenToUser (20120409065355)
+Migrating to AddOauthTokenSecretToUser (20120409065418)
+Migrating to AddDeviseToUsers (20120419182819)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.9ms)[0m  ALTER TABLE "users" ADD "email" varchar(255) DEFAULT '' NOT NULL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "encrypted_password" varchar(255) DEFAULT '' NOT NULL[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "users" ADD "reset_password_token" varchar(255)
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "remember_created_at" datetime
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "users" ADD "current_sign_in_at" datetime
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_at" datetime[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "users" ADD "current_sign_in_ip" varchar(255)
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_ip" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.7ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+SQLite3::ConstraintException: indexed columns are not unique: CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[35m (0.7ms)[0m  rollback transaction
+  [1m[36m (0.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateAccounts (20120331193649)
+Migrating to CreateUsers (20120331193805)
+Migrating to AddDomainToAccounts (20120331194003)
+Migrating to AddOauthTokenToUser (20120409065355)
+Migrating to AddOauthTokenSecretToUser (20120409065418)
+Migrating to AddDeviseToUsers (20120419182819)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (2.2ms)[0m  ALTER TABLE "users" ADD "email" varchar(255) DEFAULT '' NOT NULL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "encrypted_password" varchar(255) DEFAULT '' NOT NULL[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "reset_password_token" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "users" ADD "remember_created_at" datetime
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "users" ADD "current_sign_in_at" datetime
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_at" datetime[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "users" ADD "current_sign_in_ip" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "last_sign_in_ip" varchar(255)[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120419182819')
+  [1m[36m (28.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.9ms)[0m  select sqlite_version(*)
+  [1m[36m (0.6ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("accounts")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+
+
+Started GET "/users" for 127.0.0.1 at 2012-04-19 20:40:42 +0200
+Processing by UsersController#index as HTML
+Completed 401 Unauthorized in 16ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-04-19 20:40:42 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/devise-2.0.4/app/views/devise/_links.erb (2.3ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/devise-2.0.4/app/views/devise/sessions/new.html.erb within layouts/application (69.4ms)
+Completed 200 OK in 1713ms (Views: 1642.1ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-19 20:40:44 +0200
+Served asset /accounts.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-19 20:40:44 +0200
+Served asset /scaffolds.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-19 20:40:44 +0200
+Served asset /sessions.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:44 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:44 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (43ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:44 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:44 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:44 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:44 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (35ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-19 20:40:44 +0200
+Served asset /application.css - 304 Not Modified (29ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-19 20:40:44 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:44 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-19 20:40:45 +0200
+Served asset /home.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:45 +0200
+Served asset /jquery.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:45 +0200
+Served asset /accounts.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:45 +0200
+Served asset /sessions.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-19 20:40:45 +0200
+Served asset /users.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:45 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:45 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:45 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:45 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:45 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:45 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:45 +0200
+Served asset /users.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:45 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (65ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:45 +0200
+Served asset /bootstrap.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:45 +0200
+Served asset /home.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:45 +0200
+Served asset /application.js - 304 Not Modified (67ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2012-04-19 20:40:54 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/devise-2.0.4/app/views/devise/_links.erb (0.6ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/devise-2.0.4/app/views/devise/registrations/new.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 102ms (Views: 100.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-19 20:40:54 +0200
+Served asset /application.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-19 20:40:54 +0200
+Served asset /accounts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-19 20:40:54 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-19 20:40:54 +0200
+Served asset /home.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-19 20:40:54 +0200
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-19 20:40:54 +0200
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-19 20:40:54 +0200
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (56ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /accounts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-19 20:40:55 +0200
+Served asset /application.js - 304 Not Modified (15ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-04-19 20:41:06 +0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AR3HvUfz0DleosDr/7qeRYsZE5cKOC8c39LaTS9qhQQ=", "user"=>{"email"=>"ahmed.elsharkasy@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.7ms)[0m  SELECT 1 FROM "users" WHERE "users"."email" = 'ahmed.elsharkasy@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/devise-2.0.4/app/views/devise/_links.erb (0.7ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/devise-2.0.4/app/views/devise/registrations/new.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 515ms (Views: 119.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-19 20:41:06 +0200
+Served asset /application.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-19 20:41:06 +0200
+Served asset /accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-19 20:41:06 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-19 20:41:06 +0200
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-19 20:41:06 +0200
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-19 20:41:06 +0200
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-19 20:41:06 +0200
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:06 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:06 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:06 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:06 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:06 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:06 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:06 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:06 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:06 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:06 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:07 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:07 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:07 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:07 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:07 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:07 +0200
+Served asset /accounts.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:07 +0200
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:07 +0200
+Served asset /home.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:07 +0200
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:07 +0200
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:07 +0200
+Served asset /application.js - 304 Not Modified (16ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-04-19 20:41:21 +0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AR3HvUfz0DleosDr/7qeRYsZE5cKOC8c39LaTS9qhQQ=", "user"=>{"email"=>"ahmed.elsharkasy@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT 1 FROM "users" WHERE "users"."email" = 'ahmed.elsharkasy@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (49.1ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "oauth_token", "oauth_token_secret", "password", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Thu, 19 Apr 2012 18:41:21 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["email", "ahmed.elsharkasy@gmail.com"], ["encrypted_password", "$2a$10$ONtyzO9VS6fAIbkvHQu3J.ugP8UlcsLwFAS/CH3PmgHxThKrF.eHO"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["oauth_token", nil], ["oauth_token_secret", nil], ["password", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Thu, 19 Apr 2012 18:41:21 UTC +00:00], ["username", nil]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (29.7ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2012-04-19 18:41:21.760600', "current_sign_in_at" = '2012-04-19 18:41:21.760600', "last_sign_in_ip" = '127.0.0.1', "current_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2012-04-19 18:41:21.761702' WHERE "users"."id" = 5[0m
+  [1m[35m (0.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/users
+Completed 302 Found in 280ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2012-04-19 20:41:21 +0200
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1[0m
+  [1m[35mUser Load (1.3ms)[0m  SELECT "users".* FROM "users" 
+  Rendered users/index.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 200ms (Views: 83.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /application.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /accounts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /accounts.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-19 20:41:22 +0200
+Served asset /application.js - 304 Not Modified (16ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-04-19 20:42:50 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1[0m
+Completed 500 Internal Server Error in 98ms
+
+NameError (undefined local variable or method `confirmed_at' for #<User:0xa52cc7c>):
+  activemodel (3.2.0) lib/active_model/attribute_methods.rb:407:in `method_missing'
+  activerecord (3.2.0) lib/active_record/attribute_methods.rb:129:in `method_missing'
+  devise (2.0.4) lib/devise/models/confirmable.rb:62:in `confirmed?'
+  devise (2.0.4) lib/devise/models/confirmable.rb:121:in `confirmation_required?'
+  devise (2.0.4) lib/devise/models/confirmable.rb:88:in `active_for_authentication?'
+  devise (2.0.4) lib/devise/hooks/activatable.rb:6:in `block in <top (required)>'
+  warden (1.1.1) lib/warden/hooks.rb:14:in `call'
+  warden (1.1.1) lib/warden/hooks.rb:14:in `block in _run_callbacks'
+  warden (1.1.1) lib/warden/hooks.rb:9:in `each'
+  warden (1.1.1) lib/warden/hooks.rb:9:in `_run_callbacks'
+  warden (1.1.1) lib/warden/manager.rb:53:in `_run_callbacks'
+  warden (1.1.1) lib/warden/proxy.rb:165:in `set_user'
+  warden (1.1.1) lib/warden/proxy.rb:198:in `user'
+  warden (1.1.1) lib/warden/proxy.rb:293:in `_perform_authentication'
+  warden (1.1.1) lib/warden/proxy.rb:113:in `authenticate!'
+  devise (2.0.4) lib/devise/controllers/helpers.rb:48:in `authenticate_user!'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:418:in `_run__547758412__process_action__379922468__callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.0) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.0) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.0) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/params_wrapper.rb:205:in `process_action'
+  activerecord (3.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.0) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.0) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.0) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.0) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.0) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:66:in `call'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.3) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.3) lib/journey/router.rb:56:in `each'
+  journey (1.0.3) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:570:in `call'
+  warden (1.1.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.1.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.1.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.0) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:405:in `_run__392149434__call__595456396__callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.0) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.0) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.0) lib/rails/engine.rb:479:in `call'
+  railties (3.2.0) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.3.1) lib/thin/connection.rb:80:in `block in pre_process'
+  thin (1.3.1) lib/thin/connection.rb:78:in `catch'
+  thin (1.3.1) lib/thin/connection.rb:78:in `pre_process'
+  thin (1.3.1) lib/thin/connection.rb:53:in `process'
+  thin (1.3.1) lib/thin/connection.rb:38:in `receive_data'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run_machine'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run'
+  thin (1.3.1) lib/thin/backends/base.rb:61:in `start'
+  thin (1.3.1) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.0) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.0) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.0) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.8ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2012-04-19 20:43:04 +0200
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1
+Completed 500 Internal Server Error in 3ms
+
+NameError (undefined local variable or method `confirmed_at' for #<User:0x9282b08>):
+  activemodel (3.2.0) lib/active_model/attribute_methods.rb:407:in `method_missing'
+  activerecord (3.2.0) lib/active_record/attribute_methods.rb:129:in `method_missing'
+  devise (2.0.4) lib/devise/models/confirmable.rb:62:in `confirmed?'
+  devise (2.0.4) lib/devise/models/confirmable.rb:121:in `confirmation_required?'
+  devise (2.0.4) lib/devise/models/confirmable.rb:88:in `active_for_authentication?'
+  devise (2.0.4) lib/devise/hooks/activatable.rb:6:in `block in <top (required)>'
+  warden (1.1.1) lib/warden/hooks.rb:14:in `call'
+  warden (1.1.1) lib/warden/hooks.rb:14:in `block in _run_callbacks'
+  warden (1.1.1) lib/warden/hooks.rb:9:in `each'
+  warden (1.1.1) lib/warden/hooks.rb:9:in `_run_callbacks'
+  warden (1.1.1) lib/warden/manager.rb:53:in `_run_callbacks'
+  warden (1.1.1) lib/warden/proxy.rb:165:in `set_user'
+  warden (1.1.1) lib/warden/proxy.rb:198:in `user'
+  warden (1.1.1) lib/warden/proxy.rb:293:in `_perform_authentication'
+  warden (1.1.1) lib/warden/proxy.rb:113:in `authenticate!'
+  devise (2.0.4) lib/devise/controllers/helpers.rb:48:in `authenticate_user!'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:418:in `_run__1051542306__process_action__379922468__callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.0) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.0) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.0) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/params_wrapper.rb:205:in `process_action'
+  activerecord (3.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.0) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.0) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.0) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.0) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.0) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:66:in `call'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.3) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.3) lib/journey/router.rb:56:in `each'
+  journey (1.0.3) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:570:in `call'
+  warden (1.1.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.1.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.1.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.0) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:405:in `_run__392149434__call__595456396__callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.0) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.0) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.0) lib/rails/engine.rb:479:in `call'
+  railties (3.2.0) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.3.1) lib/thin/connection.rb:80:in `block in pre_process'
+  thin (1.3.1) lib/thin/connection.rb:78:in `catch'
+  thin (1.3.1) lib/thin/connection.rb:78:in `pre_process'
+  thin (1.3.1) lib/thin/connection.rb:53:in `process'
+  thin (1.3.1) lib/thin/connection.rb:38:in `receive_data'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run_machine'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run'
+  thin (1.3.1) lib/thin/backends/base.rb:61:in `start'
+  thin (1.3.1) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.0) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.0) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.0) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.2ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-04-19 20:43:43 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1[0m
+Completed 500 Internal Server Error in 62ms
+
+NameError (undefined local variable or method `confirmed_at' for #<User:0xa4e29ec>):
+  activemodel (3.2.0) lib/active_model/attribute_methods.rb:407:in `method_missing'
+  activerecord (3.2.0) lib/active_record/attribute_methods.rb:129:in `method_missing'
+  devise (2.0.4) lib/devise/models/confirmable.rb:62:in `confirmed?'
+  devise (2.0.4) lib/devise/models/confirmable.rb:121:in `confirmation_required?'
+  devise (2.0.4) lib/devise/models/confirmable.rb:88:in `active_for_authentication?'
+  devise (2.0.4) lib/devise/hooks/activatable.rb:6:in `block in <top (required)>'
+  warden (1.1.1) lib/warden/hooks.rb:14:in `call'
+  warden (1.1.1) lib/warden/hooks.rb:14:in `block in _run_callbacks'
+  warden (1.1.1) lib/warden/hooks.rb:9:in `each'
+  warden (1.1.1) lib/warden/hooks.rb:9:in `_run_callbacks'
+  warden (1.1.1) lib/warden/manager.rb:53:in `_run_callbacks'
+  warden (1.1.1) lib/warden/proxy.rb:165:in `set_user'
+  warden (1.1.1) lib/warden/proxy.rb:198:in `user'
+  warden (1.1.1) lib/warden/proxy.rb:293:in `_perform_authentication'
+  warden (1.1.1) lib/warden/proxy.rb:113:in `authenticate!'
+  devise (2.0.4) lib/devise/controllers/helpers.rb:48:in `authenticate_user!'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:418:in `_run__547758412__process_action__379922468__callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.0) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.0) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.0) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/params_wrapper.rb:205:in `process_action'
+  activerecord (3.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.0) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.0) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.0) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.0) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.0) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:66:in `call'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.3) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.3) lib/journey/router.rb:56:in `each'
+  journey (1.0.3) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:570:in `call'
+  warden (1.1.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.1.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.1.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.0) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:405:in `_run__392149434__call__595456396__callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.0) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.0) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.0) lib/rails/engine.rb:479:in `call'
+  railties (3.2.0) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.3.1) lib/thin/connection.rb:80:in `block in pre_process'
+  thin (1.3.1) lib/thin/connection.rb:78:in `catch'
+  thin (1.3.1) lib/thin/connection.rb:78:in `pre_process'
+  thin (1.3.1) lib/thin/connection.rb:53:in `process'
+  thin (1.3.1) lib/thin/connection.rb:38:in `receive_data'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run_machine'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run'
+  thin (1.3.1) lib/thin/backends/base.rb:61:in `start'
+  thin (1.3.1) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.0) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.0) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.0) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.2ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-04-19 20:43:45 +0200
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (1.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1
+Completed 500 Internal Server Error in 4ms
+
+NameError (undefined local variable or method `confirmed_at' for #<User:0x9546fb0>):
+  activemodel (3.2.0) lib/active_model/attribute_methods.rb:407:in `method_missing'
+  activerecord (3.2.0) lib/active_record/attribute_methods.rb:129:in `method_missing'
+  devise (2.0.4) lib/devise/models/confirmable.rb:62:in `confirmed?'
+  devise (2.0.4) lib/devise/models/confirmable.rb:121:in `confirmation_required?'
+  devise (2.0.4) lib/devise/models/confirmable.rb:88:in `active_for_authentication?'
+  devise (2.0.4) lib/devise/hooks/activatable.rb:6:in `block in <top (required)>'
+  warden (1.1.1) lib/warden/hooks.rb:14:in `call'
+  warden (1.1.1) lib/warden/hooks.rb:14:in `block in _run_callbacks'
+  warden (1.1.1) lib/warden/hooks.rb:9:in `each'
+  warden (1.1.1) lib/warden/hooks.rb:9:in `_run_callbacks'
+  warden (1.1.1) lib/warden/manager.rb:53:in `_run_callbacks'
+  warden (1.1.1) lib/warden/proxy.rb:165:in `set_user'
+  warden (1.1.1) lib/warden/proxy.rb:198:in `user'
+  warden (1.1.1) lib/warden/proxy.rb:293:in `_perform_authentication'
+  warden (1.1.1) lib/warden/proxy.rb:113:in `authenticate!'
+  devise (2.0.4) lib/devise/controllers/helpers.rb:48:in `authenticate_user!'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:418:in `_run__547758412__process_action__379922468__callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.0) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.0) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.0) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.0) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.0) lib/action_controller/metal/params_wrapper.rb:205:in `process_action'
+  activerecord (3.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.0) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.0) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.0) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.0) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.0) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:66:in `call'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:30:in `call'
+  journey (1.0.3) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.3) lib/journey/router.rb:56:in `each'
+  journey (1.0.3) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.0) lib/action_dispatch/routing/route_set.rb:570:in `call'
+  warden (1.1.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.1.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.1.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.0) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:405:in `_run__392149434__call__595456396__callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.0) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.0) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.0) lib/rails/engine.rb:479:in `call'
+  railties (3.2.0) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.3.1) lib/thin/connection.rb:80:in `block in pre_process'
+  thin (1.3.1) lib/thin/connection.rb:78:in `catch'
+  thin (1.3.1) lib/thin/connection.rb:78:in `pre_process'
+  thin (1.3.1) lib/thin/connection.rb:53:in `process'
+  thin (1.3.1) lib/thin/connection.rb:38:in `receive_data'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run_machine'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run'
+  thin (1.3.1) lib/thin/backends/base.rb:61:in `start'
+  thin (1.3.1) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.0) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.0) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.0) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.8ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1[0m
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 152ms (Views: 43.2ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /application.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /accounts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /home.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /accounts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-19 20:43:57 +0200
+Served asset /application.js - 304 Not Modified (17ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2012-04-19 20:44:04 +0200
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  Rendered users/index.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 68ms (Views: 63.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /application.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /home.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /accounts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /users.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:05 +0200
+Served asset /application.js - 304 Not Modified (10ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Processing by Devise::SessionsController#new as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 5ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1[0m
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 64ms (Views: 61.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /application.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /accounts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /accounts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-19 20:44:07 +0200
+Served asset /application.js - 304 Not Modified (13ms)

@@ -3,7 +3,9 @@
 one:
   username: MyString
   password: MyString
+	email: test1@test.com
 
 two:
-  username: MyString
-  password: MyString
+  username: MyString2
+  password: MyString2
+	email: test2@test.com

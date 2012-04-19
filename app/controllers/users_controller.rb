@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
 	require 'iron_mq'
+	before_filter :authenticate_user!
+
   def index
     @users = User.all
 
