@@ -1,15 +1,27 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = @account.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human %></h1>
 
 <p>
-  <b>Username:</b>
+  <strong><%= model_class.human_attribute_name(:username) %>:</strong><br>
   <%= @account.username %>
 </p>
-
 <p>
-  <b>Password:</b>
+  <strong><%= model_class.human_attribute_name(:password) %>:</strong><br>
   <%= @account.password %>
 </p>
+<p>
+  <strong><%= model_class.human_attribute_name(:domain) %>:</strong><br>
+  <%= @account.domain %>
+</p>
 
-
-<%= link_to 'Edit', edit_account_path(@account) %> |
-<%= link_to 'Back', accounts_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              accounts_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_account_path(@account), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              account_path(@account),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>
