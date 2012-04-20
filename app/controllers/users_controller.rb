@@ -54,8 +54,8 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-    ironmq = IronMQ::Client.new("token"=>ENV["IRON_MQ_TOKEN"], "project_id"=>ENV["IRON_MQ_PROJECT_ID"], "queue_name"=>"users")
-		ironmq.messages.post("#{@user.username}")
+    #ironmq = IronMQ::Client.new("token"=>ENV["IRON_MQ_TOKEN"], "project_id"=>ENV["IRON_MQ_PROJECT_ID"], "queue_name"=>"users")
+		#ironmq.messages.post("#{@user.username}")
 
   end
 
