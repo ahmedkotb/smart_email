@@ -1,10 +1,11 @@
 SmartEmail::Application.routes.draw do
+
   devise_for :admins
 
   devise_for :users
 
 	root :to => "home#index"
-
+  
   get "home/index"
 
   resources :users
@@ -13,6 +14,7 @@ SmartEmail::Application.routes.draw do
   match '/users/authenticate/:id' => 'users#authenticate'
 	match "publish" => "home#publish"
   match "get" => "home#get"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

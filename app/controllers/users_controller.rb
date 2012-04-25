@@ -87,6 +87,9 @@ class UsersController < ApplicationController
     end
   end
 
+	def home
+	end
+
 #	include Oauth
 #	def authenticate
 #		@user = User.find(params[:id])
