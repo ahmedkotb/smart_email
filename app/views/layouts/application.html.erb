@@ -25,8 +25,11 @@
         <a class="brand" href="#">Smart Email</a>
         <div class="nav-collapse">
           <ul class="nav">
+						<% if admin_signed_in? %>
             <li><%= link_to "Browse users", users_path %></li>
+            <li><%= link_to "Browse admins", admins_path %></li>
             <li><%= link_to "Browse accounts", accounts_path %></li>
+						<% end%>
 						<li>		<%= render 'devise/menu/login_items' %></li>
 
           </ul>
