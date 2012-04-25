@@ -8,7 +8,7 @@ SmartEmail::Application.routes.draw do
   get "home/index"
 
   resources :users
-
+  resources :admins
   resources :accounts
   match '/users/authenticate/:id' => 'users#authenticate'
 	match "publish" => "home#publish"
