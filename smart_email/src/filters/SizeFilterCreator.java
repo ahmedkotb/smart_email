@@ -17,6 +17,7 @@ public class SizeFilterCreator implements FilterCreator {
 	private static final String SIZE_ATTRIBUTE = "SizeAttribute";
 	private final int NUM_CLASSES = 20;
 	private final int COMPRESSION_FACTOR = 500;
+	
 	@Override
 	public Filter createFilter(ArrayList<Email> emails) {
 		// Prepare for adding a new attribute for the email size.

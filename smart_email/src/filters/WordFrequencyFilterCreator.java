@@ -53,6 +53,9 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 
 	private final TokensChoiceAlgorithm DEFAULT_TOKEN_ALGORITHM = TokensChoiceAlgorithm.TF_IDF;
 
+	private int nGramsMax = 1;
+	private int[] ignoredGrams = new int[] {};
+
 	//ngrams constants
 	private final int NGRAMS_MAX = 1;
 	private final int[] IGNORED_GRAMS = new int[] {};
@@ -62,6 +65,9 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 		labelFreqMgrMap = new HashMap<String, TermManager>();
 		wordToLabelsMap = new HashMap<String, HashSet<String>>();
 		
+		this.nGramsMax = this.NGRAMS_MAX;
+		this.ignoredGrams = this.IGNORED_GRAMS;
+
 		impWordsPerLabel = DEFAULT_IMP_WORDS_PER_LABEL;
 		thresholdPercentage = DEFAULT_THRESHOLD_PERCENTAGE;
 		minScore = DEFAULT_MIN_SCORE;
@@ -70,7 +76,7 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 		tokenChoiceAlgorithm = DEFAULT_TOKEN_ALGORITHM;
 		
 		// sort ignored grams array
-		Arrays.sort(IGNORED_GRAMS);
+		Arrays.sort(ignoredGrams);
 
 		//print the name of the algorithm used for important words choosing
 		System.out.println("Term Choice Algorithm " + tokenChoiceAlgorithm);
@@ -160,6 +166,22 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 		this.minScore = minScore;
 	}
 	
+	public int getnGramsMax() {
+		return nGramsMax;
+	}
+
+	public void setnGramsMax(int nGramsMax) {
+		this.nGramsMax = nGramsMax;
+	}
+
+	public int[] getIgnoredGrams() {
+		return ignoredGrams;
+	}
+
+	public void setIgnoredGrams(int[] ignoredGrams) {
+		this.ignoredGrams = ignoredGrams;
+	}
+
 	/**
 	 * builds Ngrams from the given tokens list starting from 1 to NGRAMS_MAX ,
 	 * ignoring the grams specified in the IGRNOREDGRAMS array
@@ -171,10 +193,10 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 	 */
 	private List<HashMap<String, Double>> buildGrams(String[] wordsList) {
 		ArrayList<HashMap<String, Double>> gramsList = new ArrayList<HashMap<String, Double>>();
-		for (int i = 1; i <= NGRAMS_MAX; ++i) {
+		for (int i = 1; i <= nGramsMax; ++i) {
 			HashMap<String, Double> grams = new HashMap<String, Double>();
 			// if this Ngrams are not ignored
-			if (Arrays.binarySearch(IGNORED_GRAMS, i) < 0) {
+			if (Arrays.binarySearch(ignoredGrams, i) < 0) {
 				for (int j = 0; j < wordsList.length - i + 1; j++) {
 					String gram = wordsList[j];
 					for (int j2 = j + 1; j2 < j + i; j2++)
@@ -261,10 +283,10 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 				switch (tokenChoiceAlgorithm){
 					case TF_IDF:
 						int numLabels = labels.size();
-						mgr = new TfIdfManager(lbl, NGRAMS_MAX, this.wordToLabelsMap, numLabels, this.thresholdPercentage, this.minScore);
+						mgr = new TfIdfManager(lbl, nGramsMax, this.wordToLabelsMap, numLabels, this.thresholdPercentage, this.minScore);
 						break;
 					case CHI_STATISTIC:
-						mgr = new ChiTermManager(lbl, NGRAMS_MAX);
+						mgr = new ChiTermManager(lbl, nGramsMax);
 						break;
 				}
 				labelFreqMgrMap.put(lbl, mgr);
@@ -304,14 +326,14 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 		ArrayList<Attribute> atts = extractAttributes();
 		String[] options = new String[5];
 		options[0] = ATT_NAME_PREFIX;
-		options[1] = NGRAMS_MAX + "";
+		options[1] = nGramsMax + "";
 		options[2] = "";
 		options[3] = freqNormalization + "";
-		for (int i = 0; i < IGNORED_GRAMS.length; i++) {
-			if (i == IGNORED_GRAMS.length - 1)
-				options[2] += IGNORED_GRAMS[i];
+		for (int i = 0; i < ignoredGrams.length; i++) {
+			if (i == ignoredGrams.length - 1)
+				options[2] += ignoredGrams[i];
 			else
-				options[2] += IGNORED_GRAMS[i] + ",";
+				options[2] += ignoredGrams[i] + ",";
 		}
 		options[4] = useBinaryAttributes + "";
 		
