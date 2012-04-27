@@ -14,7 +14,7 @@ SmartEmail::Application.routes.draw do
   match '/users/authenticate/:id' => 'users#authenticate'
 	match "publish" => "home#publish"
   match "get" => "home#get"
-
+	match "/accounts/labels" => "accounts#labels"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

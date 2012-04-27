@@ -1,0 +1,16 @@
+<%- model_class = Account.new.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:username) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @account_labels.each do |label| %>
+      <tr>
+        <td><%= label %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -80,4 +80,14 @@ class AccountsController < ApplicationController
       format.json { head :no_content }
     end
   end
+	
+	def labels
+	@account_labels = Array.new 
+	@account_labels << "ahmed"
+
+	respond_to do |format|
+  	format.html # labels.html.erb
+    format.json { render json: @account_labels }
+  end
+	end
 end

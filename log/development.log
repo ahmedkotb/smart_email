@@ -16950,3 +16950,3197 @@ Served asset /users.js - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-25 15:04:15 +0200
 Served asset /application.js - 304 Not Modified (10ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-04-25 15:38:27 +0200
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+  Rendered devise/menu/_login_items.html.erb (0.5ms)
+Completed 200 OK in 463ms (Views: 289.3ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-25 15:38:29 +0200
+Served asset /application.css - 304 Not Modified (84ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:29 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:29 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:29 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:29 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:29 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-25 15:38:29 +0200
+Served asset /accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:29 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-25 15:38:29 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-25 15:38:29 +0200
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:29 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-25 15:38:29 +0200
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:29 +0200
+Served asset /users.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:30 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:30 +0200
+Served asset /bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:30 +0200
+Served asset /application.js - 304 Not Modified (11ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-25 15:38:30 +0200
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:30 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:30 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:30 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:30 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:30 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:30 +0200
+Served asset /accounts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:30 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:30 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:30 +0200
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-25 15:38:30 +0200
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:30 +0200
+Served asset /sessions.js - 304 Not Modified (2ms)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2012-04-25 15:38:33 +0200
+Processing by AccountsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1[0m
+  [1m[35mAccount Load (4.0ms)[0m  SELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6
+  Rendered accounts/index.html.erb within layouts/application (7.1ms)
+  Rendered devise/menu/_login_items.html.erb (0.5ms)
+Completed 200 OK in 185ms (Views: 166.0ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-25 15:38:33 +0200
+Served asset /application.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-25 15:38:33 +0200
+Served asset /accounts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-25 15:38:33 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-25 15:38:33 +0200
+Served asset /home.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-25 15:38:33 +0200
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-25 15:38:33 +0200
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-25 15:38:33 +0200
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:33 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:33 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:33 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:34 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:34 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:34 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:34 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:34 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:34 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:34 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:34 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:34 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:34 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:34 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:34 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:34 +0200
+Served asset /accounts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:34 +0200
+Served asset /bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:34 +0200
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:34 +0200
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:34 +0200
+Served asset /users.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-25 15:38:34 +0200
+Served asset /application.js - 304 Not Modified (12ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-04-27 11:36:33 +0200
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 81ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-04-27 11:36:34 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/devise-2.0.4/app/views/devise/_links.erb (2.1ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/devise-2.0.4/app/views/devise/sessions/new.html.erb within layouts/application (75.1ms)
+  Rendered devise/menu/_login_items.html.erb (1.2ms)
+Completed 200 OK in 2021ms (Views: 1702.1ms | ActiveRecord: 74.4ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-27 11:36:36 +0200
+Served asset /home.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-27 11:36:36 +0200
+Served asset /application.css - 304 Not Modified (24ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-27 11:36:36 +0200
+Served asset /sessions.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:36 +0200
+Served asset /jquery.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:36 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (36ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:36 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:36 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:36 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:36 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:36 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (53ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:36 +0200
+Served asset /accounts.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:36 +0200
+Served asset /bootstrap.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:36 +0200
+Served asset /sessions.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:36 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-27 11:36:36 +0200
+Served asset /users.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:36 +0200
+Served asset /users.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-27 11:36:36 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:36 +0200
+Served asset /application.js - 304 Not Modified (66ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:37 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-27 11:36:37 +0200
+Served asset /accounts.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-27 11:36:37 +0200
+Served asset /scaffolds.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:37 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:37 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:37 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:37 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:37 +0200
+Served asset /home.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:37 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:36:37 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (44ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2012-04-27 11:37:32 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1cFc/lzCms2RIskPRRvEkmY6XpsxizZK8T8NO1oePYs=", "user"=>{"email"=>"ahmed.elsharkasy@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'ahmed.elsharkasy@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (2.0ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2012-04-25 13:04:08.209889', "current_sign_in_at" = '2012-04-27 09:37:33.014022', "sign_in_count" = 13, "updated_at" = '2012-04-27 09:37:33.015735' WHERE "users"."id" = 6[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 501ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1[0m
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+  Rendered devise/menu/_login_items.html.erb (0.5ms)
+Completed 200 OK in 102ms (Views: 99.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /application.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /home.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /scaffolds.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /accounts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-27 11:37:33 +0200
+Served asset /application.js - 304 Not Modified (11ms)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2012-04-27 11:37:36 +0200
+Processing by AccountsController#index as HTML
+  [1m[35mUser Load (1.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.9ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6[0m
+  Rendered accounts/index.html.erb within layouts/application (829.2ms)
+Completed 500 Internal Server Error in 1079ms
+
+ActionView::Template::Error (undefined method `labels_account_path' for #<#<Class:0xa9a4084>:0xa9a2478>):
+    28:                       :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+    29:                       :class => 'btn btn-mini btn-danger' %>
+    30: 					<%= link_to t('.labels', :default => t("helpers.links.edit")),
+    31:                       labels_account_path(account), :class => 'btn btn-mini' %>
+    32:         </td>
+    33:       </tr>
+    34:     <% end %>
+  app/views/accounts/index.html.erb:31:in `block in _app_views_accounts_index_html_erb__152456707_88935650'
+  app/views/accounts/index.html.erb:15:in `each'
+  app/views/accounts/index.html.erb:15:in `_app_views_accounts_index_html_erb__152456707_88935650'
+  app/controllers/accounts_controller.rb:7:in `index'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (6.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.9ms)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2012-04-27 11:39:01 +0200
+Processing by AccountsController#index as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.6ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6[0m
+  Rendered accounts/index.html.erb within layouts/application (9.3ms)
+  Rendered devise/menu/_login_items.html.erb (0.4ms)
+Completed 200 OK in 70ms (Views: 65.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /application.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /accounts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /home.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /accounts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-27 11:39:02 +0200
+Served asset /application.js - 304 Not Modified (11ms)
+
+
+Started GET "/accounts/labels" for 127.0.0.1 at 2012-04-27 11:39:09 +0200
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"labels"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.7ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6 AND "accounts"."id" = ? LIMIT 1[0m  [["id", "labels"]]
+Completed 500 Internal Server Error in 5ms
+
+ActiveRecord::RecordNotFound (Couldn't find Account with id=labels [WHERE "accounts"."user_id" = 6]):
+  app/controllers/accounts_controller.rb:16:in `show'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.9ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.4ms)
+
+
+Started GET "/accounts/labels" for 127.0.0.1 at 2012-04-27 11:40:37 +0200
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"labels"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.5ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6 AND "accounts"."id" = ? LIMIT 1[0m  [["id", "labels"]]
+Completed 500 Internal Server Error in 4ms
+
+ActiveRecord::RecordNotFound (Couldn't find Account with id=labels [WHERE "accounts"."user_id" = 6]):
+  app/controllers/accounts_controller.rb:16:in `show'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.8ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.3ms)
+
+
+Started GET "/accounts/labels" for 127.0.0.1 at 2012-04-27 11:40:43 +0200
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"labels"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.7ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6 AND "accounts"."id" = ? LIMIT 1[0m  [["id", "labels"]]
+Completed 500 Internal Server Error in 4ms
+
+ActiveRecord::RecordNotFound (Couldn't find Account with id=labels [WHERE "accounts"."user_id" = 6]):
+  app/controllers/accounts_controller.rb:16:in `show'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.8ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.2ms)
+
+
+Started GET "/accounts/labels" for 127.0.0.1 at 2012-04-27 11:42:06 +0200
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"labels"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (1.9ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6 AND "accounts"."id" = ? LIMIT 1[0m  [["id", "labels"]]
+Completed 500 Internal Server Error in 45ms
+
+ActiveRecord::RecordNotFound (Couldn't find Account with id=labels [WHERE "accounts"."user_id" = 6]):
+  app/controllers/accounts_controller.rb:16:in `show'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.2ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.9ms)
+
+
+Started GET "/accounts/labels" for 127.0.0.1 at 2012-04-27 11:42:08 +0200
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"labels"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.6ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6 AND "accounts"."id" = ? LIMIT 1[0m  [["id", "labels"]]
+Completed 500 Internal Server Error in 4ms
+
+ActiveRecord::RecordNotFound (Couldn't find Account with id=labels [WHERE "accounts"."user_id" = 6]):
+  app/controllers/accounts_controller.rb:16:in `show'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.8ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.1ms)
+
+
+Started GET "/accounts/labels" for 127.0.0.1 at 2012-04-27 11:42:10 +0200
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"labels"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.5ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6 AND "accounts"."id" = ? LIMIT 1[0m  [["id", "labels"]]
+Completed 500 Internal Server Error in 4ms
+
+ActiveRecord::RecordNotFound (Couldn't find Account with id=labels [WHERE "accounts"."user_id" = 6]):
+  app/controllers/accounts_controller.rb:16:in `show'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.2ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (62.7ms)
+
+
+Started GET "/accounts/labels" for 127.0.0.1 at 2012-04-27 11:42:57 +0200
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"labels"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.6ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6 AND "accounts"."id" = ? LIMIT 1[0m  [["id", "labels"]]
+Completed 500 Internal Server Error in 45ms
+
+ActiveRecord::RecordNotFound (Couldn't find Account with id=labels [WHERE "accounts"."user_id" = 6]):
+  app/controllers/accounts_controller.rb:16:in `show'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.7ms)
+
+
+Started GET "/accounts/labels" for 127.0.0.1 at 2012-04-27 11:43:01 +0200
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"labels"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.5ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6 AND "accounts"."id" = ? LIMIT 1[0m  [["id", "labels"]]
+Completed 500 Internal Server Error in 4ms
+
+ActiveRecord::RecordNotFound (Couldn't find Account with id=labels [WHERE "accounts"."user_id" = 6]):
+  app/controllers/accounts_controller.rb:16:in `show'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.9ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.3ms)
+
+
+Started GET "/accounts/labels" for 127.0.0.1 at 2012-04-27 11:43:44 +0200
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"labels"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.5ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6 AND "accounts"."id" = ? LIMIT 1[0m  [["id", "labels"]]
+Completed 500 Internal Server Error in 4ms
+
+ActiveRecord::RecordNotFound (Couldn't find Account with id=labels [WHERE "accounts"."user_id" = 6]):
+  app/controllers/accounts_controller.rb:16:in `show'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.0ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.5ms)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2012-04-27 11:44:34 +0200
+Processing by AccountsController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.7ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6[0m
+ERROR: compiling _app_views_accounts_index_html_erb__152456707_75464740 RAISED /media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:33: syntax error, unexpected keyword_end, expecting ')'
+');     end 
+           ^
+/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:41: syntax error, unexpected keyword_ensure, expecting ')'
+/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:43: syntax error, unexpected keyword_end, expecting ')'
+Function body:           def _app_views_accounts_index_html_erb__152456707_75464740(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "accounts/index";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new; model_class = Account.new.class 
+@output_buffer.safe_concat('<h1>');@output_buffer.append= (t '.title', :default => model_class.model_name.human.pluralize );@output_buffer.safe_concat('</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:id) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:username) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:password) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:domain) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:created_at) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= (t '.actions', :default => t("helpers.actions") );@output_buffer.safe_concat('</th>
+    </tr>
+  </thead>
+  <tbody>
+');     @accounts.each do |account| 
+@output_buffer.safe_concat('      <tr>
+        <td>');@output_buffer.append= ( link_to account.id, account_path(account) );@output_buffer.safe_concat('</td>
+        <td>');@output_buffer.append= ( account.username );@output_buffer.safe_concat('</td>
+        <td>');@output_buffer.append= ( account.password );@output_buffer.safe_concat('</td>
+        <td>');@output_buffer.append= ( account.domain );@output_buffer.safe_concat('</td>
+        <td>');@output_buffer.append= (l account.created_at );@output_buffer.safe_concat('</td>
+        <td>
+          ');@output_buffer.append= ( link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_account_path(account), :class => 'btn btn-mini' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('          ');@output_buffer.append= ( link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      account_path(account),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('					');@output_buffer.append= ( link_to t('.labels',account_path(account),:method => :labels, :class => 'btn btn-mini' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('        </td>
+      </tr>
+');     end 
+@output_buffer.safe_concat('  </tbody>
+</table>
+
+');@output_buffer.append= ( link_to t('.new', :default => t("helpers.links.new")),
+            new_account_path,
+            :class => 'btn btn-primary' );@output_buffer.safe_concat('
+');@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:285:in `module_eval'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:285:in `compile'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:233:in `compile!'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:142:in `block in render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:125:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:141:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:41:in `block (2 levels) in render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:123:in `block in instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:123:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:40:in `block in render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:48:in `render_with_layout'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:39:in `render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:12:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/renderer.rb:36:in `render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/renderer.rb:17:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/rendering.rb:109:in `_render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/streaming.rb:225:in `_render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/rendering.rb:103:in `render_to_body'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/rendering.rb:88:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/rendering.rb:16:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+/home/shakes/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/benchmark.rb:310:in `realtime'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activerecord-3.2.0/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/mime_responds.rb:268:in `block in retrieve_response_from_mimes'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/mime_responds.rb:195:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/mime_responds.rb:195:in `respond_to'
+/media/MyData/smart_email/smart_email/web_service/app/controllers/accounts_controller.rb:7:in `index'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/base.rb:167:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:414:in `_run__847300134__process_action__177633574__callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:405:in `__run_callback'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:123:in `block in instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:123:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/params_wrapper.rb:205:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activerecord-3.2.0/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/base.rb:121:in `process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/rendering.rb:45:in `process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal.rb:203:in `dispatch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal.rb:246:in `block in action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/routing/route_set.rb:66:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/routing/route_set.rb:30:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/journey-1.0.3/lib/journey/router.rb:68:in `block in call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/journey-1.0.3/lib/journey/router.rb:56:in `each'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/journey-1.0.3/lib/journey/router.rb:56:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/routing/route_set.rb:570:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/warden-1.1.1/lib/warden/manager.rb:35:in `block in call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/warden-1.1.1/lib/warden/manager.rb:34:in `catch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/warden-1.1.1/lib/warden/manager.rb:34:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/head.rb:14:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activerecord-3.2.0/lib/active_record/query_cache.rb:64:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activerecord-3.2.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:405:in `_run__47364699__call__324926556__callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:405:in `__run_callback'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/rack/logger.rb:26:in `call_app'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/rack/logger.rb:16:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/static.rb:53:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/engine.rb:479:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/application.rb:220:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/rack/log_tailer.rb:14:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:80:in `block in pre_process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:78:in `catch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:78:in `pre_process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:53:in `process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:38:in `receive_data'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/backends/base.rb:61:in `start'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/server.rb:159:in `start'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/commands/server.rb:70:in `start'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/commands.rb:55:in `block in <top (required)>'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/commands.rb:50:in `tap'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/commands.rb:50:in `<top (required)>'
+script/rails:6:in `require'
+script/rails:6:in `<main>'
+  Rendered accounts/index.html.erb within layouts/application (2.6ms)
+Completed 500 Internal Server Error in 37ms
+
+ActionView::Template::Error (/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:33: syntax error, unexpected keyword_end, expecting ')'
+');     end 
+           ^
+/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:41: syntax error, unexpected keyword_ensure, expecting ')'
+/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:43: syntax error, unexpected keyword_end, expecting ')'):
+    30: 					<%= link_to t('.labels',account_path(account),:method => :labels, :class => 'btn btn-mini' %>
+    31:         </td>
+    32:       </tr>
+    33:     <% end %>
+    34:   </tbody>
+    35: </table>
+    36: 
+  app/controllers/accounts_controller.rb:7:in `index'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (6.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.1ms)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2012-04-27 11:45:11 +0200
+Processing by AccountsController#index as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.6ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6[0m
+ERROR: compiling _app_views_accounts_index_html_erb__152456707_72616870 RAISED /media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:33: syntax error, unexpected keyword_end, expecting ')'
+');     end 
+           ^
+/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:41: syntax error, unexpected keyword_ensure, expecting ')'
+/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:43: syntax error, unexpected keyword_end, expecting ')'
+Function body:           def _app_views_accounts_index_html_erb__152456707_72616870(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "accounts/index";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new; model_class = Account.new.class 
+@output_buffer.safe_concat('<h1>');@output_buffer.append= (t '.title', :default => model_class.model_name.human.pluralize );@output_buffer.safe_concat('</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:id) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:username) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:password) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:domain) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:created_at) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= (t '.actions', :default => t("helpers.actions") );@output_buffer.safe_concat('</th>
+    </tr>
+  </thead>
+  <tbody>
+');     @accounts.each do |account| 
+@output_buffer.safe_concat('      <tr>
+        <td>');@output_buffer.append= ( link_to account.id, account_path(account) );@output_buffer.safe_concat('</td>
+        <td>');@output_buffer.append= ( account.username );@output_buffer.safe_concat('</td>
+        <td>');@output_buffer.append= ( account.password );@output_buffer.safe_concat('</td>
+        <td>');@output_buffer.append= ( account.domain );@output_buffer.safe_concat('</td>
+        <td>');@output_buffer.append= (l account.created_at );@output_buffer.safe_concat('</td>
+        <td>
+          ');@output_buffer.append= ( link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_account_path(account), :class => 'btn btn-mini' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('          ');@output_buffer.append= ( link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      account_path(account),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('					');@output_buffer.append= ( link_to t('.labels',account_path(account),:method => :labels, :class => 'btn btn-mini' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('        </td>
+      </tr>
+');     end 
+@output_buffer.safe_concat('  </tbody>
+</table>
+
+');@output_buffer.append= ( link_to t('.new', :default => t("helpers.links.new")),
+            new_account_path,
+            :class => 'btn btn-primary' );@output_buffer.safe_concat('
+');@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:285:in `module_eval'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:285:in `compile'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:233:in `compile!'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:142:in `block in render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:125:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:141:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:41:in `block (2 levels) in render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:123:in `block in instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:123:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:40:in `block in render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:48:in `render_with_layout'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:39:in `render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:12:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/renderer.rb:36:in `render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/renderer.rb:17:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/rendering.rb:109:in `_render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/streaming.rb:225:in `_render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/rendering.rb:103:in `render_to_body'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/rendering.rb:88:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/rendering.rb:16:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+/home/shakes/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/benchmark.rb:310:in `realtime'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activerecord-3.2.0/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/mime_responds.rb:268:in `block in retrieve_response_from_mimes'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/mime_responds.rb:195:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/mime_responds.rb:195:in `respond_to'
+/media/MyData/smart_email/smart_email/web_service/app/controllers/accounts_controller.rb:7:in `index'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/base.rb:167:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:414:in `_run__847300134__process_action__177633574__callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:405:in `__run_callback'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:123:in `block in instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:123:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/params_wrapper.rb:205:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activerecord-3.2.0/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/base.rb:121:in `process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/rendering.rb:45:in `process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal.rb:203:in `dispatch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal.rb:246:in `block in action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/routing/route_set.rb:66:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/routing/route_set.rb:30:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/journey-1.0.3/lib/journey/router.rb:68:in `block in call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/journey-1.0.3/lib/journey/router.rb:56:in `each'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/journey-1.0.3/lib/journey/router.rb:56:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/routing/route_set.rb:570:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/warden-1.1.1/lib/warden/manager.rb:35:in `block in call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/warden-1.1.1/lib/warden/manager.rb:34:in `catch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/warden-1.1.1/lib/warden/manager.rb:34:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/head.rb:14:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activerecord-3.2.0/lib/active_record/query_cache.rb:64:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activerecord-3.2.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:405:in `_run__47364699__call__324926556__callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:405:in `__run_callback'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/rack/logger.rb:26:in `call_app'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/rack/logger.rb:16:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/static.rb:53:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/engine.rb:479:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/application.rb:220:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/rack/log_tailer.rb:14:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:80:in `block in pre_process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:78:in `catch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:78:in `pre_process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:53:in `process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:38:in `receive_data'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/backends/base.rb:61:in `start'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/server.rb:159:in `start'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/commands/server.rb:70:in `start'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/commands.rb:55:in `block in <top (required)>'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/commands.rb:50:in `tap'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/commands.rb:50:in `<top (required)>'
+script/rails:6:in `require'
+script/rails:6:in `<main>'
+  Rendered accounts/index.html.erb within layouts/application (2.4ms)
+Completed 500 Internal Server Error in 24ms
+
+ActionView::Template::Error (/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:33: syntax error, unexpected keyword_end, expecting ')'
+');     end 
+           ^
+/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:41: syntax error, unexpected keyword_ensure, expecting ')'
+/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:43: syntax error, unexpected keyword_end, expecting ')'):
+    30: 					<%= link_to t('.labels',account_path(account),:method => :labels, :class => 'btn btn-mini' %>
+    31:         </td>
+    32:       </tr>
+    33:     <% end %>
+    34:   </tbody>
+    35: </table>
+    36: 
+  app/controllers/accounts_controller.rb:7:in `index'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (6.5ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.3ms)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2012-04-27 11:46:35 +0200
+Processing by AccountsController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (1.2ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6[0m
+ERROR: compiling _app_views_accounts_index_html_erb__152456707_70246140 RAISED /media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:34: syntax error, unexpected keyword_end, expecting ')'
+');     end 
+           ^
+/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:42: syntax error, unexpected keyword_ensure, expecting ')'
+/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:44: syntax error, unexpected keyword_end, expecting ')'
+Function body:           def _app_views_accounts_index_html_erb__152456707_70246140(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "accounts/index";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new; model_class = Account.new.class 
+@output_buffer.safe_concat('<h1>');@output_buffer.append= (t '.title', :default => model_class.model_name.human.pluralize );@output_buffer.safe_concat('</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:id) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:username) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:password) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:domain) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:created_at) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= (t '.actions', :default => t("helpers.actions") );@output_buffer.safe_concat('</th>
+    </tr>
+  </thead>
+  <tbody>
+');     @accounts.each do |account| 
+@output_buffer.safe_concat('      <tr>
+        <td>');@output_buffer.append= ( link_to account.id, account_path(account) );@output_buffer.safe_concat('</td>
+        <td>');@output_buffer.append= ( account.username );@output_buffer.safe_concat('</td>
+        <td>');@output_buffer.append= ( account.password );@output_buffer.safe_concat('</td>
+        <td>');@output_buffer.append= ( account.domain );@output_buffer.safe_concat('</td>
+        <td>');@output_buffer.append= (l account.created_at );@output_buffer.safe_concat('</td>
+        <td>
+          ');@output_buffer.append= ( link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_account_path(account), :class => 'btn btn-mini' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('          ');@output_buffer.append= ( link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      account_path(account),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('					');@output_buffer.append= ( link_to t('.edit',
+                      account_path(account),:method => :labels, :class => 'btn btn-mini' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('        </td>
+      </tr>
+');     end 
+@output_buffer.safe_concat('  </tbody>
+</table>
+
+');@output_buffer.append= ( link_to t('.new', :default => t("helpers.links.new")),
+            new_account_path,
+            :class => 'btn btn-primary' );@output_buffer.safe_concat('
+');@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:285:in `module_eval'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:285:in `compile'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:233:in `compile!'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:142:in `block in render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:125:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:141:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:41:in `block (2 levels) in render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:123:in `block in instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:123:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:40:in `block in render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:48:in `render_with_layout'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:39:in `render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:12:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/renderer.rb:36:in `render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/renderer.rb:17:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/rendering.rb:109:in `_render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/streaming.rb:225:in `_render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/rendering.rb:103:in `render_to_body'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/rendering.rb:88:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/rendering.rb:16:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+/home/shakes/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/benchmark.rb:310:in `realtime'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activerecord-3.2.0/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/mime_responds.rb:268:in `block in retrieve_response_from_mimes'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/mime_responds.rb:195:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/mime_responds.rb:195:in `respond_to'
+/media/MyData/smart_email/smart_email/web_service/app/controllers/accounts_controller.rb:7:in `index'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/base.rb:167:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:414:in `_run__847300134__process_action__177633574__callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:405:in `__run_callback'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:123:in `block in instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:123:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/params_wrapper.rb:205:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activerecord-3.2.0/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/base.rb:121:in `process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/rendering.rb:45:in `process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal.rb:203:in `dispatch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal.rb:246:in `block in action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/routing/route_set.rb:66:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/routing/route_set.rb:30:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/journey-1.0.3/lib/journey/router.rb:68:in `block in call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/journey-1.0.3/lib/journey/router.rb:56:in `each'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/journey-1.0.3/lib/journey/router.rb:56:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/routing/route_set.rb:570:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/warden-1.1.1/lib/warden/manager.rb:35:in `block in call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/warden-1.1.1/lib/warden/manager.rb:34:in `catch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/warden-1.1.1/lib/warden/manager.rb:34:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/head.rb:14:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activerecord-3.2.0/lib/active_record/query_cache.rb:64:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activerecord-3.2.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:405:in `_run__47364699__call__324926556__callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:405:in `__run_callback'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/rack/logger.rb:26:in `call_app'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/rack/logger.rb:16:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/static.rb:53:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/engine.rb:479:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/application.rb:220:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/rack/log_tailer.rb:14:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:80:in `block in pre_process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:78:in `catch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:78:in `pre_process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:53:in `process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:38:in `receive_data'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/backends/base.rb:61:in `start'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/server.rb:159:in `start'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/commands/server.rb:70:in `start'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/commands.rb:55:in `block in <top (required)>'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/commands.rb:50:in `tap'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/commands.rb:50:in `<top (required)>'
+script/rails:6:in `require'
+script/rails:6:in `<main>'
+  Rendered accounts/index.html.erb within layouts/application (2.4ms)
+Completed 500 Internal Server Error in 59ms
+
+ActionView::Template::Error (/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:34: syntax error, unexpected keyword_end, expecting ')'
+');     end 
+           ^
+/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:42: syntax error, unexpected keyword_ensure, expecting ')'
+/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:44: syntax error, unexpected keyword_end, expecting ')'):
+    31:                       account_path(account),:method => :labels, :class => 'btn btn-mini' %>
+    32:         </td>
+    33:       </tr>
+    34:     <% end %>
+    35:   </tbody>
+    36: </table>
+    37: 
+  app/controllers/accounts_controller.rb:7:in `index'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (7.0ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.9ms)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Processing by AccountsController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.6ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6[0m
+  Rendered accounts/index.html.erb within layouts/application (9.2ms)
+  Rendered devise/menu/_login_items.html.erb (0.5ms)
+Completed 200 OK in 210ms (Views: 205.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /application.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /accounts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /home.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /scaffolds.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /accounts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-27 11:46:44 +0200
+Served asset /application.js - 304 Not Modified (10ms)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2012-04-27 11:47:03 +0200
+Processing by AccountsController#index as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.6ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6[0m
+ERROR: compiling _app_views_accounts_index_html_erb__152456707_81866770 RAISED /media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:34: syntax error, unexpected keyword_end, expecting ')'
+');     end 
+           ^
+/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:42: syntax error, unexpected keyword_ensure, expecting ')'
+/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:44: syntax error, unexpected keyword_end, expecting ')'
+Function body:           def _app_views_accounts_index_html_erb__152456707_81866770(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "accounts/index";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new; model_class = Account.new.class 
+@output_buffer.safe_concat('<h1>');@output_buffer.append= (t '.title', :default => model_class.model_name.human.pluralize );@output_buffer.safe_concat('</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:id) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:username) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:password) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:domain) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= ( model_class.human_attribute_name(:created_at) );@output_buffer.safe_concat('</th>
+      <th>');@output_buffer.append= (t '.actions', :default => t("helpers.actions") );@output_buffer.safe_concat('</th>
+    </tr>
+  </thead>
+  <tbody>
+');     @accounts.each do |account| 
+@output_buffer.safe_concat('      <tr>
+        <td>');@output_buffer.append= ( link_to account.id, account_path(account) );@output_buffer.safe_concat('</td>
+        <td>');@output_buffer.append= ( account.username );@output_buffer.safe_concat('</td>
+        <td>');@output_buffer.append= ( account.password );@output_buffer.safe_concat('</td>
+        <td>');@output_buffer.append= ( account.domain );@output_buffer.safe_concat('</td>
+        <td>');@output_buffer.append= (l account.created_at );@output_buffer.safe_concat('</td>
+        <td>
+          ');@output_buffer.append= ( link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_account_path(account), :class => 'btn btn-mini' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('          ');@output_buffer.append= ( link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      account_path(account),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('					');@output_buffer.append= ( link_to t('.edit',
+                      account_path(account),:method => :labels, :class => 'btn btn-mini' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('        </td>
+      </tr>
+');     end 
+@output_buffer.safe_concat('  </tbody>
+</table>
+
+');@output_buffer.append= ( link_to t('.new', :default => t("helpers.links.new")),
+            new_account_path,
+            :class => 'btn btn-primary' );@output_buffer.safe_concat('
+');@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:285:in `module_eval'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:285:in `compile'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:233:in `compile!'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:142:in `block in render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:125:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/template.rb:141:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:41:in `block (2 levels) in render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:123:in `block in instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:123:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:40:in `block in render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:48:in `render_with_layout'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:39:in `render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/template_renderer.rb:12:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/renderer.rb:36:in `render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_view/renderer/renderer.rb:17:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/rendering.rb:109:in `_render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/streaming.rb:225:in `_render_template'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/rendering.rb:103:in `render_to_body'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/rendering.rb:88:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/rendering.rb:16:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+/home/shakes/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/benchmark.rb:310:in `realtime'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activerecord-3.2.0/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/mime_responds.rb:268:in `block in retrieve_response_from_mimes'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/mime_responds.rb:195:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/mime_responds.rb:195:in `respond_to'
+/media/MyData/smart_email/smart_email/web_service/app/controllers/accounts_controller.rb:7:in `index'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/base.rb:167:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:414:in `_run__847300134__process_action__177633574__callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:405:in `__run_callback'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:123:in `block in instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/notifications.rb:123:in `instrument'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/params_wrapper.rb:205:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activerecord-3.2.0/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/base.rb:121:in `process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/abstract_controller/rendering.rb:45:in `process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal.rb:203:in `dispatch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_controller/metal.rb:246:in `block in action'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/routing/route_set.rb:66:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/routing/route_set.rb:66:in `dispatch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/routing/route_set.rb:30:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/journey-1.0.3/lib/journey/router.rb:68:in `block in call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/journey-1.0.3/lib/journey/router.rb:56:in `each'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/journey-1.0.3/lib/journey/router.rb:56:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/routing/route_set.rb:570:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/warden-1.1.1/lib/warden/manager.rb:35:in `block in call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/warden-1.1.1/lib/warden/manager.rb:34:in `catch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/warden-1.1.1/lib/warden/manager.rb:34:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/head.rb:14:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activerecord-3.2.0/lib/active_record/query_cache.rb:64:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activerecord-3.2.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:405:in `_run__47364699__call__324926556__callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:405:in `__run_callback'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/rack/logger.rb:26:in `call_app'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/rack/logger.rb:16:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/activesupport-3.2.0/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/static.rb:53:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/engine.rb:479:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/application.rb:220:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/rack/log_tailer.rb:14:in `call'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:80:in `block in pre_process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:78:in `catch'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:78:in `pre_process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:53:in `process'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/connection.rb:38:in `receive_data'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/backends/base.rb:61:in `start'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/thin-1.3.1/lib/thin/server.rb:159:in `start'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/commands/server.rb:70:in `start'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/commands.rb:55:in `block in <top (required)>'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/commands.rb:50:in `tap'
+/home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/railties-3.2.0/lib/rails/commands.rb:50:in `<top (required)>'
+script/rails:6:in `require'
+script/rails:6:in `<main>'
+  Rendered accounts/index.html.erb within layouts/application (2.4ms)
+Completed 500 Internal Server Error in 24ms
+
+ActionView::Template::Error (/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:34: syntax error, unexpected keyword_end, expecting ')'
+');     end 
+           ^
+/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:42: syntax error, unexpected keyword_ensure, expecting ')'
+/media/MyData/smart_email/smart_email/web_service/app/views/accounts/index.html.erb:44: syntax error, unexpected keyword_end, expecting ')'):
+    31:                       account_path(account),:method => :labels, :class => 'btn btn-mini' %>
+    32:         </td>
+    33:       </tr>
+    34:     <% end %>
+    35:   </tbody>
+    36: </table>
+    37: 
+  app/controllers/accounts_controller.rb:7:in `index'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (6.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.1ms)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2012-04-27 11:47:24 +0200
+Processing by AccountsController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.6ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6[0m
+  Rendered accounts/index.html.erb within layouts/application (8.5ms)
+  Rendered devise/menu/_login_items.html.erb (0.4ms)
+Completed 200 OK in 121ms (Views: 116.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-27 11:47:24 +0200
+Served asset /application.css - 304 Not Modified (12ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-27 11:47:24 +0200
+Served asset /accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-27 11:47:24 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-27 11:47:24 +0200
+Served asset /home.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-27 11:47:24 +0200
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-27 11:47:24 +0200
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-27 11:47:24 +0200
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:24 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:24 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:24 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:24 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:24 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:25 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:25 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:25 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:25 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:25 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:25 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:25 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:25 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:25 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:25 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:25 +0200
+Served asset /accounts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:25 +0200
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:25 +0200
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:25 +0200
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:25 +0200
+Served asset /users.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:25 +0200
+Served asset /application.js - 304 Not Modified (11ms)
+
+
+Started POST "/accounts/5" for 127.0.0.1 at 2012-04-27 11:47:28 +0200
+
+ActionController::RoutingError (No route matches [POST] "/accounts/5"):
+  actionpack (3.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.0) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.0) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.0) lib/rails/engine.rb:479:in `call'
+  railties (3.2.0) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.3.1) lib/thin/connection.rb:80:in `block in pre_process'
+  thin (1.3.1) lib/thin/connection.rb:78:in `catch'
+  thin (1.3.1) lib/thin/connection.rb:78:in `pre_process'
+  thin (1.3.1) lib/thin/connection.rb:53:in `process'
+  thin (1.3.1) lib/thin/connection.rb:38:in `receive_data'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run_machine'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run'
+  thin (1.3.1) lib/thin/backends/base.rb:61:in `start'
+  thin (1.3.1) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.0) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.0) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.0) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/accounts/5/edit" for 127.0.0.1 at 2012-04-27 11:47:52 +0200
+Processing by AccountsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (1.9ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6 AND "accounts"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  Rendered accounts/_form.html.erb (5.4ms)
+  Rendered accounts/edit.html.erb within layouts/application (38.8ms)
+  Rendered devise/menu/_login_items.html.erb (0.4ms)
+Completed 200 OK in 106ms (Views: 100.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /application.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /accounts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /sessions.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (58ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /accounts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-27 11:47:53 +0200
+Served asset /application.js - 304 Not Modified (16ms)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Processing by AccountsController#index as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.7ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6[0m
+  Rendered accounts/index.html.erb within layouts/application (7.9ms)
+  Rendered devise/menu/_login_items.html.erb (0.4ms)
+Completed 200 OK in 67ms (Views: 61.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /application.css - 304 Not Modified (15ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /accounts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /home.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /accounts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:22 +0200
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:23 +0200
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-27 11:48:23 +0200
+Served asset /application.js - 304 Not Modified (11ms)
+
+
+Started POST "/accounts/labels" for 127.0.0.1 at 2012-04-27 11:48:24 +0200
+
+ActionController::RoutingError (No route matches [POST] "/accounts/labels"):
+  actionpack (3.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.0) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.0) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.0) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.0) lib/action_dispatch/middleware/static.rb:53:in `call'
+  railties (3.2.0) lib/rails/engine.rb:479:in `call'
+  railties (3.2.0) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.0) lib/rails/rack/log_tailer.rb:14:in `call'
+  thin (1.3.1) lib/thin/connection.rb:80:in `block in pre_process'
+  thin (1.3.1) lib/thin/connection.rb:78:in `catch'
+  thin (1.3.1) lib/thin/connection.rb:78:in `pre_process'
+  thin (1.3.1) lib/thin/connection.rb:53:in `process'
+  thin (1.3.1) lib/thin/connection.rb:38:in `receive_data'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run_machine'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run'
+  thin (1.3.1) lib/thin/backends/base.rb:61:in `start'
+  thin (1.3.1) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.0) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.0) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.0) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.0) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/accounts/labels" for 127.0.0.1 at 2012-04-27 11:49:14 +0200
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"labels"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.7ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6 AND "accounts"."id" = ? LIMIT 1[0m  [["id", "labels"]]
+Completed 500 Internal Server Error in 28ms
+
+ActiveRecord::RecordNotFound (Couldn't find Account with id=labels [WHERE "accounts"."user_id" = 6]):
+  app/controllers/accounts_controller.rb:16:in `show'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.0ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.7ms)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Processing by AccountsController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.7ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6[0m
+  Rendered accounts/index.html.erb within layouts/application (9.3ms)
+  Rendered devise/menu/_login_items.html.erb (0.5ms)
+Completed 200 OK in 201ms (Views: 148.1ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /application.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /accounts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /scaffolds.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /accounts.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:52 +0200
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:53 +0200
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-27 11:54:53 +0200
+Served asset /application.js - 304 Not Modified (12ms)
+
+
+Started POST "/accounts/labels" for 127.0.0.1 at 2012-04-27 11:54:56 +0200
+Processing by AccountsController#labels as HTML
+  Parameters: {"authenticity_token"=>"1cFc/lzCms2RIskPRRvEkmY6XpsxizZK8T8NO1oePYs="}
+Completed 500 Internal Server Error in 5ms
+
+SystemStackError (stack level too deep):
+  actionpack (3.2.0) lib/action_dispatch/middleware/reloader.rb:70
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.2ms)
+
+
+Started POST "/accounts/labels" for 127.0.0.1 at 2012-04-27 11:55:15 +0200
+Processing by AccountsController#labels as HTML
+  Parameters: {"authenticity_token"=>"1cFc/lzCms2RIskPRRvEkmY6XpsxizZK8T8NO1oePYs="}
+Completed 500 Internal Server Error in 5ms
+
+SystemStackError (stack level too deep):
+  actionpack (3.2.0) lib/action_dispatch/middleware/reloader.rb:70
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.7ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.2ms)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2012-04-27 11:56:08 +0200
+Processing by AccountsController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.8ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6[0m
+  Rendered accounts/index.html.erb within layouts/application (9.3ms)
+  Rendered devise/menu/_login_items.html.erb (0.4ms)
+Completed 200 OK in 77ms (Views: 72.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:08 +0200
+Served asset /application.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:08 +0200
+Served asset /accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:08 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:08 +0200
+Served asset /home.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:08 +0200
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:08 +0200
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:08 +0200
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:08 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:08 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:08 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:09 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:09 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:09 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (53ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:09 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:09 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:09 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:09 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:09 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:09 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:09 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:09 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:09 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:09 +0200
+Served asset /accounts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:09 +0200
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:09 +0200
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:09 +0200
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:09 +0200
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:09 +0200
+Served asset /application.js - 304 Not Modified (10ms)
+
+
+Started GET "/accounts?class=btn+btn-mini&method=labels" for 127.0.0.1 at 2012-04-27 11:56:12 +0200
+Processing by AccountsController#index as HTML
+  Parameters: {"class"=>"btn btn-mini", "method"=>"labels"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (1.3ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6[0m
+  Rendered accounts/index.html.erb within layouts/application (7.1ms)
+  Rendered devise/menu/_login_items.html.erb (0.4ms)
+Completed 200 OK in 70ms (Views: 65.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:12 +0200
+Served asset /application.css - 304 Not Modified (12ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:12 +0200
+Served asset /accounts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:12 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:12 +0200
+Served asset /home.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:12 +0200
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:12 +0200
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:12 +0200
+Served asset /users.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:12 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:12 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:12 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:12 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:12 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:12 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:12 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:12 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:13 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:13 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:13 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:13 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:13 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:13 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:13 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:13 +0200
+Served asset /accounts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:13 +0200
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:13 +0200
+Served asset /home.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:13 +0200
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:13 +0200
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:13 +0200
+Served asset /application.js - 304 Not Modified (12ms)
+
+
+Started GET "/accounts?class=btn+btn-mini&method=labels" for 127.0.0.1 at 2012-04-27 11:56:15 +0200
+Processing by AccountsController#index as HTML
+  Parameters: {"class"=>"btn btn-mini", "method"=>"labels"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.7ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6[0m
+  Rendered accounts/index.html.erb within layouts/application (7.0ms)
+  Rendered devise/menu/_login_items.html.erb (0.4ms)
+Completed 200 OK in 127ms (Views: 123.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:15 +0200
+Served asset /application.css - 304 Not Modified (14ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:15 +0200
+Served asset /accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:15 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:15 +0200
+Served asset /home.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:15 +0200
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:15 +0200
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:15 +0200
+Served asset /users.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:15 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:15 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:15 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:15 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:15 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:16 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:16 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:16 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:16 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:16 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:16 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:16 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:16 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:16 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:16 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:16 +0200
+Served asset /accounts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:16 +0200
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:16 +0200
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:16 +0200
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:16 +0200
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:16 +0200
+Served asset /application.js - 304 Not Modified (11ms)
+
+
+Started GET "/accounts?class=btn+btn-mini&method=labels" for 127.0.0.1 at 2012-04-27 11:56:51 +0200
+Processing by AccountsController#index as HTML
+  Parameters: {"class"=>"btn btn-mini", "method"=>"labels"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.7ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6[0m
+  Rendered accounts/index.html.erb within layouts/application (8.6ms)
+  Rendered devise/menu/_login_items.html.erb (0.5ms)
+Completed 200 OK in 197ms (Views: 143.2ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:51 +0200
+Served asset /application.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:51 +0200
+Served asset /accounts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:51 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:51 +0200
+Served asset /home.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:51 +0200
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:51 +0200
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-27 11:56:51 +0200
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:51 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:51 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:51 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:51 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:51 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:51 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:51 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:51 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:52 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:52 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:52 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:52 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:52 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:52 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:52 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:52 +0200
+Served asset /accounts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:52 +0200
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:52 +0200
+Served asset /sessions.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:52 +0200
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:52 +0200
+Served asset /application.js - 304 Not Modified (13ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:56:52 +0200
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Processing by AccountsController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (4.1ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6[0m
+  Rendered accounts/index.html.erb within layouts/application (8.5ms)
+  Rendered devise/menu/_login_items.html.erb (0.4ms)
+Completed 200 OK in 75ms (Views: 66.5ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /application.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /accounts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /bootstrap.js - 304 Not Modified (61ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /sessions.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-27 11:57:00 +0200
+Served asset /application.js - 304 Not Modified (13ms)
+
+
+Started POST "/accounts/labels" for 127.0.0.1 at 2012-04-27 11:57:03 +0200
+Processing by AccountsController#labels as HTML
+  Parameters: {"authenticity_token"=>"1cFc/lzCms2RIskPRRvEkmY6XpsxizZK8T8NO1oePYs="}
+Completed 500 Internal Server Error in 621ms
+
+NameError (undefined local variable or method `labelss' for #<AccountsController:0xaeabcf8>):
+  app/controllers/accounts_controller.rb:86:in `labels'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.7ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.9ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.6ms)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2012-04-27 11:58:28 +0200
+Processing by AccountsController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  [1m[36mAccount Load (0.6ms)[0m  [1mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = 6[0m
+  Rendered accounts/index.html.erb within layouts/application (7.4ms)
+  Rendered devise/menu/_login_items.html.erb (0.5ms)
+Completed 200 OK in 184ms (Views: 79.6ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /application.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /accounts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /home.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /users.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /accounts.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:29 +0200
+Served asset /application.js - 304 Not Modified (17ms)
+
+
+Started POST "/accounts/labels" for 127.0.0.1 at 2012-04-27 11:58:30 +0200
+Processing by AccountsController#labels as HTML
+  Parameters: {"authenticity_token"=>"1cFc/lzCms2RIskPRRvEkmY6XpsxizZK8T8NO1oePYs="}
+  Rendered accounts/labels.html.erb within layouts/application (7.6ms)
+Completed 500 Internal Server Error in 26ms
+
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    7:     </tr>
+    8:   </thead>
+    9:   <tbody>
+    10:     <% @labels.each do |label| %>
+    11:       <tr>
+    12:         <td><%= label %></td>
+    13:       </tr>
+  app/views/accounts/labels.html.erb:10:in `_app_views_accounts_labels_html_erb___992019087_78103410'
+  app/controllers/accounts_controller.rb:88:in `labels'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (6.5ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.3ms)
+
+
+Started POST "/accounts/labels" for 127.0.0.1 at 2012-04-27 11:58:55 +0200
+Processing by AccountsController#labels as HTML
+  Parameters: {"authenticity_token"=>"1cFc/lzCms2RIskPRRvEkmY6XpsxizZK8T8NO1oePYs="}
+  Rendered accounts/labels.html.erb within layouts/application (1.6ms)
+  [1m[35mUser Load (1.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  Rendered devise/menu/_login_items.html.erb (3.0ms)
+Completed 200 OK in 121ms (Views: 119.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-04-27 11:58:55 +0200
+Served asset /application.css - 304 Not Modified (18ms)
+
+
+Started GET "/assets/accounts.css?body=1" for 127.0.0.1 at 2012-04-27 11:58:55 +0200
+Served asset /accounts.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-04-27 11:58:55 +0200
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2012-04-27 11:58:55 +0200
+Served asset /home.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-04-27 11:58:55 +0200
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-04-27 11:58:55 +0200
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2012-04-27 11:58:55 +0200
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:55 +0200
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:55 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:55 +0200
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:55 +0200
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:55 +0200
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:55 +0200
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:55 +0200
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:55 +0200
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:55 +0200
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:55 +0200
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:56 +0200
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:56 +0200
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:56 +0200
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:56 +0200
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:56 +0200
+Served asset /twitter/bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/accounts.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:56 +0200
+Served asset /accounts.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:56 +0200
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:56 +0200
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:56 +0200
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:56 +0200
+Served asset /users.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-04-27 11:58:56 +0200
+Served asset /application.js - 304 Not Modified (11ms)
