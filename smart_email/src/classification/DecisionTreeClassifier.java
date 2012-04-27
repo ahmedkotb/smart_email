@@ -61,4 +61,11 @@ public class DecisionTreeClassifier extends Classifier{
 		return classifier.getCapabilities();
 	}
 
+	@Override
+	public void trainOnInstance(Instance Instance)
+			throws UnsupportedOperationException {
+		
+		throw new UnsupportedOperationException();
+	}
+
 }

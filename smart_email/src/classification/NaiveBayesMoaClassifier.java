@@ -53,4 +53,11 @@ public class NaiveBayesMoaClassifier extends Classifier {
 		return null;
 	}
 
+	@Override
+	public void trainOnInstance(Instance Instance)
+			throws UnsupportedOperationException {
+		
+		learner.trainOnInstance(Instance);
+	}
+
 }

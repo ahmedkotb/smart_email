@@ -24,4 +24,6 @@ public abstract class Classifier implements weka.classifiers.Classifier, Seriali
 	public abstract void buildClassifier(Instances trainingSet);
 	
 	public abstract double[] distributionForFeaturesVector(Instance instance);
+	
+	public abstract void trainOnInstance(Instance Instance) throws UnsupportedOperationException;
 }
