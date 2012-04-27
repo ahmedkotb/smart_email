@@ -26,7 +26,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-
+gem 'omniauth'
+gem 'omniauth-openid'
 gem 'jquery-rails'
 #gem 'amqp', :require => 'mq'
 gem "heroku"
