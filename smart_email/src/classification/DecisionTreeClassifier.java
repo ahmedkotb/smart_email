@@ -1,16 +1,20 @@
 package classification;
 
-import weka.classifiers.trees.ADTree;
+import weka.classifiers.trees.DecisionStump;
+import weka.core.Capabilities;
 import weka.core.Instance;
 import weka.core.Instances;
 
 public class DecisionTreeClassifier extends Classifier{
 
 	private static final long serialVersionUID = 555668137075221536L;
-	private ADTree classifier;
+	
+	//private ADTree classifier;
+	private DecisionStump classifier;
 	
 	public DecisionTreeClassifier(){
-		classifier = new ADTree();
+		//classifier = new ADTree();
+		classifier = new DecisionStump();
 	}
 	
 	@Override
@@ -34,7 +38,27 @@ public class DecisionTreeClassifier extends Classifier{
 
 	@Override
 	public double[] distributionForFeaturesVector(Instance instance) {
-		return classifier.distributionForInstance(instance);
+		try {
+			return classifier.distributionForInstance(instance);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public double[] distributionForInstance(Instance instance) throws Exception {
+		try {
+			return classifier.distributionForInstance(instance);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public Capabilities getCapabilities() {
+		return classifier.getCapabilities();
 	}
 
 }
