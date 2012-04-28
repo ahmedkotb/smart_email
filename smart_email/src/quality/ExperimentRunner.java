@@ -20,7 +20,7 @@ public class ExperimentRunner {
 	// private ArrayList<ExperimentUnit> experimentUnits;
 	private String title;
 	private String description;
-	private String[] usernames;
+	private String[] experimentCategories;
 	private Double[][] resultMatrix;
 
 	private static final String EXPERIMENTS_LOG_PATH = "../../../Experiments_Log";
@@ -29,28 +29,56 @@ public class ExperimentRunner {
 	/*
 	 * b : blue r : red g : green m : magenta c : cyan y : yellow k : black
 	 */
-
-	public ExperimentRunner(ExperimentTunerIF tuner, String[] usernames,
-			String title) {
+	/**
+	 * Constructor for ExperimentRunner
+	 * 
+	 * @param tuner
+	 *            ExperimentTuner is the source for the ExepriementUnits of the
+	 *            experiment
+	 * @param experimentCategories
+	 *            This would represent the different graph lines (categories) of
+	 *            the experiment (e.g: usernames or algorithms)
+	 * @param title
+	 *            This represents either the title of the experiment (in case of
+	 *            usernames as categories) OR represents the username (in case
+	 *            of algorithms as categories)
+	 */
+	public ExperimentRunner(ExperimentTunerIF tuner,
+			String[] experimentCategories, String title) {
 		this.tuner = tuner;
-		this.usernames = usernames;
+		this.experimentCategories = experimentCategories;
 		this.title = title;
 		this.description = "";
-		this.resultMatrix = new Double[usernames.length][];
+		this.resultMatrix = new Double[experimentCategories.length][];
 	}
 
-	public ExperimentRunner(ExperimentTunerIF tuner, String[] usernames,
+	/**
+	 * Constructor for ExperimentRunner
+	 * 
+	 * @param tuner
+	 *            ExperimentTuner is the source for the ExepriementUnits of the
+	 *            experiment
+	 * @param experimentCategories
+	 *            This would represent the different graph lines (categories) of
+	 *            the experiment (e.g: usernames or algorithms)
+	 * @param title
+	 *            This represents either the title of the experiment (in case of
+	 *            usernames as categories) OR represents the username (in case
+	 *            of algorithms as categories)
+	 * @param description description of the Experiment
+	 */
+	public ExperimentRunner(ExperimentTunerIF tuner, String[] experimentCategories,
 			String title, String description) {
 		this.tuner = tuner;
-		this.usernames = usernames;
+		this.experimentCategories = experimentCategories;
 		this.title = title;
 		this.description = description;
-		this.resultMatrix = new Double[usernames.length][];
+		this.resultMatrix = new Double[experimentCategories.length][];
 	}
 
 	private void printResultMatrix() {
-		for (int i = 0; i < usernames.length; i++) {
-			System.out.print(usernames[i] + ": ");
+		for (int i = 0; i < experimentCategories.length; i++) {
+			System.out.print(experimentCategories[i] + ": ");
 			for (int j = 0; j < resultMatrix[i].length; j++)
 				System.out.printf(" %2.2f", resultMatrix[i][j]);
 			System.out.println();
@@ -59,33 +87,33 @@ public class ExperimentRunner {
 
 	private void ExportJSONObject(ArrayList<ExperimentUnit> units)
 			throws JSONException, IOException {
-		if (usernames.length > graphColors.length) {
+		if (experimentCategories.length > graphColors.length) {
 			System.err
 					.println("Warning: ExperimentRunner.java: No sufficient colors to assign a unique color to each user in this Experiment");
 		}
 
 		JSONObject jsonRoot = new JSONObject();
 
-		JSONArray usersArr = new JSONArray();
-		for (int i = 0; i < usernames.length; i++) {
-			JSONObject jsonUser = new JSONObject();
+		JSONArray categoryArr = new JSONArray();
+		for (int i = 0; i < experimentCategories.length; i++) {
+			JSONObject jsonCategory = new JSONObject();
 
-			jsonUser.put("color", graphColors[i % usernames.length]);
+			jsonCategory.put("color", graphColors[i % experimentCategories.length]);
 
-			JSONArray jsonUserValues = new JSONArray();
+			JSONArray jsonCategoriesValues = new JSONArray();
 			for (int j = 0; j < units.size(); j++)
-				jsonUserValues.put(resultMatrix[i][j]);
+				jsonCategoriesValues.put(resultMatrix[i][j]);
 
-			jsonUser.put("values", jsonUserValues);
-			jsonUser.put("name", usernames[i]);
-			usersArr.put(jsonUser);
+			jsonCategory.put("values", jsonCategoriesValues);
+			jsonCategory.put("name", experimentCategories[i]);
+			categoryArr.put(jsonCategory);
 		}
 
 		JSONArray jsonCombinationsArr = new JSONArray();
 		for (ExperimentUnit unit : units)
 			jsonCombinationsArr.put(unit.getTitle());
 
-		jsonRoot.put("criterias", usersArr);
+		jsonRoot.put("criterias", categoryArr);
 		jsonRoot.put("title", this.title);
 		jsonRoot.put("combinations_names", jsonCombinationsArr);
 		jsonRoot.put("ylabel", "Accuracy %");
@@ -106,23 +134,27 @@ public class ExperimentRunner {
 		for (int i = 0; i < resultMatrix.length; i++)
 			resultMatrix[i] = new Double[units.size()];
 
-		for (int i = 0; i < usernames.length; i++) {
+		for (int i = 0; i < experimentCategories.length; i++) {
 			for (int j = 0; j < units.size(); j++) {
 				System.out.println("running user #" + (i + 1) + " ("
-						+ usernames[i] + ") with experiment unit #" + (j + 1));
+						+ experimentCategories[i] + ") with experiment unit #"
+						+ (j + 1));
 				ExperimentUnit unit = units.get(j);
 
 				Trainer trainer = null;
 
-				if (unit.getTrainingType() == TrainingType.PERCENTAGE)
-					trainer = new Trainer(usernames[i],
+				if (unit.getTrainingType() == TrainingType.PERCENTAGE) {
+					trainer = new Trainer(experimentCategories[i],
 							unit.getClassifierType(),
 							unit.getTrainingSetPercentage(),
 							unit.getPreprocessors(), unit.getFilterCreators());
-				else
-					trainer = new Trainer(usernames[i],
-							unit.getClassifierType(), unit.getN(), unit.getK(),
-							unit.getPreprocessors(), unit.getFilterCreators());
+				} else {
+					String username = this.title;
+					String classifierType = experimentCategories[i];
+					trainer = new Trainer(username, classifierType,
+							unit.getN(), unit.getK(), unit.getPreprocessors(),
+							unit.getFilterCreators());
+				}
 
 				trainer.init();
 				Classifier classifier = trainer.trainModel();

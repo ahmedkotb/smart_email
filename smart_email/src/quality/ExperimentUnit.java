@@ -18,6 +18,15 @@ public class ExperimentUnit {
 	private ArrayList<Preprocessor> preprocessors;
 	private ArrayList<FilterCreator> filterCreators;
 	
+	/**
+	 * Constructor for an ExperimentUnit that splits the dataset to test and training with a give percentage
+	 * @param title title of this unit
+	 * @param description description of this unit
+	 * @param preprocessors preprocessors to be used
+	 * @param filterCreators filterCreators to be used
+	 * @param classifierType the classifier type to be used in this unit
+	 * @param trainingSetPercentage training set percentage
+	 */
 	public ExperimentUnit(String title, String description, ArrayList<Preprocessor> preprocessors, ArrayList<FilterCreator> filterCreators, String classifierType, int trainingSetPercentage) {
 		this.title = title;
 		this.description = description;
@@ -28,7 +37,16 @@ public class ExperimentUnit {
 		this.trainingType = TrainingType.PERCENTAGE;
 	}
 
-	public ExperimentUnit(String title, String description, ArrayList<Preprocessor> preprocessors, ArrayList<FilterCreator> filterCreators, String classifierType, int N, int K) {
+	/**
+	 * Constructor for an ExperimentUnit that splits the dataset to test and training to N and K*N
+	 * @param title title of this unit
+	 * @param description description of this unit
+	 * @param preprocessors preprocessors to be used
+	 * @param filterCreators filterCreators to be used
+	 * @param N the size of the Partition to be used in splitting the dataset
+	 * @param K size of the training set = K*N
+	 */
+	public ExperimentUnit(String title, String description, ArrayList<Preprocessor> preprocessors, ArrayList<FilterCreator> filterCreators, int N, int K) {
 		this.title = title;
 		this.description = description;
 		this.preprocessors = preprocessors;
