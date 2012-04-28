@@ -1,6 +1,7 @@
 package classification;
 
 import weka.classifiers.bayes.NaiveBayes;
+import weka.core.Capabilities;
 import weka.core.Instance;
 import weka.core.Instances;
 
@@ -19,7 +20,6 @@ public class NaiveBayesClassifier extends Classifier {
 		try {
 			return classifier.classifyInstance(instance);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return -1.0;
 		}
@@ -30,21 +30,40 @@ public class NaiveBayesClassifier extends Classifier {
 		try {
 			classifier.buildClassifier(trainingSet);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	@Override
 	public double[] distributionForFeaturesVector(Instance instance) {
-		// TODO Auto-generated method stub
 		try {
 			return classifier.distributionForInstance(instance);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	@Override
+	public double[] distributionForInstance(Instance instance) throws Exception {
+		try {
+			return classifier.distributionForInstance(instance);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public Capabilities getCapabilities() {
+		return classifier.getCapabilities();
+	}
+
+	@Override
+	public void trainOnInstance(Instance Instance)
+			throws UnsupportedOperationException {
+		
+		throw new UnsupportedOperationException();
 	}
 
 }

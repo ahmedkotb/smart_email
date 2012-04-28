@@ -4,7 +4,7 @@ import java.io.Serializable;
 import weka.core.Instance;
 import weka.core.Instances;
 
-public abstract class Classifier extends weka.classifiers.Classifier implements Serializable {
+public abstract class Classifier implements weka.classifiers.Classifier, Serializable {
 
 	private static final long serialVersionUID = -3535958974683789931L;
 
@@ -14,6 +14,7 @@ public abstract class Classifier extends weka.classifiers.Classifier implements 
 		if(classifierName.equals("naivebayes")) return new NaiveBayesClassifier();
 		else if(classifierName.equals("svm")) return new SVMClassifier();
 		else if(classifierName.equals("decisiontree")) return new DecisionTreeClassifier();
+		else if(classifierName.equals("onlinenaivebayes")) return new NaiveBayesMoaClassifier();
 		
 		return null;
 	}
@@ -23,4 +24,6 @@ public abstract class Classifier extends weka.classifiers.Classifier implements 
 	public abstract void buildClassifier(Instances trainingSet);
 	
 	public abstract double[] distributionForFeaturesVector(Instance instance);
+	
+	public abstract void trainOnInstance(Instance Instance) throws UnsupportedOperationException;
 }
