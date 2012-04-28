@@ -5,12 +5,16 @@ import java.util.ArrayList;
 import filters.FilterCreator;
 
 import preprocessors.Preprocessor;
+import training.TrainingType;
 
 public class ExperimentUnit {
 	private String title;
 	private String description;
 	private String classifierType;
+	private TrainingType trainingType;
 	private int trainingSetPercentage;
+	private int N;
+	private int K;
 	private ArrayList<Preprocessor> preprocessors;
 	private ArrayList<FilterCreator> filterCreators;
 	
@@ -21,6 +25,18 @@ public class ExperimentUnit {
 		this.filterCreators = filterCreators;
 		this.classifierType = classifierType;
 		this.trainingSetPercentage = trainingSetPercentage;
+		this.trainingType = TrainingType.PERCENTAGE;
+	}
+
+	public ExperimentUnit(String title, String description, ArrayList<Preprocessor> preprocessors, ArrayList<FilterCreator> filterCreators, String classifierType, int N, int K) {
+		this.title = title;
+		this.description = description;
+		this.preprocessors = preprocessors;
+		this.filterCreators = filterCreators;
+		this.classifierType = classifierType;
+		this.N = N;
+		this.K = K;
+		this.trainingType = TrainingType.KN_PARTITIONS;
 	}
 
 	public String getTitle() {
@@ -53,6 +69,30 @@ public class ExperimentUnit {
 	
 	public void setTrainingSetPercentage(int trainingSetPercentage){
 		this.trainingSetPercentage = trainingSetPercentage;
+	}
+
+	public int getN(){
+		return this.N;
+	}
+	
+	public void setN(int N){
+		this.N = N;
+	}
+	
+	public int getK(){
+		return this.K;
+	}
+	
+	public void setK(int K){
+		this.K = K;
+	}
+	
+	public TrainingType getTrainingType(){
+		return this.trainingType;
+	}
+	
+	public void setTrainingType(TrainingType trainingType){
+		this.trainingType = trainingType;
 	}
 	
 	public ArrayList<Preprocessor> getPreprocessors() {
