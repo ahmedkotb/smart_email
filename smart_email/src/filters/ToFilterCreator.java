@@ -11,17 +11,16 @@ import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
 import weka.core.Attribute;
-import weka.core.FastVector;
 
 public class ToFilterCreator implements FilterCreator {
 
 	@Override
 	public Filter createFilter(ArrayList<Email> emails) {
 		HashSet<String> receivers = new HashSet<String>();
-		FastVector fvReceivers = new FastVector();
+		ArrayList<String> receiversVals = new ArrayList<String>();
 		// in the calssification phase, if we found new receiver, we will
 		// assign it to ToAtt_Other
-		fvReceivers.addElement("ToAtt_Other");
+		receiversVals.add("ToAtt_Other");
 		for (Email email : emails) {
 			// TODO: Moustafa please review, could we handle multiple
 			// receivers??
@@ -41,15 +40,14 @@ public class ToFilterCreator implements FilterCreator {
 	
 					if (!receivers.contains(receiver)) {
 						receivers.add(receiver);
-						fvReceivers.addElement(receiver);
+						receiversVals.add(receiver);
 					}
 				}
 			}			
 		}
 
 		ArrayList<Attribute> atts = new ArrayList<Attribute>();
-		atts.add(new Attribute("ToAtt", fvReceivers));
-		System.err.println("Num Recipients = " + receivers.size());
+		atts.add(new Attribute("ToAtt", receiversVals));
 
 		return new ToFilter(atts, null);
 	}

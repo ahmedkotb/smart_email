@@ -3,7 +3,6 @@ package filters;
 import java.util.ArrayList;
 
 import weka.core.Attribute;
-import weka.core.FastVector;
 import general.Email;
 
 /**
@@ -22,10 +21,10 @@ public class SizeFilterCreator implements FilterCreator {
 	public Filter createFilter(ArrayList<Email> emails) {
 		// Prepare for adding a new attribute for the email size.
 		ArrayList<Attribute> attributes = new ArrayList<Attribute>(1);
-		FastVector fv = new FastVector(NUM_CLASSES);
+		ArrayList<String> sizeValues = new ArrayList<String> (NUM_CLASSES);
 		for(int i=0; i<=NUM_CLASSES; i++)
-			fv.addElement(String.valueOf(i));
-		attributes.add(new Attribute(SIZE_ATTRIBUTE, fv));
+			sizeValues.add(String.valueOf(i));
+		attributes.add(new Attribute(SIZE_ATTRIBUTE, sizeValues));
 		// Return a new filter after adding the attribute type and given
 
 		String[] options = new String[]{NUM_CLASSES + "", COMPRESSION_FACTOR + ""};

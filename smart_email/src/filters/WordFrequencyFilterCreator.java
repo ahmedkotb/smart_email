@@ -17,7 +17,6 @@ import wordFrequencyTools.*;
 import javax.mail.MessagingException;
 
 import weka.core.Attribute;
-import weka.core.FastVector;
 
 public class WordFrequencyFilterCreator implements FilterCreator {
 
@@ -221,9 +220,9 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 	private ArrayList<Attribute> extractAttributes() {
 		ArrayList<Attribute> atts = new ArrayList<Attribute>();
 
-		FastVector fv = new FastVector(2);
-		fv.addElement("False");
-		fv.addElement("True");
+		ArrayList<String> nominals = new ArrayList<String> (2);
+		nominals.add("False");
+		nominals.add("True");
 
 		Collection<TermManager> allManagers = labelFreqMgrMap.values();
 
@@ -237,7 +236,7 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 				if(!uniqueWords.contains(words[i])){
 					uniqueWords.add(words[i]);
 					if(useBinaryAttributes){
-						atts.add(new Attribute(ATT_NAME_PREFIX + words[i], fv));
+						atts.add(new Attribute(ATT_NAME_PREFIX + words[i], nominals));
 					} else{
 						atts.add(new Attribute(ATT_NAME_PREFIX + words[i]));
 					}
