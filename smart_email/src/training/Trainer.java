@@ -142,14 +142,7 @@ public class Trainer implements TrainerIF {
 			} catch (MessagingException e) {
 				e.printStackTrace();
 			}
-		}
-		
-		try {
-			System.err.println(trainingSet.get(0).getSentDate() + ", " + trainingSet.get(1).getSentDate());
-		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		}		
 	}
 
 	private void loadDatasetWithPercentage(DAO dao, int maximumLimit){
