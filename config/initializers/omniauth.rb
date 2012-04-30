@@ -6,8 +6,8 @@
   #provider :openid, :store => OpenID::Store::Filesystem.new('/tmp'), :name => 'google', :identifier => 'https://www.google.com/accounts/o8/id'
 #end
 
-OmniAuth.config.full_host = "http://localhost:3000"
+#OmniAuth.config.full_host = "http://localhost:3000"
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :google, 'smart-email.com', 'CGmmRPbw8R6YJAXbkz-Elj90', :scope => 'https://mail.google.com/mail/feed/atom/' 
+  provider :google, 'smart-email.herokuapp.com', '9nBqknwJqXo1jRFGYvEC6iyU'
 end

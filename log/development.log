@@ -25132,3 +25132,31 @@ ActionController::RoutingError (No route matches [GET] "/auth/google"):
 
 
   Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+  [1m[36m (0.9ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateAccounts (20120331193649)
+Migrating to CreateUsers (20120331193805)
+Migrating to AddDomainToAccounts (20120331194003)
+Migrating to AddOauthTokenToUser (20120409065355)
+Migrating to AddOauthTokenSecretToUser (20120409065418)
+Migrating to AddDeviseToUsers (20120419182819)
+Migrating to DeviseCreateAdmins (20120420175039)
+Migrating to AddUserIdToAccounts (20120425101328)
+Migrating to CreateServices (20120427122755)
+Migrating to AddDetailsToUsers (20120430230313)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (294.3ms)[0m  ALTER TABLE "users" ADD "provider" varchar(255)
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "users" ADD "uid" varchar(255)[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "users" ADD "name" varchar(255)
+  [1m[36m (0.9ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120430230313')[0m
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.9ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("accounts")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_accounts_on_user_id')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("admins")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_admins_on_reset_password_token')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_admins_on_email')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("services")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')

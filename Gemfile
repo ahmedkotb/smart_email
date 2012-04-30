@@ -27,6 +27,7 @@ group :assets do
 end
 
 gem 'omniauth'
+gem 'taps'
 gem 'omniauth-google'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-openid'
