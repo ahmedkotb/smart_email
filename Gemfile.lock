@@ -193,6 +193,7 @@ DEPENDENCIES
   heroku
   iron_mq
   jquery-rails
+  omniauth
   omniauth-google
   omniauth-google-oauth2
   omniauth-openid
