@@ -25160,3 +25160,4 @@ Migrating to AddDetailsToUsers (20120430230313)
   [1m[35m (0.0ms)[0m  PRAGMA index_list("services")
   [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
   [1m[35m (0.1ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+SQLite3::SQLException: no such column: users.provide: SELECT "users".* FROM "users"  WHERE "users"."provide" = 'aa' AND "users"."uid" = 'dd'
