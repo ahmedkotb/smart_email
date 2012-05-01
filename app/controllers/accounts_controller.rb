@@ -1,6 +1,7 @@
 class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.json
+	require "gmail"
   def index
     @accounts = current_user.accounts.all
 
@@ -82,8 +83,13 @@ class AccountsController < ApplicationController
   end
 	
 	def labels
+  @account = current_user.accounts.find(params[:id])
+
+	gmail = Gmail.connect(@account.username,@account.password)
+
 	@account_labels = Array.new 
-	@account_labels << "ahmed"
+	@account_labels = gmail.labels.all
+	gmail.logout
 
 	respond_to do |format|
   	format.html # labels.html.erb

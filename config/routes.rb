@@ -13,6 +13,10 @@ SmartEmail::Application.routes.draw do
   resources :accounts
 	resources :services, :only => [:index, :create, :destroy]
 
+	resources :accounts do
+	get 'labels', :on => :member
+	end
+
 	match '/auth/:provider/callback' => 'services#create' 
   match '/users/authenticate/:id' => 'users#authenticate'
 	match "publish" => "home#publish"

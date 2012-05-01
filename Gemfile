@@ -27,6 +27,7 @@ group :assets do
 end
 
 gem 'omniauth'
+gem 'gmail'
 gem 'taps'
 gem 'omniauth-google'
 gem 'omniauth-google-oauth2'

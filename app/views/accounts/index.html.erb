@@ -28,7 +28,7 @@
                       :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
                       :class => 'btn btn-mini btn-danger' %>
 					<%= link_to t('.edit', :default => t("helpers.links.labels")),
-                      "/accounts/labels",:method => :labels, :class => 'btn btn-mini' %>
+                      labels_account_path(account),:class => 'btn btn-mini' %>
         </td>
       </tr>
     <% end %>
