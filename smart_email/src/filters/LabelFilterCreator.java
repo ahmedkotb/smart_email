@@ -8,14 +8,13 @@ import java.util.HashSet;
 import javax.mail.MessagingException;
 
 import weka.core.Attribute;
-import weka.core.FastVector;
 
 public class LabelFilterCreator implements FilterCreator{
 
 	@Override
 	public Filter createFilter(ArrayList<Email> emails) {
 		HashSet<String> labels = new HashSet<String>();
-		FastVector fvLabels = new FastVector();
+		ArrayList<String> fvLabels = new ArrayList<String>();
 		for(Email email : emails){
 			String lbl = null;
 			try {
@@ -27,7 +26,7 @@ public class LabelFilterCreator implements FilterCreator{
 			}
 			if(!labels.contains(lbl)){
 				labels.add(lbl);
-				fvLabels.addElement(lbl);
+				fvLabels.add(lbl);
 			}
 		}
 				

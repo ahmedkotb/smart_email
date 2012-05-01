@@ -15,7 +15,7 @@ import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 
-public class Email extends Message {
+public class Email extends Message implements Comparable<Email>{
 
 	private Message message;
 	private long uid;
@@ -245,6 +245,16 @@ public class Email extends Message {
 	@Override
 	public void setSubject(String arg0) throws MessagingException {
 		message.setSubject(arg0);
+	}
+
+	@Override
+	public int compareTo(Email e) {
+		try {
+			return this.getSentDate().compareTo(e.getSentDate());
+		} catch (MessagingException e1) {
+			e1.printStackTrace();
+			return 0;
+		}
 	}
 
 }

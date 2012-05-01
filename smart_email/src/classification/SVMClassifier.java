@@ -1,6 +1,7 @@
 package classification;
 
 import weka.classifiers.functions.SMO;
+import weka.core.Capabilities;
 import weka.core.Instance;
 import weka.core.Instances;
 
@@ -40,6 +41,28 @@ public class SVMClassifier extends Classifier{
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	@Override
+	public double[] distributionForInstance(Instance instance) throws Exception {
+		try {
+			return classifier.distributionForInstance(instance);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public Capabilities getCapabilities() {
+		return classifier.getCapabilities();
+	}
+
+	@Override
+	public void trainOnInstance(Instance Instance)
+			throws UnsupportedOperationException {
+		
+		throw new UnsupportedOperationException();
 	}
 
 }
