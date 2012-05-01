@@ -3,7 +3,7 @@ class ServicesController < ApplicationController
 
   def create
     auth = request.env["omniauth.auth"]
-    user = User.where(:provider=>auth["provider"],:uid=> auth["uid"]).first
+    user = User.where(:provider=>auth["provider"],:uid=> auth["uid"]).first unless auth.nil?
 		if user.nil?
 		User.create_with_omniauth(auth)
 		end
