@@ -5,7 +5,7 @@ class ServicesController < ApplicationController
     auth = request.env["omniauth.auth"]
     user = User.where(:provider=>auth["provider"],:uid=> auth["uid"]).first
 		if user.nil?
-			User.create_with_omniauth(auth)
+		User.create_with_omniauth(auth)
 		end
     service[:user_id] = user.id
     redirect_to root_url, :notice => "Signed in!"

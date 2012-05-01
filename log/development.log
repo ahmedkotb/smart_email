@@ -25161,3 +25161,18 @@ Migrating to AddDetailsToUsers (20120430230313)
   [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
   [1m[35m (0.1ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
 SQLite3::SQLException: no such column: users.provide: SELECT "users".* FROM "users"  WHERE "users"."provide" = 'aa' AND "users"."uid" = 'dd'
+
+
+Started GET "/auth/google/callback" for 127.0.0.1 at 2012-05-01 02:09:46 +0200
+Processing by ServicesController#create as HTML
+  Parameters: {"provider"=>"google"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."provider" = 'ahmed' AND "users"."uid" = 'ahmed' LIMIT 1[0m
+Completed 500 Internal Server Error in 2432ms
+
+NameError (undefined local variable or method `auth' for #<ServicesController:0xc40e4d8>):
+  app/controllers/services_controller.rb:8:in `create'
+
+
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.1ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /home/shakes/.rvm/gems/ruby-1.9.2-p290/gems/actionpack-3.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (244.4ms)
