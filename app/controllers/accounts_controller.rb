@@ -85,11 +85,22 @@ class AccountsController < ApplicationController
 	def labels
   @account = current_user.accounts.find(params[:id])
 
-	gmail = Gmail.connect(@account.username,@account.password)
-
+	@gmail = Gmail.connect(@account.username,@account.password)
+  @inbox_count = @gmail.inbox.count()
+  @unread_count = @gmail.inbox.count(:unread)
+  @read_count = @gmail.inbox.count(:read)
 	@account_labels = Array.new 
-	@account_labels = gmail.labels.all
-	gmail.logout
+	@counts = Array.new 
+	@account_labels = @gmail.labels.all
+
+	@account_labels.each do |label|
+		if !label.include? "[Gmail]" 
+		@counts << @gmail.label(label).count
+		else
+		@counts <<""
+		end
+	end
+	@gmail.logout
 
 	respond_to do |format|
   	format.html # labels.html.erb

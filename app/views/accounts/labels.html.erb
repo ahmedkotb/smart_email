@@ -1,16 +1,28 @@
 <%- model_class = Account.new.class -%>
-<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<h1>Statistics</h1>
+
 <table class="table table-striped">
   <thead>
+	<tr>
+		Inbox: <%= @inbox_count %>
+	</tr>
+	<tr>
+		Read: <%= @read_count %>
+	</tr>
+	<tr>
+		Unread: <%= @unread_count %>
+	</tr>
     <tr>
-      <th><%= model_class.human_attribute_name(:username) %></th>
+      <th>Labels</th>
     </tr>
   </thead>
   <tbody>
-    <% @account_labels.each do |label| %>
+    <% @account_labels.zip(@counts).each do |label,count| %>
       <tr>
         <td><%= label %></td>
+				<td><%= count %></td>
       </tr>
+
     <% end %>
   </tbody>
 </table>
