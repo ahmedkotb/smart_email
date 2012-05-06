@@ -20,7 +20,8 @@ local.properties
 .classpath
 .settings/
 .loadpath
-
+log/*
+db/*.sqlite3
 # External tool builders
 .externalToolBuilders/
 
