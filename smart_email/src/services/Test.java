@@ -17,16 +17,16 @@ public class Test {
 		Client client = Client.create(config);
 		WebResource service = client.resource(getBaseURI());
 		// Fluent interfaces
-		System.out.println(service.path("rest").path("hello").accept(
+		System.out.println(service.path("rest/hello").path("hello").accept(
 				MediaType.TEXT_PLAIN).get(ClientResponse.class).toString());
 		// Get plain text
-		System.out.println(service.path("rest").path("hello").accept(
+		System.out.println(service.path("rest/hello").path("hello").accept(
 				MediaType.TEXT_PLAIN).get(String.class));
 		// Get XML
-		System.out.println(service.path("rest").path("hello").accept(
+		System.out.println(service.path("rest/hello").path("hello").accept(
 				MediaType.TEXT_XML).get(String.class));
 		// The HTML
-		System.out.println(service.path("rest").path("hello").accept(
+		System.out.println(service.path("rest/hello").path("hello").accept(
 				MediaType.TEXT_HTML).get(String.class));
 
 	}
