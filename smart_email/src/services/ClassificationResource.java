@@ -2,6 +2,9 @@ package services;
 
 import java.net.URI;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
@@ -12,6 +15,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
 import javax.xml.bind.JAXBElement;
 
+import entities.Account;
+
 import messages.*;
 
 @Path("provider")
@@ -21,11 +26,16 @@ public class ClassificationResource {
 	@Path("register")
 	@Produces( { MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Consumes(MediaType.APPLICATION_XML)
-	public Response addAccount(JAXBElement<AddAccountMessage> message) {		
-		AddAccountMessage msg = message.getValue();
-		
+	public Response addAccount(JAXBElement<Account> account) {		
+		EntityManager entityManager = Persistence.createEntityManagerFactory("smart_email").createEntityManager();
+	    EntityTransaction entr= entityManager.getTransaction();
+		entr.begin();
+		Account msg = account.getValue();
+	    entityManager.persist(msg);
+	    entr.commit();
+
 		//TODO: implementation
-		System.out.println("Add Account: " + msg.getUsername() + ", " + msg.getToken());
+		System.out.println("Add Account: " + msg.getEmail() + ", " + msg.getToken());
 
 		return Response.created(getBaseURI()).build();
 	}

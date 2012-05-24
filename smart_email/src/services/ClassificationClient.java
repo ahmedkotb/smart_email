@@ -11,6 +11,8 @@ import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 
+import entities.Account;
+
 import messages.*;
 
 public class ClassificationClient {
@@ -27,8 +29,9 @@ public class ClassificationClient {
 		ClientResponse response = null;
 
 		// Add Account
-		AddAccountMessage registerMsg = new AddAccountMessage("myUsername",
-				"myToken");
+		Account registerMsg = new Account();
+		registerMsg.setEmail("email");
+		registerMsg.setToken("token");
 		response = service.path("rest/service").path("provider")
 				.path("register").put(ClientResponse.class, registerMsg);
 		System.out.println(response);
