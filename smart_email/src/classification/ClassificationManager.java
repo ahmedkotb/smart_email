@@ -14,7 +14,7 @@ public class ClassificationManager {
 	// Path for the training and testing dataset.
 	private static final String DATASET_PATH = "../../../enron_processed/";
 	// Maximum limit for emails per label
-	private static final int LIMIT = 2000;
+	private static final int LIMIT = 3000;
 	// Default pre-processors.
 	private final String preprocessors = "preprocessors.Lowercase,preprocessors.NumberNormalization,"
 			+ "preprocessors.UrlNormalization,preprocessors.WordsCleaner,"
