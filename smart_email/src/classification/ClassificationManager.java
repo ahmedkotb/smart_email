@@ -1,6 +1,8 @@
 package classification;
 
 import java.util.HashMap;
+
+import preprocessors.PreprocessorManager;
 import filters.Filter;
 import filters.FilterManager;
 
@@ -9,12 +11,18 @@ public class ClassificationManager {
 	// ClassifierManager instance used for implementing singleton
 	// design pattern.
 	private static ClassificationManager managerInstance = null;
-	// Filters associated with each user.
-	private HashMap<String, Filter[]> userFilters = new HashMap<String, Filter[]>();
 	// Path for the training and testing dataset.
 	private static final String DATASET_PATH = "../../../enron_processed/";
 	// Maximum limit for emails per label
 	private static final int LIMIT = 2000;
+	// Default pre-processors.
+	private final String preprocessors = "preprocessors.Lowercase,preprocessors.NumberNormalization,"
+			+ "preprocessors.UrlNormalization,preprocessors.WordsCleaner,"
+			+ "preprocessors.StopWordsRemoval,preprocessors.EnglishStemmer";
+	// Default filters.
+	private final String filtersList = "filters.SenderFilterCreator,"
+			+ "filters.WordFrequencyFilterCreator,"
+			+ "filters.LabelFilterCreator";
 
 	/**
 	 * The function returns the path for the golden data used for training and
@@ -50,12 +58,20 @@ public class ClassificationManager {
 		}
 	}
 
-	public FilterManager getFilterManager(String username) {
-		Filter[] filters = userFilters.get(username);
-		if (filters == null) {
-			return null;
-		}
-		return new FilterManager(filters);
+	/**
+	 * Returns the default pre-processor manager
+	 * @return default pre-processor manager.
+	 */
+	public PreprocessorManager getDefaultPreprocessor() {
+		return new PreprocessorManager(preprocessors.split(","));
+	}
+	
+	/**
+	 * Returns the default list of filters used for classification.
+	 * @return default list of filters used for classification.
+	 */
+	public String[] getDefaultFiltersList() {
+		return null;
 	}
 
 	/**
