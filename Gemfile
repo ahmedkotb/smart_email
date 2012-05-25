@@ -29,6 +29,9 @@ end
 gem 'omniauth'
 gem 'gmail'
 gem 'taps'
+gem 'rest-client'
+gem 'resque', :require => "resque/server"
+gem 'resque-scheduler'
 gem 'omniauth-google'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-openid'

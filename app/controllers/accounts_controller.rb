@@ -30,6 +30,7 @@ class AccountsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @account }
+      format.xml { render xml: @account }
     end
   end
 
@@ -47,6 +48,7 @@ class AccountsController < ApplicationController
       if @account.save
         format.html { redirect_to @account, notice: 'Account was successfully created.' }
         format.json { render json: @account, status: :created, location: @account }
+        format.xml { render json: @account, status: :created, location: @account }
       else
         format.html { render action: "new" }
         format.json { render json: @account.errors, status: :unprocessable_entity }
