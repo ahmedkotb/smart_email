@@ -1,11 +1,19 @@
 package training;
 
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.mail.MessagingException;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import preprocessors.PreprocessorManager;
 import weka.core.Instances;
+import classification.ClassificationManager;
 import classification.Classifier;
 import datasource.ImapDAO;
+import entities.Model;
 import filters.Filter;
 import filters.FilterCreatorManager;
 import filters.FilterManager;
@@ -18,23 +26,40 @@ import general.Email;
  * @author Amr Sharaf
  * 
  */
-public class AccountTrainer extends Thread implements TrainerIF {
+public class AccountTrainer extends Thread {
 
+	/**
+	 * Account email.
+	 */
 	private String email;
+	/**
+	 * Account password.
+	 */
 	private String password;
+	/**
+	 * Classification type.
+	 */
 	private String classifierType;
+	/**
+	 * Entity manager used for managing JPA objects.
+	 */
+	private EntityManager entityManager;
 
 	public AccountTrainer(String email, String password) {
 		this.email = email;
 		this.password = password;
+		this.classifierType = "svm";
+		this.entityManager = Persistence.createEntityManagerFactory(
+				"smart_email").createEntityManager();
 	}
 
 	public void run() {
-
+		init();
 	}
 
-	@Override
 	public void init() {
+		ClassificationManager classificationManager = ClassificationManager
+				.getInstance();
 		ImapDAO imapDAO = new ImapDAO(email, password);
 		ArrayList<String> labels = imapDAO.getClasses();
 		System.out.println(labels);
@@ -54,28 +79,19 @@ public class AccountTrainer extends Thread implements TrainerIF {
 			}
 		}
 
-		String preprocessors = "preprocessors.Lowercase,preprocessors.NumberNormalization,"
-				+ "preprocessors.UrlNormalization,preprocessors.WordsCleaner,"
-				+ "preprocessors.StopWordsRemoval,preprocessors.EnglishStemmer";
-
-		String filtersList = "filters.SenderFilterCreator,"
-				+ "filters.WordFrequencyFilterCreator,"
-				+ "filters.LabelFilterCreator";
-
 		// create the preprocessors manager
-		PreprocessorManager preprocessorManager = new PreprocessorManager(
-				preprocessors.split(","));
+		PreprocessorManager preprocessorManager = classificationManager
+				.getDefaultPreprocessor();
 
 		// step 1: pre-process emails
-		for (Email e : trainingData)
-			preprocessorManager.apply(e);
+		preprocessorManager.apply(trainingData);
 
 		// step 2: create filters
 		FilterCreatorManager filterCreatorMgr = null;
 		Filter[] filters = null;
 		try {
-			filterCreatorMgr = new FilterCreatorManager(filtersList.split(","),
-					trainingData);
+			filterCreatorMgr = new FilterCreatorManager(
+					classificationManager.getDefaultFiltersList(), trainingData);
 			filters = filterCreatorMgr.getFilters();
 		} catch (Exception e1) {
 			e1.printStackTrace();
@@ -90,24 +106,50 @@ public class AccountTrainer extends Thread implements TrainerIF {
 		Classifier classifier = Classifier.getClassifierByName(classifierType,
 				null);
 		classifier.buildClassifier(dataset);
+		storeFilters(filters);
+		storeModel(classifier);
 	}
 
-	@Override
-	public Classifier trainModel() {
-		// TODO Auto-generated method stub
-		return null;
+	private void storeFilters(Filter[] filters) {
+		try {
+			EntityTransaction transaction = entityManager.getTransaction();
+			transaction.begin();
+			for (int i = 0; i < filters.length; i++) {
+				entities.Filter filterEntity = new entities.Filter();
+				filterEntity.setEmail(email);
+				ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+				ObjectOutput objectOutput = new ObjectOutputStream(byteArray);
+				objectOutput.writeObject(filters[i]);
+				byte[] blobFilter = byteArray.toByteArray();
+				objectOutput.close();
+				byteArray.close();
+				filterEntity.setFilter(blobFilter);
+				entityManager.persist(filterEntity);
+			}
+			transaction.commit();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 
-	@Override
-	public Instances getTrainedInstances() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Instances getTestInstances() {
-		// TODO Auto-generated method stub
-		return null;
+	private void storeModel(Classifier model) {
+		try {
+			EntityTransaction transaction = entityManager.getTransaction();
+			transaction.begin();
+			Model modelEntity = new Model();
+			modelEntity.setEmail(email);
+			ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+			ObjectOutput objectOutput = new ObjectOutputStream(byteArray);
+			objectOutput.writeObject(model);
+			byte[] blobFilter = byteArray.toByteArray();
+			objectOutput.close();
+			byteArray.close();
+			modelEntity.setModel(blobFilter);
+			entityManager.persist(modelEntity);
+			transaction.commit();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args) {
