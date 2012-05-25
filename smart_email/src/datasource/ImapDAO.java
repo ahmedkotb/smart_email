@@ -1,5 +1,6 @@
 package datasource;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
 import javax.mail.Store;
@@ -9,6 +10,7 @@ import javax.mail.Flags.Flag;
 import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.NoSuchProviderException;
 import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
@@ -94,6 +96,7 @@ public class ImapDAO extends DAO {
 				Email e = new Email(m);
 				e.setUid(((IMAPFolder)folder).getUID(messages[i]));
 				e.setHeader("X-label", label);
+				normalizeEmail(e);
 				emails.add(e);
 			}
 			
@@ -149,6 +152,23 @@ public class ImapDAO extends DAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	private void normalizeEmail(Email e) {
+		//if the content is not a direct string
+		//grap the string component of the content
+		try{
+			if (!(e.getContent() instanceof String)){
+				Multipart multipart = (Multipart) e.getContent();
+				//XXX assuming that the text part will be the first part [citations needed]
+				//e.setContent((Multipart)((Object)multipart.getBodyPart(0).toString()));
+				e.setContent(multipart.getBodyPart(0).toString(), "text/plain");
+			}
+		} catch (MessagingException me) {
+			me.printStackTrace();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
 	}
 
 }
