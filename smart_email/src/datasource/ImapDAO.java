@@ -73,36 +73,39 @@ public class ImapDAO extends DAO {
 	}
 
 	public ArrayList<Email> getEmails(String label, int limit) {
-
+		// Initialize list of emails.
+		ArrayList<Email> emails = new ArrayList<Email>();
+		if (label.equalsIgnoreCase("inbox")) {
+			return emails;
+		}
 		Folder folder = null;
 		Message messages[] = null;
-		ArrayList<Email> emails = null ;
 		try {
 			folder = store.getFolder(label);
 			folder.open(Folder.READ_WRITE);
-			//get the number of messages in this folder
+			// get the number of messages in this folder
 			int count = folder.getMessageCount();
 
-			int start = Math.max(count - limit + 1,1);
+			int start = Math.max(count - limit + 1, 1);
 			int end = count;
 
-			//fetch the messages
-			messages = folder.getMessages(start,end);
+			// fetch the messages
+			messages = folder.getMessages(start, end);
 
-			//Emails are sorted from the newest to oldest 
+			// Emails are sorted from the newest to oldest
 			emails = new ArrayList<Email>(messages.length);
-			for (int i=messages.length-1;i>-1;i--){
-				MimeMessage m = new MimeMessage((MimeMessage)messages[i]);
+			for (int i = messages.length - 1; i > -1; i--) {
+				MimeMessage m = new MimeMessage((MimeMessage) messages[i]);
 				Email e = new Email(m);
-				e.setUid(((IMAPFolder)folder).getUID(messages[i]));
+				e.setUid(((IMAPFolder) folder).getUID(messages[i]));
 				e.setHeader("X-label", label);
 				normalizeEmail(e);
 				emails.add(e);
 			}
-			
+
 		} catch (MessagingException e) {
-			e.printStackTrace();
-			return null;
+			//e.printStackTrace();
+			//return null;
 		}
 
 		return emails;
@@ -117,9 +120,9 @@ public class ImapDAO extends DAO {
 
 			inbox.copyMessages(new Message[] { message },
 					this.store.getFolder(labelName));
-			
-			//TODO UNComment this to archieve email
-			//message.setFlag(Flag.DELETED, true);
+
+			// TODO UNComment this to archieve email
+			// message.setFlag(Flag.DELETED, true);
 
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
@@ -153,15 +156,16 @@ public class ImapDAO extends DAO {
 		}
 		return null;
 	}
-	
+
 	private void normalizeEmail(Email e) {
-		//if the content is not a direct string
-		//grap the string component of the content
-		try{
-			if (!(e.getContent() instanceof String)){
+		// if the content is not a direct string
+		// grap the string component of the content
+		try {
+			if (!(e.getContent() instanceof String)) {
 				Multipart multipart = (Multipart) e.getContent();
-				//XXX assuming that the text part will be the first part [citations needed]
-				//e.setContent((Multipart)((Object)multipart.getBodyPart(0).toString()));
+				// XXX assuming that the text part will be the first part
+				// [citations needed]
+				// e.setContent((Multipart)((Object)multipart.getBodyPart(0).toString()));
 				e.setContent(multipart.getBodyPart(0).toString(), "text/plain");
 			}
 		} catch (MessagingException me) {

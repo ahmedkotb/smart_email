@@ -19,7 +19,10 @@ import preprocessors.UrlNormalization;
 import preprocessors.WordsCleaner;
 
 public class N_KSplitExperiment implements ExperimentTunerIF{
-
+	private static String[] usernames = new String[]{"beck-s", "farmer-d", "kaminski-v", "kitchen-l", "lokay_m", "sanders_r", "williams-w3"};
+	private static int[] emailsCount = new int[]{1971, 3672, 4477, 4015, 2493, 1188, 2769};
+	private static int currentUserIndex = 4;
+	
 	@Override
 	public ArrayList<ExperimentUnit> getExperimentUnits() {
 		ArrayList<ExperimentUnit> units = new ArrayList<ExperimentUnit>();
@@ -33,7 +36,8 @@ public class N_KSplitExperiment implements ExperimentTunerIF{
 		preprocessors.add(new EnglishStemmer());
 		
 		int N = 100;
-		for(int k=1; k<=5; k++){ 
+		int K = emailsCount[currentUserIndex]/N;
+		for(int k=1; k<K; k++){ 
 			ArrayList<FilterCreator> filterCreators = new ArrayList<FilterCreator>();
 			filterCreators.add(new SenderFilterCreator());
 			filterCreators.add(new SizeFilterCreator());
@@ -41,7 +45,9 @@ public class N_KSplitExperiment implements ExperimentTunerIF{
 			filterCreators.add(new WordFrequencyFilterCreator());
 			filterCreators.add(new SubjectFilterCreator());
 			filterCreators.add(new LabelFilterCreator());
-			units.add(new ExperimentUnit(("("+N+", " + k+")"), "", preprocessors, filterCreators, N, k));
+			String title = ((k%2)==0? "" : "\n\n")+(N*k);
+			units.add(new ExperimentUnit(title, "", preprocessors, filterCreators, N, k));
+			System.gc();
 		}
 		
 		return units;
@@ -49,9 +55,13 @@ public class N_KSplitExperiment implements ExperimentTunerIF{
 
 	public static void main(String[] args) throws Exception {
 		ExperimentTunerIF tuner = new N_KSplitExperiment();
-		String username = "lokay_m";
-		String[] algorithms = new String[]{"svm", "naiveBayes"};
-		ExperimentRunner exp = new ExperimentRunner(tuner, algorithms, username);
-		exp.runExperiment();
+//		for(int i=0; i<usernames.length; i++){
+		for(int i=2; i<=2; i++){
+			currentUserIndex = i;
+			String username = usernames[i];
+			String[] algorithms = new String[]{"svm", "naiveBayes"};
+			ExperimentRunner exp = new ExperimentRunner(tuner, algorithms, username);
+			exp.runExperiment();
+		}
 	}
 }

@@ -10,6 +10,7 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
+import com.sun.jersey.api.client.filter.LoggingFilter;
 
 import entities.Account;
 
@@ -20,6 +21,9 @@ public class ClassificationClient {
 	public static void main(String[] args) {
 		ClientConfig config = new DefaultClientConfig();
 		Client client = Client.create(config);
+		// Use this for debugging the response sent by the client
+		client.addFilter(new LoggingFilter(System.out));
+
 		WebResource service = client.resource(getBaseURI());
 
 		// The HTML
@@ -30,11 +34,12 @@ public class ClassificationClient {
 
 		// Add Account
 		Account registerMsg = new Account();
-		registerMsg.setEmail("email");
+		registerMsg.setEmail("mymail");
 		registerMsg.setToken("token");
 		response = service.path("rest/service").path("provider")
 				.path("register").put(ClientResponse.class, registerMsg);
 		System.out.println(response);
+		System.out.println("Location: " + response.getLocation());
 
 		// Delete Account
 		DeleteAccountMessage unregisterMsg = new DeleteAccountMessage(

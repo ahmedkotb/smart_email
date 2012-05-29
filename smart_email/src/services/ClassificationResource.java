@@ -26,7 +26,7 @@ public class ClassificationResource {
 	@Path("register")
 	@Produces( { MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	@Consumes(MediaType.APPLICATION_XML)
-	public Response addAccount(JAXBElement<Account> account) {		
+	public Response addAccount(JAXBElement<Account> account) {	
 		EntityManager entityManager = Persistence.createEntityManagerFactory("smart_email").createEntityManager();
 	    EntityTransaction entr= entityManager.getTransaction();
 		entr.begin();

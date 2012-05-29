@@ -5,7 +5,6 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
-
 /**
  * The persistent class for the accounts database table.
  * 

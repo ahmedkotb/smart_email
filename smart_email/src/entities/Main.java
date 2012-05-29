@@ -10,8 +10,8 @@ public class Main {
 		System.out.println("Hello World!");
 		EntityManager entityManager = Persistence.createEntityManagerFactory("smart_email").createEntityManager();
 		System.out.println(entityManager);
-		List<Account> data = entityManager.createQuery("select c from Account c", Account.class).getResultList();
-		for(Account d : data) {
+		List<Filter> data = entityManager.createQuery("select c from Filter c", Filter.class).getResultList();
+		for(Filter d : data) {
 			System.out.println(d.getEmail());
 		}
 	}
