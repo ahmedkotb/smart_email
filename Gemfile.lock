@@ -94,6 +94,7 @@ GEM
     mime-types (1.18)
     multi_json (1.2.0)
     multipart-post (1.1.5)
+    mysql2 (0.3.11)
     netrc (0.7.1)
     oauth (0.4.5)
     oauth2 (0.6.0)
@@ -225,6 +226,7 @@ DEPENDENCIES
   heroku
   iron_mq
   jquery-rails
+  mysql2
   omniauth
   omniauth-google
   omniauth-google-oauth2
