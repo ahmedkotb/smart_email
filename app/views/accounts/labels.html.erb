@@ -18,11 +18,12 @@
   </thead>
   <tbody>
     <% @account_labels.zip(@counts).each do |label,count| %>
+    <% if !label.include? "[Gmail]" %>
       <tr>
         <td><%= label %></td>
 				<td><%= count %></td>
       </tr>
-
+    <% end %>
     <% end %>
   </tbody>
 </table>

@@ -94,12 +94,10 @@ class AccountsController < ApplicationController
 	@account_labels = Array.new 
 	@counts = Array.new 
 	@account_labels = @gmail.labels.all
-
+  
 	@account_labels.each do |label|
 		if !label.include? "[Gmail]" 
 		@counts << @gmail.label(label).count
-		else
-		@counts <<""
 		end
 	end
 	@gmail.logout
