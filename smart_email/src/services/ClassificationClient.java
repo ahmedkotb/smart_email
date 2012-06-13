@@ -37,7 +37,7 @@ public class ClassificationClient {
 		registerMsg.setEmail("gp.term.project@gmail.com");
 		registerMsg.setToken("gptermproject");
 		response = service.path("rest/service").path("provider")
-				.path("register").put(ClientResponse.class, registerMsg);
+				.path("register").post(ClientResponse.class, registerMsg);
 		System.out.println(response);
 		System.out.println("Location: " + response.getLocation());
 

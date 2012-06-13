@@ -11,7 +11,7 @@ public class Main {
 		System.out.println(entityManager);
 		List<Model> data = entityManager.createQuery("select c from Model c", Model.class).getResultList();
 		for(Model d : data) {
-			System.out.println(d.getEmail());
+			System.out.println(d.getId().getEmail());
 		}
 	}
 }

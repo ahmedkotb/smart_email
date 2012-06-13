@@ -14,6 +14,7 @@ import classification.Classifier;
 import datasource.ImapDAO;
 import entities.Account;
 import entities.Model;
+import entities.ModelPK;
 import filters.Filter;
 import filters.FilterCreatorManager;
 import filters.FilterManager;
@@ -70,8 +71,8 @@ public class AccountTrainer extends Thread {
 	 * @return training data.
 	 */
 	private ArrayList<Email> getTrainingData() {
-        System.out.println("Working Directory = " +
-                System.getProperty("user.dir"));
+		System.out.println("Working Directory = "
+				+ System.getProperty("user.dir"));
 		// Create a new IMAP data access object.
 		ImapDAO imapDAO = new ImapDAO(email, password);
 		// Retrieve the email labels.
@@ -116,40 +117,33 @@ public class AccountTrainer extends Thread {
 		Classifier classifier = Classifier.getClassifierByName(classifierType,
 				null);
 		classifier.buildClassifier(dataset);
-		storeAccount();
-		storeFilters(filters);
+		storeAccount(filters);
 		storeModel(classifier);
 	}
 
-	private void storeAccount() {
+	private void storeAccount(Filter[] filters) {
 		Account account = new Account();
 		account.setEmail(email);
 		account.setToken(password);
-	    EntityTransaction entr= entityManager.getTransaction();
+		account.setFiltersList(getSerializedFilters(filters));
+		EntityTransaction entr = entityManager.getTransaction();
 		entr.begin();
-	    entityManager.persist(account);
-	    entr.commit();	
+		entityManager.persist(account);
+		entr.commit();
 	}
-	
-	private void storeFilters(Filter[] filters) {
+
+	private byte[] getSerializedFilters(Filter[] filters) {
 		try {
-			EntityTransaction transaction = entityManager.getTransaction();
-			transaction.begin();
-			for (int i = 0; i < filters.length; i++) {
-				entities.Filter filterEntity = new entities.Filter();
-				filterEntity.setEmail(email);
-				ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-				ObjectOutput objectOutput = new ObjectOutputStream(byteArray);
-				objectOutput.writeObject(filters[i]);
-				byte[] blobFilter = byteArray.toByteArray();
-				objectOutput.close();
-				byteArray.close();
-				filterEntity.setFilter(blobFilter);
-				entityManager.persist(filterEntity);
-			}
-			transaction.commit();
+			ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+			ObjectOutput objectOutput = new ObjectOutputStream(byteArray);
+			objectOutput.writeObject(filters);
+			byte[] blobFilter = byteArray.toByteArray();
+			objectOutput.close();
+			byteArray.close();
+			return blobFilter;
 		} catch (Exception ex) {
 			ex.printStackTrace();
+			return null;
 		}
 	}
 
@@ -157,8 +151,11 @@ public class AccountTrainer extends Thread {
 		try {
 			EntityTransaction transaction = entityManager.getTransaction();
 			transaction.begin();
+			ModelPK modelPk = new ModelPK();
+			modelPk.setEmail(email);
+			modelPk.setType(classifierType);
 			Model modelEntity = new Model();
-			modelEntity.setEmail(email);
+			modelEntity.setId(modelPk);
 			ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
 			ObjectOutput objectOutput = new ObjectOutputStream(byteArray);
 			objectOutput.writeObject(model);

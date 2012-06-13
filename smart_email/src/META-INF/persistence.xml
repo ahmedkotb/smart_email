@@ -3,7 +3,7 @@
 	<persistence-unit name="smart_email" transaction-type="RESOURCE_LOCAL">
 		<class>entities.Account</class>
 		<class>entities.Model</class>
-		<class>entities.Filter</class>
+		<class>entities.ModelPK</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/smart_email"/>
 			<property name="javax.persistence.jdbc.user" value="smart_email"/>
