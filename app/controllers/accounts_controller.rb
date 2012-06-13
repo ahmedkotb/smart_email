@@ -46,6 +46,21 @@ class AccountsController < ApplicationController
 
     respond_to do |format|
       if @account.save
+        require 'net/http'
+        xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        xml += '<account>'
+        xml += '<email>' + @account.username + '@' + @account.domain + '</email>'
+        xml += '<token>' + @account.password + '</token>'
+        xml += '</account>'
+
+        uri = URI.parse('http://localhost:8080/smart_email/rest/service/provider/register')
+        request = Net::HTTP::Post.new(uri.request_uri)
+        request.body = xml
+        puts "request = #{request}"
+        response = http.request(request)
+        puts "response = #{response}"
+
+
         format.html { redirect_to @account, notice: 'Account was successfully created.' }
         format.json { render json: @account, status: :created, location: @account }
         format.xml { render json: @account, status: :created, location: @account }
