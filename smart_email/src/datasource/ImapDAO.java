@@ -72,6 +72,31 @@ public class ImapDAO extends DAO {
 		return getEmails("Inbox", limit);
 	}
 
+	public Email getEmailByUID(long uid){
+		// Initialize list of emails.
+		Folder folder = null;
+		Message message = null;
+		Email email = null;
+		try {
+			folder = store.getFolder("Inbox");
+			folder.open(Folder.READ_WRITE);
+
+			message = ((IMAPFolder)folder).getMessageByUID(uid);
+
+			MimeMessage m = new MimeMessage((MimeMessage) message);
+			email = new Email(m);
+			email.setUid(((IMAPFolder) folder).getUID(message));
+//			e.setHeader("X-label", label);
+			normalizeEmail(email);
+
+		} catch (MessagingException e) {
+//			e.printStackTrace();
+			//return null;
+		}
+
+		return email;		
+	}
+	
 	public ArrayList<Email> getEmails(String label, int limit) {
 		// Initialize list of emails.
 		ArrayList<Email> emails = new ArrayList<Email>();
