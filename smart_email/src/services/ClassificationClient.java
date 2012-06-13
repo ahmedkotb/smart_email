@@ -26,7 +26,8 @@ public class ClassificationClient {
 		registerMsg.setEmail(username);
 		registerMsg.setToken(token);
 		ClientResponse response = service.path("rest/service").path("provider")
-				.path("register").put(ClientResponse.class, registerMsg);
+				.path("register").post(ClientResponse.class, registerMsg);
+
 		System.out.println(response);
 		System.out.println("Location: " + response.getLocation());
 		
