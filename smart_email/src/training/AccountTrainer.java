@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import javax.mail.MessagingException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
@@ -13,6 +12,7 @@ import weka.core.Instances;
 import classification.ClassificationManager;
 import classification.Classifier;
 import datasource.ImapDAO;
+import entities.Account;
 import entities.Model;
 import filters.Filter;
 import filters.FilterCreatorManager;
@@ -70,6 +70,8 @@ public class AccountTrainer extends Thread {
 	 * @return training data.
 	 */
 	private ArrayList<Email> getTrainingData() {
+        System.out.println("Working Directory = " +
+                System.getProperty("user.dir"));
 		// Create a new IMAP data access object.
 		ImapDAO imapDAO = new ImapDAO(email, password);
 		// Retrieve the email labels.
@@ -114,10 +116,21 @@ public class AccountTrainer extends Thread {
 		Classifier classifier = Classifier.getClassifierByName(classifierType,
 				null);
 		classifier.buildClassifier(dataset);
+		storeAccount();
 		storeFilters(filters);
 		storeModel(classifier);
 	}
 
+	private void storeAccount() {
+		Account account = new Account();
+		account.setEmail(email);
+		account.setToken(password);
+	    EntityTransaction entr= entityManager.getTransaction();
+		entr.begin();
+	    entityManager.persist(account);
+	    entr.commit();	
+	}
+	
 	private void storeFilters(Filter[] filters) {
 		try {
 			EntityTransaction transaction = entityManager.getTransaction();
