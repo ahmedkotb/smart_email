@@ -1,10 +1,6 @@
 package classification;
 
-import java.util.HashMap;
-
 import preprocessors.PreprocessorManager;
-import filters.Filter;
-import filters.FilterManager;
 
 public class ClassificationManager {
 
@@ -13,14 +9,14 @@ public class ClassificationManager {
 	private static ClassificationManager managerInstance = null;
 	// Path for the training and testing dataset.
 	private static final String DATASET_PATH = "../../../enron_processed/";
-	// Maximum limit for emails per label
-	private static final int LIMIT = 3000;
+	// Maximum limit for emails per label used for training.
+	private static final int TRAINING_LIMIT = 2000;
 	// Default pre-processors.
-	private final String preprocessors = "preprocessors.Lowercase,preprocessors.NumberNormalization,"
+	private static final String preprocessors = "preprocessors.Lowercase,preprocessors.NumberNormalization,"
 			+ "preprocessors.UrlNormalization,preprocessors.WordsCleaner,"
 			+ "preprocessors.StopWordsRemoval,preprocessors.EnglishStemmer";
 	// Default filters.
-	private final String filtersList = "filters.SenderFilterCreator,"
+	private static final String filtersList = "filters.SenderFilterCreator,"
 			+ "filters.WordFrequencyFilterCreator,"
 			+ "filters.LabelFilterCreator";
 
@@ -32,7 +28,7 @@ public class ClassificationManager {
 	 *            Email username.
 	 * @return Path for classified emails for this user.
 	 */
-	public String getGoldenDataPath(String userName) {
+	public static String getGoldenDataPath(String userName) {
 		return DATASET_PATH + userName;
 	}
 
@@ -60,18 +56,20 @@ public class ClassificationManager {
 
 	/**
 	 * Returns the default pre-processor manager
+	 * 
 	 * @return default pre-processor manager.
 	 */
-	public PreprocessorManager getDefaultPreprocessor() {
+	public static PreprocessorManager getDefaultPreprocessor() {
 		return new PreprocessorManager(preprocessors.split(","));
 	}
-	
+
 	/**
 	 * Returns the default list of filters used for classification.
+	 * 
 	 * @return default list of filters used for classification.
 	 */
-	public String[] getDefaultFiltersList() {
-		return null;
+	public static String[] getDefaultFiltersList() {
+		return filtersList.split(",");
 	}
 
 	/**
@@ -79,7 +77,7 @@ public class ClassificationManager {
 	 * 
 	 * @return maximum number of emails per label used for training.
 	 */
-	public int getTrainingLimit() {
-		return LIMIT;
+	public static int getTrainingLimit() {
+		return TRAINING_LIMIT;
 	}
 }
