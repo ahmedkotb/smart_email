@@ -39,34 +39,28 @@ class AccountsController < ApplicationController
     @account = current_user.accounts.find(params[:id])
   end
 
+  def createRequest(account)
+    xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+    xml += '<account>'
+    xml += '<email>' + account.username + '</email>'
+    xml += '<token>' + account.password + '</token>'
+    xml += '</account>'
+
+    return sendPostRequest(
+      'http://localhost:8080/smart_email/rest/service/provider/register', 
+      xml, 
+      'application/xml'
+    )
+  end
+
   # POST /accounts
   # POST /accounts.json
   def create
-    puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    puts "in create"
     @account = current_user.accounts.new(params[:account])
 
     respond_to do |format|
-      puts "before saving"
       if @account.save
-        puts "after saving"
-        
-        xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
-        xml += '<account>'
-        xml += '<email>' + @account.username + '@' + @account.domain + '</email>'
-        xml += '<token>' + @account.password + '</token>'
-        xml += '</account>'
-        puts "xml = #{xml}"
-
-        uri = URI.parse('http://localhost:8080/smart_email/rest/service/provider/register')
-        http = Net::HTTP.new(uri.host, uri.port)
-        request = Net::HTTP::Post.new(uri.request_uri)
-        request.body = xml
-        puts "request = #{request}"
-        response = http.request(request)
-        puts "response = #{response.inspect}, code = #{response.code}"
-
-
+        createRequest(@account)
         format.html { redirect_to @account, notice: 'Account was successfully created.' }
         format.json { render json: @account, status: :created, location: @account }
         format.xml { render json: @account, status: :created, location: @account }
@@ -93,11 +87,18 @@ class AccountsController < ApplicationController
     end
   end
 
+  def destroyRequest(account)
+    return sendDeleteRequest(
+      'http://localhost:8080/smart_email/rest/service/provider/' + account.username
+    )
+  end
+
   # DELETE /accounts/1
   # DELETE /accounts/1.json
   def destroy
     @account = current_user.accounts.find(params[:id])
     @account.destroy
+    destroyRequest(@account)
 
     respond_to do |format|
       format.html { redirect_to accounts_url }
@@ -115,10 +116,12 @@ class AccountsController < ApplicationController
 	@account_labels = Array.new 
 	@counts = Array.new 
 	@account_labels = @gmail.labels.all
-  
+
 	@account_labels.each do |label|
 		if !label.include? "[Gmail]" 
 		@counts << @gmail.label(label).count
+		else
+		@counts <<""
 		end
 	end
 	@gmail.logout
@@ -128,4 +131,6 @@ class AccountsController < ApplicationController
     format.json { render json: @account_labels }
   end
 	end
+
+
 end
