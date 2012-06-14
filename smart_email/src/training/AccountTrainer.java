@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import javax.mail.MessagingException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
@@ -13,7 +12,9 @@ import weka.core.Instances;
 import classification.ClassificationManager;
 import classification.Classifier;
 import datasource.ImapDAO;
+import entities.Account;
 import entities.Model;
+import entities.ModelPK;
 import filters.Filter;
 import filters.FilterCreatorManager;
 import filters.FilterManager;
@@ -32,19 +33,30 @@ public class AccountTrainer extends Thread {
 	 * Account email.
 	 */
 	private String email;
+
 	/**
 	 * Account password.
 	 */
 	private String password;
+
 	/**
 	 * Classification type.
 	 */
 	private String classifierType;
+
 	/**
 	 * Entity manager used for managing JPA objects.
 	 */
 	private EntityManager entityManager;
 
+	/**
+	 * Constructor used for initializing the AccountTrainer object.
+	 * 
+	 * @param email
+	 *            account email.
+	 * @param password
+	 *            account password.
+	 */
 	public AccountTrainer(String email, String password) {
 		this.email = email;
 		this.password = password;
@@ -53,46 +65,45 @@ public class AccountTrainer extends Thread {
 				"smart_email").createEntityManager();
 	}
 
-	public void run() {
-		init();
+	/**
+	 * Returns the training data for the account.
+	 * 
+	 * @return training data.
+	 */
+	private ArrayList<Email> getTrainingData() {
+		System.out.println("Working Directory = "
+				+ System.getProperty("user.dir"));
+		// Create a new IMAP data access object.
+		ImapDAO imapDAO = new ImapDAO(email, password);
+		// Retrieve the email labels.
+		ArrayList<String> labels = imapDAO.getClasses();
+		// Arraylist for storing the training data.
+		ArrayList<Email> trainingData = new ArrayList<Email>();
+		// Retrieve maximum number of email messages per-label.
+		int trainingLimit = ClassificationManager.getTrainingLimit();
+		for (String label : labels) {
+			ArrayList<Email> emails = imapDAO.getClassifiedEmails(label,
+					trainingLimit);
+			trainingData.addAll(emails);
+		}
+		return trainingData;
 	}
 
-	public void init() {
-		ClassificationManager classificationManager = ClassificationManager
-				.getInstance();
-		ImapDAO imapDAO = new ImapDAO(email, password);
-		ArrayList<String> labels = imapDAO.getClasses();
-		System.out.println(labels);
-
-		// training data
-		ArrayList<Email> trainingData = new ArrayList<Email>();
-		for (String label : labels) {
-			ArrayList<Email> emails = imapDAO.getClassifiedEmails(label, 1000);
-			for (Email e : emails) {
-				try {
-					System.out.println(e.getHeader("X-label")[0]);
-				} catch (MessagingException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				trainingData.add(e);
-			}
-		}
-
-		// create the preprocessors manager
-		PreprocessorManager preprocessorManager = classificationManager
+	public void run() {
+		// Retrieve the training data
+		ArrayList<Email> trainingData = getTrainingData();
+		// Create the preprocessors manager
+		PreprocessorManager preprocessorManager = ClassificationManager
 				.getDefaultPreprocessor();
-
-		// step 1: pre-process emails
+		// Process email message
 		preprocessorManager.apply(trainingData);
-
-		// step 2: create filters
-		FilterCreatorManager filterCreatorMgr = null;
+		// Create filters
+		FilterCreatorManager filterCreatorManager = null;
 		Filter[] filters = null;
 		try {
-			filterCreatorMgr = new FilterCreatorManager(
-					classificationManager.getDefaultFiltersList(), trainingData);
-			filters = filterCreatorMgr.getFilters();
+			filterCreatorManager = new FilterCreatorManager(
+					ClassificationManager.getDefaultFiltersList(), trainingData);
+			filters = filterCreatorManager.getFilters();
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -106,29 +117,33 @@ public class AccountTrainer extends Thread {
 		Classifier classifier = Classifier.getClassifierByName(classifierType,
 				null);
 		classifier.buildClassifier(dataset);
-		storeFilters(filters);
+		storeAccount(filters);
 		storeModel(classifier);
 	}
 
-	private void storeFilters(Filter[] filters) {
+	private void storeAccount(Filter[] filters) {
+		Account account = new Account();
+		account.setEmail(email);
+		account.setToken(password);
+		account.setFiltersList(getSerializedFilters(filters));
+		EntityTransaction entr = entityManager.getTransaction();
+		entr.begin();
+		entityManager.persist(account);
+		entr.commit();
+	}
+
+	private byte[] getSerializedFilters(Filter[] filters) {
 		try {
-			EntityTransaction transaction = entityManager.getTransaction();
-			transaction.begin();
-			for (int i = 0; i < filters.length; i++) {
-				entities.Filter filterEntity = new entities.Filter();
-				filterEntity.setEmail(email);
-				ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-				ObjectOutput objectOutput = new ObjectOutputStream(byteArray);
-				objectOutput.writeObject(filters[i]);
-				byte[] blobFilter = byteArray.toByteArray();
-				objectOutput.close();
-				byteArray.close();
-				filterEntity.setFilter(blobFilter);
-				entityManager.persist(filterEntity);
-			}
-			transaction.commit();
+			ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+			ObjectOutput objectOutput = new ObjectOutputStream(byteArray);
+			objectOutput.writeObject(filters);
+			byte[] blobFilter = byteArray.toByteArray();
+			objectOutput.close();
+			byteArray.close();
+			return blobFilter;
 		} catch (Exception ex) {
 			ex.printStackTrace();
+			return null;
 		}
 	}
 
@@ -136,15 +151,18 @@ public class AccountTrainer extends Thread {
 		try {
 			EntityTransaction transaction = entityManager.getTransaction();
 			transaction.begin();
+			ModelPK modelPk = new ModelPK();
+			modelPk.setEmail(email);
+			modelPk.setType(classifierType);
 			Model modelEntity = new Model();
-			modelEntity.setEmail(email);
+			modelEntity.setId(modelPk);
 			ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
 			ObjectOutput objectOutput = new ObjectOutputStream(byteArray);
 			objectOutput.writeObject(model);
-			byte[] blobFilter = byteArray.toByteArray();
+			byte[] blobModel = byteArray.toByteArray();
 			objectOutput.close();
 			byteArray.close();
-			modelEntity.setModel(blobFilter);
+			modelEntity.setModel(blobModel);
 			entityManager.persist(modelEntity);
 			transaction.commit();
 		} catch (Exception ex) {
@@ -153,7 +171,7 @@ public class AccountTrainer extends Thread {
 	}
 
 	public static void main(String[] args) {
-		new AccountTrainer("gp.term.project@gmail.com", "gptermproject").init();
+		new AccountTrainer("gp.term.project@gmail.com", "gptermproject").run();
 	}
 
 }

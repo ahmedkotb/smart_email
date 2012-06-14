@@ -13,11 +13,8 @@ import javax.persistence.*;
 public class Model implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="model_id")
-	private int modelId;
-
-	private String email;
+	@EmbeddedId
+	private ModelPK id;
 
     @Lob()
 	private byte[] model;
@@ -25,22 +22,14 @@ public class Model implements Serializable {
     public Model() {
     }
 
-	public int getModelId() {
-		return this.modelId;
+	public ModelPK getId() {
+		return this.id;
 	}
 
-	public void setModelId(int modelId) {
-		this.modelId = modelId;
+	public void setId(ModelPK id) {
+		this.id = id;
 	}
-
-	public String getEmail() {
-		return this.email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
+	
 	public byte[] getModel() {
 		return this.model;
 	}
