@@ -17,8 +17,9 @@ SmartEmail::Application.routes.draw do
 	get 'labels', :on => :member
 	end
 
-	match '/auth/:provider/callback' => 'services#create' 
+	#match '/auth/:provider/callback' => 'services#create' 
   match '/users/authenticate/:id' => 'users#authenticate'
+  match '/login_with_google' => 'services#create'
 	match "publish" => "home#publish"
   match "get" => "home#get"
 	match "/accounts/labels" => "accounts#labels"

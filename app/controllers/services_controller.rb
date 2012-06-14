@@ -1,15 +1,68 @@
 class ServicesController < ApplicationController
   before_filter :authenticate_user!, :except => [:create]
 
+  
+  #before_filter :require_valid_token, :only => [:service_callback, :service_callback_with_buzz]
+  
   def create
-    auth = request.env['omniauth.auth']
-    user = User.where(:provider=>auth["provider"],:uid=> auth["uid"]).first unless auth.nil?
-		if user.nil?
-		User.create_with_omniauth(auth)
-		end
-    service[:user_id] = user.id
-    redirect_to root_url, :notice => "Signed in!"
+    render :text => 'create'
   end
+  
+  def service_callback
+    user = User.find_or_initialize_by_openid_identifier(params['openid.identity'])
+    if(user.new_record?)
+      user.name = params["openid.ext1.value.firstname"] + ' ' + params["openid.ext1.value.lastname"]
+     #user.profile_image_url = AppConfig.server_host + '/images/user_default.png'
+     # user.reset_persistence_token
+      user.save(false)
+    end
+    UserSession.create(user)
+    
+    respond_to do |format|
+      format.html do
+        render( :template => "/user_google_open_id/successful_login.html.erb",
+                :status => 200 )
+      end
+    end
+  end
+  
+  def service_callback_with_buzz
+    mycurrent = current_user
+    mycurrent.find_and_merge(:openid_identifier,params['openid.identity'])
+    mycurrent.save(false)
+
+    respond_to do |format|
+      format.html { redirect_to(authorize_with_googlebuzz_path) }
+    end
+  end
+  
+  #-------#
+  protected
+  #-------#
+  
+  def require_valid_token
+    if params['openid.return_to'].nil? ||
+      session[:google_authentication_return_url].nil? ||
+       (params['openid.return_to'] != session.delete(:google_authentication_return_url))
+      
+      respond_to do |format|
+        format.html do
+          render( :template => "/user_google_open_id/unsuccessful_login.html.erb",
+                  :locals => { :error_message => "This request is not issued by google servers" },
+                  :status => 500 )
+        end
+      end 
+    end 
+  end
+#  def create
+#    auth = request.env['omniauth.auth']
+#    user = User.where(:provider=>auth["provider"],:uid=> auth["uid"]).first unless auth.nil?
+#		if user.nil?
+#		User.create_with_omniauth(auth)
+#		end
+#    service[:user_id] = user.id
+#    redirect_to root_url, :notice => "Signed in!"
+#  end
 #def index
 #  # get all authentication services assigned to the current user
 #  @services = current_user.services.all

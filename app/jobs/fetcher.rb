@@ -1,7 +1,7 @@
 class Fetcher
 
 	@queue = :monitoring_queue
-
+ 
 	def self.do_idle account
 		imap = Net::IMAP.new('imap.gmail.com',993,true,nil,false)
 		imap.login(account.username,account.password)
@@ -21,7 +21,8 @@ class Fetcher
 		end
 		gmail.logout
 
-		account.last_visited = DateTime.now
+		account.last_visited = DateTime.now + 2.hours
+		puts "Updated last visited #{account.last_visited}"
 		account.save		
 	end
 
