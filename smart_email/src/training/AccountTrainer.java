@@ -126,6 +126,10 @@ public class AccountTrainer extends Thread {
 
 	}
 
+	/**
+	 * Stores the account data in the database.
+	 * @param filters array of user filters.
+	 */
 	private void storeAccount(Filter[] filters) {
 		Account account = new Account();
 		account.setEmail(email);
@@ -137,6 +141,11 @@ public class AccountTrainer extends Thread {
 		entr.commit();
 	}
 
+	/**
+	 * Returns the array of filters in byte[] form.
+	 * @param array of filters.
+	 * @return byte[] representing the list of filters.
+	 */
 	private byte[] getSerializedFilters(Filter[] filters) {
 		try {
 			ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
@@ -152,6 +161,12 @@ public class AccountTrainer extends Thread {
 		}
 	}
 
+	/**
+	 * Stores the trained model to the database.
+	 * 
+	 * @param model
+	 *            the model to store in the database.
+	 */
 	private void storeModel(Classifier model) {
 		try {
 			EntityTransaction transaction = entityManager.getTransaction();
