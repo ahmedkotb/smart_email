@@ -14,9 +14,11 @@ public class FilterManager {
 	private Instances dataset;
 	private int attsNum;
 	private FastVector attributes;
+	private boolean isTrainingPhase;
 	
-	public FilterManager(Filter[] filters){
+	public FilterManager(Filter[] filters, boolean isTrainingPhase){
 		this.filters = filters;
+		this.isTrainingPhase = isTrainingPhase;
 		attributes = new FastVector();
 		
 		for(int i=0; i<filters.length; i++){
@@ -49,7 +51,11 @@ public class FilterManager {
 	
 	public Instance makeInstance(Email email){
 		ArrayList<Double> valList = new ArrayList<Double>();
-		for(int i=0; i<filters.length; i++){
+		
+		//exclude the label filter if it is not the training phase
+		int end = filters.length - (isTrainingPhase? 0:1);
+		
+		for(int i=0; i<end; i++){
 			double[] ar = filters[i].getAttValue(email);
 			for(int j=0; j<ar.length; j++) valList.add(ar[j]);
 		}

@@ -183,7 +183,7 @@ public class Demo {
 			e1.printStackTrace();
 		}
 		
-		filterManager = new FilterManager(filters);
+		filterManager = new FilterManager(filters, true);
 		
 		//step 3: generate the dataset
 		Instances dataset = filterManager.getDataset(trainingData);
