@@ -174,11 +174,9 @@ public class Trainer implements TrainerIF {
 	}
 	
 	public void init() {
-		ClassificationManager classifierManager = ClassificationManager
-				.getInstance();
-		String path = classifierManager.getGoldenDataPath(username);
+		String path = ClassificationManager.getGoldenDataPath(username);
 		DAO dao = DAO.getInstance("FileSystems:" + path);
-		int maximumLimit = classifierManager.getTrainingLimit();
+		int maximumLimit = ClassificationManager.getTrainingLimit();
 		
 		loadDataset(dao, maximumLimit);
 		

@@ -22,6 +22,7 @@ local.properties
 .loadpath
 log/*
 db/*.sqlite3
+tmp/*
 # External tool builders
 .externalToolBuilders/
 
