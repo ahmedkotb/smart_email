@@ -42,23 +42,29 @@ class AccountsController < ApplicationController
   # POST /accounts
   # POST /accounts.json
   def create
+    puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    puts "in create"
     @account = current_user.accounts.new(params[:account])
 
     respond_to do |format|
+      puts "before saving"
       if @account.save
-        require 'net/http'
+        puts "after saving"
+        
         xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
         xml += '<account>'
         xml += '<email>' + @account.username + '@' + @account.domain + '</email>'
         xml += '<token>' + @account.password + '</token>'
         xml += '</account>'
+        puts "xml = #{xml}"
 
         uri = URI.parse('http://localhost:8080/smart_email/rest/service/provider/register')
+        http = Net::HTTP.new(uri.host, uri.port)
         request = Net::HTTP::Post.new(uri.request_uri)
         request.body = xml
         puts "request = #{request}"
         response = http.request(request)
-        puts "response = #{response}"
+        puts "response = #{response.inspect}, code = #{response.code}"
 
 
         format.html { redirect_to @account, notice: 'Account was successfully created.' }
