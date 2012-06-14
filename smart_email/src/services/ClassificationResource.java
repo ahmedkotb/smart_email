@@ -104,11 +104,12 @@ public class ClassificationResource {
 				Email email = dao.getEmailByUID(emailId);
 //				Filter[] filters = null; 
 //				Classifier model = null; 
-				FilterManager filterManager = new FilterManager(filters);
+				FilterManager filterManager = new FilterManager(filters, false);
 				Instance instance = filterManager.makeInstance(email);
 				int labelIndex = (int) model.classifyInstance(instance);
 				String labelName = instance.classAttribute().value(labelIndex);
-				dao.applyLabel(emailId, labelName);				
+				dao.applyLabel(emailId, labelName);	
+				System.err.println("The email was classified as: " + labelName);
 			}
 		}).start();
 		

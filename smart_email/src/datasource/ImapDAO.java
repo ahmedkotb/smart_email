@@ -78,7 +78,7 @@ public class ImapDAO extends DAO {
 		Message message = null;
 		Email email = null;
 		try {
-			folder = store.getFolder("Inbox");
+			folder = store.getFolder("[Gmail]/All Mail");
 			folder.open(Folder.READ_WRITE);
 
 			message = ((IMAPFolder)folder).getMessageByUID(uid);
@@ -139,7 +139,7 @@ public class ImapDAO extends DAO {
 	@Override
 	public void applyLabel(long emailId, String labelName) {
 		try {
-			IMAPFolder inbox = (IMAPFolder) this.store.getFolder("Inbox");
+			IMAPFolder inbox = (IMAPFolder) this.store.getFolder("[Gmail]/All Mail");
 			inbox.open(Folder.READ_WRITE);
 			Message message = inbox.getMessageByUID(emailId);
 

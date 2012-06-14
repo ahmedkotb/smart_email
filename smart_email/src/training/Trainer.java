@@ -195,7 +195,7 @@ public class Trainer implements TrainerIF {
 		FilterCreatorManager filterCreatorManager = new FilterCreatorManager(
 				filterCreators, trainingSet);
 		Filter[] filters = filterCreatorManager.getFilters();
-		filterManager = new FilterManager(filters);
+		filterManager = new FilterManager(filters, true);
 		trainedInstances = filterManager.getDataset(trainingSet);
 		Classifier classifier = Classifier.getClassifierByName(classifierType,
 				null);

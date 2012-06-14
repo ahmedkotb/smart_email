@@ -108,7 +108,7 @@ public class AccountTrainer extends Thread {
 			e1.printStackTrace();
 		}
 
-		FilterManager filterManager = new FilterManager(filters);
+		FilterManager filterManager = new FilterManager(filters, true);
 
 		// step 3: generate the dataset
 		Instances dataset = filterManager.getDataset(trainingData);
