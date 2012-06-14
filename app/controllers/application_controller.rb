@@ -12,11 +12,9 @@ class ApplicationController < ActionController::Base
   end
 
   def sendDeleteRequest(url)
-    puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
-    puts 'horraaaaaaay'
     uri = URI.parse(url)
     http = Net::HTTP.new(uri.host, uri.port)
-    request = Net::HTTP::DELETE.new(uri.request_uri)
+    request = Net::HTTP::Delete.new(uri.request_uri)
     return http.request(request)
   end
 end
