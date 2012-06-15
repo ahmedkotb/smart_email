@@ -4,9 +4,11 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.URI;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.ws.rs.Consumes;
@@ -63,15 +65,15 @@ public class ClassificationResource {
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Response requestClassification(
 			JAXBElement<IncomingEmailMessage> message) {
+		final long startTime = System.currentTimeMillis();
 		IncomingEmailMessage msg = message.getValue();
 
-		// TODO: implementation
 		System.out.println("Classification Request: " + msg.getUsername()
 				+ ", " + msg.getEmailId());
 
 		final long emailId = Long.parseLong(msg.getEmailId());
 
-		EntityManager entityManager = Persistence.createEntityManagerFactory(
+		final EntityManager entityManager = Persistence.createEntityManagerFactory(
 				"smart_email").createEntityManager();
 		List<Account> accounts = entityManager.createQuery(
 				"select c from Account c where c.email = '" + msg.getUsername()
@@ -80,6 +82,11 @@ public class ClassificationResource {
 				"select c from Model c", Model.class).getResultList();
 
 		final Account account = accounts.get(0);
+		account.setLastVisit(new Date());
+		account.setTotalClassified(account.getTotalClassified() + 1);
+		float accuracy = (account.getTotalClassified() - account.getTotalIncorrect()) / (float) account.getTotalClassified();
+		account.setAccuracy(accuracy);
+
 		Classifier constructedModel = null;
 		ByteArrayInputStream bais = new ByteArrayInputStream(modelsBlob.get(0)
 				.getModel());
@@ -120,6 +127,14 @@ public class ClassificationResource {
 				String labelName = instance.classAttribute().value(labelIndex);
 				dao.applyLabel(emailId, labelName);
 				System.err.println("The email was classified as: " + labelName);
+				double responseTime = (System.currentTimeMillis() - startTime)/1000.0;
+				//XXX wrong formula!!
+				double avgResponseTime = (account.getAvgResponseTime() + responseTime) / 2;
+				account.setAvgResponseTime((float) avgResponseTime);
+				EntityTransaction entr = entityManager.getTransaction();
+				entr.begin();
+				entityManager.merge(account);
+				entr.commit();
 			}
 		}).start();
 
@@ -132,7 +147,6 @@ public class ClassificationResource {
 	public Response deleteAccount(JAXBElement<DeleteAccountMessage> message) {
 		DeleteAccountMessage msg = message.getValue();
 
-		// TODO: implementation
 		System.out.println("Delete Account: " + msg.getUsername());
 
 		return Response.ok().build();
@@ -169,6 +183,7 @@ public class ClassificationResource {
 		ClassificationFeedbackMessage msg = message.getValue();
 
 		// TODO: implementation
+		//TODO: don't forget to update account statistics in the database..
 		System.out.println("feedback: " + msg.getEmailId()
 				+ ", labels list size = " + msg.getLabels().size());
 

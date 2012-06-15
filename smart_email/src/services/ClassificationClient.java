@@ -79,13 +79,13 @@ public class ClassificationClient {
 		ClientResponse response = null;
 
 		// Add Account
-		//response = addAccount("gp.term.project@gmail.com", "gptermproject");
+//		response = addAccount("gp.term.project@gmail.com", "gptermproject");
 		
 		// Delete Account
-		response = deleteAccount("gp.term.project@gmail.com");
+//		response = deleteAccount("gp.term.project@gmail.com");
 		
 		// classification request
-		//response = requestClassification("gp.term.project@gmail.com", "2");
+		response = requestClassification("gp.term.project@gmail.com", "2");
 		
 		// feedback
 //		response = sendFeedback();
