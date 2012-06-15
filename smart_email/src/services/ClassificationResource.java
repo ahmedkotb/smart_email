@@ -57,7 +57,7 @@ public class ClassificationResource {
 		return responseBuilder.build();
 	}
 
-	@PUT
+	@POST
 	@Path("classify")
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Response requestClassification(
