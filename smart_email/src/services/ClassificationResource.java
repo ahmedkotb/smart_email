@@ -1,22 +1,41 @@
 package services;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URI;
+import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.core.UriBuilder;
 import javax.xml.bind.JAXBElement;
 
+import weka.core.Instance;
+
+import classification.Classifier;
+
+import datasource.ImapDAO;
 import training.AccountTrainer;
 
 import entities.Account;
+//import entities.Filter;
+import entities.Model;
+import filters.Filter;
+import filters.FilterManager;
+import general.Email;
 
 import messages.*;
 
@@ -49,6 +68,60 @@ public class ClassificationResource {
 		System.out.println("Classification Request: " + msg.getUsername()
 				+ ", " + msg.getEmailId());
 
+		final long emailId = Long.parseLong(msg.getEmailId());
+
+		EntityManager entityManager = Persistence.createEntityManagerFactory(
+				"smart_email").createEntityManager();
+		List<Account> accounts = entityManager.createQuery(
+				"select c from Account c where c.email = '" + msg.getUsername()
+						+ "'", Account.class).getResultList();
+		List<Model> modelsBlob = entityManager.createQuery(
+				"select c from Model c", Model.class).getResultList();
+
+		final Account account = accounts.get(0);
+		Classifier constructedModel = null;
+		ByteArrayInputStream bais = new ByteArrayInputStream(modelsBlob.get(0)
+				.getModel());
+		ObjectInputStream ois;
+		Filter[] filtersList = null;
+
+		try {
+			ois = new ObjectInputStream(bais);
+			constructedModel = (Classifier) ois.readObject();
+			bais.close();
+			ois.close();
+
+			bais = new ByteArrayInputStream(account.getFiltersList());
+			ois = new ObjectInputStream(bais);
+			filtersList = (Filter[]) ois.readObject();
+			bais.close();
+			ois.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		final Classifier model = constructedModel;
+		final Filter[] filters = filtersList;
+
+		new Thread(new Runnable() {
+			public void run() {
+				ImapDAO dao = new ImapDAO(account.getEmail(), account
+						.getToken());
+				Email email = dao.getEmailByUID(emailId);
+				// Filter[] filters = null;
+				// Classifier model = null;
+				FilterManager filterManager = new FilterManager(filters, false);
+				Instance instance = filterManager.makeInstance(email);
+				int labelIndex = (int) model.classifyInstance(instance);
+				String labelName = instance.classAttribute().value(labelIndex);
+				dao.applyLabel(emailId, labelName);
+				System.err.println("The email was classified as: " + labelName);
+			}
+		}).start();
+
 		return Response.ok().build();
 	}
 
@@ -62,6 +135,24 @@ public class ClassificationResource {
 		System.out.println("Delete Account: " + msg.getUsername());
 
 		return Response.ok().build();
+	}
+
+	@DELETE
+	@Path("{username}")
+	public void deleteAccount(@PathParam("username") String username) {
+		try {
+			System.out.println("Inside delete account handler");
+//			EntityManager entityManager = Persistence
+//					.createEntityManagerFactory("smart_email")
+//					.createEntityManager();
+//			Account account = entityManager.find(Account.class, username);
+//			entityManager.getTransaction().begin();
+//			entityManager.remove(account);
+//			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			throw new WebApplicationException(e,
+					Response.Status.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 	@PUT

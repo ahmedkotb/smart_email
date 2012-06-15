@@ -71,8 +71,7 @@ public class AccountTrainer extends Thread {
 	 * @return training data.
 	 */
 	private ArrayList<Email> getTrainingData() {
-		System.out.println("Working Directory = "
-				+ System.getProperty("user.dir"));
+		System.out.println("Connecting to email using IMAP..");
 		// Create a new IMAP data access object.
 		ImapDAO imapDAO = new ImapDAO(email, password);
 		// Retrieve the email labels.
@@ -86,11 +85,13 @@ public class AccountTrainer extends Thread {
 					trainingLimit);
 			trainingData.addAll(emails);
 		}
+		System.out.println("Training data retrieived using IMAP....");
 		return trainingData;
 	}
 
 	public void run() {
 		// Retrieve the training data
+		System.out.println("Collecting training data....");
 		ArrayList<Email> trainingData = getTrainingData();
 		// Create the preprocessors manager
 		PreprocessorManager preprocessorManager = ClassificationManager
@@ -108,7 +109,7 @@ public class AccountTrainer extends Thread {
 			e1.printStackTrace();
 		}
 
-		FilterManager filterManager = new FilterManager(filters);
+		FilterManager filterManager = new FilterManager(filters, true);
 
 		// step 3: generate the dataset
 		Instances dataset = filterManager.getDataset(trainingData);
@@ -117,10 +118,18 @@ public class AccountTrainer extends Thread {
 		Classifier classifier = Classifier.getClassifierByName(classifierType,
 				null);
 		classifier.buildClassifier(dataset);
+		System.out.println("Storing account and classification model...");
 		storeAccount(filters);
 		storeModel(classifier);
+		System.out.println("The classifier has been trained and the data "
+				+ "was stored in the database..");
+
 	}
 
+	/**
+	 * Stores the account data in the database.
+	 * @param filters array of user filters.
+	 */
 	private void storeAccount(Filter[] filters) {
 		Account account = new Account();
 		account.setEmail(email);
@@ -128,10 +137,15 @@ public class AccountTrainer extends Thread {
 		account.setFiltersList(getSerializedFilters(filters));
 		EntityTransaction entr = entityManager.getTransaction();
 		entr.begin();
-		entityManager.persist(account);
+		entityManager.merge(account);
 		entr.commit();
 	}
 
+	/**
+	 * Returns the array of filters in byte[] form.
+	 * @param array of filters.
+	 * @return byte[] representing the list of filters.
+	 */
 	private byte[] getSerializedFilters(Filter[] filters) {
 		try {
 			ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
@@ -147,6 +161,12 @@ public class AccountTrainer extends Thread {
 		}
 	}
 
+	/**
+	 * Stores the trained model to the database.
+	 * 
+	 * @param model
+	 *            the model to store in the database.
+	 */
 	private void storeModel(Classifier model) {
 		try {
 			EntityTransaction transaction = entityManager.getTransaction();
@@ -163,7 +183,7 @@ public class AccountTrainer extends Thread {
 			objectOutput.close();
 			byteArray.close();
 			modelEntity.setModel(blobModel);
-			entityManager.persist(modelEntity);
+			entityManager.merge(modelEntity);
 			transaction.commit();
 		} catch (Exception ex) {
 			ex.printStackTrace();
