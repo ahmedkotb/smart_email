@@ -19,6 +19,7 @@ class Fetcher
 		gmail.inbox.emails(:after => account.last_visited).each do |email|
 			puts email.message.subject
 			puts email.message['Message-ID']
+			
 		end
 		gmail.logout
 
