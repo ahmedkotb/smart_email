@@ -152,6 +152,7 @@ GEM
       rest-client
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rmail (1.0.0)
     ruby-openid (2.1.8)
     rubyzip (0.9.8)
     rufus-scheduler (2.0.16)
@@ -212,6 +213,7 @@ DEPENDENCIES
   heroku
   iron_mq
   jquery-rails
+  mail
   mysql2
   omniauth
   omniauth-openid
@@ -219,6 +221,7 @@ DEPENDENCIES
   resque
   resque-scheduler
   rest-client
+  rmail
   sass-rails
   sqlite3
   taps

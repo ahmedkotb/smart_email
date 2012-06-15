@@ -18,6 +18,7 @@ class Fetcher
     puts "last visited: #{account.last_visited}"
 		gmail.inbox.emails(:after => account.last_visited).each do |email|
 			puts email.message.subject
+			puts email.message['Message-ID']
 		end
 		gmail.logout
 
@@ -25,6 +26,22 @@ class Fetcher
 		puts "Updated last visited #{account.last_visited}"
 		account.save		
 	end
+
+	def self.form_mime_email(email)
+	mime = "Message-ID: "+email.message_id + "\r\n"
+	mime += "Date: " + email.date + "\r\n"
+	mime += "From: " + email.from + "\r\n"
+	mime += "To: " + email.to + "\r\n"
+	mime += "Subject: " + email.subject + "\r\n"
+	mime += "Mime-Version: " + email.mime_version + "\r\n"
+	mime += "Content-Type: " + email.content_type + "\r\n"
+	mime += "Content-Transfer-Encoding:  " + "\r\n"
+	mime += "X-From:  " + "\r\n"
+	mime += "X-To:  " + "\r\n"
+	mime += "X-cc:  " + "\r\n"
+	mime += "X-bcc:  " + "\r\n"
+	mime += email.body + "\r\n"
+	return mime
 
 	def self.perform
 

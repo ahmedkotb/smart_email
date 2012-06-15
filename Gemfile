@@ -32,7 +32,9 @@ gem 'taps'
 gem 'rest-client'
 gem 'resque', :require => "resque/server"
 gem 'resque-scheduler'
-
+#gem 'tmail'
+gem 'rmail'
+gem 'mail'
 #gem 'omniauth-google'
 #gem 'omniauth-google-oauth2'
 gem 'omniauth-openid'
