@@ -72,6 +72,22 @@ public class FileSystemDAO extends DAO {
 		}
 	}
 
+	public Email getEmail() {
+		try {
+			File file = new File("/home/amr/Desktop/message-test");
+			Session session = Session.getDefaultInstance(new Properties());
+			InputStream inputStream = new FileInputStream(file);
+			Message message = new MimeMessage(session, inputStream);
+			Email email = new Email(message);
+			inputStream.close();
+			return email;
+		} catch (Exception ex) {
+			// Error in reading and parsing emails.
+			ex.printStackTrace();
+			return null;
+		}
+	}
+
 	@Override
 	public void applyLabel(long emailId, String labelName) {
 		// TODO Implement this method.
