@@ -24,12 +24,7 @@ class Fetcher
 	def self.fetch_new_emails account
 		gmail = Gmail.new(account.username, account.password)
     puts "last visited: #{account.last_visited}"
-		gmail.inbox.emails(:after => account.last_visited).each do |email|
-<<<<<<< HEAD
-			puts email.message.subject
-			puts email.message['Message-ID']
-			
-=======
+		gmail.inbox.emails(:after => account.last_visited).each do |email|			
 			puts "Email subject = #{email.message.subject}"
       puts "Email uid = #{email.uid}"
       xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
@@ -40,7 +35,6 @@ class Fetcher
       url = 'http://localhost:8080/smart_email/rest/service/provider/classify'
       response = send_post_request(url, xml)
       puts "Response = #{response}"
->>>>>>> 1268fc18c29b38196f6d193253a75aed24720a3f
 		end
 		gmail.logout
 
