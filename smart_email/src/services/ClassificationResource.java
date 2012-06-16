@@ -61,8 +61,8 @@ public class ClassificationResource {
 
 	@POST
 	@Path("classify")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public ClassificationResponseMessage requestClassification(
+	@Produces(MediaType.TEXT_PLAIN)
+	public String requestClassification(
 			JAXBElement<IncomingEmailMessage> message) {
 		
 		long startTime = System.currentTimeMillis();
@@ -140,7 +140,7 @@ public class ClassificationResource {
 		entr.commit();
 
 //		return Response.ok().build();
-		return new ClassificationResponseMessage(labelName);
+		return labelName;
 	}
 
 	@PUT
