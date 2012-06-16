@@ -24,6 +24,7 @@ local.properties
 .settings/
 .loadpath
 log/*
+config/database.yml
 db/*.sqlite3
 tmp/*
 # External tool builders
