@@ -57,7 +57,8 @@ public class ClassificationResource {
 		// Prepare the response
 		ResponseBuilder responseBuilder = Response.created(getBaseURI());
 		responseBuilder.status(202);
-		return responseBuilder.build();
+		Response response = responseBuilder.build();
+		return Response.status(202).build();
 	}
 
 	@POST
