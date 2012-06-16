@@ -1,10 +1,13 @@
 package general;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.Properties;
 
 import javax.activation.DataHandler;
 import javax.mail.Address;
@@ -26,6 +29,21 @@ public class Email extends Message implements Comparable<Email>{
 	 */
 	public Email(Message message) {
 		this.message = message;
+	}
+	
+	/**
+	 * Constructs the email given the email content as a string.
+	 * @param emailContent Email content in string format.
+	 */
+	public Email(String emailContent) {
+		try {
+			Session session = Session.getDefaultInstance(new Properties());
+			InputStream inputStream = new FileInputStream(emailContent);
+			Message message = new MimeMessage(session, inputStream);
+			this.message = message;
+		} catch (Exception ex) {
+			System.err.println("Cannot load email from string.");
+		}
 	}
 	
 	public long getUid() {

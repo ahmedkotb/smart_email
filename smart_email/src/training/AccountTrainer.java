@@ -4,6 +4,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Date;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
@@ -135,6 +137,11 @@ public class AccountTrainer extends Thread {
 		account.setEmail(email);
 		account.setToken(password);
 		account.setFiltersList(getSerializedFilters(filters));
+		account.setLastVisit(new Date());
+		account.setAccuracy(0);
+		account.setTotalClassified(0);
+		account.setTotalIncorrect(0);
+		account.setAvgResponseTime(0);
 		EntityTransaction entr = entityManager.getTransaction();
 		entr.begin();
 		entityManager.merge(account);
