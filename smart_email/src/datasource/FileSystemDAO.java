@@ -72,9 +72,14 @@ public class FileSystemDAO extends DAO {
 		}
 	}
 
-	public Email getEmail() {
+	/**
+	 * Retrieve email from text file.
+	 * @param filePath path for the text file containing the email.
+	 * @return retrieved email from text file.
+	 */
+	public Email getEmail(String filePath) {
 		try {
-			File file = new File("/home/amr/Desktop/message-test");
+			File file = new File(filePath);
 			Session session = Session.getDefaultInstance(new Properties());
 			InputStream inputStream = new FileInputStream(file);
 			Message message = new MimeMessage(session, inputStream);
