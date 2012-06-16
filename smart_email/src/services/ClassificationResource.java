@@ -4,9 +4,11 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.URI;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.ws.rs.Consumes;
@@ -28,7 +30,6 @@ import weka.core.Instance;
 
 import classification.Classifier;
 
-import datasource.ImapDAO;
 import training.AccountTrainer;
 
 import entities.Account;
@@ -55,22 +56,22 @@ public class ClassificationResource {
 		// Prepare the response
 		ResponseBuilder responseBuilder = Response.created(getBaseURI());
 		responseBuilder.status(202);
-		return responseBuilder.build();
+		return Response.status(202).build();
 	}
 
 	@POST
 	@Path("classify")
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public Response requestClassification(
+	public ClassificationResponseMessage requestClassification(
 			JAXBElement<IncomingEmailMessage> message) {
+		
+		long startTime = System.currentTimeMillis();
 		IncomingEmailMessage msg = message.getValue();
 
-		// TODO: implementation
 		System.out.println("Classification Request: " + msg.getUsername()
 				+ ", " + msg.getEmailId());
 
-		final long emailId = Long.parseLong(msg.getEmailId());
-
+		//retrieve the user account from the database
 		EntityManager entityManager = Persistence.createEntityManagerFactory(
 				"smart_email").createEntityManager();
 		List<Account> accounts = entityManager.createQuery(
@@ -79,51 +80,67 @@ public class ClassificationResource {
 		List<Model> modelsBlob = entityManager.createQuery(
 				"select c from Model c", Model.class).getResultList();
 
-		final Account account = accounts.get(0);
-		Classifier constructedModel = null;
-		ByteArrayInputStream bais = new ByteArrayInputStream(modelsBlob.get(0)
-				.getModel());
-		ObjectInputStream ois;
-		Filter[] filtersList = null;
+		Account account = accounts.get(0);
+		
+		// update user statistics
+		account.setLastVisit(new Date());
+		account.setTotalClassified(account.getTotalClassified() + 1);
+		float accuracy = (account.getTotalClassified() - account.getTotalIncorrect()) / (float) account.getTotalClassified();
+		account.setAccuracy(accuracy);
+
+		Classifier model = null;		
+		Filter[] filters = null;
 
 		try {
+			ByteArrayInputStream bais = new ByteArrayInputStream(modelsBlob.get(0)
+					.getModel());
+			ObjectInputStream ois = null;
+
+			//Desrialize user model
 			ois = new ObjectInputStream(bais);
-			constructedModel = (Classifier) ois.readObject();
+			model = (Classifier) ois.readObject();
 			bais.close();
 			ois.close();
 
+			// Deserialize user filters
 			bais = new ByteArrayInputStream(account.getFiltersList());
 			ois = new ObjectInputStream(bais);
-			filtersList = (Filter[]) ois.readObject();
+			filters = (Filter[]) ois.readObject();
 			bais.close();
 			ois.close();
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 
-		final Classifier model = constructedModel;
-		final Filter[] filters = filtersList;
+		//obtain email and classify it
+		Email email = new Email(msg.getEmailContent());
+		FilterManager filterManager = new FilterManager(filters, false);
+		Instance instance = filterManager.makeInstance(email);
+		int labelIndex = (int) model.classifyInstance(instance);
+		String labelName = instance.classAttribute().value(labelIndex);
 
-		new Thread(new Runnable() {
-			public void run() {
-				ImapDAO dao = new ImapDAO(account.getEmail(), account
-						.getToken());
-				Email email = dao.getEmailByUID(emailId);
-				// Filter[] filters = null;
-				// Classifier model = null;
-				FilterManager filterManager = new FilterManager(filters, false);
-				Instance instance = filterManager.makeInstance(email);
-				int labelIndex = (int) model.classifyInstance(instance);
-				String labelName = instance.classAttribute().value(labelIndex);
-				dao.applyLabel(emailId, labelName);
-				System.err.println("The email was classified as: " + labelName);
-			}
-		}).start();
+		System.err.println("The email was classified as: " + labelName);
+		double responseTime = (System.currentTimeMillis() - startTime)/1000.0;
 
-		return Response.ok().build();
+		// update the average response time in the user statistics
+		double avgResponseTime = 0;
+		if(account.getAvgResponseTime() == 0){ //first time
+			avgResponseTime = responseTime;
+		} else{
+			avgResponseTime = (account.getAvgResponseTime() + responseTime) / 2;
+		}
+		account.setAvgResponseTime((float) avgResponseTime);
+		
+		// commit the update user account, after updating his statistics
+		EntityTransaction entr = entityManager.getTransaction();
+		entr.begin();
+		entityManager.merge(account);
+		entr.commit();
+
+//		return Response.ok().build();
+		return new ClassificationResponseMessage(labelName);
 	}
 
 	@PUT
@@ -132,7 +149,6 @@ public class ClassificationResource {
 	public Response deleteAccount(JAXBElement<DeleteAccountMessage> message) {
 		DeleteAccountMessage msg = message.getValue();
 
-		// TODO: implementation
 		System.out.println("Delete Account: " + msg.getUsername());
 
 		return Response.ok().build();
@@ -169,6 +185,7 @@ public class ClassificationResource {
 		ClassificationFeedbackMessage msg = message.getValue();
 
 		// TODO: implementation
+		//TODO: don't forget to update account statistics in the database..
 		System.out.println("feedback: " + msg.getEmailId()
 				+ ", labels list size = " + msg.getLabels().size());
 
