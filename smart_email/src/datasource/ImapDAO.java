@@ -46,8 +46,7 @@ public class ImapDAO extends DAO {
 
 	@Override
 	public ArrayList<String> getClasses() {
-
-		ArrayList<String> classes = new ArrayList<String>(50);
+		ArrayList<String> classes = new ArrayList<String>();
 		try {
 			Folder[] labels = store.getDefaultFolder().list("*");
 			for (Folder label : labels) {
@@ -55,7 +54,8 @@ public class ImapDAO extends DAO {
 			}
 
 		} catch (MessagingException e) {
-			e.printStackTrace();
+			System.err.println("Cannot retreive default folder classes. "
+					+ "Are you connected?");
 			return null;
 		}
 		return classes;
@@ -71,7 +71,7 @@ public class ImapDAO extends DAO {
 		return getEmails("Inbox", limit);
 	}
 
-	public Email getEmailByUID(long uid){
+	public Email getEmailByUID(long uid) {
 		// Initialize list of emails.
 		Folder folder = null;
 		Message message = null;
@@ -80,22 +80,22 @@ public class ImapDAO extends DAO {
 			folder = store.getFolder("[Gmail]/All Mail");
 			folder.open(Folder.READ_WRITE);
 
-			message = ((IMAPFolder)folder).getMessageByUID(uid);
+			message = ((IMAPFolder) folder).getMessageByUID(uid);
 
 			MimeMessage m = new MimeMessage((MimeMessage) message);
 			email = new Email(m);
 			email.setUid(((IMAPFolder) folder).getUID(message));
-//			e.setHeader("X-label", label);
+			// e.setHeader("X-label", label);
 			normalizeEmail(email);
 
 		} catch (MessagingException e) {
-//			e.printStackTrace();
-			//return null;
+			// e.printStackTrace();
+			// return null;
 		}
 
-		return email;		
+		return email;
 	}
-	
+
 	public ArrayList<Email> getEmails(String label, int limit) {
 		// Initialize list of emails.
 		ArrayList<Email> emails = new ArrayList<Email>();
@@ -128,8 +128,8 @@ public class ImapDAO extends DAO {
 			}
 
 		} catch (MessagingException e) {
-			//e.printStackTrace();
-			//return null;
+			// e.printStackTrace();
+			// return null;
 		}
 
 		return emails;
@@ -138,7 +138,8 @@ public class ImapDAO extends DAO {
 	@Override
 	public void applyLabel(long emailId, String labelName) {
 		try {
-			IMAPFolder inbox = (IMAPFolder) this.store.getFolder("[Gmail]/All Mail");
+			IMAPFolder inbox = (IMAPFolder) this.store
+					.getFolder("[Gmail]/All Mail");
 			inbox.open(Folder.READ_WRITE);
 			Message message = inbox.getMessageByUID(emailId);
 
@@ -163,9 +164,10 @@ public class ImapDAO extends DAO {
 			store = session.getStore("imaps");
 			store.connect("imap.gmail.com", username, password);
 		} catch (NoSuchProviderException e) {
-			e.printStackTrace();
+			System.err.println("Cannot connect using IMAP, no such provider.");
 		} catch (MessagingException e) {
-			e.printStackTrace();
+			System.err.println("Cannot connect using IMAP. "
+					+ "Did you provide the correct username and password?");
 		}
 		return store;
 	}
