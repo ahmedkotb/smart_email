@@ -1,5 +1,6 @@
 package general;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -38,11 +39,13 @@ public class Email extends Message implements Comparable<Email>{
 	public Email(String emailContent) {
 		try {
 			Session session = Session.getDefaultInstance(new Properties());
-			InputStream inputStream = new FileInputStream(emailContent);
+			InputStream inputStream = new ByteArrayInputStream(emailContent.getBytes());
 			Message message = new MimeMessage(session, inputStream);
 			this.message = message;
 		} catch (Exception ex) {
+			ex.printStackTrace();
 			System.err.println("Cannot load email from string.");
+			System.out.println(emailContent);
 		}
 	}
 	
