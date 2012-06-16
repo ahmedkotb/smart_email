@@ -46,7 +46,7 @@ public class ImapDAO extends DAO {
 
 	@Override
 	public ArrayList<String> getClasses() {
-		ArrayList<String> classes = new ArrayList<String>();
+		ArrayList<String> classes = new ArrayList<String>(50);
 		try {
 			Folder[] labels = store.getDefaultFolder().list("*");
 			for (Folder label : labels) {
@@ -56,6 +56,7 @@ public class ImapDAO extends DAO {
 		} catch (MessagingException e) {
 			System.err.println("Cannot retreive default folder classes. "
 					+ "Are you connected?");
+			e.printStackTrace();
 			return null;
 		}
 		return classes;
