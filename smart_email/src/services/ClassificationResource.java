@@ -119,8 +119,6 @@ public class ClassificationResource {
 				ImapDAO dao = new ImapDAO(account.getEmail(), account
 						.getToken());
 				Email email = dao.getEmailByUID(emailId);
-				// Filter[] filters = null;
-				// Classifier model = null;
 				FilterManager filterManager = new FilterManager(filters, false);
 				Instance instance = filterManager.makeInstance(email);
 				int labelIndex = (int) model.classifyInstance(instance);
@@ -128,8 +126,13 @@ public class ClassificationResource {
 				dao.applyLabel(emailId, labelName);
 				System.err.println("The email was classified as: " + labelName);
 				double responseTime = (System.currentTimeMillis() - startTime)/1000.0;
-				//XXX wrong formula!!
-				double avgResponseTime = (account.getAvgResponseTime() + responseTime) / 2;
+
+				double avgResponseTime = 0;
+				if(account.getAvgResponseTime() == 0){ //first time
+					avgResponseTime = responseTime;
+				} else{
+					avgResponseTime = (account.getAvgResponseTime() + responseTime) / 2;
+				}
 				account.setAvgResponseTime((float) avgResponseTime);
 				EntityTransaction entr = entityManager.getTransaction();
 				entr.begin();
