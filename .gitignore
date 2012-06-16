@@ -1,5 +1,8 @@
 *.class
 
+# Rails Files #
+database.yml
+
 # Package Files #
 # *.jar
 *.war
@@ -21,6 +24,7 @@ local.properties
 .settings/
 .loadpath
 log/*
+config/database.yml
 db/*.sqlite3
 tmp/*
 # External tool builders

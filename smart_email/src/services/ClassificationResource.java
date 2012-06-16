@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -57,7 +58,7 @@ public class ClassificationResource {
 		return responseBuilder.build();
 	}
 
-	@PUT
+	@POST
 	@Path("classify")
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Response requestClassification(
@@ -141,16 +142,21 @@ public class ClassificationResource {
 	@Path("{username}")
 	public void deleteAccount(@PathParam("username") String username) {
 		try {
-			System.out.println("Inside delete account handler");
-//			EntityManager entityManager = Persistence
-//					.createEntityManagerFactory("smart_email")
-//					.createEntityManager();
-//			Account account = entityManager.find(Account.class, username);
-//			entityManager.getTransaction().begin();
-//			entityManager.remove(account);
-//			entityManager.getTransaction().commit();
-		} catch (Exception e) {
-			throw new WebApplicationException(e,
+			System.out.println("Received delete account request..");
+			EntityManager entityManager = Persistence
+					.createEntityManagerFactory("smart_email")
+					.createEntityManager();
+			Account account = entityManager.find(Account.class, username);
+			entityManager.getTransaction().begin();
+			entityManager.remove(account);
+			Query query = entityManager.createQuery(
+					"delete from Model c where c.id.email = :username",
+					Model.class);
+			query.setParameter("username", username);
+			query.executeUpdate();
+			entityManager.getTransaction().commit();
+		} catch (Exception ex) {
+			throw new WebApplicationException(ex,
 					Response.Status.INTERNAL_SERVER_ERROR);
 		}
 	}

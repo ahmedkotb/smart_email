@@ -35,7 +35,6 @@ public class ClassificationClient {
 	}
 
 	public ClientResponse deleteAccount(String username){
-		DeleteAccountMessage unregisterMsg = new DeleteAccountMessage(username);
 		ClientResponse response = service.path("rest/service").path("provider").path(username).delete(ClientResponse.class);
 		System.out.println(response);
 
@@ -44,7 +43,7 @@ public class ClassificationClient {
 
 	public ClientResponse requestClassification(String username, String emailId){
 		IncomingEmailMessage classificationRequestMsg = new IncomingEmailMessage(username, emailId);
-		ClientResponse response = service.path("rest/service").path("provider").path("classify").put(ClientResponse.class, classificationRequestMsg);
+		ClientResponse response = service.path("rest/service").path("provider").path("classify").post(ClientResponse.class, classificationRequestMsg);
 		System.out.println(response);
 
 		return response;
@@ -80,10 +79,10 @@ public class ClassificationClient {
 		ClientResponse response = null;
 
 		// Add Account
-//		response = addAccount("gp.term.project@gmail.com", "gptermproject");
+		//response = addAccount("gp.term.project@gmail.com", "gptermproject");
 		
 		// Delete Account
-		response = deleteAccount("myUsername");
+		response = deleteAccount("gp.term.project@gmail.com");
 		
 		// classification request
 		//response = requestClassification("gp.term.project@gmail.com", "2");

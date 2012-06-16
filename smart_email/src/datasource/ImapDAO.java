@@ -6,7 +6,6 @@ import java.util.Properties;
 import javax.mail.Store;
 import general.Email;
 import javax.mail.BodyPart;
-import javax.mail.Flags.Flag;
 import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.MessagingException;
