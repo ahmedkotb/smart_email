@@ -63,8 +63,6 @@ public class AccountTrainer extends Thread {
 		this.email = email;
 		this.password = password;
 		this.classifierType = "svm";
-		this.entityManager = Persistence.createEntityManagerFactory(
-				"smart_email").createEntityManager();
 	}
 
 	/**
@@ -92,6 +90,9 @@ public class AccountTrainer extends Thread {
 	}
 
 	public void run() {
+		//initializing entity manager
+		this.entityManager = Persistence.createEntityManagerFactory(
+				"smart_email").createEntityManager();
 		// Retrieve the training data
 		System.out.println("Collecting training data....");
 		ArrayList<Email> trainingData = getTrainingData();
