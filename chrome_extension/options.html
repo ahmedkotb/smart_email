@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title> Smart Email Chrome Extension Options </title>
+        <script type="text/javascript" src="lib/jquery.1.4.2.js"></script>
+        <script>
+            function registerUser(uname,password){
+                var mainInfo = {
+                    username:uname,
+                };
+                localStorage["mainInfo"] = mainInfo;
+            }
+            $(function(){
+                $("#submitButton").click(function(){
+                    var username = $("#uname").val();
+                    var password = $("#pass").val();
+                    var data = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
+                    data += '<account>';
+                    data += '<email>' + username + '</email>';
+                    data += '<token>' + password + '</token>';
+                    data += '</account>';
+
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST","http://localhost:8080/smart_email/rest/service/provider/register",true);
+                    xhr.onreadystatechange = function(){
+                        if (xhr.readyState == 4){
+                            console.log("REGISTER RESPONSE");
+                            console.log(xhr.responseText);
+                            alert("Registration Done successfully.");
+                            registerUser(username,password);
+                        }
+                    }
+                    xhr.send(data);
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Options</h1>
+        <form>
+            <label for="uname">Username:</label>
+            <input name="username" type = "text" id = "uname"/>
+            <br/>
+            <label for="pass">Password:</label>
+            <input name="password" type = "password" id = "pass"/>
+            <br/>
+            <input type="button" id="submitButton" value="Register"/>
+        </form>
+    </body>
+</html>

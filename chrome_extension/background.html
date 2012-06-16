@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script>
+            chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+                if (request.method == "mainInfo")
+                    sendResponse(localStorage["mainInfo"]);
+                else
+                    sendResponse({});
+            });
+
+            function registerUser(uname,password){
+                var mainInfo = {
+                    username:uname,
+                };
+                localStorage["mainInfo"] = mainInfo;
+            }
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
