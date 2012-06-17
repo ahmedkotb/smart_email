@@ -59,6 +59,23 @@ public class ClassificationResource {
 		return Response.status(202).build();
 	}
 
+	@GET
+	@Path("/status/{username}")
+	public String getStatus(@PathParam("username") String username) {
+		try {
+			System.out.println("Received status request..");
+			EntityManager entityManager = Persistence
+					.createEntityManagerFactory("smart_email")
+					.createEntityManager();
+			Account account = entityManager.find(Account.class, username);
+			//return account.getStatus();
+			return "hello world!";
+		} catch (Exception ex) {
+			throw new WebApplicationException(ex,
+					Response.Status.INTERNAL_SERVER_ERROR);
+		}
+	}
+
 	@POST
 	@Path("classify")
 	@Produces(MediaType.TEXT_PLAIN)
