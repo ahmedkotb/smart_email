@@ -31,11 +31,13 @@ class Fetcher
       xml += '<incomingEmailMessage>'
       xml += '<emailId>' + email.uid.to_s + '</emailId>'
       xml += '<username>' + account.username + '</username>'
-      xml += '<emailContent>' + email.message.to_s + '</emailContent>'
+      xml += '<emailContent><![CDATA[' + email.message.to_s + ']]></emailContent>'
       xml += '</incomingEmailMessage>'
       url = 'http://localhost:8080/smart_email/rest/service/provider/classify'
       response = send_post_request(url, xml)
+      puts ">>>>>>>>>>>>>>>>>>>>>"
       puts "Response = #{response}"
+      puts "body = #{response.body}"
 			email.label(response.body)
 			email.unread!
 		end
