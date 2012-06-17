@@ -98,16 +98,20 @@ if(top.document == document) {
         xhr.send(data);
     }
 
-    //======================
+    //=============
     //init listener
-    //============
+    //=============
     document.getElementById('geventdiv').addEventListener('gevent', function(){
         var eventData = JSON.parse(document.getElementById('geventdiv').innerText);
-        console.log("Extension Received Event " + eventData);
+        console.log("Extension Received Event " + eventData.command);
         if (eventData.command == "open_options_page"){
             window.open(chrome.extension.getURL("options.html"));
         }else if (eventData.command == "make_classification_request"){
             makeClassificationRequest(eventData.data);
+        }else if (eventData.command == "refresh_main_info"){
+            chrome.extension.sendRequest({method : "mainInfo"}, function(response) {
+                document.getElementById("ginfodiv").innerText = JSON.stringify(response);
+            });
         }
     });
 

@@ -7,7 +7,7 @@
                 var mainInfo = {
                     username:uname,
                 };
-                localStorage["mainInfo"] = mainInfo;
+                localStorage["mainInfo"] = JSON.stringify(mainInfo);
             }
             $(function(){
                 $("#submitButton").click(function(){
@@ -20,12 +20,14 @@
                     data += '</account>';
 
                     var xhr = new XMLHttpRequest();
-                    xhr.open("POST","http://localhost:8080/smart_email/rest/service/provider/register",true);
+                    var url = "http://localhost:8080/smart_email/rest/service/provider/register";
+                    xhr.open("POST",url,true);
                     xhr.onreadystatechange = function(){
                         if (xhr.readyState == 4){
                             console.log("REGISTER RESPONSE");
                             console.log(xhr.responseText);
-                            alert("Registration Done successfully.");
+                            alert("Registeration request sent\n"+
+                                  "it might take a while for training to finish please check status pannel");
                             registerUser(username,password);
                         }
                     }

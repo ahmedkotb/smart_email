@@ -3,17 +3,11 @@
         <script>
             chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
                 if (request.method == "mainInfo")
-                    sendResponse(localStorage["mainInfo"]);
+                    sendResponse(JSON.parse(localStorage["mainInfo"]));
                 else
                     sendResponse({});
             });
 
-            function registerUser(uname,password){
-                var mainInfo = {
-                    username:uname,
-                };
-                localStorage["mainInfo"] = mainInfo;
-            }
         </script>
     </head>
     <body>

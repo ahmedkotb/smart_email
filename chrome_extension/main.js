@@ -64,6 +64,10 @@ Gmailr.init(function(G) {
     };
 
     var getMainInfo = function(){
+        fireEvent(JSON.stringify({command:"refresh_main_info"}));
+        var infoString = document.getElementById("ginfodiv").innerText;
+        if (infoString == "")
+            return null;
         return JSON.parse(document.getElementById("ginfodiv").innerText);
     };
 
@@ -121,7 +125,7 @@ Gmailr.init(function(G) {
             'class': normalClass,
             "data-tooltip": "classify this email",
             click: function(){
-                mainInfo = getMainInfo();
+                var mainInfo = getMainInfo();
                 console.log("main info");
                 console.log(JSON.stringify(mainInfo));
                 if (mainInfo == null){
@@ -140,8 +144,7 @@ Gmailr.init(function(G) {
 
                     rawEmail = "<![CDATA[" + rawEmail + "]]>";
                     //TODO test this part
-                    //TODO fix username
-                    var username = "gp.term.project@gmail.com";
+                    var username = mainInfo.username;
                     var data = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
                     data += '<incomingEmailMessage>';
                     data += '<username>' + username + '</username>';
