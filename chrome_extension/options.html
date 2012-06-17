@@ -10,6 +10,7 @@
                 };
                 localStorage["mainInfo"] = JSON.stringify(mainInfo);
             }
+
             $(function(){
                 $("#submitButton").click(function(){
                     var username = $("#uname").val();
@@ -34,6 +35,44 @@
                     }
                     xhr.send(data);
                 });
+
+                $("#statusButton").click(function(){
+                    var updateStatus = function(status){
+                        $("#status").html("Status : " + status);
+                    }
+                    var mainInfo = localStorage["mainInfo"];
+                    console.log("main info");
+                    console.log(mainInfo);
+                    //TODO : check mainInfo value of unregisterd user
+                    if (mainInfo == ""){
+                        updateStatus("you haven't registered in the service yet");
+                        return;
+                    }
+
+                    updateStatus("checking server ...");
+                    //TODO remove this return;
+                    return;
+                    var username = mainInfo.username;
+                    //TODO make status xml message
+                    var data = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
+                    data += '<account>';
+                    data += '<email>' + username + '</email>';
+                    data += '<token>' + password + '</token>';
+                    data += '</account>';
+
+                    var xhr = new XMLHttpRequest();
+                    //TodO status message url
+                    var url = "";
+                    xhr.open("POST",url,true);
+                    xhr.onreadystatechange = function(){
+                        if (xhr.readyState == 4){
+                            console.log("SERVER STATUS RESPONSE");
+                            console.log(xhr.responseText);
+                            updateStatus(xhr.responseText);
+                        }
+                    }
+                    xhr.send(data);
+                });
             });
         </script>
     </head>
@@ -44,18 +83,29 @@
 
         <div class="box" style="clear:left">
             <h2>Registration</h2>
-                <div style="padding-left:10px">
-                    <form>
-                        <label for="uname">Username:</label>
-                        <input name="username" type = "text" id = "uname"/>
-                        <br/>
-                        <label for="pass">Password:</label>
-                        <input name="password" type = "password" id = "pass"/>
-                        <br/>
-                        <input type="button big" class="button" id="submitButton" value="Register"/>
-                    </form>
-                </div>
+            <div style="padding-left:10px">
+                <form>
+                    <label for="uname">Username:</label>
+                    <input name="username" type = "text" id = "uname"/>
+                    <br/>
+                    <label for="pass">Password:</label>
+                    <input name="password" type = "password" id = "pass"/>
+                    <br/>
+                    <input type="button" class="button big" id="submitButton" value="Register"/>
+                </form>
+            </div>
         </div>
+
+        <div class="box" style="clear:left">
+            <h2>Server Status</h2>
+            <div style="padding-left:10px">
+                <form>
+                    <h3 id="status">Status : unknown </h3>
+                    <input type="button" class="button big" id="statusButton" value="Refresh"/>
+                </form>
+            </div>
+        </div>
+
         <hr/>
     </body>
 </html>
