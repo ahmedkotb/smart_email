@@ -64,7 +64,6 @@ Gmailr.init(function(G) {
     };
 
     var getMainInfo = function(){
-        fireEvent(JSON.stringify({command:"refresh_main_info"}));
         var infoString = document.getElementById("ginfodiv").innerText;
         if (infoString == "")
             return null;
@@ -125,35 +124,42 @@ Gmailr.init(function(G) {
             'class': normalClass,
             "data-tooltip": "classify this email",
             click: function(){
-                var mainInfo = getMainInfo();
-                console.log("main info");
-                console.log(JSON.stringify(mainInfo));
-                if (mainInfo == null){
-                    alert("you must register your account before using the service\n" +
-                        "you will be redirected to options page to register");
-                    fireEvent(JSON.stringify({command:"open_options_page"}));
-                    return;
-                }
+                //refresh info (to handle case if user have just registered
+                fireEvent(JSON.stringify({command:"refresh_main_info"}));
 
-                var rawEmail = "";
-                getRawEmail(function(response){
-                    rawEmail = response;
-                    console.log("Resonse");
-                    console.log(rawEmail);
+                //TODO: can be better
+                //wait for event to dispatch
+                setTimeout(function(){
+                    var mainInfo = getMainInfo();
+                    console.log("main info");
+                    console.log(JSON.stringify(mainInfo));
+                    if (mainInfo == null){
+                        alert("you must register your account before using the service\n" +
+                            "you will be redirected to options page to register");
+                        fireEvent(JSON.stringify({command:"open_options_page"}));
+                        return;
+                    }
+
+                    var rawEmail = "";
+                    getRawEmail(function(response){
+                        rawEmail = response;
+                        console.log("Resonse");
+                        console.log(rawEmail);
 
 
-                    rawEmail = "<![CDATA[" + rawEmail + "]]>";
-                    //TODO test this part
-                    var username = mainInfo.username;
-                    var data = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
-                    data += '<incomingEmailMessage>';
-                    data += '<username>' + username + '</username>';
-                    data += '<emailContent>' + rawEmail + '</emailContent>';
-                    data += '</incomingEmailMessage>';
+                        rawEmail = "<![CDATA[" + rawEmail + "]]>";
+                        //TODO test this part
+                        var username = mainInfo.username;
+                        var data = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
+                        data += '<incomingEmailMessage>';
+                        data += '<username>' + username + '</username>';
+                        data += '<emailContent>' + rawEmail + '</emailContent>';
+                        data += '</incomingEmailMessage>';
 
-                    fireEvent(JSON.stringify({command:"make_classification_request",
-                                              data:data}));
-                });
+                        fireEvent(JSON.stringify({command:"make_classification_request",
+                                                data:data}));
+                    });
+                },100);
             }
         });
         //hover colors
