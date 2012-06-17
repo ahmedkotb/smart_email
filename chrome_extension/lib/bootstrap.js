@@ -114,7 +114,7 @@ if(top.document == document) {
         var xhr = new XMLHttpRequest();
         //TODO : insert feedback url
         var url = "http://localhost:8080/smart_email/rest/service/provider/feedback";
-        xhr.open("PUT",url,true);
+        xhr.open("POST",url,true);
         xhr.onreadystatechange = function(){
             if (xhr.readyState == 4){
                 console.log("feedback response");

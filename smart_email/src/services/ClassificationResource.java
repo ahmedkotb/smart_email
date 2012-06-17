@@ -161,7 +161,7 @@ public class ClassificationResource {
 		return labelName;
 	}
 
-	@PUT
+	@POST
 	@Path("unregister")
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Response deleteAccount(JAXBElement<DeleteAccountMessage> message) {
