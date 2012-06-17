@@ -1,34 +1,40 @@
 package messages;
 
-import java.util.ArrayList;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class ClassificationFeedbackMessage {
 
-	private String emailId;
-	private ArrayList<String> labels;
+	private String username;
+	private String rawEmail;
+	private String label;
 	
 	public ClassificationFeedbackMessage(){
 		//default constructor
 	}
 	
-	public ClassificationFeedbackMessage(String emailId, ArrayList<String> labels){
-		this.emailId = emailId;
-		this.labels = labels;
+	public ClassificationFeedbackMessage(String username, String rawEmail, String label){
+		this.username = username;
+		this.rawEmail = rawEmail;
+		this.label = label;
 	}
 	
-	public String getEmailId() {
-		return emailId;
+	public String getUsername(){
+		return this.username;
 	}
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+	public void setUsername(String username){
+		this.username = username;
 	}
-	public ArrayList<String> getLabels() {
-		return labels;
+	public String getRawEmail() {
+		return rawEmail;
 	}
-	public void setLabels(ArrayList<String> labels) {
-		this.labels = labels;
+	public void setRawEmail(String rawEmail) {
+		this.rawEmail = rawEmail;
+	}
+	public String getLabel() {
+		return label;
+	}
+	public void setLabel(String label) {
+		this.label = label;
 	}
 }

@@ -7,6 +7,7 @@ import java.net.URI;
 import java.util.Date;
 import java.util.List;
 
+import javax.mail.MessagingException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
@@ -33,6 +34,7 @@ import classification.Classifier;
 import training.AccountTrainer;
 
 import entities.Account;
+import entities.ModelPK;
 //import entities.Filter;
 import entities.Model;
 import filters.Filter;
@@ -183,11 +185,31 @@ public class ClassificationResource {
 	public Response classificationFeedback(
 			JAXBElement<ClassificationFeedbackMessage> message) {
 		ClassificationFeedbackMessage msg = message.getValue();
-
-		// TODO: implementation
+		System.out.println(msg.getLabel());
+		System.out.println(msg.getRawEmail());
+		System.out.println(msg.getUsername());
 		//TODO: don't forget to update account statistics in the database..
-		System.out.println("feedback: " + msg.getEmailId()
-				+ ", labels list size = " + msg.getLabels().size());
+//		Email email = new Email(msg.getRawEmail());
+//		String username = msg.getUsername();
+//		try {
+//			System.out.println("feedback: " + email.getSubject()
+//					+ ", labels list size = " + msg.getLabel());
+//		} catch (MessagingException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		//retrieve the user account from the database
+//		EntityManager entityManager = Persistence.createEntityManagerFactory(
+//				"smart_email").createEntityManager();
+//		ModelPK pk = new ModelPK();
+//		pk.setEmail(username);
+//		pk.setType("onlinenaivebayes");
+//		Model model = entityManager.find(Model.class, pk);
+//		if(model != null){
+//			
+//		} else{
+//			//TODO
+//		}
 
 		return Response.ok().build();
 	}

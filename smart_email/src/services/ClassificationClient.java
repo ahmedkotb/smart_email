@@ -51,11 +51,10 @@ public class ClassificationClient {
 	
 	public ClientResponse sendFeedback(){
 		//XXX: where is teh username in the feedback message??
-		java.util.ArrayList<String> labels = new java.util.ArrayList<String>();
-		labels.add("label x");
-		labels.add("label y");
+		String username = "gp.term.project@gmail.com";
+		String label = "label_x";
 		ClassificationFeedbackMessage feedbackMsg = new ClassificationFeedbackMessage(
-				"someEmailId", labels);
+				username, "raw email", label);
 		ClientResponse response = service.path("rest/service").path("provider")
 				.path("feedback")
 				.put(ClientResponse.class, feedbackMsg);
@@ -79,16 +78,16 @@ public class ClassificationClient {
 		ClientResponse response = null;
 
 		// Add Account
-		response = addAccount("gp.term.project@gmail.com", "gptermproject");
+//		response = addAccount("gp.term.project@gmail.com", "gptermproject");
 		
 		// Delete Account
 		//response = deleteAccount("gp.term.project@gmail.com");
 		
 		// classification request
-		response = requestClassification("gp.term.project@gmail.com", "2", "");
+//		response = requestClassification("gp.term.project@gmail.com", "2", "");
 		
 		// feedback
-//		response = sendFeedback();
+		response = sendFeedback();
 	}
 	
 	public static void main(String[] args) {

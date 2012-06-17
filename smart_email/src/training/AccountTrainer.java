@@ -62,7 +62,8 @@ public class AccountTrainer extends Thread {
 	public AccountTrainer(String email, String password) {
 		this.email = email;
 		this.password = password;
-		this.classifierType = "svm";
+//		this.classifierType = "svm";
+		this.classifierType = "onlinenaivebayes";
 	}
 
 	/**
