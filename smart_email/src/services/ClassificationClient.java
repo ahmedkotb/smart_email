@@ -37,10 +37,15 @@ public class ClassificationClient {
 	public ClientResponse deleteAccount(String username){
 		ClientResponse response = service.path("rest/service").path("provider").path(username).delete(ClientResponse.class);
 		System.out.println(response);
-
 		return response;
 	}
 
+	public ClientResponse getStatus(String username) {
+		ClientResponse response = service.path("rest/service").path("provider/status").path(username).get(ClientResponse.class);
+		System.out.println(response);
+		return response;
+	}
+	
 	public ClientResponse requestClassification(String username, String emailId, String emailContent){
 		IncomingEmailMessage classificationRequestMsg = new IncomingEmailMessage(username, emailId, emailContent);
 		ClientResponse response = service.path("rest/service").path("provider").path("classify").post(ClientResponse.class, classificationRequestMsg);
@@ -78,12 +83,16 @@ public class ClassificationClient {
 		ClientResponse response = null;
 
 		// Add Account
-//		response = addAccount("gp.term.project@gmail.com", "gptermproject");
+		//response = addAccount("gp.term.project@gmail.com", "gptermprojects");
+		
+		// Get Status
+		response = getStatus("gp.term.project@gmail.com");
 		
 		// Delete Account
 		//response = deleteAccount("gp.term.project@gmail.com");
 		
 		// classification request
+
 //		response = requestClassification("gp.term.project@gmail.com", "2", "");
 		
 		// feedback
