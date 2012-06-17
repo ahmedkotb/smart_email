@@ -164,7 +164,7 @@ public class ExperimentRunner {
 						trainingInstances);
 				reporter.evaluateModel(classifier, testingInstances);
 				resultMatrix[i][j] = reporter.getAccuracy();
-				// XXX add timeStamp + unit name + unit description + result
+				// TODO: add timeStamp + unit name + unit description + result
 				// summary to Log file
 
 				System.out.println(reporter.toSummaryString());
