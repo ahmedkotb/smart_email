@@ -49,6 +49,12 @@ if(top.document == document) {
     div.setAttribute('style', "display:none");
     body.appendChild(div);
 
+    //create paths information div
+    div = document.createElement('div');
+    div.id = "gpathsdiv";
+    div.setAttribute('style', "display:none");
+    body.appendChild(div);
+
     //create main information div
     div = document.createElement('div');
     div.id = "ginfodiv";
@@ -73,10 +79,13 @@ if(top.document == document) {
 
     //get Main Info
     //============
-    var mainInfo = {};
     chrome.extension.sendRequest({method : "mainInfo"}, function(response) {
         document.getElementById("ginfodiv").innerText = JSON.stringify(response);
     });
+
+    //get paths
+    document.getElementById("gpathsdiv").innerText = JSON.stringify({
+        spin:chrome.extension.getURL("imgs/loading.gif")});
     //=============
 
     //classification request
