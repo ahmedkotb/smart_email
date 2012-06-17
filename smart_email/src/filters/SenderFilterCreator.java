@@ -15,12 +15,10 @@ public class SenderFilterCreator implements FilterCreator {
 		try {
 			HashSet<String> senders = new HashSet<String>();
 			ArrayList<String> sendersVals = new ArrayList<String>();
-			// XXX in the calssification phase, if we found new sender, we will
+			// in the calssification phase, if we found new sender, we will
 			// assign it to SenderAtt_Other
 			sendersVals.add("SenderAtt_Other");
 			for (Email email : emails) {
-				// TODO: Moustafa please review, could we handle multiple
-				// senders??
 				subject = email.getSubject();
 				String sender = email.getFrom()[0].toString();
 				if (!senders.contains(sender)) {

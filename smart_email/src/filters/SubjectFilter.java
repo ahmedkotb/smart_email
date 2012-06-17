@@ -46,10 +46,6 @@ public class SubjectFilter extends Filter{
 			System.exit(1);
 		}
 		
-		System.out.println("GRAMS = " + NGRAMS_MAX);
-		System.out.println("IGNORED_GRAMS = " + Arrays.toString(IGNORED_GRAMS));
-		System.out.println("FREQ_NORMALIZATION = " + FREQ_NORMALIZATION);
-		System.out.println("useBinaryAttributes = " + useBinaryAttributes);
 		Iterator<Attribute> itr = attributes.iterator();
 		indexMap = new HashMap<String, Integer>();
 		int index=0;
@@ -63,7 +59,7 @@ public class SubjectFilter extends Filter{
 	 * @param attName Attribute name
 	 */
 	private String getWord(String attName){
-		//TODO : change this function according to the convention in which will name the wordFrequency attributes
+		// change this function according to the convention in which will name the wordFrequency attributes
 		return attName.substring(attPrefix.length());
 	}
 	

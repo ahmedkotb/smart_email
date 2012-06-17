@@ -17,7 +17,9 @@ Gmailr.init(function(G) {
     document.getElementById('grespdiv').addEventListener('respevent', function(){
         var eventData = JSON.parse(document.getElementById('grespdiv').innerText);
         console.log("JS FILE Received RESPONSE" + eventData.response);
-        //TODO: get labels from response
+
+        //TODO: handle case when error responsd is received
+        //TODO: handle multiple labels in response
         var labels = [eventData.response];
 
         //show dialog
@@ -38,6 +40,10 @@ Gmailr.init(function(G) {
             }
         });
         G.$('#gdialog').append(b);
+
+        G.$("#loadingDiv").remove();
+        G.$("#classify").text("Classify Me");
+        //TODO : enable div if it was disabled
     });
 
     var fireEvent = function(data) {
@@ -74,35 +80,8 @@ Gmailr.init(function(G) {
         G.$('#gmailr #status').html(msg);
     };
 
-    var makeRequest = function(){
-        /*
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET","http://api.geonames.org/findNearByWeatherJSON?lat=43&lng=-2&username=demo",true);
-        xhr.onreadystatechange = function(){
-            console.log("state changed" + xhr.readyState);
-            if (xhr.readyState == 4)
-                console.log(xhr.responseText);
-        }
-        xhr.send();
-        console.log("request sent");
-        */
-        /*
-        $.ajax({
-            type:"GET",
-            url:"http://api.geonames.org/findNearByWeatherJSON?lat=43&lng=-2&username=demo",
-            contentType: "application/xml",
-            success:function(response){
-                console.log("response");
-                console.log(response);
-            }
-        });
-        */
-    }
-
     G.observe('applyLabel', function(label,emails) {
        status("you applied label " + label + " to " + emails.length + " email(s)");
-       makeRequest();
-       console.log("waiting");
     });
 
     G.observe('numUnreadChange', function(prev,now) {
@@ -114,18 +93,33 @@ Gmailr.init(function(G) {
         if (G.currentView() != 'conversation')
             return;
 
+        //create classify loading div
+        var loadingDiv = $('<div/>',{
+            id: 'loadingDiv',
+            style: 'float:left;padding-right:5px;padding-top:2px'
+        });
+        var spin = $('<img/>',{
+            src:JSON.parse(document.getElementById("gpathsdiv").innerText).spin
+        });
+        loadingDiv.append(spin);
         //create classify me button
         var toolBarDiv = G.$("div.iH").children(":first");
         var normalClass = toolBarDiv.children(":first").children(":first").attr('class');
         var hoverClass = "T-I-JW";
-        classifyButton = $('<div/>',{
+        var classifyButton = $('<div/>',{
             id: 'classify',
             text: 'Classify Me',
             'class': normalClass,
             "data-tooltip": "classify this email",
             click: function(){
+                console.log("CLICK");
                 //refresh info (to handle case if user have just registered
                 fireEvent(JSON.stringify({command:"refresh_main_info"}));
+
+                //show loading div
+                classifyButton.text('loading ...')
+                classifyButton.append(loadingDiv);
+                //TODO: disable button to prevent double requests
 
                 //TODO: can be better
                 //wait for event to dispatch
@@ -142,13 +136,7 @@ Gmailr.init(function(G) {
 
                     var rawEmail = "";
                     getRawEmail(function(response){
-                        rawEmail = response;
-                        console.log("Resonse");
-                        console.log(rawEmail);
-
-
-                        rawEmail = "<![CDATA[" + rawEmail + "]]>";
-                        //TODO test this part
+                        rawEmail = "<![CDATA[" + response + "]]>";
                         var username = mainInfo.username;
                         var data = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
                         data += '<incomingEmailMessage>';

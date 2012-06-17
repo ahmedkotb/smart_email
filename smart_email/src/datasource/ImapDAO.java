@@ -151,7 +151,6 @@ public class ImapDAO extends DAO {
 			// message.setFlag(Flag.DELETED, true);
 
 		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

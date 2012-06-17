@@ -2,7 +2,7 @@
   "name": "Smart Email",
   "version": "0.1",
   "description": "Smart Email Chrome Extension",
-  "icons": {"128": "icon.png"},
+  "icons": {"128": "imgs/icon.png"},
   "options_page": "options.html",
   "background": {
     "page": "background.html"

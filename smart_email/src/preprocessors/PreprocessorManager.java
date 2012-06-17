@@ -3,7 +3,6 @@ package preprocessors;
 import general.Email;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * The PreprocessorManager is used to create the specified preprocessors and

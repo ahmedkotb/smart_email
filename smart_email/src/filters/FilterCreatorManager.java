@@ -8,7 +8,6 @@ public class FilterCreatorManager {
 	private FilterCreator[] filterCreators;
 	private Filter[] filters;
 
-	// TODO : catching thrown exceptions
 	public FilterCreatorManager(String[] filterCreatorsNames,
 			ArrayList<Email> trainingSet) throws InstantiationException,
 			IllegalAccessException, ClassNotFoundException {
