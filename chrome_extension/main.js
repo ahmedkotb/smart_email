@@ -74,11 +74,15 @@ Gmailr.init(function(G) {
     };
 
     var status = function(msg) {
+        G.$('#gmailr').fadeIn('slow',function(){ });
         G.$('#gmailr #status').html(msg);
+        setTimeout(function(){
+            G.$('#gmailr').fadeOut('slow',function(){ })
+        },5000);
     };
 
     G.observe('applyLabel', function(label,emails) {
-        status("you applied label " + label + " to " + emails.length + " email(s)");
+        status("Sending Feedback to classification web service");
         for (i in emails){
             var id = emails[i];
             getRawEmail(id,function(rawEmail){
