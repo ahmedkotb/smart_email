@@ -85,7 +85,11 @@ public class AccountTrainer extends Thread {
 					trainingLimit);
 			trainingData.addAll(emails);
 		}
+
+	   // imapDAO.closeConnection();
+
 		System.out.println("Training data retrieived using IMAP....");
+		
 		return trainingData;
 	}
 
