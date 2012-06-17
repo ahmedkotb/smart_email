@@ -83,10 +83,10 @@ public class ClassificationClient {
 		ClientResponse response = null;
 
 		// Add Account
-		//response = addAccount("gp.term.project@gmail.com", "gptermprojects");
+		//response = addAccount("gp.term.project@gmail.com", "gptermproject");
 		
 		// Get Status
-		response = getStatus("gp.term.project@gmail.com");
+		response = getStatus("gp.term.projet@gmail.com");
 		
 		// Delete Account
 		//response = deleteAccount("gp.term.project@gmail.com");
@@ -96,7 +96,7 @@ public class ClassificationClient {
 //		response = requestClassification("gp.term.project@gmail.com", "2", "");
 		
 		// feedback
-		response = sendFeedback();
+		//response = sendFeedback();
 	}
 	
 	public static void main(String[] args) {

@@ -68,8 +68,11 @@ public class ClassificationResource {
 					.createEntityManagerFactory("smart_email")
 					.createEntityManager();
 			Account account = entityManager.find(Account.class, username);
-			//return account.getStatus();
-			return "hello world!";
+			if(account == null) {
+				return "Not registered";
+			} else {
+				return account.getStatus();	
+			}
 		} catch (Exception ex) {
 			throw new WebApplicationException(ex,
 					Response.Status.INTERNAL_SERVER_ERROR);
