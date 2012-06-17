@@ -40,7 +40,7 @@
                     var updateStatus = function(status){
                         $("#status").html("Status : " + status);
                     }
-                    var mainInfo = localStorage["mainInfo"];
+                    var mainInfo = JSON.parse(localStorage["mainInfo"]);
                     console.log("main info");
                     console.log(mainInfo);
                     //TODO : check mainInfo value of unregisterd user
@@ -50,20 +50,12 @@
                     }
 
                     updateStatus("checking server ...");
-                    //TODO remove this return;
-                    return;
-                    var username = mainInfo.username;
-                    //TODO make status xml message
-                    var data = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
-                    data += '<account>';
-                    data += '<email>' + username + '</email>';
-                    data += '<token>' + password + '</token>';
-                    data += '</account>';
 
+                    var username = mainInfo.username;
                     var xhr = new XMLHttpRequest();
-                    //TodO status message url
-                    var url = "";
-                    xhr.open("POST",url,true);
+                    username = username.replace("@","%40");
+                    var url = "http://localhost:8080/smart_email/rest/service/provider/status/"+username;
+                    xhr.open("GET",url,true);
                     xhr.onreadystatechange = function(){
                         if (xhr.readyState == 4){
                             console.log("SERVER STATUS RESPONSE");
@@ -71,7 +63,7 @@
                             updateStatus(xhr.responseText);
                         }
                     }
-                    xhr.send(data);
+                    xhr.send();
                 });
             });
         </script>
@@ -96,6 +88,7 @@
             </div>
         </div>
 
+        <hr/>
         <div class="box" style="clear:left">
             <h2>Server Status</h2>
             <div style="padding-left:10px">
