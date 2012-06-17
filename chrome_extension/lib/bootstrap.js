@@ -113,8 +113,8 @@ if(top.document == document) {
         //send classification request
         var xhr = new XMLHttpRequest();
         //TODO : insert feedback url
-        var url = "";
-        xhr.open("POST",url,true);
+        var url = "http://localhost:8080/smart_email/rest/service/provider/feedback";
+        xhr.open("PUT",url,true);
         xhr.onreadystatechange = function(){
             if (xhr.readyState == 4){
                 console.log("feedback response");
