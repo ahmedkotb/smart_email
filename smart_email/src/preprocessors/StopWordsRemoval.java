@@ -59,8 +59,11 @@ public class StopWordsRemoval implements Preprocessor {
 	}
 
 	private HashSet<String> loadStopWords(String filename) throws IOException {
+		System.out.println("Working Dir:" + System.getProperty("user.dir"));
+
 		HashSet<String> stopwords = new HashSet<String>();
 		BufferedReader br = new BufferedReader(new FileReader(filename));
+		System.out.println(System.getProperty("user.dir"));
 		String word;
 		while ((word = br.readLine()) != null) {
 			stopwords.add(word);
