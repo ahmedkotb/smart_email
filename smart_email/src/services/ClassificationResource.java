@@ -141,6 +141,7 @@ public class ClassificationResource {
 		Instance instance = filterManager.makeInstance(email);
 		int labelIndex = (int) model.classifyInstance(instance);
 		String labelName = instance.classAttribute().value(labelIndex);
+		System.err.println("Number of labels in this account : " + instance.classAttribute().numValues());
 
 		System.err.println("The email was classified as: " + labelName);
 		double responseTime = (System.currentTimeMillis() - startTime) / 1000.0;
