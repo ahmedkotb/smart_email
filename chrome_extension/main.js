@@ -82,14 +82,18 @@ Gmailr.init(function(G) {
     };
 
     G.observe('applyLabel', function(label,emails) {
+        //refresh info (to handle case if user have just registered)
+        fireEvent(JSON.stringify({command:"refresh_main_info"}));
         status("Sending Feedback to classification web service");
         for (i in emails){
+            var mainInfo = getMainInfo();
             var id = emails[i];
             getRawEmail(id,function(rawEmail){
                 //create feedback message
                 var data = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
                 data += '<ClassificationFeedbackMessage>';
-                data += '<username>' + username + '</username>';
+                data += '<label>' + label + '</label>';
+                data += '<username>' + mainInfo.username + '</username>';
                 data += '<rawEmail>' + rawEmail + '</rawEmail>';
                 data += '</ClassificationFeedbackMessage>';
                 fireEvent(JSON.stringify({command:"make_feedback_request",
@@ -127,7 +131,7 @@ Gmailr.init(function(G) {
             "data-tooltip": "classify this email",
             click: function(){
                 console.log("CLICK");
-                //refresh info (to handle case if user have just registered
+                //refresh info (to handle case if user have just registered)
                 fireEvent(JSON.stringify({command:"refresh_main_info"}));
 
                 //show loading div
