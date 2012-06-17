@@ -22,8 +22,6 @@ public class SizeFilter extends Filter {
 	@Override
 	public double[] getAttValue(Email email) {
 		try {
-//			double size = 0.0 + email.getSize();
-//			return new double[] { size };
 			int compressedSize = email.getSize() / compressionFactor;
 			int sizeClass = (compressedSize < numClasses? compressedSize : numClasses);
 			return new double[] {sizeClass};

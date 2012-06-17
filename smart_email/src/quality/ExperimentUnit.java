@@ -51,7 +51,6 @@ public class ExperimentUnit {
 		this.description = description;
 		this.preprocessors = preprocessors;
 		this.filterCreators = filterCreators;
-		this.classifierType = classifierType;
 		this.N = N;
 		this.K = K;
 		this.trainingType = TrainingType.KN_PARTITIONS;

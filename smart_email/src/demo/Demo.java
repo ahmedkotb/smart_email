@@ -5,12 +5,8 @@ import filters.FilterCreatorManager;
 import filters.FilterManager;
 import general.Email;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.activation.DataHandler;
 import javax.mail.BodyPart;
