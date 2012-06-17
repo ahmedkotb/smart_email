@@ -16,9 +16,9 @@ Gmailr.init(function(G) {
 
     document.getElementById('grespdiv').addEventListener('respevent', function(){
         var eventData = JSON.parse(document.getElementById('grespdiv').innerText);
-        console.log("JS FILE Received RESPONSE" + eventData);
+        console.log("JS FILE Received RESPONSE" + eventData.response);
         //TODO: get labels from response
-        var labels = ["label 1","label 2"];
+        var labels = [eventData.response];
 
         //show dialog
         var overlay = G.$("#overlay")[0];
@@ -29,10 +29,10 @@ Gmailr.init(function(G) {
             labelsHtml += "<h3>" + labels[i] + "</h3>";
         }
 
-        $(overlay).html("<div id='gdialog'> <h1>Labels</h1>" + labelsHtml + "<hr> </div>");
+        $(overlay).html("<div id='gdialog'> <h2>Email Should Be classified as</h2>" + labelsHtml + "<hr> </div>");
         var b = $('<button></button>',{
             id:"gclosebutton",
-            text:'close',
+            text:'ok',
             click:function(){
                 overlay.style.visibility = "hidden";
             }
