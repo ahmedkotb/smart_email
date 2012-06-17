@@ -7,7 +7,6 @@ import java.net.URI;
 import java.util.Date;
 import java.util.List;
 
-import javax.mail.MessagingException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
@@ -34,7 +33,6 @@ import classification.Classifier;
 import training.AccountTrainer;
 
 import entities.Account;
-import entities.ModelPK;
 //import entities.Filter;
 import entities.Model;
 import filters.Filter;
@@ -66,14 +64,14 @@ public class ClassificationResource {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String requestClassification(
 			JAXBElement<IncomingEmailMessage> message) {
-		
+
 		long startTime = System.currentTimeMillis();
 		IncomingEmailMessage msg = message.getValue();
 
 		System.out.println("Classification Request: " + msg.getUsername()
 				+ ", " + msg.getEmailId());
 
-		//retrieve the user account from the database
+		// retrieve the user account from the database
 		EntityManager entityManager = Persistence.createEntityManagerFactory(
 				"smart_email").createEntityManager();
 		List<Account> accounts = entityManager.createQuery(
@@ -83,22 +81,23 @@ public class ClassificationResource {
 				"select c from Model c", Model.class).getResultList();
 
 		Account account = accounts.get(0);
-		
+
 		// update user statistics
 		account.setLastVisit(new Date());
 		account.setTotalClassified(account.getTotalClassified() + 1);
-		float accuracy = (account.getTotalClassified() - account.getTotalIncorrect()) / (float) account.getTotalClassified();
+		float accuracy = (account.getTotalClassified() - account
+				.getTotalIncorrect()) / (float) account.getTotalClassified();
 		account.setAccuracy(accuracy);
 
-		Classifier model = null;		
+		Classifier model = null;
 		Filter[] filters = null;
 
 		try {
-			ByteArrayInputStream bais = new ByteArrayInputStream(modelsBlob.get(0)
-					.getModel());
+			ByteArrayInputStream bais = new ByteArrayInputStream(modelsBlob
+					.get(0).getModel());
 			ObjectInputStream ois = null;
 
-			//Desrialize user model
+			// Desrialize user model
 			ois = new ObjectInputStream(bais);
 			model = (Classifier) ois.readObject();
 			bais.close();
@@ -116,7 +115,7 @@ public class ClassificationResource {
 			e.printStackTrace();
 		}
 
-		//obtain email and classify it
+		// obtain email and classify it
 		Email email = new Email(msg.getEmailContent());
 		FilterManager filterManager = new FilterManager(filters, false);
 		Instance instance = filterManager.makeInstance(email);
@@ -124,24 +123,24 @@ public class ClassificationResource {
 		String labelName = instance.classAttribute().value(labelIndex);
 
 		System.err.println("The email was classified as: " + labelName);
-		double responseTime = (System.currentTimeMillis() - startTime)/1000.0;
+		double responseTime = (System.currentTimeMillis() - startTime) / 1000.0;
 
 		// update the average response time in the user statistics
 		double avgResponseTime = 0;
-		if(account.getAvgResponseTime() == 0){ //first time
+		if (account.getAvgResponseTime() == 0) { // first time
 			avgResponseTime = responseTime;
-		} else{
+		} else {
 			avgResponseTime = (account.getAvgResponseTime() + responseTime) / 2;
 		}
 		account.setAvgResponseTime((float) avgResponseTime);
-		
+
 		// commit the update user account, after updating his statistics
 		EntityTransaction entr = entityManager.getTransaction();
 		entr.begin();
 		entityManager.merge(account);
 		entr.commit();
 
-//		return Response.ok().build();
+		// return Response.ok().build();
 		return labelName;
 	}
 
@@ -185,31 +184,9 @@ public class ClassificationResource {
 	public Response classificationFeedback(
 			JAXBElement<ClassificationFeedbackMessage> message) {
 		ClassificationFeedbackMessage msg = message.getValue();
-		System.out.println(msg.getLabel());
-		System.out.println(msg.getRawEmail());
-		System.out.println(msg.getUsername());
-		//TODO: don't forget to update account statistics in the database..
-//		Email email = new Email(msg.getRawEmail());
-//		String username = msg.getUsername();
-//		try {
-//			System.out.println("feedback: " + email.getSubject()
-//					+ ", labels list size = " + msg.getLabel());
-//		} catch (MessagingException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		//retrieve the user account from the database
-//		EntityManager entityManager = Persistence.createEntityManagerFactory(
-//				"smart_email").createEntityManager();
-//		ModelPK pk = new ModelPK();
-//		pk.setEmail(username);
-//		pk.setType("onlinenaivebayes");
-//		Model model = entityManager.find(Model.class, pk);
-//		if(model != null){
-//			
-//		} else{
-//			//TODO
-//		}
+
+		FeedbackHandler feedbackHandler = new FeedbackHandler(msg);
+		feedbackHandler.start();
 
 		return Response.ok().build();
 	}
