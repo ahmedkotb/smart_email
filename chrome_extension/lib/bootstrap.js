@@ -107,6 +107,23 @@ if(top.document == document) {
         xhr.send(data);
     }
 
+    //feedback request
+    //======================
+    var makeFeedbackRequest = function(data){
+        //send classification request
+        var xhr = new XMLHttpRequest();
+        //TODO : insert feedback url
+        var url = "";
+        xhr.open("POST",url,true);
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState == 4){
+                console.log("feedback response");
+                console.log(xhr.responseText);
+            }
+        }
+        xhr.send(data);
+    }
+
     //=============
     //init listener
     //=============
@@ -117,6 +134,8 @@ if(top.document == document) {
             window.open(chrome.extension.getURL("options.html"));
         }else if (eventData.command == "make_classification_request"){
             makeClassificationRequest(eventData.data);
+        }else if (eventData.command == "make_feedback_request"){
+            makeFeedbackRequest(eventData.data);
         }else if (eventData.command == "refresh_main_info"){
             chrome.extension.sendRequest({method : "mainInfo"}, function(response) {
                 document.getElementById("ginfodiv").innerText = JSON.stringify(response);
