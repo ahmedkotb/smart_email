@@ -1,6 +1,7 @@
 <html>
     <head>
         <title> Smart Email Chrome Extension Options </title>
+        <link rel="stylesheet" type="text/css" href="options.css" />
         <script type="text/javascript" src="lib/jquery.1.4.2.js"></script>
         <script>
             function registerUser(uname,password){
@@ -37,15 +38,24 @@
         </script>
     </head>
     <body>
-        <h1>Options</h1>
-        <form>
-            <label for="uname">Username:</label>
-            <input name="username" type = "text" id = "uname"/>
-            <br/>
-            <label for="pass">Password:</label>
-            <input name="password" type = "password" id = "pass"/>
-            <br/>
-            <input type="button" id="submitButton" value="Register"/>
-        </form>
+        <img width="64px" height="64px" src="imgs/icon.png" style="float:left;padding-right:10px"/>
+        <h2 style="padding-top:25px">Options</h2>
+
+
+        <div class="box" style="clear:left">
+            <h2>Registration</h2>
+                <div style="padding-left:10px">
+                    <form>
+                        <label for="uname">Username:</label>
+                        <input name="username" type = "text" id = "uname"/>
+                        <br/>
+                        <label for="pass">Password:</label>
+                        <input name="password" type = "password" id = "pass"/>
+                        <br/>
+                        <input type="button" id="submitButton" value="Register"/>
+                    </form>
+                </div>
+        </div>
+        <hr/>
     </body>
 </html>
