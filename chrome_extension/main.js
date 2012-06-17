@@ -52,18 +52,15 @@ Gmailr.init(function(G) {
         hiddenDiv.dispatchEvent(customEvent);
     }
 
-    var getRawEmail = function(callback){
+    var getRawEmail = function(id,callback){
         //make post request to get raw email
-        var url = document.location.href;
-        var id = url.substring(url.lastIndexOf("/")+1);
-        console.log("url = " + url);
-        console.log("id = " + id );
         var xhr = new XMLHttpRequest();
         xhr.open("GET","https://mail.google.com/mail/?ui=2&ik=0ee82dfff9&view=om&th=" + id,true);
         xhr.onreadystatechange = function(){
             console.log("state changed" + xhr.readyState);
             if (xhr.readyState == 4){
-                callback(xhr.responseText);
+                var rawEmail = "<![CDATA[" + xhr.responseText + "]]>";
+                callback(rawEmail);
             }
         }
         xhr.send();
@@ -81,7 +78,20 @@ Gmailr.init(function(G) {
     };
 
     G.observe('applyLabel', function(label,emails) {
-       status("you applied label " + label + " to " + emails.length + " email(s)");
+        status("you applied label " + label + " to " + emails.length + " email(s)");
+        for (i in emails){
+            var id = emails[i];
+            getRawEmail(id,function(rawEmail){
+                //create feedback message
+                var data = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
+                data += '<ClassificationFeedbackMessage>';
+                data += '<username>' + username + '</username>';
+                data += '<rawEmail>' + rawEmail + '</rawEmail>';
+                data += '</ClassificationFeedbackMessage>';
+                fireEvent(JSON.stringify({command:"make_feedback_request",
+                                        data:data}));
+            });
+        }
     });
 
     G.observe('numUnreadChange', function(prev,now) {
@@ -135,8 +145,9 @@ Gmailr.init(function(G) {
                     }
 
                     var rawEmail = "";
-                    getRawEmail(function(response){
-                        rawEmail = "<![CDATA[" + response + "]]>";
+                    var url = document.location.href;
+                    var id = url.substring(url.lastIndexOf("/")+1);
+                    getRawEmail(id,function(rawEmail){
                         var username = mainInfo.username;
                         var data = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
                         data += '<incomingEmailMessage>';
