@@ -21,7 +21,6 @@ public class LabelFilterCreator implements FilterCreator{
 				// TODO: Moustafa: Can we handle more than one label?
 				lbl = email.getHeader("X-label")[0];
 			} catch (MessagingException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if(!labels.contains(lbl)){

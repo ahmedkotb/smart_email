@@ -63,7 +63,7 @@ public class WordFrequencyFilter extends Filter{
 	 * @param attName Attribute name
 	 */
 	private String getWord(String attName){
-		//TODO : change this function according to the convention in which will name the wordFrequency attributes
+		// change this function according to the convention in which will name the wordFrequency attributes
 		return attName.substring(attPrefix.length());
 	}
 	

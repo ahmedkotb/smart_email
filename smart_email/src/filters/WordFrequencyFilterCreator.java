@@ -45,7 +45,7 @@ public class WordFrequencyFilterCreator implements FilterCreator {
 	//===================================
 	private final int DEFAULT_IMP_WORDS_PER_LABEL = 80;
 	private final int DEFAULT_THRESHOLD_PERCENTAGE = 20;
-	//XXX this value needs to be selected based on tests (or even eliminated at all!)
+	//TODO: this value needs to be selected based on tests (or even eliminated at all!)
 	private final double DEFAULT_MIN_SCORE = Double.MAX_VALUE;
 	private final boolean DEFAULT_FREQ_NORMALIZATION = true;
 	private final boolean DEFAULT_BINARY_FEATURES = true;

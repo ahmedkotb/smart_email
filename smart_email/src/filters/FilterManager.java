@@ -28,7 +28,6 @@ public class FilterManager {
 				attributes.addElement(tmp.get(j));
 		}
 		
-		//XXX do we need to make the dataset name user-dependent?
 		dataset = new Instances("dataset", attributes, 0);
 		dataset.setClassIndex(attsNum-1);
 	}
@@ -44,7 +43,8 @@ public class FilterManager {
 			ins.setDataset(dataset);
 			dataset.add(ins);
 		}
-		//XXX how to know the class index???
+		
+		// Assumption: class attribute is the last attribute
 		dataset.setClassIndex(attsNum-1);
 		return dataset;
 	}

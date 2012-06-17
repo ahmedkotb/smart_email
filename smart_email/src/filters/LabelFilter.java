@@ -20,7 +20,6 @@ public class LabelFilter extends Filter{
 		try {
 			return new double[]{attributes.get(0).indexOfValue(email.getHeader("X-label")[0])};
 		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
