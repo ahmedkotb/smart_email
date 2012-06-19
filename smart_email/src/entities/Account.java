@@ -33,6 +33,8 @@ public class Account implements Serializable {
 	@Column(name="last_visit")
 	private Date lastVisit;
 
+	private String status;
+
 	private String token;
 
 	@Column(name="total_classified")
@@ -82,6 +84,14 @@ public class Account implements Serializable {
 
 	public void setLastVisit(Date lastVisit) {
 		this.lastVisit = lastVisit;
+	}
+
+	public String getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public String getToken() {

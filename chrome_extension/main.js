@@ -107,7 +107,6 @@ Gmailr.init(function(G) {
     });
 
     G.observe('viewChanged', function() {
-        status("ViewChanged to " + G.currentView());
         if (G.currentView() != 'conversation')
             return;
 

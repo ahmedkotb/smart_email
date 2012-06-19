@@ -40,6 +40,8 @@ public class AccountTrainer extends Thread {
 	 * Account password.
 	 */
 	private String password;
+	
+	private String status;
 
 	/**
 	 * Classification type.
@@ -63,6 +65,7 @@ public class AccountTrainer extends Thread {
 		this.email = email;
 		this.password = password;
 		this.classifierType = "svm";
+		//this.classifierType = "onlinenaivebayes";
 	}
 
 	/**
@@ -97,6 +100,8 @@ public class AccountTrainer extends Thread {
 		//initializing entity manager
 		this.entityManager = Persistence.createEntityManagerFactory(
 				"smart_email").createEntityManager();
+		// Store the account with state: training
+		storeAccount("training");
 		// Retrieve the training data
 		System.out.println("Collecting training data....");
 		ArrayList<Email> trainingData = getTrainingData();
@@ -133,6 +138,22 @@ public class AccountTrainer extends Thread {
 
 	}
 
+	private void storeAccount(String status) {
+		Account account = new Account();
+		account.setEmail(email);
+		account.setToken(password);
+		account.setStatus(status);
+		account.setLastVisit(new Date());
+		account.setAccuracy(0);
+		account.setTotalClassified(0);
+		account.setTotalIncorrect(0);
+		account.setAvgResponseTime(0);
+		EntityTransaction entr = entityManager.getTransaction();
+		entr.begin();
+		entityManager.merge(account);
+		entr.commit();
+	}
+
 	/**
 	 * Stores the account data in the database.
 	 * @param filters array of user filters.
@@ -147,12 +168,13 @@ public class AccountTrainer extends Thread {
 		account.setTotalClassified(0);
 		account.setTotalIncorrect(0);
 		account.setAvgResponseTime(0);
+		account.setStatus("trained");
 		EntityTransaction entr = entityManager.getTransaction();
 		entr.begin();
 		entityManager.merge(account);
 		entr.commit();
 	}
-
+	
 	/**
 	 * Returns the array of filters in byte[] form.
 	 * @param array of filters.

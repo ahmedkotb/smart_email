@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Properties;
 import javax.mail.Store;
 import general.Email;
+
+import javax.mail.AuthenticationFailedException;
 import javax.mail.BodyPart;
 import javax.mail.Folder;
 import javax.mail.Message;
@@ -56,8 +58,10 @@ public class ImapDAO extends DAO {
 
 	@Override
 	public ArrayList<String> getClasses() {
-		ArrayList<String> classes = new ArrayList<String>(50);
+		ArrayList<String> classes = new ArrayList<String>();
 		try {
+			System.out.println("USERNAME: " + username);
+			System.out.println("PASSWORD: " + password);
 			Folder[] labels = store.getDefaultFolder().list("*");
 			for (Folder label : labels) {
 				classes.add(label.getName());
@@ -173,11 +177,16 @@ public class ImapDAO extends DAO {
 			Session session = Session.getDefaultInstance(props, null);
 			store = session.getStore("imaps");
 			store.connect("imap.gmail.com", username, password);
-		} catch (NoSuchProviderException e) {
+			System.out.println(store);
+		} catch (AuthenticationFailedException ex) {
+			System.err.println("Invalid credentials, please check the " +
+					"provided username and password.");
+		} catch (NoSuchProviderException ex) {
 			System.err.println("Cannot connect using IMAP, no such provider.");
-		} catch (MessagingException e) {
+		} catch (MessagingException ex) {
 			System.err.println("Cannot connect using IMAP. "
 					+ "Did you provide the correct username and password?");
+			ex.printStackTrace();
 		}
 		return store;
 	}
