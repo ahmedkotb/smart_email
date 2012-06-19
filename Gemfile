@@ -39,7 +39,7 @@ gem 'resque-scheduler'
 #gem 'omniauth-google-oauth2'
 gem 'omniauth-openid'
 gem 'jquery-rails'
-gem 'amqp', :require => 'mq'
+#gem 'amqp', :require => 'mq'
 gem "heroku"
 gem 'iron_mq'
 gem 'typhoeus'
