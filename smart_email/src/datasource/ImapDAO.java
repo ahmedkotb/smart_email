@@ -30,6 +30,16 @@ public class ImapDAO extends DAO {
 		this.store = connect(username, password);
 	}
 
+	public void closeConnection(){
+		
+		try {
+			store.close();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	public void setPassword(String password) {
 		this.password = password;
 	}

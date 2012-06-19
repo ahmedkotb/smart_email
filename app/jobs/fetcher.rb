@@ -25,12 +25,12 @@ class Fetcher
 		gmail = Gmail.new(account.username, account.password)
     puts "last visited: #{account.last_visited}"
 		gmail.inbox.emails(:after => account.last_visited).each do |email|			
-      puts "Hey guys"
-      if email.message.date < account.last_visied
-        puts "next one ..."
-       # next
+      #puts email.message.date.class
+     date = DateTime.parse(account.last_visited.to_s) 
+     if email.message.date < DateTime.parse(account.last_visited.to_s)
+	puts "email subject = #{email.message.subject} is SKIPPED#########"
+        next
       end
-      puts "not next, horraaaaaaaaaaay"
 			puts "Email subject = #{email.message.subject}"
       puts "Email uid = #{email.uid}"
       xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'

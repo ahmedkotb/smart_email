@@ -92,6 +92,7 @@ public class ClassificationClient {
 		//response = deleteAccount("gp.term.project@gmail.com");
 		
 		// classification request
+		//response = requestClassification("gp.term.project@gmail.com", "2", "");
 
 //		response = requestClassification("gp.term.project@gmail.com", "2", "");
 		

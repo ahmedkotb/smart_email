@@ -9,7 +9,7 @@ group :development, :test do
   gem 'sqlite3'
 end
 group :production do
-#  gem 'pg'
+  gem 'pg'
 	gem 'thin'
 end
 
@@ -29,12 +29,12 @@ end
 #gem 'omniauth'
 gem 'gmail'
 gem 'taps'
-gem 'rest-client'
+#gem 'rest-client'
 gem 'resque', :require => "resque/server"
 gem 'resque-scheduler'
 #gem 'tmail'
-gem 'rmail'
-gem 'mail'
+#gem 'rmail'
+#gem 'mail'
 #gem 'omniauth-google'
 #gem 'omniauth-google-oauth2'
 gem 'omniauth-openid'
