@@ -27,6 +27,8 @@ log/*
 config/database.yml
 db/*.sqlite3
 tmp/*
+Servers/*
+smart_email/*
 # External tool builders
 .externalToolBuilders/
 
