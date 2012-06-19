@@ -199,7 +199,7 @@ public class ClassificationResource {
 		}
 	}
 
-	@PUT
+	@POST
 	@Path("feedback")
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Response classificationFeedback(

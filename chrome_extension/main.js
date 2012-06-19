@@ -92,6 +92,7 @@ Gmailr.init(function(G) {
                 //create feedback message
                 var data = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
                 data += '<ClassificationFeedbackMessage>';
+                //data += '<label>' + 'Sharkasy' + '</label>';
                 data += '<label>' + label + '</label>';
                 data += '<username>' + mainInfo.username + '</username>';
                 data += '<rawEmail>' + rawEmail + '</rawEmail>';
