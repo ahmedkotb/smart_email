@@ -55,7 +55,7 @@ Gmailr.init(function(G) {
     var getRawEmail = function(id,callback){
         //make post request to get raw email
         var xhr = new XMLHttpRequest();
-        xhr.open("GET","https://mail.google.com/mail/?ui=2&ik=0ee82dfff9&view=om&th=" + id,true);
+        xhr.open("GET","https://mail.google.com/mail/?ui=2&ik=" + G.id + "&view=om&th=" + id,true);
         xhr.onreadystatechange = function(){
             console.log("state changed" + xhr.readyState);
             if (xhr.readyState == 4){
@@ -84,7 +84,7 @@ Gmailr.init(function(G) {
     G.observe('applyLabel', function(label,emails) {
         //refresh info (to handle case if user have just registered)
         fireEvent(JSON.stringify({command:"refresh_main_info"}));
-        status("Sending Feedback to classification web service");
+        status("Sending Feedback to classification web service ");
         for (i in emails){
             var mainInfo = getMainInfo();
             var id = emails[i];
@@ -92,8 +92,8 @@ Gmailr.init(function(G) {
                 //create feedback message
                 var data = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
                 data += '<ClassificationFeedbackMessage>';
-                //data += '<label>' + 'Sharkasy' + '</label>';
-                data += '<label>' + label + '</label>';
+                data += '<label>' + 'Sharkasy' + '</label>';
+                //data += '<label>' + label + '</label>';
                 data += '<username>' + mainInfo.username + '</username>';
                 data += '<rawEmail>' + rawEmail + '</rawEmail>';
                 data += '</ClassificationFeedbackMessage>';

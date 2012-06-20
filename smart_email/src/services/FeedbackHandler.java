@@ -52,11 +52,12 @@ public class FeedbackHandler extends Thread{
 		ModelPK pk = new ModelPK();
 		pk.setEmail(requestMessage.getUsername());
 		pk.setType("onlinenaivebayes");
+//		pk.setType("sgd");
 		Model modelBlob = entityManager.find(Model.class, pk);
-
 		Classifier model = null;
 		Filter[] filters = null;
-
+		Model updatedModel = null;
+	
 		if (modelBlob != null) {
 			try {
 				ByteArrayInputStream bais = new ByteArrayInputStream(
@@ -81,13 +82,13 @@ public class FeedbackHandler extends Thread{
 				e.printStackTrace();
 			}
 
-			FilterManager filterManager = new FilterManager(filters, false);
+			FilterManager filterManager = new FilterManager(filters, true);
 			Instance instance = filterManager.makeInstance(email);
 
 			model.trainOnInstance(instance);
 			System.out
 					.println("Classifier has retrained using the user feedback!");
-			Model updatedModel = new Model();
+			updatedModel = new Model();
 			updatedModel.setId(pk);
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
 			byte[] serializedModel = null;
@@ -112,8 +113,8 @@ public class FeedbackHandler extends Thread{
 		
 		EntityTransaction entr = entityManager.getTransaction();
 		entr.begin();
-		if (model != null) {
-			entityManager.merge(account);
+		if (updatedModel != null) {
+			entityManager.merge(updatedModel);
 		}
 		entityManager.merge(account);
 		entr.commit();

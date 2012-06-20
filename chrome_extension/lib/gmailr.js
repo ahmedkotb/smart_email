@@ -52,6 +52,7 @@
         currentInboxCount: null,
         archived: [],
         elements: {},
+        id: "",
 
         /*
             This is the main initialization routine. It bootstraps Gmailr into the Gmail interface.
@@ -396,6 +397,14 @@
             var self = this;
 
             try {
+
+                //init user id
+                //------------
+                var urlParams = $.deparam(params.url);
+                if (urlParams['ik'] != undefined)
+                    this.id = urlParams['ik'];
+                //------------
+
                 var m = /[?&]act=([^&]+)/.exec(params.url);
                 if(m && m[1]) {
                     var action = decodeURIComponent(m[1]);
