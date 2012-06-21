@@ -86,8 +86,7 @@ public class FeedbackHandler extends Thread{
 			Instance instance = filterManager.makeInstance(email);
 
 			model.trainOnInstance(instance);
-			System.out
-					.println("Classifier has retrained using the user feedback!");
+			System.out.println("Classifier has retrained using the user feedback!");
 			updatedModel = new Model();
 			updatedModel.setId(pk);
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
