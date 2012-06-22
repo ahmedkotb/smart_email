@@ -32,11 +32,11 @@ public class GramsExperiment implements ExperimentTunerIF{
 		preprocessors.add(new StopWordsRemoval());
 		preprocessors.add(new EnglishStemmer());
 
-		for(int i=1; i<(1<<3); i++){
+		for(int i=1; i<(1<<2); i++){
 			ArrayList<FilterCreator> filterCreators = new ArrayList<FilterCreator>();
 			
 			WordFrequencyFilterCreator wf = new WordFrequencyFilterCreator();
-			int maxGram = ((Integer.highestOneBit(i)/2) + 1);
+			int maxGram = Integer.toBinaryString(i).length();
 			ArrayList<Integer> ignored = new ArrayList<Integer>();
 			for(int j=0; j<maxGram; j++){
 				if(((1<<j) & i) == 0) ignored.add(j+1);
