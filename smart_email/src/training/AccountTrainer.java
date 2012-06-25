@@ -101,7 +101,7 @@ public class AccountTrainer extends Thread {
 		this.entityManager = Persistence.createEntityManagerFactory(
 				"smart_email").createEntityManager();
 		// Store the account with state: training
-		storeAccount("training");
+		storeAccount("Training Phase");
 		// Retrieve the training data
 		System.out.println("Collecting training data....");
 		ArrayList<Email> trainingData = getTrainingData();
@@ -168,7 +168,7 @@ public class AccountTrainer extends Thread {
 		account.setTotalClassified(0);
 		account.setTotalIncorrect(0);
 		account.setAvgResponseTime(0);
-		account.setStatus("trained");
+		account.setStatus("Ready to receive classification requests");
 		EntityTransaction entr = entityManager.getTransaction();
 		entr.begin();
 		entityManager.merge(account);
