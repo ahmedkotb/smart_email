@@ -8,8 +8,9 @@ Gmailr.debug = true; // Turn verbose debugging messages on
 
 Gmailr.init(function(G) {
     G.insertCss(getData('css_path'));
-    G.insertTop($("<div id='gmailr'><span>Gmailr Status:</span> <span id='status'>Loaded.</span> </div>"));
+    G.insertTop($("<div id='gmailr'><span>Status:</span> <span id='status'>Loaded.</span> </div>"));
     G.insertTop($("<div id='overlay'></div>"));
+    G.$("#gmailr").fadeOut('fast',function(){});
 
     var customEvent = document.createEvent('Event');
     customEvent.initEvent('gevent', true, true);
@@ -41,6 +42,7 @@ Gmailr.init(function(G) {
         });
         G.$('#gdialog').append(b);
 
+        //remove loading spin
         G.$("#loadingDiv").remove();
         G.$("#classify").text("Classify Me");
         //TODO : enable div if it was disabled
@@ -68,7 +70,7 @@ Gmailr.init(function(G) {
 
     var getMainInfo = function(){
         var infoString = document.getElementById("ginfodiv").innerText;
-        if (infoString == "")
+        if (infoString == "" || infoString == "undefined")
             return null;
         return JSON.parse(document.getElementById("ginfodiv").innerText);
     };
@@ -146,6 +148,8 @@ Gmailr.init(function(G) {
                     console.log("main info");
                     console.log(JSON.stringify(mainInfo));
                     if (mainInfo == null){
+                        G.$("#loadingDiv").remove();
+                        G.$("#classify").text("Classify Me");
                         alert("you must register your account before using the service\n" +
                             "you will be redirected to options page to register");
                         fireEvent(JSON.stringify({command:"open_options_page"}));

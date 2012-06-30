@@ -213,7 +213,8 @@
                         this.leftMenu = this.priorityInboxLink.closest('.TO').closest('div');
                     }
 
-                    if(this.leftMenu && this.leftMenu.length > 0) {
+                    //if(this.leftMenu && this.leftMenu.length > 0) {
+                    if(this.leftMenu) {
                         this.leftMenuItems = this.leftMenu.find('.TO');
 
                         p('Fully loaded.');
