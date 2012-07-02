@@ -52,7 +52,24 @@ public class AccountTrainer extends Thread {
 	 * Entity manager used for managing JPA objects.
 	 */
 	private EntityManager entityManager;
-
+	
+	/**
+	 * Accuracy of the user classification model
+	 */
+	private float accuracy;
+	/**
+	 * Total classified emails for the user
+	 */
+	private int totalClassified;
+	/**
+	 * Total incorrectly classified emails for the user
+	 */
+	private int totalIncorrect;
+	/**
+	 * Average response time for the user 
+	 */
+	private float AvgResponseTime;
+	
 	/**
 	 * Constructor used for initializing the AccountTrainer object.
 	 * 
@@ -64,9 +81,20 @@ public class AccountTrainer extends Thread {
 	public AccountTrainer(String email, String password) {
 		this.email = email;
 		this.password = password;
-		this.classifierType = "svm";
+		this.classifierType = ClassificationManager.getClassifierType();
 		//this.classifierType = "onlinenaivebayes";
 	}
+	
+	public AccountTrainer(String email, String password, float accuracy, int totalClassified, int totalIncorrect, float avgResponseTime) {
+		this.email = email;
+		this.password = password;
+		this.classifierType = ClassificationManager.getClassifierType();
+		this.accuracy = accuracy;
+		this.totalClassified = totalClassified;
+		this.totalIncorrect = totalIncorrect;
+		this.AvgResponseTime = avgResponseTime;
+	}
+
 
 	/**
 	 * Returns the training data for the account.
@@ -144,10 +172,10 @@ public class AccountTrainer extends Thread {
 		account.setToken(password);
 		account.setStatus(status);
 		account.setLastVisit(new Date());
-		account.setAccuracy(0);
-		account.setTotalClassified(0);
-		account.setTotalIncorrect(0);
-		account.setAvgResponseTime(0);
+		account.setAccuracy(this.accuracy);
+		account.setTotalClassified(this.totalClassified);
+		account.setTotalIncorrect(this.totalIncorrect);
+		account.setAvgResponseTime(this.AvgResponseTime);
 		EntityTransaction entr = entityManager.getTransaction();
 		entr.begin();
 		entityManager.merge(account);
@@ -164,10 +192,10 @@ public class AccountTrainer extends Thread {
 		account.setToken(password);
 		account.setFiltersList(getSerializedFilters(filters));
 		account.setLastVisit(new Date());
-		account.setAccuracy(0);
-		account.setTotalClassified(0);
-		account.setTotalIncorrect(0);
-		account.setAvgResponseTime(0);
+		account.setAccuracy(this.accuracy);
+		account.setTotalClassified(this.totalClassified);
+		account.setTotalIncorrect(this.totalIncorrect);
+		account.setAvgResponseTime(this.AvgResponseTime);
 		account.setStatus("Ready to receive classification requests");
 		EntityTransaction entr = entityManager.getTransaction();
 		entr.begin();

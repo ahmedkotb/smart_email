@@ -11,6 +11,8 @@ public class ClassificationManager {
 	private static final String DATASET_PATH = "../../../enron_processed/";
 	// Maximum limit for emails per label used for training.
 	private static final int TRAINING_LIMIT = 2000;
+	// classifier type used in the system
+	private static String classifierType = "svm";
 	// Default pre-processors.
 	private static final String preprocessors = "preprocessors.Lowercase,preprocessors.NumberNormalization,"
 			+ "preprocessors.UrlNormalization,preprocessors.WordsCleaner,"
@@ -79,5 +81,13 @@ public class ClassificationManager {
 	 */
 	public static int getTrainingLimit() {
 		return TRAINING_LIMIT;
+	}
+	
+	/**
+	 * Returns the classifier type used in the system
+	 * @return classifier type used in the system
+	 */
+	public static String getClassifierType(){
+		return ClassificationManager.classifierType;
 	}
 }
