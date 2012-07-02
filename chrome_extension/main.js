@@ -94,8 +94,7 @@ Gmailr.init(function(G) {
                 //create feedback message
                 var data = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
                 data += '<ClassificationFeedbackMessage>';
-                data += '<label>' + 'Sharkasy' + '</label>';
-                //data += '<label>' + label + '</label>';
+                data += '<label>' + label + '</label>';
                 data += '<username>' + mainInfo.username + '</username>';
                 data += '<rawEmail>' + rawEmail + '</rawEmail>';
                 data += '</ClassificationFeedbackMessage>';
@@ -160,6 +159,12 @@ Gmailr.init(function(G) {
                     var url = document.location.href;
                     var id = url.substring(url.lastIndexOf("/")+1);
                     getRawEmail(id,function(rawEmail){
+                        if (rawEmail.indexOf("<![CDATA[]]>") != -1){
+                            alert("Error getting email content\nplease check net connection");
+                            G.$("#loadingDiv").remove();
+                            G.$("#classify").text("Classify Me");
+                            return;
+                        }
                         var username = mainInfo.username;
                         var data = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
                         data += '<incomingEmailMessage>';
