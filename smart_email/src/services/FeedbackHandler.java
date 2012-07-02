@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import training.AccountTrainer;
 import weka.core.Instance;
 import classification.Classifier;
 import entities.Account;
@@ -51,6 +52,7 @@ public class FeedbackHandler extends Thread{
 
 		ModelPK pk = new ModelPK();
 		pk.setEmail(requestMessage.getUsername());
+		// try to find an online model for the user to retrain
 		pk.setType("onlinenaivebayes");
 //		pk.setType("sgd");
 		Model modelBlob = entityManager.find(Model.class, pk);
@@ -105,7 +107,8 @@ public class FeedbackHandler extends Thread{
 		} 
 
 		// update user statistics
-		account.setTotalIncorrect(account.getTotalIncorrect()+1);
+		int totalIncorrect = account.getTotalIncorrect()+1;
+		account.setTotalIncorrect(totalIncorrect);
 		float accuracy = (account.getTotalClassified() - account
 				.getTotalIncorrect()) / (float) account.getTotalClassified();
 		account.setAccuracy(accuracy);
@@ -117,5 +120,12 @@ public class FeedbackHandler extends Thread{
 		}
 		entityManager.merge(account);
 		entr.commit();
+		
+		
+		if(accuracy < 0.5 && (totalIncorrect % 100) == 0){ // retrain the user model
+			Thread registerationThread = new AccountTrainer(account.getEmail(),
+					account.getToken(), account.getAccuracy(), account.getTotalClassified(), account.getTotalIncorrect(), account.getAvgResponseTime());
+			registerationThread.start();
+		}
 	}
 }
